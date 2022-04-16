@@ -41,11 +41,29 @@ module.exports = {
             },
             {
                 test: /\.scss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    { loader: 'css-loader', options: { url: false, sourceMap: true } },
-                    { loader: 'sass-loader', options: { sourceMap: true } }
-                ],
+                use:  [{
+                    loader: MiniCssExtractPlugin.loader,
+                    options: {
+                        esModule: true,
+                    },
+                }, {
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: true,
+                        esModule: true,
+                        importLoaders: 1,
+                        modules: {
+                            localIdentName: '[local]__[hash:base64:4]',
+                            context: __dirname,
+                        },
+                    },
+                }, {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true,
+                        sassOptions: { quietDeps: true },
+                    },
+                }],
                 exclude,
                 include
             }
