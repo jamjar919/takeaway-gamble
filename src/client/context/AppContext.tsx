@@ -1,9 +1,10 @@
 import React, {ReactNode, useMemo, useState} from "react";
 import {doGamble} from "../async/DoGamble";
+import {GambleResponse} from "../../common/type/GambleResponse";
 
 type AppContext = {
     gamble: () => Promise<void>,
-    gambleResult: null | string
+    gambleResult: null | GambleResponse
 }
 
 const defaultValues: AppContext = {
@@ -16,7 +17,7 @@ const Context = React.createContext<AppContext>(defaultValues);
 const AppContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const { children } = props;
 
-    const [gambleResult, setGambleResult] = useState<null | string>(null);
+    const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
 
     const gamble = () =>
         doGamble().then((result) => setGambleResult(result));

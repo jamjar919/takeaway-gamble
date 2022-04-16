@@ -5,6 +5,27 @@ import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
 import {pickOneFromArray} from "../util/pickOneFromArray";
 import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
+import {GambleResponse} from "../../common/type/GambleResponse";
+import { DeliverooItem } from "../type/deliveroo/DeliverooItem";
+import { Restaurant } from "../type/Restaurant";
+
+const createGambleResponse = (
+    placesToEat: Restaurant[],
+    selectedPlace: Restaurant,
+    items: DeliverooItem[],
+    selectedItems: DeliverooItem[]
+): GambleResponse => {
+    return {
+        all: {
+            restaurants: placesToEat,
+            items
+        },
+        selected: {
+            restaurant: selectedPlace,
+            items: selectedItems
+        }
+    }
+}
 
 export const gamble = async (_: Request, res: Response) => {
 
@@ -15,18 +36,23 @@ export const gamble = async (_: Request, res: Response) => {
     const placesToEat = getPlacesToEat(searchPageContext);
 
     // Select one randomly
-    const randomPlace = pickOneFromArray(placesToEat);
+    const selectedPlace = pickOneFromArray(placesToEat);
 
     // Fetch + get context for it
     const restaurantContext = await getDeliverooContextFromUrl(
-        randomPlace.url,
+        selectedPlace.url,
     );
 
     // Get items
     const items = getMenuItems(restaurantContext);
 
     // Select some random items
-    const randomThings = selectMenuItems(items, 1500);
+    const selectedItems = selectMenuItems(items, 1500);
 
-    sendJSON(randomThings, res);
+    sendJSON(createGambleResponse(
+        placesToEat,
+        selectedPlace,
+        items,
+        selectedItems
+    ), res);
 };

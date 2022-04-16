@@ -1,7 +1,9 @@
 import React from "react";
 
-import styles from './SearchPage.scss';
 import {useAppContext} from "../../context/AppContext";
+import {GambleResult} from "./gamble-result/GambleResult";
+
+import styles from './SearchPage.scss';
 
 const SearchPage: React.FC = () => {
 
@@ -12,7 +14,7 @@ const SearchPage: React.FC = () => {
 
     return (
         <div className={styles.container}>
-            {gambleResult && <div dangerouslySetInnerHTML={{__html: gambleResult}}/>}
+            {gambleResult && <GambleResult result={gambleResult} />}
             <button onClick={gamble}>gamble!</button>
         </div>
     )
