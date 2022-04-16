@@ -18,6 +18,7 @@ const getPlacesToEat = (state: DeliverooState): Restaurant[] => {
                 return true;
             }
 
+            // log here as we don't expect any other cards
             console.log(target);
 
             return false;

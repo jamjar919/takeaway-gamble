@@ -1,21 +1,24 @@
 import {Request, Response} from "express";
-import fetch from "node-fetch";
-import cheerio from "cheerio";
 import {sendJSON} from "../util/sendJSON";
-import {DeliverooState} from "../type/deliveroo/DeliverooState";
 import {getPlacesToEat} from "./getPlacesToEat";
+import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
+import {pickOneFromArray} from "../util/pickOneFromArray";
 
 export const gamble = async (_: Request, res: Response) => {
 
-    const html = await fetch("https://deliveroo.co.uk/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants")
-        .then(restaurants => restaurants.text());
+    // Obtain restaurants in the area
+    const searchPageContext = await getDeliverooContextFromUrl(
+        "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
+    );
+    const placesToEat = getPlacesToEat(searchPageContext);
 
-    const $ = cheerio.load(html);
+    // Select one randomly
+    const randomPlace = pickOneFromArray(placesToEat);
 
-    // Get the NEXT state
-    const deliverooInitialContext = JSON.parse($('#__NEXT_DATA__').html() as string) as DeliverooState;
+    // Fetch + get context for it
+    const restaurantContext = await getDeliverooContextFromUrl(
+        randomPlace.url,
+    );
 
-    const result = getPlacesToEat(deliverooInitialContext);
-
-    sendJSON(result, res);
+    sendJSON(restaurantContext, res);
 };
