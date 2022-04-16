@@ -20,9 +20,9 @@
     "test": "jest",
     "start": "node ./dist/server.js",
     "build:server": "npx webpack --config webpack.config.server.js",
-    "build:server:dev": "npx webpack -w --config webpack.config.server.js",
+    "build:server:dev": "npx webpack -w --config webpack.config.server.js --mode=development",
     "build:client": "npx webpack --config webpack.config.client.js",
-    "build:client:dev": "npx webpack -w --config webpack.config.client.js"
+    "build:client:dev": "npx webpack -w --config webpack.config.client.js --mode=development"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
