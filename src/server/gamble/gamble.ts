@@ -3,6 +3,8 @@ import {sendJSON} from "../util/sendJSON";
 import {getPlacesToEat} from "./getPlacesToEat";
 import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
 import {pickOneFromArray} from "../util/pickOneFromArray";
+import {getMenuItems} from "./getMenuItems";
+import {selectMenuItems} from "./selectMenuItems";
 
 export const gamble = async (_: Request, res: Response) => {
 
@@ -20,5 +22,11 @@ export const gamble = async (_: Request, res: Response) => {
         randomPlace.url,
     );
 
-    sendJSON(restaurantContext, res);
+    // Get items
+    const items = getMenuItems(restaurantContext);
+
+    // Select some random items
+    const randomThings = selectMenuItems(items, 1500);
+
+    sendJSON(randomThings, res);
 };

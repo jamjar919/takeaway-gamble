@@ -1,4 +1,13 @@
 import {UILayoutList} from "./DeliverooUI";
+import {DeliverooItem} from "./DeliverooItem";
+
+type DeliverooMenuPageState = {
+    menu: {
+        meta: {
+            items: DeliverooItem[]
+        }
+    }
+}
 
 type DeliverooHomeState = {
     feed: {
@@ -16,7 +25,8 @@ type DeliverooHomeState = {
 type DeliverooState = {
     props: {
         initialState: {
-            home: DeliverooHomeState
+            home: DeliverooHomeState,
+            menuPage: DeliverooMenuPageState
         }
     }
 };
