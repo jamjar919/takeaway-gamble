@@ -54,7 +54,6 @@ module.exports = {
                         importLoaders: 1,
                         modules: {
                             localIdentName: '[local]__[hash:base64:4]',
-                            context: __dirname,
                         },
                     },
                 }, {

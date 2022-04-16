@@ -8,6 +8,7 @@
   "license": "None",
   "private": true,
   "dependencies": {
+    "cheerio": "^1.0.0-rc.10",
     "classnames": "^2.3.1",
     "express": "^4.17.3",
     "node-fetch": "^3.2.3",
