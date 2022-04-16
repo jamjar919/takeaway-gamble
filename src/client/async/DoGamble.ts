@@ -6,7 +6,10 @@ const doGamble = (
 ): Promise<GambleResponse> => {
     return fetch(Endpoints.GAMBLE, {
         method: "POST",
-        body: JSON.stringify({ priceLimit })
+        body: JSON.stringify({ priceLimit }),
+        headers: {
+            "Content-Type": "application/json"
+        }
     }).then(result => result.json())
 }
 
