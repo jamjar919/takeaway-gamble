@@ -30,18 +30,22 @@ const selectMenuItems = (
     }
 
     // Pick one
-    const item = pickOneFromArray(validItems);
+    const picked = pickOneFromArray(validItems);
 
     // Update our new price limit
-    let newPriceLimit = priceLimit - item.price.fractional;
-    if (item.priceDiscounted) {
-        newPriceLimit = priceLimit - item.priceDiscounted.fractional
+    let newPriceLimit = priceLimit - picked.price.fractional;
+    if (picked.priceDiscounted) {
+        newPriceLimit = priceLimit - picked.priceDiscounted.fractional
     }
+
+    // Filter to list of unselected items
+    const unselectedItems = validItems
+        .filter((item) => item.id !== picked.id)
 
     // Recursively select more items up to the new price limit
     return [
-        item,
-        ...selectMenuItems(validItems, newPriceLimit)
+        picked,
+        ...selectMenuItems(unselectedItems, newPriceLimit)
     ]
 
 };

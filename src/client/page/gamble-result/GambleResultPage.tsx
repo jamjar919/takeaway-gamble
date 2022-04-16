@@ -1,19 +1,28 @@
-import {GambleResponse} from "../../../../common/type/GambleResponse";
 import React from "react";
+import {GambleResponse} from "../../../common/type/GambleResponse";
 
 type GambleResultProps = {
     result: GambleResponse
 };
 
-const GambleResult: React.FC<GambleResultProps> = (props) => {
+const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
     const {
         result: { selected }
     } = props;
 
+    console.log(selected);
+
     return (
         <>
-            <h1>{selected.restaurant.name}</h1>
+            <h1>
+                <a
+                    href={`https://deliveroo.co.uk${selected.restaurant.url}`}
+                    target="_blank"
+                >
+                    {selected.restaurant.name}
+                </a>
+            </h1>
             <li>
                 {
                     selected.items.map((item) => (
@@ -27,4 +36,4 @@ const GambleResult: React.FC<GambleResultProps> = (props) => {
     )
 }
 
-export { GambleResult }
+export { GambleResultPage };

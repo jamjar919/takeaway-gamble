@@ -3,12 +3,14 @@ import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 
 type AppContext = {
-    gamble: () => Promise<void>,
+    gamble: (price: number) => Promise<void>,
+    resetGamble: () => void,
     gambleResult: null | GambleResponse
 }
 
 const defaultValues: AppContext = {
     gamble: () => Promise.reject('Not initialised'),
+    resetGamble: () => {},
     gambleResult: null
 }
 
@@ -19,14 +21,17 @@ const AppContextProvider: React.FC<{ children: ReactNode }> = (props) => {
 
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
 
-    const gamble = () =>
-        doGamble().then((result) => setGambleResult(result));
+    const gamble = (price: number) =>
+        doGamble(price).then((result) => setGambleResult(result));
+
+    const resetGamble = () => setGambleResult(null);
 
     const context = useMemo(() => {
-            return {
-                gamble,
-                gambleResult
-            }
+        return {
+            gamble,
+            resetGamble,
+            gambleResult
+        }
     }, [gamble, gambleResult]);
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)

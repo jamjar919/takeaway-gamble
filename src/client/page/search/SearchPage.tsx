@@ -1,21 +1,28 @@
 import React from "react";
-
-import {useAppContext} from "../../context/AppContext";
-import {GambleResult} from "./gamble-result/GambleResult";
+import {SearchPageForm, SearchPageFormField, SearchPageFormValues} from "./form/SearchPageForm";
 
 import styles from './SearchPage.scss';
 
-const SearchPage: React.FC = () => {
+type SearchPageType = {
+    onSearch: (price: number) => Promise<void>
+}
 
-    const {
-        gamble,
-        gambleResult
-    } = useAppContext();
+const SearchPage: React.FC<SearchPageType> = (props) => {
+    const {onSearch} = props;
 
     return (
         <div className={styles.container}>
-            {gambleResult && <GambleResult result={gambleResult} />}
-            <button onClick={gamble}>gamble!</button>
+            <div className={styles.formContainer}>
+                <SearchPageForm
+                    onSubmit={(values: SearchPageFormValues) => {
+                        const price = Number(values[SearchPageFormField.PRICE_LIMIT]) * 100;
+
+                        return onSearch(
+                            price
+                        )
+                    }}
+                />
+            </div>
         </div>
     )
 }

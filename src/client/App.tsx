@@ -1,11 +1,13 @@
 import React from "react";
-import {SearchPage} from "./page/search/SearchPage";
 import {AppContextProvider} from "./context/AppContext";
+import {Pages} from "./page/Pages";
+
+import './App.scss';
 
 const App: React.FC = () => {
     return (
         <AppContextProvider>
-            <SearchPage />
+            <Pages />
         </AppContextProvider>
     )
 }

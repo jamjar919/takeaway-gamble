@@ -27,7 +27,16 @@ const createGambleResponse = (
     }
 }
 
-export const gamble = async (_: Request, res: Response) => {
+type GambleRequest = {
+    priceLimit?: number
+}
+
+export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
+
+    let priceLimit = 12_00; // £12.00
+    if (req.body?.priceLimit) {
+        priceLimit = req.body?.priceLimit;
+    }
 
     // Obtain restaurants in the area
     const searchPageContext = await getDeliverooContextFromUrl(
@@ -47,7 +56,7 @@ export const gamble = async (_: Request, res: Response) => {
     const items = getMenuItems(restaurantContext);
 
     // Select some random items
-    const selectedItems = selectMenuItems(items, 1500);
+    const selectedItems = selectMenuItems(items, priceLimit);
 
     sendJSON(createGambleResponse(
         placesToEat,
