@@ -8,10 +8,12 @@ import {selectMenuItems} from "./selectMenuItems";
 import {GambleResponse} from "../../common/type/GambleResponse";
 import { DeliverooItem } from "../type/deliveroo/DeliverooItem";
 import { Restaurant } from "../type/Restaurant";
+import {getPlaceToEat} from "./getPlaceToEat";
+import {DeliverooRestaurantFull} from "../type/deliveroo/DeliverooRestaurant";
 
 const createGambleResponse = (
     placesToEat: Restaurant[],
-    selectedPlace: Restaurant,
+    selectedPlace: DeliverooRestaurantFull & Restaurant,
     items: DeliverooItem[],
     selectedItems: DeliverooItem[]
 ): GambleResponse => {
@@ -49,6 +51,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
     const searchPageContext = await getDeliverooContextFromUrl(
         "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
     );
+
     const placesToEat = getPlacesToEat(searchPageContext);
 
     // Select one randomly
@@ -65,9 +68,16 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
     // Select some random items
     const selectedItems = selectMenuItems(items, priceLimit);
 
+    const fullSelectedPlace = getPlaceToEat(
+        restaurantContext
+    )
+
     sendJSON(createGambleResponse(
         placesToEat,
-        selectedPlace,
+        {
+            ...fullSelectedPlace,
+            ...selectedPlace
+        },
         items,
         selectedItems
     ), res);

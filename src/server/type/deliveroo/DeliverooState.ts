@@ -1,10 +1,12 @@
 import {UILayoutList} from "./DeliverooUI";
 import {DeliverooItem} from "./DeliverooItem";
+import {DeliverooRestaurantFull} from "./DeliverooRestaurant";
 
 type DeliverooMenuPageState = {
     menu: {
         meta: {
-            items: DeliverooItem[]
+            items: DeliverooItem[],
+            restaurant: DeliverooRestaurantFull
         }
     }
 }

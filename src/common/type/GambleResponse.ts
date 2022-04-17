@@ -1,5 +1,6 @@
 import {DeliverooItem} from "../../server/type/deliveroo/DeliverooItem";
 import {Restaurant} from "../../server/type/Restaurant";
+import {DeliverooRestaurantFull} from "../../server/type/deliveroo/DeliverooRestaurant";
 
 export type GambleResponse = {
     all: {
@@ -7,7 +8,7 @@ export type GambleResponse = {
         items: DeliverooItem[]
     },
     selected: {
-        restaurant: Restaurant,
+        restaurant: DeliverooRestaurantFull & Restaurant,
         items: DeliverooItem[]
     }
-}
+};

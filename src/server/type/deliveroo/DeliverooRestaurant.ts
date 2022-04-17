@@ -1,3 +1,5 @@
+import {DeliverooAddress} from "./DeliverooAddress";
+
 type DeliverooRestaurant = {
     id: string,
     name: string,
@@ -8,4 +10,20 @@ type DeliverooRestaurant = {
     }
 };
 
-export { DeliverooRestaurant }
+type DeliverooRestaurantFull = {
+    currencyCode: string,
+    currencySymbol: string,
+    deliversToCustomerLocation: boolean
+    drnId: boolean,
+    hasOrderNotes: boolean,
+    id: string,
+    location: {
+        address: DeliverooAddress
+    }
+    menuDisabled: boolean,
+    menuId: string,
+    name: string
+    tipMessage: null | string
+}
+
+export { DeliverooRestaurant, DeliverooRestaurantFull }
