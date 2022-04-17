@@ -1,4 +1,6 @@
-export const mockGambleResponse = {
+import {GambleResponse} from "../../type/GambleResponse";
+
+export const mockGambleResponse: GambleResponse = {
     "all":{
         "restaurants":[
             {

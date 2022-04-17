@@ -14,14 +14,16 @@ type DeliverooRestaurantFull = {
     currencyCode: string,
     currencySymbol: string,
     deliversToCustomerLocation: boolean
-    drnId: boolean,
     hasOrderNotes: boolean,
     id: string,
     location: {
+        cityId: number,
+        zoneId: number,
         address: DeliverooAddress
     }
     menuDisabled: boolean,
     menuId: string,
+    drnId: string,
     name: string
     tipMessage: null | string
 }

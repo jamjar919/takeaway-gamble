@@ -5,11 +5,22 @@ type DeliverooItem = {
     categoryId: string,
     description: string | null
     id: string
-    image: unknown
+    image: {
+        typeName: string,
+        altText: string,
+        url: string,
+        type: string
+    } | null,
     name: string
     price: DeliverooPrice
     priceDiscounted?: DeliverooPrice
-    productInformation: string
+    productInformation: string,
+    nutritionalInfo: null | string,
+    percentageDiscounted: null | string,
+    popular: boolean,
+    maxSelection: null | string,
+    modifierGroupIds: unknown[],
+    isSignatureExclusive: boolean
 }
 
 export { DeliverooItem }
