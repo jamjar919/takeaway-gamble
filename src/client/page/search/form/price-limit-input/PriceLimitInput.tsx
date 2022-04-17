@@ -1,10 +1,16 @@
-import {Field} from "formik";
+import {Field, useFormikContext} from "formik";
 import React from "react";
 import {SearchPageFormField} from "../SearchPageForm";
 
 import styles from './PriceLimitInput.scss';
+import {AsciiLoader} from "../../../../framework/ascii-loader/AsciiLoader";
+import {AsciiLoaderTilesetType} from "../../../../framework/ascii-loader/AsciiLoaderTileset";
 
 const PriceLimitInput = () => {
+    const {
+        isSubmitting
+    } = useFormikContext();
+
     return (
         <div className={styles.inputContainer}>
             <div className={styles.unit}>£</div>
@@ -19,7 +25,7 @@ const PriceLimitInput = () => {
                     type="submit"
                     className={styles.button}
                 >
-                    Gamble!
+                    { isSubmitting ? <AsciiLoader type={AsciiLoaderTilesetType.Sonar} /> : "Gamble!"}
                 </button>
             </div>
         </div>

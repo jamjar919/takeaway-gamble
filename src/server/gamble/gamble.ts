@@ -31,13 +31,18 @@ type GambleRequest = {
     priceLimit?: number
 }
 
-export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
+const GAMBLE_MAX = 1000_00;
 
-    console.log(req.body);
+export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
 
     let priceLimit = 12_00; // £12.00
     if (req.body?.priceLimit) {
         priceLimit = req.body?.priceLimit;
+    }
+
+    if (priceLimit > GAMBLE_MAX) {
+        sendJSON({ error: "Max price is £1000" }, res);
+        return;
     }
 
     // Obtain restaurants in the area

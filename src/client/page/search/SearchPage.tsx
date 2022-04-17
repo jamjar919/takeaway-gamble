@@ -13,6 +13,7 @@ const SearchPage: React.FC<SearchPageType> = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
+                <img src={"/deliveroo-logo.png"} alt="Deliveroo Logo" className={styles.logo}/>
                 <SearchPageForm
                     onSubmit={(values: SearchPageFormValues) => {
                         const price = Number(values[SearchPageFormField.PRICE_LIMIT]) * 100;
