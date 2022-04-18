@@ -7,6 +7,7 @@
 .restaurantInformation {
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
   border-bottom: 1px solid rgba(0,0,0,.08);
+  padding: 24px 0;
 }
 
 .restaurantInformationLines {
@@ -16,4 +17,8 @@
 
 .name {
   margin-bottom: 20px;
+}
+
+.selectedItems {
+  background-color: #f9fafa;
 }

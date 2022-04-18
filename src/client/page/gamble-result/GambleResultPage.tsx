@@ -56,7 +56,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                     </div>
                 </header>
 
-                <li>
+                <div className={styles.selectedItems}>
                     {
                         items.map((item) => (
                             <li key={item.id}>
@@ -64,7 +64,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                             </li>
                         ))
                     }
-                </li>
+                </div>
         </div>
     )
 }
