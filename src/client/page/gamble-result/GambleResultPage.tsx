@@ -1,6 +1,6 @@
 import React from "react";
 import {GambleResponse} from "../../../common/type/GambleResponse";
-import {Wheel} from "../../framework/wheel/Wheel";
+import {ScrollingOptionDisplay} from "../../framework/scrolling-option-display/ScrollingOptionDisplay";
 
 type GambleResultProps = {
     result: GambleResponse
@@ -22,11 +22,6 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
     console.log(props.result);
 
-    const wheelItems = restaurants
-        .map((r) => ({
-            label: r.name
-        }))
-
     return (
         <>
             <h1>
@@ -34,7 +29,10 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                     href={`https://deliveroo.co.uk${restaurant.url}`}
                     target="_blank"
                 >
-                    {restaurant.name}
+                    <ScrollingOptionDisplay
+                        choices={restaurants.map(r => r.name)}
+                        selected={restaurant.name}
+                    />
                 </a>
             </h1>
             <li>
@@ -46,7 +44,6 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                     ))
                 }
             </li>
-            <Wheel items={wheelItems} size={500} />
         </>
     )
 }

@@ -1,4 +1,6 @@
-import React, {useRef} from "react";
+import React from "react";
+import {Coords} from "./Coords";
+import {WheelSegment} from "./WheelSegment";
 
 type WheelItem = {
     label: string,
@@ -12,6 +14,10 @@ type WheelProps = {
     size: number
 }
 
+/**
+ * I tried to make a roulette wheel but it turns out with 300 options
+ * you can't see any of the options. Shelved for now.
+ */
 const Wheel: React.FC<WheelProps> = (props) => {
     const {
         items,
@@ -20,21 +26,36 @@ const Wheel: React.FC<WheelProps> = (props) => {
 
     const svgSize = size + 10
 
-    const centerCoords = {
+    const center: Coords = {
         x: size/2 + 5,
         y: size/2 + 5
     }
 
+    const segments = items.map((item, idx) => {
+        return <WheelSegment
+            id={idx}
+            numSegments={items.length}
+            key={item.label}
+        />
+    });
+
     return (
-        <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`} xmlns="http://www.w3.org/2000/svg">
+        <svg
+            width={svgSize}
+            height={svgSize}
+            viewBox="-1 -1 2 2"
+            style={{transform: "rotate(-0.25turn)"}}
+            xmlns="http://www.w3.org/2000/svg"
+        >
             <circle
-                cx={centerCoords.x}
-                cy={centerCoords.y}
+                cx={center.x}
+                cy={center.y}
                 r={size/2}
                 fill="none"
                 stroke="black"
                 strokeWidth="5px"
             />
+            {segments}
         </svg>
     )
 }
