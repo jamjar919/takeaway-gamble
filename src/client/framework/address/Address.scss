@@ -1,0 +1,18 @@
+.address {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-style: normal;
+}
+
+.addressLine {
+  &:after {
+    content: ' - '
+  }
+
+  &:last-child {
+    &:after {
+      content: ''
+    }
+  }
+}

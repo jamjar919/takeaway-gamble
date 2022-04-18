@@ -1,12 +1,16 @@
-import React, {ReactNode} from "react";
+import React, {ReactNode, useEffect, useState} from "react";
 import {pickOneFromArray} from "../../../common/util/pickOneFromArray";
 
 import styles from './ScrollingOptionBox.scss';
 import {ScrollingOption} from "./ScollingOption";
 
 type ScrollingOptionDisplayProps = {
+    /** The choices for the scrolling option box */
     choices: ReactNode[];
+    /** The selected option */
     selected: ReactNode;
+    /** Time for the animation to complete in millseconds */
+    animationDuration?: number
 }
 
 /**
@@ -16,12 +20,31 @@ type ScrollingOptionDisplayProps = {
 const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
     const {
         choices,
-        selected
+        selected,
+        animationDuration
     } = props;
+
+    const [complete, setComplete] = useState(false);
+
+    useEffect(() => {
+        const id = setTimeout(
+            () => setComplete(true),
+            animationDuration
+        );
+
+        return () => clearTimeout(id);
+    })
+
+    if (complete) {
+        return (<>{selected}</>);
+    }
 
     return (
         <div className={styles.container}>
-            <div className={styles.itemList}>
+            <div
+                className={styles.itemList}
+                style={{ animationDuration: `${animationDuration}ms` }}
+            >
                 <ScrollingOption key="topper">{pickOneFromArray(choices)}</ScrollingOption>
                 <ScrollingOption key="selected">{selected}</ScrollingOption>
                 {choices.map((choice) =>
@@ -31,5 +54,9 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
         </div>
     )
 };
+
+ScrollingOptionBox.defaultProps = {
+    animationDuration: 2000
+}
 
 export { ScrollingOptionBox }
