@@ -1,4 +1,5 @@
 import React from "react";
+import {pickOneFromArray} from "../../../server/util/pickOneFromArray";
 
 type ScrollingOptionDisplayProps = {
     choices: string[];
@@ -15,7 +16,15 @@ const ScrollingOptionDisplay: React.FC<ScrollingOptionDisplayProps> = (props) =>
         selected
     } = props;
 
-    return <span />
+    const list = (<>
+        <div key="topper">{pickOneFromArray(choices)}</div>
+        <div key="selected">{selected}</div>
+        {choices.map((choice) => <div key={choice}>{choice}</div>)}
+    </>)
+
+    return (<div>
+        {list}
+    </div>)
 };
 
 export { ScrollingOptionDisplay }
