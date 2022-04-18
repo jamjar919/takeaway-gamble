@@ -2,14 +2,14 @@ import React from "react";
 import {useAppContext} from "../context/AppContext";
 import {GambleResultPage} from "./gamble-result/GambleResultPage";
 import {SearchPage} from "./search/SearchPage";
-import {mockGambleResponse} from "../../common/spec/mock/MockGambleResponse";
 
 const Pages: React.FC = () => {
     const {
-        gamble
+        gamble,
+        gambleResult
     } = useAppContext();
 
-    const gambleResult = mockGambleResponse;
+    // const gambleResult = mockGambleResponse;
 
     return (
         <div>

@@ -29,7 +29,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
     console.log(props.result);
 
     return (
-        <div>
+        <div className={styles.pageContainer}>
             <header className={styles.restaurantInformation}>
                 <div className={styles.container}>
                     <div className={styles.image}>
