@@ -7,7 +7,7 @@
 .itemList {
   position: relative;
   top: calc(-0.5em - 10px);
-  animation: rollup 2s ease-out;
+  animation: rollup 2s cubic-bezier(0,1.1,.25,1);
 }
 
 .option {
