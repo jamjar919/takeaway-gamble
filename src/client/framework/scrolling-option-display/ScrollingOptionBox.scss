@@ -1,0 +1,27 @@
+.container {
+  /** Enough to the top + bottom of the selected item */
+  height: 2.5em;
+  overflow: hidden;
+}
+
+.itemList {
+  position: relative;
+  top: calc(-0.5em - 10px);
+  animation: rollup 2s ease-out;
+}
+
+.option {
+  margin-top: 5px;
+}
+
+@keyframes rollup {
+  0% {
+    transform-origin: top;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+  }
+}

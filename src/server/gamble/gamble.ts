@@ -2,7 +2,7 @@ import {Request, Response} from "express";
 import {sendJSON} from "../util/sendJSON";
 import {getPlacesToEat} from "./getPlacesToEat";
 import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
-import {pickOneFromArray} from "../util/pickOneFromArray";
+import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
 import {GambleResponse} from "../../common/type/GambleResponse";

@@ -1,6 +1,6 @@
 
 import {DeliverooItem} from "../type/deliveroo/DeliverooItem";
-import {pickOneFromArray} from "../util/pickOneFromArray";
+import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 
 const filterItemsBelowPrice = (
     items: DeliverooItem[],

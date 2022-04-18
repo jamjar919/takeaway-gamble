@@ -1,6 +1,6 @@
 import React from "react";
 import {GambleResponse} from "../../../common/type/GambleResponse";
-import {ScrollingOptionDisplay} from "../../framework/scrolling-option-display/ScrollingOptionDisplay";
+import { ScrollingOptionBox } from "../../framework/scrolling-option-display/ScrollingOptionBox";
 
 type GambleResultProps = {
     result: GambleResponse
@@ -25,15 +25,15 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
     return (
         <>
             <h1>
-                <a
-                    href={`https://deliveroo.co.uk${restaurant.url}`}
-                    target="_blank"
-                >
-                    <ScrollingOptionDisplay
-                        choices={restaurants.map(r => r.name)}
-                        selected={restaurant.name}
-                    />
-                </a>
+                <ScrollingOptionBox
+                    choices={restaurants.map(r => r.name)}
+                    selected={
+                        <a
+                            href={`https://deliveroo.co.uk${restaurant.url}`}
+                            target="_blank"
+                        >{restaurant.name}</a>
+                    }
+                />
             </h1>
             <li>
                 {
