@@ -1,6 +1,6 @@
 import {DeliverooItem} from "../../server/type/deliveroo/DeliverooItem";
 import {Restaurant} from "../../server/type/Restaurant";
-import {DeliverooRestaurantFull} from "../../server/type/deliveroo/DeliverooRestaurant";
+import {DeliverooMenuPageState} from "../../server/type/deliveroo/DeliverooState";
 
 export type GambleResponse = {
     all: {
@@ -8,7 +8,7 @@ export type GambleResponse = {
         items: DeliverooItem[]
     },
     selected: {
-        restaurant: DeliverooRestaurantFull & Restaurant,
+        restaurant: DeliverooMenuPageState["menu"]["meta"],
         items: DeliverooItem[]
     }
 };

@@ -1,12 +1,15 @@
 import {UILayoutList} from "./DeliverooUI";
 import {DeliverooItem} from "./DeliverooItem";
-import {DeliverooRestaurantFull} from "./DeliverooRestaurant";
+import {DeliverooRestaurantFull, DeliverooRestaurantMeta} from "./DeliverooRestaurant";
+import {DeliverooCategory} from "./DeliverooCategory";
 
 type DeliverooMenuPageState = {
     menu: {
         meta: {
             items: DeliverooItem[],
-            restaurant: DeliverooRestaurantFull
+            categories: DeliverooCategory[],
+            restaurant: DeliverooRestaurantFull,
+            metatags: DeliverooRestaurantMeta
         }
     }
 }
@@ -33,4 +36,4 @@ type DeliverooState = {
     }
 };
 
-export { DeliverooState }
+export { DeliverooState, DeliverooMenuPageState }

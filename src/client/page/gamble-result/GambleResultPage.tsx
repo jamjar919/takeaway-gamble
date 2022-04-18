@@ -26,37 +26,52 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
         }
     } = props;
 
+    const {
+        image,
+    } = restaurant.metatags;
+
+    const {
+        name,
+        location
+    } = restaurant.restaurant;
+
     console.log(props.result);
 
     return (
         <div className={styles.pageContainer}>
-            <header className={styles.restaurantInformation}>
+            <header className={styles.header}>
                 <div className={styles.container}>
-                    <div className={styles.image}>
-                        {/* <img src={restaurant.image}> */}
-                    </div>
-                    <div className={styles.restaurantInformationLines}>
-                        <h1 className={styles.name}>
-                            <ScrollingOptionBox
-                                choices={restaurants.map(r => r.name)}
-                                selected={
-                                    <a
-                                        href={`https://deliveroo.co.uk${restaurant.url}`}
-                                        target="_blank"
-                                    >{restaurant.name}</a>
-                                }
+                    <div className={styles.restaurantInformation}>
+                        {image && (
+                            <img
+                                src={image}
+                                alt={name}
+                                className={styles.image}
                             />
-                        </h1>
-                        {restaurant.location.address && (
-                            <div className={styles.restaurantDetails}>
-                                <Address value={restaurant.location.address} />
-                            </div>
                         )}
+                        <div className={styles.restaurantInformationLines}>
+                            <h1 className={styles.name}>
+                                <ScrollingOptionBox
+                                    choices={restaurants.map(r => r.name)}
+                                    selected={
+                                        <a
+                                            href={`https://deliveroo.co.uk${restaurant.url}`}
+                                            target="_blank"
+                                        >{name}</a>
+                                    }
+                                />
+                            </h1>
+                            {location?.address && (
+                                <div className={styles.restaurantDetails}>
+                                    <Address value={location.address} />
+                                </div>
+                            )}
+                        </div>
                     </div>
-                    </div>
-                </header>
-
-                <div className={styles.selectedItems}>
+                </div>
+            </header>
+            <div className={styles.selectedItems}>
+                <div className={styles.container}>
                     {
                         items.map((item) => (
                             <li key={item.id}>
@@ -65,6 +80,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                         ))
                     }
                 </div>
+            </div>
         </div>
     )
 }

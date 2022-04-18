@@ -1,12 +1,11 @@
 .container {
-  /** Enough to the top + bottom of the selected item */
-  height: 2.5em;
+  height: 1em;
   overflow: hidden;
 }
 
 .itemList {
   position: relative;
-  top: calc(-0.5em - 10px);
+  top: calc(-1em - 15px);
   animation: rollup;
   animation-timing-function: cubic-bezier(0,1.1,.25,1);
 }

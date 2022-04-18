@@ -2,20 +2,34 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #f9fafa;
+}
+
+.image {
+  display: block;
+  max-width: 300px;
+  margin-right: 50px;
 }
 
 .container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
   display: flex;
-  flex-direction: column;
-  margin: 0 50px;
+  flex-direction: row;
+  padding: 24px 0;
+  max-height: 175px;
+
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  border-bottom: 1px solid rgba(0, 0, 0, .08);
 }
 
 .restaurantInformation {
-  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
-  border-bottom: 1px solid rgba(0,0,0,.08);
-  padding: 24px 0;
-  flex: 1 0;
-  max-height: 175px;
+  display: flex;
+  flex-direction: row;
 }
 
 .restaurantInformationLines {
@@ -28,6 +42,5 @@
 }
 
 .selectedItems {
-  background-color: #f9fafa;
   flex: 1 1;
 }

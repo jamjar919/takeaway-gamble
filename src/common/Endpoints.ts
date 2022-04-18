@@ -1,3 +1,4 @@
 export const Endpoints = {
-    GAMBLE: '/api/gamble'
+    GAMBLE: '/api/gamble',
+    DEBUG: '/api/debug'
 };

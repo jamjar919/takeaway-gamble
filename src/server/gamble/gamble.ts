@@ -6,28 +6,7 @@ import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
 import {GambleResponse} from "../../common/type/GambleResponse";
-import { DeliverooItem } from "../type/deliveroo/DeliverooItem";
-import { Restaurant } from "../type/Restaurant";
-import {getPlaceToEat} from "./getPlaceToEat";
-import {DeliverooRestaurantFull} from "../type/deliveroo/DeliverooRestaurant";
-
-const createGambleResponse = (
-    placesToEat: Restaurant[],
-    selectedPlace: DeliverooRestaurantFull & Restaurant,
-    items: DeliverooItem[],
-    selectedItems: DeliverooItem[]
-): GambleResponse => {
-    return {
-        all: {
-            restaurants: placesToEat,
-            items
-        },
-        selected: {
-            restaurant: selectedPlace,
-            items: selectedItems
-        }
-    }
-}
+import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
 
 type GambleRequest = {
     priceLimit?: number
@@ -68,17 +47,22 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
     // Select some random items
     const selectedItems = selectMenuItems(items, priceLimit);
 
-    const fullSelectedPlace = getPlaceToEat(
+    // Retrieve more detailed information
+
+    const selectedPlaceMeta = getPlaceToEatMeta(
         restaurantContext
     )
 
-    sendJSON(createGambleResponse(
-        placesToEat,
-        {
-            ...fullSelectedPlace,
-            ...selectedPlace
+    const response: GambleResponse = {
+        all: {
+            restaurants: placesToEat,
+            items
         },
-        items,
-        selectedItems
-    ), res);
+        selected: {
+            restaurant: selectedPlaceMeta,
+            items: selectedItems
+        }
+    }
+
+    sendJSON(response, res);
 };

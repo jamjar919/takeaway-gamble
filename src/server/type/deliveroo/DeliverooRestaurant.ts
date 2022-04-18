@@ -28,4 +28,14 @@ type DeliverooRestaurantFull = {
     tipMessage: null | string
 }
 
-export { DeliverooRestaurant, DeliverooRestaurantFull }
+type DeliverooRestaurantMeta = {
+    description: string;
+    descriptionSocial: string;
+    image: string;
+    imageHeight: number;
+    imageWidth: number;
+    title: string;
+    titleSocial: string;
+}
+
+export { DeliverooRestaurant, DeliverooRestaurantFull, DeliverooRestaurantMeta }
