@@ -15,10 +15,16 @@ type GambleRequest = {
 }
 
 const GAMBLE_MAX = 1000_00;
+const MAX_RESTAURANTS = 5;
 
 const getOpenPlaceFromState = async (
-    placesToEat: Restaurant[]
+    placesToEat: Restaurant[],
+    attempt = 0
 ): Promise<[Restaurant, DeliverooState, DeliverooMenuPageState["menu"]["meta"]]> => {
+    if (attempt > MAX_RESTAURANTS) {
+        throw new Error("Polled too many Deliveroo places");
+    }
+
     // Select one randomly
     const selectedPlace = pickOneFromArray(placesToEat);
 
@@ -32,8 +38,15 @@ const getOpenPlaceFromState = async (
         restaurantContext
     )
 
-    if (selectedPlaceMeta.restaurant.menuDisabled) {
-
+    // Get another one if we're out of
+    if (
+        selectedPlaceMeta.restaurant.menuDisabled ||
+        !selectedPlaceMeta.restaurant.deliversToCustomerLocation
+    ) {
+        return await getOpenPlaceFromState(
+            placesToEat,
+            attempt + 1
+        )
     }
 
     return [

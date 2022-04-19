@@ -26,7 +26,7 @@ const GambleResultItems: React.FC<ItemsProps> = (props) => {
         .filter(({items}) => items.length > 0)
         .map(({ items, category }) => {
             return (
-                <div className={styles.category}>
+                <div className={styles.category} key={category.id}>
                     <CategoryHeader>{category.name}</CategoryHeader>
                     <CategoryItems items={items} />
                 </div>

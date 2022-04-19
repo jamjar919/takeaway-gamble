@@ -11,7 +11,7 @@ type CategoryItemsProps = {
 const CategoryItems: React.FC<CategoryItemsProps> = (props) => {
     const { items } = props;
 
-    const result = items.map((item) => <Item item={item} />)
+    const result = items.map((item) => <Item key={item.id} item={item} />)
 
     return (
         <div className={styles.categoryItems}>

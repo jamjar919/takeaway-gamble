@@ -32,7 +32,7 @@ const Basket: React.FC<BasketProps> = (props) => {
             </div>
             <ul className={styles.basketItems}>
                 {items.sort((a,b) => b.price.fractional - a.price.fractional).map((item) => (
-                    <li>
+                    <li key={item.id}>
                         <span className={styles.itemName}>{item.name}</span>
                         <span className={styles.itemPrice}>{item.price.formatted}</span>
                     </li>
