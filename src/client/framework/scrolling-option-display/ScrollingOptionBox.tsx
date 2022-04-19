@@ -9,8 +9,10 @@ type ScrollingOptionDisplayProps = {
     choices: ReactNode[];
     /** The selected option */
     selected: ReactNode;
-    /** Time for the animation to complete in millseconds */
-    animationDuration?: number
+    /** Time for the animation to complete in milliseconds */
+    animationDuration?: number;
+    /** Function to run when the animation completes */
+    onComplete?: () => void;
 }
 
 /**
@@ -21,14 +23,21 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
     const {
         choices,
         selected,
-        animationDuration
+        animationDuration,
+        onComplete
     } = props;
 
     const [complete, setComplete] = useState(false);
 
     useEffect(() => {
         const id = setTimeout(
-            () => setComplete(true),
+            () => {
+                setComplete(true);
+
+                if (onComplete) {
+                    onComplete();
+                }
+            },
             animationDuration
         );
 

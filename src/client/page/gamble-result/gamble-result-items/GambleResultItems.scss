@@ -1,0 +1,39 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.result {
+  position: relative;
+  animation: rollup 1s ease-in-out;
+
+  display: grid;
+  grid-gap: 32px 24px;
+  grid-template-areas: "menu basket";
+  grid-template-columns: 60% 1fr;
+  grid-template-rows: auto 1fr;
+  margin-top: 32px;
+}
+
+.items {
+  grid-area: menu;
+}
+
+.basketContainer {
+  grid-area: basket;
+}
+
+@keyframes rollup {
+  0% {
+    transform-origin: bottom;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

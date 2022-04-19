@@ -14,16 +14,17 @@
 }
 
 .container {
-  max-width: 960px;
+  max-width: 1920px;
+  width: calc(100% - 2 * 64px);
+
+  padding: 0 64px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .header {
   display: flex;
   flex-direction: row;
   padding: 24px 0;
-  max-height: 175px;
 
   box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
   border-bottom: 1px solid rgba(0, 0, 0, .08);
@@ -43,8 +44,20 @@
   font-size: 40px;
   line-height: 48px;
   margin: 0;
+
+  a {
+    color: black;
+  }
+}
+
+.restaurantDetails {
+  margin-top: 8px;
 }
 
 .selectedItems {
   flex: 1 1;
+}
+
+.description {
+  margin: 8px 0;
 }

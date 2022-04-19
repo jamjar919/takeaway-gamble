@@ -1,0 +1,82 @@
+.basket {
+  border: 1px solid rgba(0,0,0,.04);
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+  background-color: #fff;
+
+  padding: 24px 16px;
+}
+
+.title {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.row {
+  border-top: 1px solid rgba(0,0,0,.08);
+  margin-top: 16px;
+}
+
+.basketItems {
+  display: flex;
+  flex-direction: column;
+
+  li {
+    display: flex;
+    padding-top: 16px;
+  }
+}
+
+.itemName {
+  flex: 1 1;
+}
+
+.banner {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg,#6d2162,rgba(109,33,98,0) 67%),#440063 url(https://cwa.roocdn.com/_next/static/media/banner.2a105818.svg) no-repeat top;
+  border-radius: 4px;
+  color: #fff;
+  justify-content: space-between;
+  padding: 12px;
+  margin-top: 16px;
+
+  a {
+    color: #ffffff;
+  }
+}
+
+.total {
+  display: flex;
+  flex: 1 1;
+  margin-right: auto;
+}
+
+.totalLine {
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  padding-top: 16px;
+}
+
+.cta {
+  display: block;
+  background: #822774;
+  color: #fff;
+
+  margin-top: 16px;
+  line-height: 48px;
+  min-height: 48px;
+  cursor: pointer;
+
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+
+  &:hover {
+    opacity: .8;
+  }
+}

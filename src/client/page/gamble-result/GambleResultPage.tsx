@@ -1,9 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import {GambleResponse} from "../../../common/type/GambleResponse";
 import { ScrollingOptionBox } from "../../framework/scrolling-option-display/ScrollingOptionBox";
+import {Address} from "../../framework/address/Address";
+import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 
 import styles from './GambleResultPage.scss';
-import {Address} from "../../framework/address/Address";
 
 type GambleResultProps = {
     result: GambleResponse
@@ -29,6 +30,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
     const {
         image,
+        descriptionSocial
     } = restaurant.metatags;
 
     const {
@@ -37,6 +39,8 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
     } = restaurant.restaurant;
 
     console.log(props.result);
+
+    const [revealed, setRevealed] = useState(false);
 
     return (
         <div className={styles.pageContainer}>
@@ -60,11 +64,17 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                                             target="_blank"
                                         >{name}</a>
                                     }
+                                    onComplete={() => setRevealed(true)}
                                 />
                             </h1>
                             {location?.address && (
                                 <div className={styles.restaurantDetails}>
                                     <Address value={location.address} />
+                                </div>
+                            )}
+                            {descriptionSocial && (
+                                <div className={styles.restaurantDetails}>
+                                    {descriptionSocial}
                                 </div>
                             )}
                         </div>
@@ -73,13 +83,13 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
             </header>
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
-                    {
-                        items.map((item) => (
-                            <li key={item.id}>
-                                {item.name} - {item.price.formatted}
-                            </li>
-                        ))
-                    }
+                    {revealed && (
+                        <GambleResultItems
+                            items={items}
+                            categories={restaurant.categories}
+                            ctaUrl={url}
+                        />
+                    )}
                 </div>
             </div>
         </div>
