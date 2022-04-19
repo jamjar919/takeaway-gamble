@@ -1,0 +1,433 @@
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
+  \************************************************************************************************************************************************************************************************************************/
+.container__ub_z {
+  height: 1em;
+  overflow: hidden;
+}
+
+.itemList__yglw {
+  position: relative;
+  top: calc(-1em - 15px);
+  animation: rollup__AEWn;
+  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
+}
+
+.option__dIO1 {
+  margin-top: 5px;
+}
+
+@keyframes rollup__AEWn {
+  0% {
+    transform-origin: top;
+    transform: translateY(-100%);
+  }
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+  }
+}
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
+  \********************************************************************************************************************************************************************************************/
+.address__diO7 {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.addressLine__b3Hs:after {
+  content: " - ";
+}
+.addressLine__b3Hs:last-child:after {
+  content: "";
+}
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/category-header/CategoryHeader.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+.header__QeEI {
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/category-items/item/Item.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+.item__Lp88 {
+  display: flex;
+  padding: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background-color: #fff;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.item__Lp88:hover {
+  box-shadow: 0 22px 24px 0 rgba(0, 0, 0, 0.08);
+}
+
+.itemDetails__qgBk {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+}
+
+.itemName__Xr3V {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  margin: 0;
+}
+
+.price__K8zR {
+  color: #585c5c;
+  padding-top: 8px;
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.popular__FMW6 {
+  color: #e67400;
+}
+
+.image__RKKS {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
+.image__RKKS img {
+  width: 100%;
+  height: 100%;
+}
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/category-items/CategoryItems.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+.categoryItems__Ytpm {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-gap: 16px;
+  grid-template: auto/repeat(2, 1fr);
+}
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/GambleResultItems.scss ***!
+  \***************************************************************************************************************************************************************************************************************************/
+.category__Owb0 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.result__Fh8z {
+  position: relative;
+  animation: rollup__Osbu 1s ease-in-out;
+  display: grid;
+  grid-gap: 32px 24px;
+  grid-template-areas: "menu basket";
+  grid-template-columns: 60% 1fr;
+  grid-template-rows: auto 1fr;
+  margin-top: 32px;
+}
+
+.items__orKa {
+  grid-area: menu;
+}
+
+.basketContainer__mUp9 {
+  grid-area: basket;
+}
+
+@keyframes rollup__Osbu {
+  0% {
+    transform-origin: bottom;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/Basket.scss ***!
+  \***********************************************************************************************************************************************************************************************************************/
+.basket__g8xg {
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+  padding: 24px 16px;
+}
+
+.title__K7Xd {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.row__Qwfw {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 16px;
+}
+
+.basketItems__uPb0 {
+  display: flex;
+  flex-direction: column;
+}
+.basketItems__uPb0 li {
+  display: flex;
+  padding-top: 16px;
+}
+
+.itemName__bNKJ {
+  flex: 1 1;
+}
+
+.banner__Tga7 {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #6d2162, rgba(109, 33, 98, 0) 67%), #440063 url(https://cwa.roocdn.com/_next/static/media/banner.2a105818.svg) no-repeat top;
+  border-radius: 4px;
+  color: #fff;
+  justify-content: space-between;
+  padding: 12px;
+  margin-top: 16px;
+}
+.banner__Tga7 a {
+  color: #ffffff;
+}
+
+.total__zIIF {
+  display: flex;
+  flex: 1 1;
+  margin-right: auto;
+}
+
+.totalLine__eUYV {
+  display: flex;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  padding-top: 16px;
+}
+
+.cta__C263 {
+  display: block;
+  background: #822774;
+  color: #fff;
+  margin-top: 16px;
+  line-height: 48px;
+  min-height: 48px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+.cta__C263:hover {
+  opacity: 0.8;
+}
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/GambleResultPage.scss ***!
+  \******************************************************************************************************************************************************************************************************/
+.pageContainer__fq2s {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9fafa;
+}
+
+.menu__LLXb {
+  background: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  height: 72px;
+  display: flex;
+}
+
+.menuItems__DCZM {
+  display: flex;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.clearButton___moy {
+  outline: none;
+  background: #fff;
+  border: 1px solid #e8ebeb;
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+.clearButton___moy:hover {
+  border-color: #d1d4d4;
+}
+
+.image__lFGE {
+  display: block;
+  max-width: 550px;
+  margin-right: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+}
+
+.container__qD0x {
+  display: flex;
+  max-width: 1920px;
+  width: calc(100% - 128px);
+  padding: 0 64px;
+  margin: 0 auto;
+}
+
+.header__Nf5Z {
+  display: flex;
+  flex-direction: row;
+  padding: 24px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.restaurantInformation__W7SE {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurantInformationLines__QYOM {
+  display: flex;
+  flex-direction: column;
+}
+
+.name__H_Yg {
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0;
+}
+.name__H_Yg a {
+  color: black;
+}
+
+.restaurantDetails__GbJt {
+  margin-top: 8px;
+}
+
+.selectedItems__t5FK {
+  flex: 1 1;
+}
+
+.description__TaJJ {
+  margin: 8px 0;
+}
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/price-limit-input/PriceLimitInput.scss ***!
+  \*********************************************************************************************************************************************************************************************************************/
+.inputContainer__Cvp8 {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  height: 48px;
+  margin: 0;
+  padding: 12px 48px;
+  min-width: 575px;
+}
+
+.unit__HfqC {
+  position: absolute;
+  left: 25px;
+  line-height: 48px;
+  color: #822774;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.input__eFbt {
+  border: none;
+  outline: none;
+  margin: -10px 0;
+  width: 100%;
+  font-size: 25px;
+}
+
+.buttonContainer__zGC4 {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  height: 48px;
+}
+
+.button__y9pW {
+  background: #822774;
+  color: white;
+  border: none;
+  font-size: 16px;
+  line-height: 24px;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 110px;
+  text-align: center;
+}
+.button__y9pW:hover {
+  opacity: 0.8;
+}
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/SearchPage.scss ***!
+  \*****************************************************************************************************************************************************************************************/
+.container__oFmK {
+  display: flex;
+  height: 100vh;
+}
+
+.formContainer__HjSu {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo__Y9hN {
+  height: 200px;
+  width: 200px;
+  animation: spin__gvlk 4s infinite linear;
+  margin: auto auto 32px auto;
+}
+
+@keyframes spin__gvlk {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+/*!**********************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/App.scss ***!
+  \**********************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
