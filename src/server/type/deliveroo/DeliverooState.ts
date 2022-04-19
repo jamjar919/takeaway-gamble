@@ -2,6 +2,7 @@ import {UILayoutList} from "./DeliverooUI";
 import {DeliverooItem} from "./DeliverooItem";
 import {DeliverooRestaurantFull, DeliverooRestaurantMeta} from "./DeliverooRestaurant";
 import {DeliverooCategory} from "./DeliverooCategory";
+import {DeliverooModifierGroup} from "./DeliverooModifierGroup";
 
 type DeliverooMenuPageState = {
     menu: {
@@ -9,7 +10,21 @@ type DeliverooMenuPageState = {
             items: DeliverooItem[],
             categories: DeliverooCategory[],
             restaurant: DeliverooRestaurantFull,
-            metatags: DeliverooRestaurantMeta
+            metatags: DeliverooRestaurantMeta,
+            modifierGroups: DeliverooModifierGroup[],
+            requestUUID: string,
+            appliedParams: [],
+            pastOrders: [],
+            customerLocation:{
+                lat: number,
+                lon: number,
+                city: string,
+                neighborhood: string,
+                postcode: string,
+                cityId: number,
+                zoneId: number,
+                geohash: string
+            },
         }
     }
 }

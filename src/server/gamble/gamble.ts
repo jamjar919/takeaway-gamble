@@ -60,7 +60,8 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
         },
         selected: {
             restaurant: selectedPlaceMeta,
-            items: selectedItems
+            items: selectedItems,
+            url: selectedPlace.url
         }
     }
 

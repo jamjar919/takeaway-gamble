@@ -7,8 +7,10 @@
 
 .image {
   display: block;
-  max-width: 300px;
+  max-width: 550px;
   margin-right: 50px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+  border-radius: 4px;
 }
 
 .container {
@@ -38,7 +40,9 @@
 }
 
 .name {
-  margin-bottom: 20px;
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0;
 }
 
 .selectedItems {

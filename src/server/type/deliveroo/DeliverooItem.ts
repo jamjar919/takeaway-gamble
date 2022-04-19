@@ -13,7 +13,7 @@ type DeliverooItem = {
     } | null,
     name: string
     price: DeliverooPrice
-    priceDiscounted?: DeliverooPrice
+    priceDiscounted?: null | DeliverooPrice
     productInformation: string,
     nutritionalInfo: null | string,
     percentageDiscounted: null | string,

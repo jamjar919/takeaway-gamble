@@ -4,11 +4,12 @@ import {DeliverooMenuPageState} from "../../server/type/deliveroo/DeliverooState
 
 export type GambleResponse = {
     all: {
-        restaurants: Restaurant[],
-        items: DeliverooItem[]
+        restaurants: Restaurant[];
+        items: DeliverooItem[];
     },
     selected: {
-        restaurant: DeliverooMenuPageState["menu"]["meta"],
-        items: DeliverooItem[]
+        restaurant: DeliverooMenuPageState["menu"]["meta"];
+        items: DeliverooItem[];
+        url: string;
     }
 };

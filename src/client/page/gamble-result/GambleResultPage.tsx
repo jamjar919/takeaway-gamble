@@ -18,7 +18,8 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
         result: {
             selected: {
                 restaurant,
-                items
+                items,
+                url
             },
             all: {
                 restaurants,
@@ -32,7 +33,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
     const {
         name,
-        location
+        location,
     } = restaurant.restaurant;
 
     console.log(props.result);
@@ -55,7 +56,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                                     choices={restaurants.map(r => r.name)}
                                     selected={
                                         <a
-                                            href={`https://deliveroo.co.uk${restaurant.url}`}
+                                            href={`https://deliveroo.co.uk${url}`}
                                             target="_blank"
                                         >{name}</a>
                                     }
