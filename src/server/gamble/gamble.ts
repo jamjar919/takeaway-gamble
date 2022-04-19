@@ -43,6 +43,8 @@ const getOpenPlaceFromState = async (
         selectedPlaceMeta.restaurant.menuDisabled ||
         !selectedPlaceMeta.restaurant.deliversToCustomerLocation
     ) {
+        console.info(selectedPlaceMeta.restaurant.name, "not available")
+
         return await getOpenPlaceFromState(
             placesToEat,
             attempt + 1
