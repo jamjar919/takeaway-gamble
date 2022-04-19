@@ -5,6 +5,35 @@
   background-color: #f9fafa;
 }
 
+.menu {
+  background: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+  height: 72px;
+  display: flex;
+}
+
+.menuItems {
+  display: flex;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.clearButton {
+  outline: none;
+  background: #fff;
+  border: 1px solid #e8ebeb;
+  font-size: 16px;
+  line-height: 22px;
+  cursor: pointer;
+  margin-left: auto;
+  padding: 8px 16px;
+  border-radius: 4px;
+
+  &:hover {
+    border-color: #d1d4d4;
+  }
+}
+
 .image {
   display: block;
   max-width: 550px;
@@ -14,6 +43,7 @@
 }
 
 .container {
+  display: flex;
   max-width: 1920px;
   width: calc(100% - 2 * 64px);
 

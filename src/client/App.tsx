@@ -1,14 +1,14 @@
 import React from "react";
-import {AppContextProvider} from "./context/AppContext";
 import {Pages} from "./page/Pages";
+import {GambleContextProvider} from "./context/GambleContext";
 
 import './App.scss';
 
 const App: React.FC = () => {
     return (
-        <AppContextProvider>
+        <GambleContextProvider>
             <Pages />
-        </AppContextProvider>
+        </GambleContextProvider>
     )
 }
 

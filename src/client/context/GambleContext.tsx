@@ -2,21 +2,21 @@ import React, {ReactNode, useMemo, useState} from "react";
 import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 
-type AppContext = {
+type GambleContext = {
     gamble: (price: number) => Promise<void>,
     resetGamble: () => void,
     gambleResult: null | GambleResponse
 }
 
-const defaultValues: AppContext = {
+const defaultValues: GambleContext = {
     gamble: () => Promise.reject('Not initialised'),
     resetGamble: () => {},
     gambleResult: null
 }
 
-const Context = React.createContext<AppContext>(defaultValues);
+const Context = React.createContext<GambleContext>(defaultValues);
 
-const AppContextProvider: React.FC<{ children: ReactNode }> = (props) => {
+const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const { children } = props;
 
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
@@ -37,6 +37,6 @@ const AppContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };
 
-const useAppContext = () => React.useContext(Context);
+const useGambleContext = () => React.useContext(Context);
 
-export { AppContextProvider, useAppContext };
+export { GambleContextProvider, useGambleContext };

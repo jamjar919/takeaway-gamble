@@ -7,11 +7,14 @@ import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import styles from './GambleResultPage.scss';
 
 type GambleResultProps = {
-    result: GambleResponse
+    result: GambleResponse;
+    resetGamble: () => void;
 };
 
 /**
  * Renders the result of a gamble, just like Deliveroo!
+ *
+ * TODO this should be like 5 files but it's 11pm
  */
 const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
@@ -25,7 +28,8 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
             all: {
                 restaurants,
             }
-        }
+        },
+        resetGamble
     } = props;
 
     const {
@@ -44,6 +48,18 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
     return (
         <div className={styles.pageContainer}>
+            <menu className={styles.menu}>
+                <div className={styles.container}>
+                    <div className={styles.menuItems}>
+                        <button
+                            onClick={() => resetGamble()}
+                            className={styles.clearButton}
+                        >
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </menu>
             <header className={styles.header}>
                 <div className={styles.container}>
                     <div className={styles.restaurantInformation}>

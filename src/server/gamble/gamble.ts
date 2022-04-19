@@ -15,7 +15,7 @@ type GambleRequest = {
 }
 
 const GAMBLE_MAX = 1000_00;
-const MAX_RESTAURANTS = 5;
+const MAX_RESTAURANTS = 9;
 
 const getOpenPlaceFromState = async (
     placesToEat: Restaurant[],

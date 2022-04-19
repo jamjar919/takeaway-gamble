@@ -1,18 +1,22 @@
 import React from "react";
-import {useAppContext} from "../context/AppContext";
 import {GambleResultPage} from "./gamble-result/GambleResultPage";
 import {SearchPage} from "./search/SearchPage";
+import {useGambleContext} from "../context/GambleContext";
 
 const Pages: React.FC = () => {
     const {
         gamble,
+        resetGamble,
         gambleResult
-    } = useAppContext();
+    } = useGambleContext();
 
     return (
         <div>
             {gambleResult
-                ? <GambleResultPage result={gambleResult} />
+                ? <GambleResultPage
+                    result={gambleResult}
+                    resetGamble={() => resetGamble()}
+                />
                 : <SearchPage onSearch={(price) => gamble(price)} />
             }
         </div>
