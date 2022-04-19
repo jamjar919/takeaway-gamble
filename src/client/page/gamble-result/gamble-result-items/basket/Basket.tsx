@@ -31,7 +31,7 @@ const Basket: React.FC<BasketProps> = (props) => {
                 Your order
             </div>
             <ul className={styles.basketItems}>
-                {items.map((item) => (
+                {items.sort((a,b) => b.price.fractional - a.price.fractional).map((item) => (
                     <li>
                         <span className={styles.itemName}>{item.name}</span>
                         <span className={styles.itemPrice}>{item.price.formatted}</span>

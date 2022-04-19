@@ -7,12 +7,41 @@ import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
 import {GambleResponse} from "../../common/type/GambleResponse";
 import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
+import {Restaurant} from "../type/Restaurant";
+import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
 
 type GambleRequest = {
     priceLimit?: number
 }
 
 const GAMBLE_MAX = 1000_00;
+
+const getOpenPlaceFromState = async (
+    placesToEat: Restaurant[]
+): Promise<[Restaurant, DeliverooState, DeliverooMenuPageState["menu"]["meta"]]> => {
+    // Select one randomly
+    const selectedPlace = pickOneFromArray(placesToEat);
+
+    // Fetch + get context for it
+    const restaurantContext = await getDeliverooContextFromUrl(
+        selectedPlace.url,
+    );
+
+    // Retrieve more detailed information
+    const selectedPlaceMeta = getPlaceToEatMeta(
+        restaurantContext
+    )
+
+    if (selectedPlaceMeta.restaurant.menuDisabled) {
+
+    }
+
+    return [
+        selectedPlace,
+        restaurantContext,
+        selectedPlaceMeta
+    ]
+}
 
 export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
 
@@ -33,12 +62,9 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
     const placesToEat = getPlacesToEat(searchPageContext);
 
-    // Select one randomly
-    const selectedPlace = pickOneFromArray(placesToEat);
-
-    // Fetch + get context for it
-    const restaurantContext = await getDeliverooContextFromUrl(
-        selectedPlace.url,
+    // Get one that's open
+    const [selectedPlace, restaurantContext, selectedPlaceMeta] = await getOpenPlaceFromState(
+        placesToEat
     );
 
     // Get items
@@ -46,12 +72,6 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
     // Select some random items
     const selectedItems = selectMenuItems(items, priceLimit);
-
-    // Retrieve more detailed information
-
-    const selectedPlaceMeta = getPlaceToEatMeta(
-        restaurantContext
-    )
 
     const response: GambleResponse = {
         all: {
