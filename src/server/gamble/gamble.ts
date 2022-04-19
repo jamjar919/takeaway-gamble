@@ -88,6 +88,10 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
     // Select some random items
     const selectedItems = selectMenuItems(items, priceLimit);
 
+    console.log(
+        `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
+    );
+
     const response: GambleResponse = {
         all: {
             restaurants: placesToEat,
