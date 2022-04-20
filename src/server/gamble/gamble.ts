@@ -5,10 +5,16 @@ import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
 import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
-import {GambleErrorResponse, GambleResponse, SuccessfulGambleResponse} from "../../common/type/GambleResponse";
+import {
+    GambleErrorResponse,
+    GambleResponse,
+    RequiresCaptchaResponse,
+    SuccessfulGambleResponse
+} from "../../common/type/GambleResponse";
 import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
 import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
+import {CaptchaRequiredError} from "./error/CaptchaRequiredError";
 
 type GambleRequest = {
     priceLimit?: number
@@ -67,7 +73,10 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response<Gamb
         }
 
         if (priceLimit > GAMBLE_MAX) {
-            sendJSON<GambleErrorResponse>({error: "Max price is £1000"}, res);
+            sendJSON<GambleErrorResponse>({
+                type: "error",
+                error: "Max price is £1000"
+            }, res);
             return;
         }
 
@@ -94,6 +103,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response<Gamb
         );
 
         const response: SuccessfulGambleResponse = {
+            type: "success",
             all: {
                 restaurants: placesToEat,
                 items
@@ -107,7 +117,17 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response<Gamb
 
         sendJSON<SuccessfulGambleResponse>(response, res);
     } catch (e: any) {
+        if (e instanceof CaptchaRequiredError) {
+            sendJSON<RequiresCaptchaResponse>({
+                type: "requires_captcha",
+                html: e.html()
+            }, res);
+        }
+
         console.log("Error gambling ", e);
-        sendJSON<GambleErrorResponse>({ error: e?.message || 'Error!' }, res);
+        sendJSON<GambleErrorResponse>({
+            type: "error",
+            error: e?.message || 'Error!'
+        }, res);
     }
 };
