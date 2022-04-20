@@ -122,7 +122,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
             sendJSON<RequiresCaptchaResponse>({
                 type: "requires_captcha",
-                html: String(e?.html())
+                html: e?.html
             }, res);
 
             return;

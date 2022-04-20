@@ -1,13 +1,9 @@
 class CaptchaRequiredError extends Error {
-    private readonly _html: string;
+    public html: string;
 
     constructor(html: string) {
         super('Captcha required');
-        this._html = html;
-    }
-
-    public html(): string {
-        return this._html;
+        this.html = html;
     }
 }
 
