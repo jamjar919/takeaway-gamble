@@ -66,11 +66,11 @@ const getDeliverooContextFromUrl = async (
 
     const data = $('#__NEXT_DATA__')
 
+    console.log($("body").html());
+
     if (data.length <= 1) {
         throw new Error(`State is null or undefined. State: ${data}`)
     }
-
-    console.log(data.html());
 
     // Get the NEXT state + cookie
     return JSON.parse(data.html() as string) as DeliverooState;
