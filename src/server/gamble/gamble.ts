@@ -7,7 +7,6 @@ import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
 import {
     GambleErrorResponse,
-    GambleResponse,
     RequiresCaptchaResponse,
     SuccessfulGambleResponse
 } from "../../common/type/GambleResponse";
