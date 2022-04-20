@@ -114,8 +114,11 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
         }
 
         sendJSON<SuccessfulGambleResponse>(response, res);
+
     } catch (e: any) {
         if (e?.message === "Captcha required") {
+
+            console.log("sending", e.html());
 
             sendJSON<RequiresCaptchaResponse>({
                 type: "requires_captcha",
