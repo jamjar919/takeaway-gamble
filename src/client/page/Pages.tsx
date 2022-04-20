@@ -29,7 +29,12 @@ const Pages: React.FC = () => {
         }
     }
 
-    return (<SearchPage onSearch={(price) => gamble(price)} />)
+    return (
+        <SearchPage
+            onSearch={(price) => gamble(price)}
+            error={gambleResult?.error}
+        />
+    )
 }
 
 export { Pages }
