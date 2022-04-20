@@ -5,6 +5,7 @@ import {DeliverooMenuPageState} from "../../server/type/deliveroo/DeliverooState
 export type GambleResponse = SuccessfulGambleResponse | RequiresCaptchaResponse | GambleErrorResponse;
 
 export type SuccessfulGambleResponse = {
+    type: 'success'
     all: {
         restaurants: Restaurant[];
         items: DeliverooItem[];
@@ -17,9 +18,11 @@ export type SuccessfulGambleResponse = {
 };
 
 export type RequiresCaptchaResponse = {
+    type: 'requires_captcha',
     html: string;
 }
 
 export type GambleErrorResponse = {
+    type: 'error'
     error: string;
 }

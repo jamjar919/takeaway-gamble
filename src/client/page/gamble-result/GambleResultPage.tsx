@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {GambleResponse} from "../../../common/type/GambleResponse";
+import {SuccessfulGambleResponse} from "../../../common/type/GambleResponse";
 import { ScrollingOptionBox } from "../../framework/scrolling-option-display/ScrollingOptionBox";
 import {Address} from "../../framework/address/Address";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
@@ -7,7 +7,7 @@ import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import styles from './GambleResultPage.scss';
 
 type GambleResultProps = {
-    result: GambleResponse;
+    result: SuccessfulGambleResponse;
     resetGamble: () => void;
 };
 
