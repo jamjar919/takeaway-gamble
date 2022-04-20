@@ -14,7 +14,8 @@ import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
 
 type GambleRequest = {
-    priceLimit?: number
+    priceLimit?: number;
+    firstItemIsLarge?: boolean
 }
 
 const GAMBLE_MAX = 1000_00;
@@ -69,6 +70,11 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
             priceLimit = req.body?.priceLimit;
         }
 
+        let firstItemIsLarge = true;
+        if (!!req.body?.firstItemIsLarge) {
+            firstItemIsLarge = req.body?.firstItemIsLarge;
+        }
+
         if (priceLimit > GAMBLE_MAX) {
             sendJSON<GambleErrorResponse>({
                 type: "error",
@@ -93,7 +99,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
         const items = getMenuItems(restaurantContext);
 
         // Select some random items
-        const selectedItems = selectMenuItems(items, priceLimit);
+        const selectedItems = selectMenuItems(items, priceLimit, { firstItemIsLarge });
 
         console.log(
             `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`

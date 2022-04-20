@@ -13,13 +13,42 @@ const filterItemsBelowPrice = (
         )
 }
 
+const filterItemsAbovePrice = (
+    items: DeliverooItem[],
+    priceLimit: number
+): DeliverooItem[] => {
+    return items
+        .filter((item) => item.price.fractional > priceLimit)
+}
+
+/** Apply a heuristic to filter to preferred items */
+const filterToPreferredItems = (
+    items: DeliverooItem[],
+) => {
+
+    // Prefer selecting items above 2/3 of the price
+    const itemsSortedByPrice = items.sort((a, b) => a.price.fractional - b.price.fractional);
+
+    const priceLimitItem = itemsSortedByPrice[Math.floor(items.length * 3/4)];
+
+    const priceLimit = priceLimitItem?.priceDiscounted?.fractional ?? priceLimitItem.price.fractional;
+
+    console.log("Median price: ", priceLimit);
+
+    return filterItemsAbovePrice(items, priceLimit);
+}
+
 /**
  *  Given a set of menu items and a maximum price, fill a basket
  *  of items that sum to that price
  */
 const selectMenuItems = (
     items: DeliverooItem[],
-    priceLimit: number
+    priceLimit: number,
+    options: {
+        firstItemIsLarge: boolean
+    },
+    itemsPicked: number = 0,
 ): DeliverooItem[] => {
     // Get all the items that we could pick
     const validItems = filterItemsBelowPrice(items, priceLimit);
@@ -30,7 +59,16 @@ const selectMenuItems = (
     }
 
     // Pick one
-    const picked = pickOneFromArray(validItems);
+    let picked = pickOneFromArray(validItems);
+
+    // If this is the first item then pick a priority item
+    if (itemsPicked === 0 && options.firstItemIsLarge) {
+        const preferredItems = filterToPreferredItems(validItems);
+
+        if (preferredItems.length > 0) {
+            picked = pickOneFromArray(preferredItems)
+        }
+    }
 
     // Update our new price limit
     let newPriceLimit = priceLimit - picked.price.fractional;
@@ -45,7 +83,7 @@ const selectMenuItems = (
     // Recursively select more items up to the new price limit
     return [
         picked,
-        ...selectMenuItems(unselectedItems, newPriceLimit)
+        ...selectMenuItems(unselectedItems, newPriceLimit, itemsPicked + 1, options)
     ]
 
 };

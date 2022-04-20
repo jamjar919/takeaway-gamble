@@ -66,7 +66,7 @@ const getDeliverooContextFromUrl = async (
 
     const data = $('#__NEXT_DATA__')
 
-    if (data.length <= 1) {
+    if (!data) {
         const html = $("html").html();
 
         if ($("title").text().indexOf("Cloudflare") > 0) {
@@ -74,7 +74,6 @@ const getDeliverooContextFromUrl = async (
             throw new CaptchaRequiredError(String(html));
         }
 
-        console.log(html);
         throw new Error(`State is null or undefined. State: ${data}`)
     }
 
