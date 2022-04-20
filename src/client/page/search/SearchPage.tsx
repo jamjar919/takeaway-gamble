@@ -16,7 +16,7 @@ const SearchPage: React.FC<SearchPageType> = (props) => {
             <div className={styles.formContainer}>
                 <img src={"/deliveroo-logo.png"} alt="Deliveroo Logo" className={styles.logo}/>
                 {error && (<div className={styles.error}>
-
+                    {error}
                 </div>)}
                 <SearchPageForm
                     onSubmit={(values: SearchPageFormValues) => {
