@@ -13,7 +13,6 @@ import {
 import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
 import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
-import {CaptchaRequiredError} from "./error/CaptchaRequiredError";
 
 type GambleRequest = {
     priceLimit?: number
