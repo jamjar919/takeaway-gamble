@@ -3,6 +3,7 @@ import cheerio from "cheerio";
 import {DeliverooState} from "../type/deliveroo/DeliverooState";
 import {createCookie} from "../util/createCookie";
 import {parseCookie} from "../util/parseCookie";
+import {CaptchaRequiredError} from "./error/CaptchaRequiredError";
 
 const BASE_URL = "https://deliveroo.co.uk";
 
@@ -61,14 +62,19 @@ const getDeliverooContextFromUrl = async (
     const html = await doFetch(url)
         .then(restaurants => restaurants.text());
 
-
     const $ = cheerio.load(html);
 
     const data = $('#__NEXT_DATA__')
 
     if (data.length <= 1) {
-        console.log($("html").html());
+        const html = $("html").html();
 
+        if ($("title").text().indexOf("Cloudflare") > 0) {
+            console.log("Captcha required - sending it back to the user")
+            throw new CaptchaRequiredError(String(html));
+        }
+
+        console.log(html);
         throw new Error(`State is null or undefined. State: ${data}`)
     }
 

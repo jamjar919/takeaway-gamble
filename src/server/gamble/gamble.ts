@@ -5,7 +5,7 @@ import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
 import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 import {getMenuItems} from "./getMenuItems";
 import {selectMenuItems} from "./selectMenuItems";
-import {GambleResponse} from "../../common/type/GambleResponse";
+import {GambleErrorResponse, GambleResponse, SuccessfulGambleResponse} from "../../common/type/GambleResponse";
 import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
 import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
@@ -22,7 +22,7 @@ const getOpenPlaceFromState = async (
     attempt = 0
 ): Promise<[Restaurant, DeliverooState, DeliverooMenuPageState["menu"]["meta"]]> => {
     if (attempt > MAX_RESTAURANTS) {
-        throw new Error("Polled too many Deliveroo places");
+        throw new Error("Polled too many places");
     }
 
     // Select one randomly
@@ -38,7 +38,7 @@ const getOpenPlaceFromState = async (
         restaurantContext
     )
 
-    // Get another one if we're out of
+    // Get another one if we cannot order from this one
     if (
         selectedPlaceMeta.restaurant.menuDisabled ||
         !selectedPlaceMeta.restaurant.deliversToCustomerLocation
@@ -58,7 +58,7 @@ const getOpenPlaceFromState = async (
     ]
 }
 
-export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
+export const gamble = async (req: Request<{}, GambleRequest>, res: Response<GambleResponse>) => {
     try {
 
         let priceLimit = 12_00; // £12.00
@@ -67,7 +67,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
         }
 
         if (priceLimit > GAMBLE_MAX) {
-            sendJSON({error: "Max price is £1000"}, res);
+            sendJSON<GambleErrorResponse>({error: "Max price is £1000"}, res);
             return;
         }
 
@@ -93,7 +93,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
             `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
         );
 
-        const response: GambleResponse = {
+        const response: SuccessfulGambleResponse = {
             all: {
                 restaurants: placesToEat,
                 items
@@ -105,9 +105,9 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
             }
         }
 
-        sendJSON(response, res);
+        sendJSON<SuccessfulGambleResponse>(response, res);
     } catch (e: any) {
         console.log("Error gambling ", e);
-        sendJSON({ error: e?.message || 'Error!' }, res);
+        sendJSON<GambleErrorResponse>({ error: e?.message || 'Error!' }, res);
     }
 };

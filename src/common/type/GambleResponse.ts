@@ -2,7 +2,9 @@ import {DeliverooItem} from "../../server/type/deliveroo/DeliverooItem";
 import {Restaurant} from "../../server/type/Restaurant";
 import {DeliverooMenuPageState} from "../../server/type/deliveroo/DeliverooState";
 
-export type GambleResponse = {
+export type GambleResponse = SuccessfulGambleResponse | RequiresCaptchaResponse | GambleErrorResponse;
+
+export type SuccessfulGambleResponse = {
     all: {
         restaurants: Restaurant[];
         items: DeliverooItem[];
@@ -13,3 +15,11 @@ export type GambleResponse = {
         url: string;
     }
 };
+
+export type RequiresCaptchaResponse = {
+    html: string;
+}
+
+export type GambleErrorResponse = {
+    error: string;
+}
