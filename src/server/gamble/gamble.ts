@@ -59,50 +59,55 @@ const getOpenPlaceFromState = async (
 }
 
 export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
+    try {
 
-    let priceLimit = 12_00; // £12.00
-    if (req.body?.priceLimit) {
-        priceLimit = req.body?.priceLimit;
-    }
-
-    if (priceLimit > GAMBLE_MAX) {
-        sendJSON({ error: "Max price is £1000" }, res);
-        return;
-    }
-
-    // Obtain restaurants in the area
-    const searchPageContext = await getDeliverooContextFromUrl(
-        "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
-    );
-
-    const placesToEat = getPlacesToEat(searchPageContext);
-
-    // Get one that's open
-    const [selectedPlace, restaurantContext, selectedPlaceMeta] = await getOpenPlaceFromState(
-        placesToEat
-    );
-
-    // Get items
-    const items = getMenuItems(restaurantContext);
-
-    // Select some random items
-    const selectedItems = selectMenuItems(items, priceLimit);
-
-    console.log(
-        `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
-    );
-
-    const response: GambleResponse = {
-        all: {
-            restaurants: placesToEat,
-            items
-        },
-        selected: {
-            restaurant: selectedPlaceMeta,
-            items: selectedItems,
-            url: selectedPlace.url
+        let priceLimit = 12_00; // £12.00
+        if (req.body?.priceLimit) {
+            priceLimit = req.body?.priceLimit;
         }
-    }
 
-    sendJSON(response, res);
+        if (priceLimit > GAMBLE_MAX) {
+            sendJSON({error: "Max price is £1000"}, res);
+            return;
+        }
+
+        // Obtain restaurants in the area
+        const searchPageContext = await getDeliverooContextFromUrl(
+            "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
+        );
+
+        const placesToEat = getPlacesToEat(searchPageContext);
+
+        // Get one that's open
+        const [selectedPlace, restaurantContext, selectedPlaceMeta] = await getOpenPlaceFromState(
+            placesToEat
+        );
+
+        // Get items
+        const items = getMenuItems(restaurantContext);
+
+        // Select some random items
+        const selectedItems = selectMenuItems(items, priceLimit);
+
+        console.log(
+            `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
+        );
+
+        const response: GambleResponse = {
+            all: {
+                restaurants: placesToEat,
+                items
+            },
+            selected: {
+                restaurant: selectedPlaceMeta,
+                items: selectedItems,
+                url: selectedPlace.url
+            }
+        }
+
+        sendJSON(response, res);
+    } catch (e: any) {
+        console.log("Error gambling ", e);
+        sendJSON({ error: e?.message || 'Error!' }, res);
+    }
 };
