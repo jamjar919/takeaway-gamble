@@ -61,10 +61,19 @@ const getDeliverooContextFromUrl = async (
     const html = await doFetch(url)
         .then(restaurants => restaurants.text());
 
+
     const $ = cheerio.load(html);
 
+    const data = $('#__NEXT_DATA__')
+
+    if (data.length <= 1) {
+        throw new Error(`State is null or undefined. State: ${data}`)
+    }
+
+    console.log(data.html());
+
     // Get the NEXT state + cookie
-    return JSON.parse($('#__NEXT_DATA__').html() as string) as DeliverooState;
+    return JSON.parse(data.html() as string) as DeliverooState;
 };
 
 export { getDeliverooContextFromUrl };
