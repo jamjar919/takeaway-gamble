@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPage renders 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="formContainer"
+  >
+    <img
+      alt="Deliveroo Logo"
+      className="logo"
+      src="/deliveroo-logo.png"
+    />
+    <form
+      action="#"
+      onReset={[Function]}
+      onSubmit={[Function]}
+    >
+      <div
+        className="inputContainer"
+      >
+        <div
+          className="unit"
+        >
+          £
+        </div>
+        <input
+          className="input"
+          name="PRICE_LIMIT"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="12.00"
+          type="numeric"
+          value="12.00"
+        />
+        <div
+          className="buttonContainer"
+        >
+          <button
+            className="button"
+            type="submit"
+          >
+            Gamble!
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
