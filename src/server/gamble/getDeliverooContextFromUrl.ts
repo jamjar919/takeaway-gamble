@@ -66,9 +66,9 @@ const getDeliverooContextFromUrl = async (
 
     const data = $('#__NEXT_DATA__')
 
-    console.log($("body").html());
-
     if (data.length <= 1) {
+        console.log($("html").html());
+
         throw new Error(`State is null or undefined. State: ${data}`)
     }
 
