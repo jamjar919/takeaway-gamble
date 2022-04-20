@@ -59,7 +59,7 @@
     "webpack-dev-server": "^4.8.1"
   },
   "engines": {
-    "node": ">=16.14.2"
+    "node": "16.14.2"
   },
   "jest": {
     "moduleNameMapper": {
