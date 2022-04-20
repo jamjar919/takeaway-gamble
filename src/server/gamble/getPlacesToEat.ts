@@ -5,6 +5,7 @@ import {Restaurant} from "../type/Restaurant";
 const getPlacesToEat = (state: DeliverooState): Restaurant[] => {
     if (!state?.props?.initialState?.home?.feed?.results?.data?.length) {
         console.error("Could not find any restaurants in state");
+        console.error(state?.props?.initialState)
         return [];
     }
 
