@@ -116,6 +116,8 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
         sendJSON<SuccessfulGambleResponse>(response, res);
 
     } catch (e: any) {
+        /* On hiatus until i figure out how to make it work
+
         if (e?.message === "Captcha required") {
 
             console.log("Sending requires captcha...")
@@ -127,6 +129,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
             return;
         }
+        */
 
         console.log("Error gambling ", e);
         sendJSON<GambleErrorResponse>({
