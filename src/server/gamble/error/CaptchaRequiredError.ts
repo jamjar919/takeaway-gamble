@@ -6,7 +6,7 @@ class CaptchaRequiredError extends Error {
         this._html = html;
     }
 
-    html(): string {
+    public html(): string {
         return this._html;
     }
 }
