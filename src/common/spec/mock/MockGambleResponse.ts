@@ -1,6 +1,7 @@
 import {GambleResponse} from "../../type/GambleResponse";
 
 export const mockGambleResponse: GambleResponse = {
+    type: "success",
     "all":{
         "restaurants":[
             {

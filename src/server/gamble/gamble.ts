@@ -64,7 +64,7 @@ const getOpenPlaceFromState = async (
     ]
 }
 
-export const gamble = async (req: Request<{}, GambleRequest>, res: Response<GambleResponse>) => {
+export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => {
     try {
 
         let priceLimit = 12_00; // £12.00
