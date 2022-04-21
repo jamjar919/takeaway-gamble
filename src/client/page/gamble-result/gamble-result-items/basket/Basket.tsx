@@ -2,6 +2,8 @@ import React from "react";
 import {DeliverooItem} from "../../../../../server/type/deliveroo/DeliverooItem";
 
 import styles from './Basket.scss'
+import {getItemPrice} from "../../../../../common/util/getItemPrice";
+import {Price} from "../../../../framework/price/Price";
 
 type BasketProps = {
     items: DeliverooItem[];
@@ -15,7 +17,7 @@ const Basket: React.FC<BasketProps> = (props) => {
     } = props;
 
     const total = items
-        .map((item) => item.price.fractional)
+        .map((item) => getItemPrice(item).fractional)
         .reduce((a,b) => a + b, 0)/100;
 
     const currency = items?.[0]?.price?.code || 'GBP';
@@ -31,10 +33,12 @@ const Basket: React.FC<BasketProps> = (props) => {
                 Your order
             </div>
             <ul className={styles.basketItems}>
-                {items.sort((a,b) => b.price.fractional - a.price.fractional).map((item) => (
+                {items.sort((a,b) => getItemPrice(b).fractional - getItemPrice(a).fractional).map((item) => (
                     <li key={item.id}>
                         <span className={styles.itemName}>{item.name}</span>
-                        <span className={styles.itemPrice}>{item.price.formatted}</span>
+                        <span className={styles.itemPrice}>
+                            <Price value={item} />
+                        </span>
                     </li>
                 ))}
             </ul>

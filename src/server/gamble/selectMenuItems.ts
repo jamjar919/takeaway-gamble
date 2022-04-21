@@ -1,6 +1,7 @@
 
 import {DeliverooItem} from "../type/deliveroo/DeliverooItem";
 import {pickOneFromArray} from "../../common/util/pickOneFromArray";
+import {getItemPrice} from "../../common/util/getItemPrice";
 
 const filterItemsBelowPrice = (
     items: DeliverooItem[],
@@ -8,8 +9,7 @@ const filterItemsBelowPrice = (
 ): DeliverooItem[] => {
     return items
         .filter((item) =>
-            item.price.fractional < priceLimit ||
-            (item.priceDiscounted && item.priceDiscounted.fractional < priceLimit)
+            getItemPrice(item).fractional < priceLimit
         )
 }
 
@@ -29,9 +29,9 @@ const filterToPreferredItems = (
     // Prefer selecting items above 2/3 of the price
     const itemsSortedByPrice = items.sort((a, b) => a.price.fractional - b.price.fractional);
 
-    const priceLimitItem = itemsSortedByPrice[Math.floor(items.length * 3/4)];
+    const priceLimitItem = itemsSortedByPrice[Math.floor(items.length * 2/3)];
 
-    const priceLimit = priceLimitItem?.priceDiscounted?.fractional ?? priceLimitItem.price.fractional;
+    const priceLimit = getItemPrice(priceLimitItem).fractional;
 
     console.log("Median price: ", priceLimit);
 

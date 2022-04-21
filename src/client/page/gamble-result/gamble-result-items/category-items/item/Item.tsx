@@ -2,6 +2,7 @@ import React from "react";
 import {DeliverooItem} from "../../../../../../server/type/deliveroo/DeliverooItem";
 
 import styles from './Item.scss';
+import {Price} from "../../../../../framework/price/Price";
 
 type ItemProps = {
     item: DeliverooItem;
@@ -16,7 +17,7 @@ const Item: React.FC<ItemProps> = (props) => {
                 <h2 className={styles.itemName}>{item.name}</h2>
                 <div>{item.description}</div>
                 <div className={styles.price}>
-                    {item.price.formatted}
+                    <Price value={item} />
                     {item.popular && (
                         <span className={styles.popular}> · Popular</span>
                     )}
