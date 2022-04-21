@@ -45,6 +45,31 @@ exports[`SearchPage renders 1`] = `
           </button>
         </div>
       </div>
+      <label
+        className="checkboxLabel"
+      >
+        <input
+          checked={true}
+          className="checkbox"
+          name="FIRST_ITEM_IS_LARGE"
+          onBlur={[Function]}
+          onChange={[Function]}
+          type="checkbox"
+          value={true}
+        />
+        <div
+          className="fakeCheckbox"
+        >
+          <div
+            className="fakeCheckboxBox"
+          />
+        </div>
+        <div
+          className="label"
+        >
+          Pick a large item for the first random selection
+        </div>
+      </label>
     </form>
   </div>
 </div>
