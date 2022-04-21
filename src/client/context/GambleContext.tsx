@@ -3,7 +3,7 @@ import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 
 type GambleContext = {
-    gamble: (price: number) => Promise<void>,
+    gamble: (price: number, firstItemIsLarge: boolean) => Promise<void>,
     resetGamble: () => void,
     gambleResult: null | GambleResponse
 }
@@ -21,8 +21,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
 
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
 
-    const gamble = (price: number) =>
-        doGamble(price).then((result) => setGambleResult(result));
+    const gamble = (price: number, firstItemIsLarge: boolean) =>
+        doGamble(price, firstItemIsLarge).then((result) => setGambleResult(result));
 
     const resetGamble = () => setGambleResult(null);
 

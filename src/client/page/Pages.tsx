@@ -31,7 +31,7 @@ const Pages: React.FC = () => {
 
     return (
         <SearchPage
-            onSearch={(price) => gamble(price)}
+            onSearch={(price, firstItemIsLarge) => gamble(price, firstItemIsLarge)}
             error={gambleResult?.error}
         />
     )

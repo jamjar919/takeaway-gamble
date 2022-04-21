@@ -380,6 +380,47 @@
 .button__y9pW:hover {
   opacity: 0.8;
 }
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/checkbox/Checkbox.scss ***!
+  \*****************************************************************************************************************************************************************************************************/
+.checkbox__jxxs {
+  display: none;
+}
+
+.checkboxLabel__Upiy {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.fakeCheckbox__RIMg {
+  display: flex;
+  border: 3px solid #822774;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  transition: ease-in-out 0.1s;
+  margin-right: 15px;
+}
+.fakeCheckbox__RIMg:hover {
+  transform: scale(1.1);
+}
+
+.fakeCheckboxBox__gPp3 {
+  display: none;
+  background-color: #822774;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+input.checkbox__jxxs[value=true] + .fakeCheckbox__RIMg .fakeCheckboxBox__gPp3 {
+  display: block;
+}
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/SearchPage.scss ***!
   \*****************************************************************************************************************************************************************************************/
@@ -408,6 +449,11 @@
   100% {
     -webkit-transform: rotate(360deg);
   }
+}
+.error__vMUz {
+  background-color: firebrick;
+  padding: 10px 20px;
+  margin: 10px 0;
 }
 /*!**********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/App.scss ***!

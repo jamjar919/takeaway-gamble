@@ -83,7 +83,7 @@ const selectMenuItems = (
     // Recursively select more items up to the new price limit
     return [
         picked,
-        ...selectMenuItems(unselectedItems, newPriceLimit, itemsPicked + 1, options)
+        ...selectMenuItems(unselectedItems, newPriceLimit, options, itemsPicked + 1)
     ]
 
 };

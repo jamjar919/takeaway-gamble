@@ -1,0 +1,39 @@
+.checkbox {
+  display: none;
+}
+
+.checkboxLabel {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.fakeCheckbox {
+  display: flex;
+  border: 3px solid #822774;
+  border-radius: 20px;
+  width: 20px;
+  height: 20px;
+  transition: ease-in-out .1s;
+  margin-right: 15px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.fakeCheckboxBox {
+  display: none;
+  background-color: #822774;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+input.checkbox[value=true] + .fakeCheckbox .fakeCheckboxBox {
+  display: block;
+}
