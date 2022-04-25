@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 24px 0;
+
+  box-shadow: 0 2px 4px rgb(0 0 0 / 5%);
+  border-bottom: 1px solid rgba(0, 0, 0, .08);
+}
+
+.container {
+  display: flex;
+  max-width: 1920px;
+  width: calc(100% - 2 * 64px);
+
+  padding: 0 64px;
+  margin: 0 auto;
+}
+
+.restaurantInformation {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurantInformationLines {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0;
+
+  a {
+    color: black;
+  }
+}
+
+.restaurantDetails {
+  margin-top: 8px;
+}
+
+.image {
+  display: block;
+  max-width: 550px;
+  margin-right: 50px;
+  box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+  border-radius: 4px;
+  transform: scale(0);
+  transition: transform 1s;
+}

@@ -242,6 +242,57 @@
 .addressLine__b3Hs:last-child:after {
   content: "";
 }
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-header/GambleResultHeader.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+.header__UIn_ {
+  display: flex;
+  flex-direction: row;
+  padding: 24px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.container__sIcO {
+  display: flex;
+  max-width: 1920px;
+  width: calc(100% - 128px);
+  padding: 0 64px;
+  margin: 0 auto;
+}
+
+.restaurantInformation__xQHR {
+  display: flex;
+  flex-direction: row;
+}
+
+.restaurantInformationLines__nVtf {
+  display: flex;
+  flex-direction: column;
+}
+
+.name__xqwb {
+  font-size: 40px;
+  line-height: 48px;
+  margin: 0;
+}
+.name__xqwb a {
+  color: black;
+}
+
+.restaurantDetails__odPc {
+  margin-top: 8px;
+}
+
+.image__iDSQ {
+  display: block;
+  max-width: 550px;
+  margin-right: 50px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  transform: scale(0);
+  transition: transform 1s;
+}
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/GambleResultPage.scss ***!
   \******************************************************************************************************************************************************************************************************/
@@ -280,16 +331,6 @@
   border-color: #d1d4d4;
 }
 
-.image__lFGE {
-  display: block;
-  max-width: 550px;
-  margin-right: 50px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  transform: scale(0);
-  transition: transform 1s;
-}
-
 .imageGambleRevealed__ldp4 {
   transform: scale(1);
 }
@@ -300,37 +341,6 @@
   width: calc(100% - 128px);
   padding: 0 64px;
   margin: 0 auto;
-}
-
-.header__Nf5Z {
-  display: flex;
-  flex-direction: row;
-  padding: 24px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.restaurantInformation__W7SE {
-  display: flex;
-  flex-direction: row;
-}
-
-.restaurantInformationLines__QYOM {
-  display: flex;
-  flex-direction: column;
-}
-
-.name__H_Yg {
-  font-size: 40px;
-  line-height: 48px;
-  margin: 0;
-}
-.name__H_Yg a {
-  color: black;
-}
-
-.restaurantDetails__GbJt {
-  margin-top: 8px;
 }
 
 .selectedItems__t5FK {

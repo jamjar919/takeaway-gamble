@@ -8,7 +8,7 @@ import {Restaurant} from "../../../../server/type/Restaurant";
 import {GAMBLE_REVEAL_TIME_MS} from "../../../framework/GambleConstants";
 import {useGambleContext} from "../../../context/GambleContext";
 
-import styles from "../GambleResultPage.scss";
+import styles from "./GambleResultHeader.scss";
 
 type GambleResultHeaderProps = {
     restaurant: DeliverooMenuPageState["menu"]["meta"],
