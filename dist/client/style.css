@@ -1,48 +1,3 @@
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
-  \************************************************************************************************************************************************************************************************************************/
-.container__ub_z {
-  height: 1em;
-  overflow: hidden;
-}
-
-.itemList__yglw {
-  position: relative;
-  top: calc(-1em - 15px);
-  animation: rollup__AEWn;
-  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
-}
-
-.option__dIO1 {
-  margin-top: 5px;
-}
-
-@keyframes rollup__AEWn {
-  0% {
-    transform-origin: top;
-    transform: translateY(-100%);
-  }
-  100% {
-    transform-origin: top;
-    transform: translateY(0%);
-  }
-}
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
-  \********************************************************************************************************************************************************************************************/
-.address__diO7 {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  font-style: italic;
-}
-
-.addressLine__b3Hs:after {
-  content: " - ";
-}
-.addressLine__b3Hs:last-child:after {
-  content: "";
-}
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/category-header/CategoryHeader.scss ***!
   \****************************************************************************************************************************************************************************************************************************************/
@@ -286,6 +241,12 @@
   margin-right: 50px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
   border-radius: 4px;
+  transform: scale(0);
+  transition: transform 1s;
+}
+
+.imageGambleRevealed__ldp4 {
+  transform: scale(1);
 }
 
 .container__qD0x {
@@ -333,6 +294,57 @@
 
 .description__TaJJ {
   margin: 8px 0;
+}
+
+.loadingAnimation__HyWd {
+  margin: auto;
+  width: 500px;
+  height: 500px;
+}
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
+  \************************************************************************************************************************************************************************************************************************/
+.container__ub_z {
+  height: 1em;
+  overflow: hidden;
+}
+
+.itemList__yglw {
+  position: relative;
+  top: calc(-1em - 15px);
+  animation: rollup__AEWn;
+  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
+}
+
+.option__dIO1 {
+  margin-top: 5px;
+}
+
+@keyframes rollup__AEWn {
+  0% {
+    transform-origin: top;
+    transform: translateY(-100%);
+  }
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+  }
+}
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
+  \********************************************************************************************************************************************************************************************/
+.address__diO7 {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.addressLine__b3Hs:after {
+  content: " - ";
+}
+.addressLine__b3Hs:last-child:after {
+  content: "";
 }
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/price-limit-input/PriceLimitInput.scss ***!

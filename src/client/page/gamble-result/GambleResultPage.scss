@@ -40,6 +40,12 @@
   margin-right: 50px;
   box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
   border-radius: 4px;
+  transform: scale(0);
+  transition: transform 1s;
+}
+
+.imageGambleRevealed {
+  transform: scale(1);
 }
 
 .container {
@@ -90,4 +96,10 @@
 
 .description {
   margin: 8px 0;
+}
+
+.loadingAnimation {
+  margin: auto;
+  width: 500px;
+  height: 500px;
 }

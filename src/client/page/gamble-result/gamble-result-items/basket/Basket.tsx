@@ -64,7 +64,7 @@ const Basket: React.FC<BasketProps> = (props) => {
                 <a
                     className={styles.cta}
                     target="_blank"
-                    href={`https://deliveroo.co.uk/${ctaUrl}`}
+                    href={`https://deliveroo.co.uk${ctaUrl}`}
                 >
                     Go to restaurant
                 </a>

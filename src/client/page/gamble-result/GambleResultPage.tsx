@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React from "react";
+import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
+
 import {SuccessfulGambleResponse} from "../../../common/type/GambleResponse";
-import { ScrollingOptionBox } from "../../framework/scrolling-option-display/ScrollingOptionBox";
-import {Address} from "../../framework/address/Address";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 
+import utensilsLoading from './animation/utensils-loading.json';
+
 import styles from './GambleResultPage.scss';
+import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
+import {useGambleContext} from "../../context/GambleContext";
 
 type GambleResultProps = {
     result: SuccessfulGambleResponse;
@@ -13,8 +17,6 @@ type GambleResultProps = {
 
 /**
  * Renders the result of a gamble, just like Deliveroo!
- *
- * TODO this should be like 5 files but it's 11pm
  */
 const GambleResultPage: React.FC<GambleResultProps> = (props) => {
 
@@ -32,19 +34,9 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
         resetGamble
     } = props;
 
-    const {
-        image,
-        descriptionSocial
-    } = restaurant.metatags;
-
-    const {
-        name,
-        location,
-    } = restaurant.restaurant;
-
     console.log(props.result);
 
-    const [revealed, setRevealed] = useState(false);
+    const { gambleRevealed } = useGambleContext();
 
     return (
         <div className={styles.pageContainer}>
@@ -60,52 +52,29 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                     </div>
                 </div>
             </menu>
-            <header className={styles.header}>
-                <div className={styles.container}>
-                    <div className={styles.restaurantInformation}>
-                        {image && (
-                            <img
-                                src={image}
-                                alt={name}
-                                className={styles.image}
-                            />
-                        )}
-                        <div className={styles.restaurantInformationLines}>
-                            <h1 className={styles.name}>
-                                <ScrollingOptionBox
-                                    choices={restaurants.map(r => r.name)}
-                                    selected={
-                                        <a
-                                            href={`https://deliveroo.co.uk${url}`}
-                                            target="_blank"
-                                        >{name}</a>
-                                    }
-                                    onComplete={() => setRevealed(true)}
-                                />
-                            </h1>
-                            {location?.address && (
-                                <div className={styles.restaurantDetails}>
-                                    <Address value={location.address} />
-                                </div>
-                            )}
-                            {descriptionSocial && (
-                                <div className={styles.restaurantDetails}>
-                                    {descriptionSocial}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <GambleResultHeader
+                restaurant={restaurant}
+                restaurantUrl={url}
+                availableRestaurants={restaurants}
+            />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
-                    {revealed && (
-                        <GambleResultItems
-                            items={items}
-                            categories={restaurant.categories}
-                            ctaUrl={url}
-                        />
-                    )}
+                    {gambleRevealed
+                        ? (
+                            <GambleResultItems
+                                items={items}
+                                categories={restaurant.categories}
+                                ctaUrl={url}
+                            />
+                        )
+                        : (
+                            <Lottie
+                                className={styles.loadingAnimation}
+                                loop
+                                animationData={utensilsLoading}
+                                play
+                            />
+                        )}
                 </div>
             </div>
         </div>

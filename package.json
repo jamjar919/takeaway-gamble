@@ -14,7 +14,8 @@
     "formik": "^2.2.9",
     "node-fetch": "^3.2.3",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-lottie-player": "^1.4.2"
   },
   "scripts": {
     "build": "npm-run-all assemble test",

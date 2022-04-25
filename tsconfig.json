@@ -3,6 +3,7 @@
     "sourceMap": true,
     "esModuleInterop": true,
     "jsx": "react",
+    "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
     "strict": true, // Enable all strict type checking options
     "noUnusedLocals": true, // Report errors on unused locals
