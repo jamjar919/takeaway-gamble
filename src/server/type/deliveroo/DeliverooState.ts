@@ -15,6 +15,7 @@ type DeliverooMenuPageState = {
             requestUUID: string,
             appliedParams: [],
             pastOrders: [],
+            offer: null | unknown,
             customerLocation:{
                 lat: number,
                 lon: number,

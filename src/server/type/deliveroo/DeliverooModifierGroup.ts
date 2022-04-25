@@ -1,15 +1,4 @@
-import {DeliverooPrice} from "./DeliverooPrice";
-
-type DeliverooModifierOption = {
-    id: string;
-    name: string;
-    description: string;
-    price: DeliverooPrice,
-    nutritionalInfo: null,
-    priceDiscounted: null | DeliverooPrice,
-    available: boolean,
-    modifierGroupIds:[]
-}
+import {DeliverooModifierOption} from "./DeliverooModifierOption";
 
 type DeliverooModifierGroup = {
     id: string;

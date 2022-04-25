@@ -1,14 +1,14 @@
 import React from "react";
-import {DeliverooItem} from "../../../../server/type/deliveroo/DeliverooItem";
 import {DeliverooCategory} from "../../../../server/type/deliveroo/DeliverooCategory";
 import {CategoryHeader} from "./category-header/CategoryHeader";
 import {CategoryItems} from "./category-items/CategoryItems";
+import {Basket} from "./basket/Basket";
+import {SelectedItem} from "../../../../common/type/SelectedRestaurantAndItems";
 
 import styles from './GambleResultItems.scss';
-import {Basket} from "./basket/Basket";
 
 type ItemsProps = {
-    items: DeliverooItem[];
+    items: SelectedItem[];
     categories: DeliverooCategory[];
     ctaUrl: string;
 };
@@ -20,7 +20,7 @@ const GambleResultItems: React.FC<ItemsProps> = (props) => {
         .map((category) => {
             return {
                 category,
-                items: items.filter((item) => item.categoryId === category.id)
+                items: items.filter((selectedItem) => selectedItem.item.categoryId === category.id)
             }
         })
         .filter(({items}) => items.length > 0)
@@ -39,7 +39,7 @@ const GambleResultItems: React.FC<ItemsProps> = (props) => {
                 {result}
             </div>
             <div className={styles.basketContainer}>
-                <Basket items={items} ctaUrl={ctaUrl} />
+                <Basket selectedItems={items} ctaUrl={ctaUrl} />
             </div>
         </div>
     );

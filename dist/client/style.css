@@ -77,47 +77,6 @@
   grid-gap: 16px;
   grid-template: auto/repeat(2, 1fr);
 }
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/GambleResultItems.scss ***!
-  \***************************************************************************************************************************************************************************************************************************/
-.category__Owb0 {
-  display: flex;
-  flex-direction: column;
-  margin-top: 32px;
-}
-
-.result__Fh8z {
-  position: relative;
-  animation: rollup__Osbu 1s ease-in-out;
-  display: grid;
-  grid-gap: 32px 24px;
-  grid-template-areas: "menu basket";
-  grid-template-columns: 60% 1fr;
-  grid-template-rows: auto 1fr;
-  margin-top: 32px;
-  width: 100%;
-}
-
-.items__orKa {
-  grid-area: menu;
-}
-
-.basketContainer__mUp9 {
-  grid-area: basket;
-}
-
-@keyframes rollup__Osbu {
-  0% {
-    transform-origin: bottom;
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform-origin: top;
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/Basket.scss ***!
   \***********************************************************************************************************************************************************************************************************************/
@@ -196,6 +155,47 @@
 }
 .cta__C263:hover {
   opacity: 0.8;
+}
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/GambleResultItems.scss ***!
+  \***************************************************************************************************************************************************************************************************************************/
+.category__Owb0 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+}
+
+.result__Fh8z {
+  position: relative;
+  animation: rollup__Osbu 1s ease-in-out;
+  display: grid;
+  grid-gap: 32px 24px;
+  grid-template-areas: "menu basket";
+  grid-template-columns: 60% 1fr;
+  grid-template-rows: auto 1fr;
+  margin-top: 32px;
+  width: 100%;
+}
+
+.items__orKa {
+  grid-area: menu;
+}
+
+.basketContainer__mUp9 {
+  grid-area: basket;
+}
+
+@keyframes rollup__Osbu {
+  0% {
+    transform-origin: bottom;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 /*!************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
@@ -498,8 +498,10 @@ input.checkbox__jxxs[value=true] + .fakeCheckbox__RIMg .fakeCheckboxBox__gPp3 {
 }
 .error__vMUz {
   background-color: firebrick;
+  color: white;
   padding: 10px 20px;
   margin: 10px 0;
+  border-left: solid 5px #00c1b2;
 }
 /*!**********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/App.scss ***!

@@ -1,17 +1,17 @@
 import React from "react";
-import {DeliverooItem} from "../../../../../server/type/deliveroo/DeliverooItem";
+import {SelectedItem} from "../../../../../common/type/SelectedRestaurantAndItems";
 import {Item} from "./item/Item";
 
 import styles from './CategoryItems.scss';
 
 type CategoryItemsProps = {
-    items: DeliverooItem[];
+    items: SelectedItem[];
 }
 
 const CategoryItems: React.FC<CategoryItemsProps> = (props) => {
     const { items } = props;
 
-    const result = items.map((item) => <Item key={item.id} item={item} />)
+    const result = items.map((selectedItem) => <Item key={selectedItem.item.id} item={selectedItem.item} />)
 
     return (
         <div className={styles.categoryItems}>

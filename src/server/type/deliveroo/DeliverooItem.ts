@@ -1,4 +1,5 @@
-import {DeliverooPrice} from "./DeliverooPrice";
+import { DeliverooPrice } from "./DeliverooPrice";
+import { DeliverooNutritionalItem } from "./DeliverooNutritionalItem";
 
 type DeliverooItem = {
     available: boolean,
@@ -13,13 +14,13 @@ type DeliverooItem = {
     } | null,
     name: string
     price: DeliverooPrice
-    priceDiscounted?: null | DeliverooPrice
+    priceDiscounted: null | DeliverooPrice
     productInformation: string,
-    nutritionalInfo: null | string,
+    nutritionalInfo: null | DeliverooNutritionalItem,
     percentageDiscounted: null | string,
     popular: boolean,
     maxSelection: null | string,
-    modifierGroupIds: unknown[],
+    modifierGroupIds: string[],
     isSignatureExclusive: boolean
 }
 

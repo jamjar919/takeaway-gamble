@@ -1,26 +1,26 @@
 import React from "react";
-import {DeliverooItem} from "../../../../../server/type/deliveroo/DeliverooItem";
+import {getPriceFromDeliverooObject} from "../../../../../common/util/getPriceFromDeliverooObject";
+import {Price} from "../../../../framework/price/Price";
+import {SelectedItem} from "../../../../../common/type/SelectedRestaurantAndItems";
 
 import styles from './Basket.scss'
-import {getItemPrice} from "../../../../../common/util/getItemPrice";
-import {Price} from "../../../../framework/price/Price";
 
 type BasketProps = {
-    items: DeliverooItem[];
+    selectedItems: SelectedItem[];
     ctaUrl: string;
 }
 
 const Basket: React.FC<BasketProps> = (props) => {
     const {
-        items,
+        selectedItems,
         ctaUrl
     } = props;
 
-    const total = items
-        .map((item) => getItemPrice(item).fractional)
+    const total = selectedItems
+        .map((selectedItem) => getPriceFromDeliverooObject(selectedItem.item).fractional)
         .reduce((a,b) => a + b, 0)/100;
 
-    const currency = items?.[0]?.price?.code || 'GBP';
+    const currency = selectedItems?.[0]?.item.price?.code || 'GBP';
 
     const locale = Intl.NumberFormat('en-GB', {
         style: "currency",
@@ -33,14 +33,17 @@ const Basket: React.FC<BasketProps> = (props) => {
                 Your order
             </div>
             <ul className={styles.basketItems}>
-                {items.sort((a,b) => getItemPrice(b).fractional - getItemPrice(a).fractional).map((item) => (
-                    <li key={item.id}>
-                        <span className={styles.itemName}>{item.name}</span>
-                        <span className={styles.itemPrice}>
-                            <Price value={item} />
-                        </span>
-                    </li>
-                ))}
+                {selectedItems
+                    .sort((a, b) => getPriceFromDeliverooObject(b.item).fractional - getPriceFromDeliverooObject(a.item).fractional)
+                    .map((selectedItem) => (
+                        <li key={selectedItem.item.id}>
+                            <span className={styles.itemName}>{selectedItem.item.name}</span>
+                            <span className={styles.itemPrice}>
+                                <Price value={selectedItem.item} />
+                            </span>
+                        </li>
+                    ))
+                }
             </ul>
             <div className={styles.row}>
                 <div className={styles.banner}>

@@ -12,6 +12,7 @@ import {
 import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
 import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
+import {getModifierGroups} from "./getModifierGroups";
 
 type GambleRequest = {
     priceLimit?: number;
@@ -97,9 +98,15 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
         // Get items
         const items = getMenuItems(restaurantContext);
+        const modifierGroups = getModifierGroups(restaurantContext);
 
-        // Select some random items
-        const selectedItems = selectMenuItems(items, priceLimit, { firstItemIsLarge });
+        // Select some random items + modifiers
+        const selectedItems = selectMenuItems(
+            items,
+            modifierGroups,
+            priceLimit,
+            { firstItemIsLarge }
+        );
 
         console.log(
             `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
