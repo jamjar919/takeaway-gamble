@@ -197,6 +197,51 @@
 .cta__C263:hover {
   opacity: 0.8;
 }
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
+  \************************************************************************************************************************************************************************************************************************/
+.container__ub_z {
+  height: 1em;
+  overflow: hidden;
+}
+
+.itemList__yglw {
+  position: relative;
+  top: calc(-1em - 15px);
+  animation: rollup__AEWn;
+  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
+}
+
+.option__dIO1 {
+  margin-top: 5px;
+}
+
+@keyframes rollup__AEWn {
+  0% {
+    transform-origin: top;
+    transform: translateY(-100%);
+  }
+  100% {
+    transform-origin: top;
+    transform: translateY(0%);
+  }
+}
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
+  \********************************************************************************************************************************************************************************************/
+.address__diO7 {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  font-style: italic;
+}
+
+.addressLine__b3Hs:after {
+  content: " - ";
+}
+.addressLine__b3Hs:last-child:after {
+  content: "";
+}
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/GambleResultPage.scss ***!
   \******************************************************************************************************************************************************************************************************/
@@ -301,50 +346,18 @@
   width: 500px;
   height: 500px;
 }
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
-  \************************************************************************************************************************************************************************************************************************/
-.container__ub_z {
-  height: 1em;
-  overflow: hidden;
-}
 
-.itemList__yglw {
-  position: relative;
-  top: calc(-1em - 15px);
-  animation: rollup__AEWn;
-  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
-}
-
-.option__dIO1 {
-  margin-top: 5px;
-}
-
-@keyframes rollup__AEWn {
-  0% {
-    transform-origin: top;
-    transform: translateY(-100%);
-  }
-  100% {
-    transform-origin: top;
-    transform: translateY(0%);
-  }
-}
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
-  \********************************************************************************************************************************************************************************************/
-.address__diO7 {
+.confettiContainer__v2EB {
+  position: fixed;
+  bottom: 0;
   display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  font-style: italic;
+  width: 100vw;
+  pointer-events: none;
 }
 
-.addressLine__b3Hs:after {
-  content: " - ";
-}
-.addressLine__b3Hs:last-child:after {
-  content: "";
+.confetti__se8o {
+  margin: auto;
+  min-height: 100vh;
 }
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/price-limit-input/PriceLimitInput.scss ***!

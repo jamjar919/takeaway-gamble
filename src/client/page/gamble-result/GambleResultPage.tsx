@@ -1,14 +1,15 @@
-import React from "react";
-import Lottie from 'react-lottie-player/dist/LottiePlayerLight'
+import React, {useState} from "react";
+import Lottie from 'react-lottie-player'
 
 import {SuccessfulGambleResponse} from "../../../common/type/GambleResponse";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
-
-import utensilsLoading from './animation/utensils-loading.json';
-
-import styles from './GambleResultPage.scss';
 import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {useGambleContext} from "../../context/GambleContext";
+
+import utensilsLoading from './animation/utensils-loading.json';
+import confetti from './animation/confetti.json';
+
+import styles from './GambleResultPage.scss';
 
 type GambleResultProps = {
     result: SuccessfulGambleResponse;
@@ -37,6 +38,8 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
     console.log(props.result);
 
     const { gambleRevealed } = useGambleContext();
+
+    const [hasShownConfetti, setHasShownConfetti] = useState(false);
 
     return (
         <div className={styles.pageContainer}>
@@ -77,6 +80,18 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                         )}
                 </div>
             </div>
+            {
+                gambleRevealed && !hasShownConfetti && (
+                    <div className={styles.confettiContainer}>
+                        <Lottie
+                            className={styles.confetti}
+                            animationData={confetti}
+                            play
+                            onLoopComplete={() => setHasShownConfetti(true)}
+                        />
+                    </div>
+                )
+            }
         </div>
     )
 }

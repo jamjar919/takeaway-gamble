@@ -103,3 +103,16 @@
   width: 500px;
   height: 500px;
 }
+
+.confettiContainer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100vw;
+  pointer-events: none;
+}
+
+.confetti {
+  margin: auto;
+  min-height: 100vh;
+}
