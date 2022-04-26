@@ -17,7 +17,15 @@ const Basket: React.FC<BasketProps> = (props) => {
     } = props;
 
     const total = selectedItems
-        .map((selectedItem) => getPriceFromDeliverooObject(selectedItem.item).fractional)
+        .map((selectedItem) => {
+            const itemPrice = getPriceFromDeliverooObject(selectedItem.item).fractional;
+            const modifierPrices = selectedItem.modifiers
+                .flatMap((modifier) => modifier.options)
+                .map((option) => getPriceFromDeliverooObject(option))
+                .reduce((a, b) => b.fractional + a, 0);
+
+            return itemPrice + modifierPrices;
+        })
         .reduce((a,b) => a + b, 0)/100;
 
     const currency = selectedItems?.[0]?.item.price?.code || 'GBP';

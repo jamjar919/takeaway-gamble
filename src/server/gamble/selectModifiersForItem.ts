@@ -30,18 +30,11 @@ const selectModifiersForItem = (
                 options.length < group.maxSelection;
 
             // Optionally select any up to the maximum options
-            if (group.repeatable) {
-                // Chance of selecting multiple options based on probability
-                while (canSelectOption()) {
-                    const selectedOption = pickOneFromArray(validOptions)
-                    validOptions = validOptions.filter((option) => option.id !== selectedOption.id)
-                    options.push(selectedOption);
-                }
-            } else {
-                // Else a chance of selecting a single option
-                if (canSelectOption()) {
-                    options.push(pickOneFromArray(validOptions));
-                }
+            // Chance of selecting multiple options based on probability
+            while (canSelectOption()) {
+                const selectedOption = pickOneFromArray(validOptions)
+                validOptions = validOptions.filter((option) => option.id !== selectedOption.id)
+                options.push(selectedOption);
             }
 
             if (options.length < 0) {
