@@ -77,6 +77,55 @@
   grid-gap: 16px;
   grid-template: auto/repeat(2, 1fr);
 }
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/basket-item/BasketItem.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+.basketItem__SsqV {
+  padding-top: 16px;
+}
+
+.item__KIfi {
+  display: flex;
+}
+
+.itemName__sf6D {
+  flex: 1 1;
+}
+
+.modifierOption__Zlby {
+  display: flex;
+  margin-top: 8px;
+}
+.modifierOption__Zlby:first-child {
+  margin-top: 0;
+}
+
+.modifierOptionName__T0Mf {
+  flex: 1 1;
+}
+
+.modifierOptionList__Wr7l {
+  flex: 1 1;
+}
+
+.modifiers__QK4u {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.modifierGroup__GVm3 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.modifierGroupName__Pyh5 {
+  flex: 1 1;
+  margin-left: 32px;
+  padding: 0 10px;
+}
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/Basket.scss ***!
   \***********************************************************************************************************************************************************************************************************************/
@@ -102,14 +151,6 @@
 .basketItems__uPb0 {
   display: flex;
   flex-direction: column;
-}
-.basketItems__uPb0 li {
-  display: flex;
-  padding-top: 16px;
-}
-
-.itemName__bNKJ {
-  flex: 1 1;
 }
 
 .banner__Tga7 {

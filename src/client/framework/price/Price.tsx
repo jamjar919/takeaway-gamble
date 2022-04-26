@@ -1,10 +1,13 @@
 import React from "react";
-import {DeliverooItem} from "../../../server/type/deliveroo/DeliverooItem";
 
 import styles from './Price.scss';
+import {DeliverooPrice} from "../../../server/type/deliveroo/DeliverooPrice";
 
 type PriceProps = {
-    value: DeliverooItem
+    value: {
+        price: DeliverooPrice,
+        priceDiscounted: null | DeliverooPrice
+    }
 }
 
 const Price: React.FC<PriceProps> = (props) => {

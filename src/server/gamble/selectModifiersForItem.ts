@@ -13,26 +13,33 @@ const selectModifiersForItem = (
     const validModifierGroupsForItem = modifiers
         .filter(group => item.modifierGroupIds.includes(group.id));
 
-    return validModifierGroupsForItem
+    return (validModifierGroupsForItem
         .map((group) => {
             const options: DeliverooModifierOption[] = [];
 
-            const validOptions = group.modifierOptions.filter((option) => option.available);
+            let validOptions = group.modifierOptions.filter((option) => option.available);
 
             // Select any required options
-            while (options.length <= group.minSelection) {
+            while (options.length < group.minSelection) {
                 options.push(pickOneFromArray(validOptions));
             }
+
+            const canSelectOption = () =>
+                Math.random() < MODIFIER_SELECT_PROBABILITY &&
+                validOptions.length > 0 &&
+                options.length < group.maxSelection;
 
             // Optionally select any up to the maximum options
             if (group.repeatable) {
                 // Chance of selecting multiple options based on probability
-                while (Math.random() < MODIFIER_SELECT_PROBABILITY) {
-                    options.push(pickOneFromArray(validOptions));
+                while (canSelectOption()) {
+                    const selectedOption = pickOneFromArray(validOptions)
+                    validOptions = validOptions.filter((option) => option.id !== selectedOption.id)
+                    options.push(selectedOption);
                 }
             } else {
                 // Else a chance of selecting a single option
-                if (Math.random() < MODIFIER_SELECT_PROBABILITY) {
+                if (canSelectOption()) {
                     options.push(pickOneFromArray(validOptions));
                 }
             }
@@ -49,7 +56,8 @@ const selectModifiersForItem = (
                 options,
             };
         })
-        .filter((selectedModifier: SelectedModifier | null) => selectedModifier !== null) as SelectedModifier[];
+        .filter((selectedModifier: SelectedModifier | null) => selectedModifier !== null) as SelectedModifier[])
+        .filter((selectedModifier: SelectedModifier) => selectedModifier.options.length > 0);
 }
 
 export { selectModifiersForItem }

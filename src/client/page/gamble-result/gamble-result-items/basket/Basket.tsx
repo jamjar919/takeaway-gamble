@@ -1,7 +1,7 @@
 import React from "react";
 import {getPriceFromDeliverooObject} from "../../../../../common/util/getPriceFromDeliverooObject";
-import {Price} from "../../../../framework/price/Price";
 import {SelectedItem} from "../../../../../common/type/SelectedRestaurantAndItems";
+import {BasketItem} from "./basket-item/BasketItem";
 
 import styles from './Basket.scss'
 
@@ -35,14 +35,7 @@ const Basket: React.FC<BasketProps> = (props) => {
             <ul className={styles.basketItems}>
                 {selectedItems
                     .sort((a, b) => getPriceFromDeliverooObject(b.item).fractional - getPriceFromDeliverooObject(a.item).fractional)
-                    .map((selectedItem) => (
-                        <li key={selectedItem.item.id}>
-                            <span className={styles.itemName}>{selectedItem.item.name}</span>
-                            <span className={styles.itemPrice}>
-                                <Price value={selectedItem.item} />
-                            </span>
-                        </li>
-                    ))
+                    .map((selectedItem) => (<BasketItem selectedItem={selectedItem} />))
                 }
             </ul>
             <div className={styles.row}>

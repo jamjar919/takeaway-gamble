@@ -21,15 +21,6 @@
 .basketItems {
   display: flex;
   flex-direction: column;
-
-  li {
-    display: flex;
-    padding-top: 16px;
-  }
-}
-
-.itemName {
-  flex: 1 1;
 }
 
 .banner {
