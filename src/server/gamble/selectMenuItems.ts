@@ -40,25 +40,23 @@ const selectMenuItems = (
         }
     }
 
+    // Determine a price limit to pick some modifiers
+    const newPriceLimit = priceLimit - getPriceFromDeliverooObject(selectedItem).fractional;
+
     // Get random modifiers for the item (if any exist)
     const selectedModifiers = selectModifiersForItem(
         selectedItem,
-        modifiers
+        modifiers,
+        newPriceLimit
     );
 
-    // Update our new price limit
+    // Update our new price limit with the price of the modifiers
     const priceOfModifiers = selectedModifiers
         .flatMap((group) => group.options)
         .map((option) => getPriceFromDeliverooObject(option))
         .reduce((a, b) => b.fractional + a, 0);
 
-    console.log(
-        "modifiers",
-        priceOfModifiers,
-        selectedItem.name
-    )
-
-    const newPriceLimit = priceLimit - priceOfModifiers - getPriceFromDeliverooObject(selectedItem).fractional;
+    const newPriceLimitWithModifiers = newPriceLimit - priceOfModifiers;
 
     // Filter to list of unselected items
     const unselectedItems = validItems
@@ -72,7 +70,7 @@ const selectMenuItems = (
     // Recursively select more items up to the new price limit
     return [
         result,
-        ...selectMenuItems(unselectedItems, modifiers, newPriceLimit, options, itemsPicked + 1)
+        ...selectMenuItems(unselectedItems, modifiers, newPriceLimitWithModifiers, options, itemsPicked + 1)
     ]
 
 };
