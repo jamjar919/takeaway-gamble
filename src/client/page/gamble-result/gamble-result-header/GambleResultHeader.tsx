@@ -46,7 +46,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                             alt={name}
                             className={classNames(
                                 styles.image,
-                                gambleRevealed && styles.imageGambleRevealed
+                                gambleRevealed ? styles.imageGambleRevealed : ''
                             )}
                         />
                     )}

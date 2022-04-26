@@ -50,10 +50,7 @@ const selectModifiersForItem = (
             }
 
             return {
-                group: {
-                    ...group,
-                    modifierOptions: undefined
-                },
+                group: group,
                 options,
             };
         })

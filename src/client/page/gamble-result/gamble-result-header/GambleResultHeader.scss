@@ -48,4 +48,8 @@
   border-radius: 4px;
   transform: scale(0);
   transition: transform 1s;
+
+  &.imageGambleRevealed {
+    transform: scale(1);
+  }
 }
