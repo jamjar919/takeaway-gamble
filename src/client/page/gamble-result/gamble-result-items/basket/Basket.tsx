@@ -43,7 +43,7 @@ const Basket: React.FC<BasketProps> = (props) => {
             <ul className={styles.basketItems}>
                 {selectedItems
                     .sort((a, b) => getPriceFromDeliverooObject(b.item).fractional - getPriceFromDeliverooObject(a.item).fractional)
-                    .map((selectedItem) => (<BasketItem selectedItem={selectedItem} />))
+                    .map((selectedItem) => (<BasketItem key={selectedItem.item.id} selectedItem={selectedItem} />))
                 }
             </ul>
             <div className={styles.row}>

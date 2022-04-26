@@ -14,13 +14,13 @@ const Modifiers: React.FC<ModifiersProps> = (props) => {
         <ul className={styles.modifiers}>
             {
                 modifiers.map((modifier) => (
-                    <li className={styles.modifierGroup}>
+                    <li key={modifier.group.id} className={styles.modifierGroup}>
                         <div className={styles.modifierGroupName}>{modifier.group.name}</div>
                         <ul className={styles.modifierOptionList}>
                             {
                                 modifier.options
                                     .map((option) => (
-                                        <li className={styles.modifierOption}>
+                                        <li key={option.id} className={styles.modifierOption}>
                                             <span className={styles.modifierOptionName}>{option.name}</span>
                                             <span>
                                                 <Price value={option} />
