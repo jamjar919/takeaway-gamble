@@ -86,7 +86,7 @@ export const gamble = async (req: Request<{}, GambleRequest>, res: Response) => 
 
         // Obtain restaurants in the area
         const searchPageContext = await getDeliverooContextFromUrl(
-            "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
+            "/restaurants/oxford/littlemore-town?fulfillment_method=DELIVERY&collection=all-restaurants",
         );
 
         const placesToEat = getPlacesToEat(searchPageContext);

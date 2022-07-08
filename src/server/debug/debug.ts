@@ -9,9 +9,9 @@ export const debug = async (_: Request, res: Response) => {
     try {
         // Obtain restaurants in the area
         const searchPageContext = await getDeliverooContextFromUrl(
-            "/restaurants/oxford/littlemore-blackbird-leys?collection=all-restaurants",
+            "/restaurants/oxford/littlemore-town?fulfillment_method=DELIVERY&collection=all-restaurants",
         );
-
+        
         const placesToEat = getPlacesToEat(searchPageContext);
 
         // Select one randomly
