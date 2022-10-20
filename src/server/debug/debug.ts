@@ -1,30 +1,15 @@
 import {Request, Response} from "express";
 import {sendJSON} from "../util/sendJSON";
-import {pickOneFromArray} from "../../common/util/pickOneFromArray";
-import {getPlacesToEat} from "../gamble/getPlacesToEat";
-import {getDeliverooContextFromUrl} from "../gamble/getDeliverooContextFromUrl";
+import {getPlacesToEatUrl} from "../gamble/get-places-to-eat-url/getPlacesToEatUrl";
 
 export const debug = async (_: Request, res: Response) => {
-
     try {
-        // Obtain restaurants in the area
-        const searchPageContext = await getDeliverooContextFromUrl(
-            "/restaurants/oxford/littlemore-town?fulfillment_method=DELIVERY&collection=all-restaurants",
-        );
-        
-        const placesToEat = getPlacesToEat(searchPageContext);
+        const response = await getPlacesToEatUrl("OX43RZ");
 
-        // Select one randomly
-        const selectedPlace = pickOneFromArray(placesToEat);
-
-        // Fetch + get context for it
-        const restaurantContext = await getDeliverooContextFromUrl(
-            selectedPlace.url,
-        );
+        console.log(response);
 
         sendJSON({
-            searchPageContext,
-            restaurantContext
+            response
         }, res);
     } catch (e: any) {
         console.error("Error debug", e);
