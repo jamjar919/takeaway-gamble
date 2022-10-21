@@ -32,7 +32,6 @@ const Pages: React.FC = () => {
     return (
         <SearchPage
             onSearch={(postcode, price, firstItemIsLarge) => gamble(postcode, price, firstItemIsLarge)}
-            error={gambleResult?.error}
         />
     )
 }

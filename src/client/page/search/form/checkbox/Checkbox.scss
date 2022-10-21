@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../../../App.scss";
+
 .checkbox {
   display: none;
 }
@@ -13,7 +16,7 @@
 
 .fakeCheckbox {
   display: flex;
-  border: 3px solid #822774;
+  border: 3px solid map.get($color, "primary");
   border-radius: 20px;
   width: 20px;
   height: 20px;
@@ -27,7 +30,7 @@
 
 .fakeCheckboxBox {
   display: none;
-  background-color: #822774;
+  background-color: map.get($color, "primary");
   width: 10px;
   height: 10px;
   border-radius: 5px;

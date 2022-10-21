@@ -18,3 +18,12 @@ a {
     text-decoration: underline;
   }
 }
+
+$grid-breakpoints: (
+  sm: 576px,
+  lg: 1200px,
+);
+
+$color: (
+  primary: #B92626
+)

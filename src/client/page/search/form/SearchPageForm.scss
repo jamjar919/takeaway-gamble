@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../../App.scss";
+
 $height: 48px;
 
 .inputContainer {
@@ -11,15 +14,13 @@ $height: 48px;
   height: $height;
   margin: 10px 0;
   padding: 12px 48px;
-
-  min-width: 575px;
 }
 
 .unit {
   position: absolute;
   left: 25px;
   line-height: $height;
-  color: #822774;
+  color: map.get($color, "primary");
   font-size: 25px;
   font-weight: bold;
 }
@@ -40,7 +41,7 @@ $height: 48px;
 }
 
 .button {
-  background: #822774;
+  background: map.get($color, "primary");
   color: white;
   border: none;
   font-size: 16px;

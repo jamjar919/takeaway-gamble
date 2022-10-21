@@ -4,7 +4,7 @@ import fetch, {RequestInit} from "node-fetch";
 type DeliverooRestaurantApiResponse = {
     coordinates: [number, number],
     url: string
-}
+};
 
 const callDeliverooApi = async (location: google.maps.GeocoderResult): Promise<DeliverooRestaurantApiResponse> => {
     const options: RequestInit = {
@@ -38,13 +38,17 @@ const callDeliverooApi = async (location: google.maps.GeocoderResult): Promise<D
 const getPlacesToEatUrl = async (postcode: string): Promise<string | null> => {
     const geocodedLocation = await geocode(postcode);
 
-    if (geocodedLocation == null) {
+    if (geocodedLocation === null) {
         return null;
     }
 
     const response = await callDeliverooApi(geocodedLocation)
 
-    return response.url + "&collection=all-restaurants";
+    if (response.url) {
+        return response.url + "&collection=all-restaurants";
+    }
+
+    return null;
 }
 
 export { getPlacesToEatUrl }

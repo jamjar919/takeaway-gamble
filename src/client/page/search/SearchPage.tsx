@@ -5,21 +5,14 @@ import styles from './SearchPage.scss';
 
 type SearchPageType = {
     onSearch: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
-    error?: string;
 }
 
 const SearchPage: React.FC<SearchPageType> = (props) => {
-    const {onSearch, error} = props;
+    const {onSearch} = props;
 
     return (
         <div className={styles.container}>
             <div className={styles.formContainer}>
-                <img src={"/deliveroo-logo.png"} alt="Deliveroo Logo" className={styles.logo}/>
-                {error && (
-                    <div className={styles.error}>
-                        {error}
-                    </div>
-                )}
                 <SearchPageForm
                     onSubmit={(values: SearchPageFormValues) => {
                         const postcode = values[SearchPageFormField.POSTCODE];

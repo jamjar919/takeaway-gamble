@@ -1,0 +1,10 @@
+@use "sass:map";
+@import "../../../App.scss";
+
+.error {
+  background-color: firebrick;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border-left: solid 5px map.get($color, "primary");
+}

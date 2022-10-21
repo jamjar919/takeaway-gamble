@@ -4,6 +4,8 @@ import {PriceLimitInput} from "./price-limit-input/PriceLimitInput";
 import {Checkbox} from "./checkbox/Checkbox";
 import {PostcodeInput} from "./postcode-input/PostcodeInput";
 import {LocalStorageKey} from "../../../framework/localstorage/LocalStorageKey";
+import {Logo} from "../logo/Logo";
+import {SearchError} from "../search-error/SearchError";
 
 enum SearchPageFormField {
     POSTCODE = 'POSTCODE',
@@ -41,6 +43,8 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
             }}
         >
             <Form>
+                <Logo />
+                <SearchError />
                 <PostcodeInput />
                 <PriceLimitInput />
                 <Checkbox
