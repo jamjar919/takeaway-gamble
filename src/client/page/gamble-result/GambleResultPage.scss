@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../App.scss";
+
 .pageContainer {
   display: flex;
   flex-direction: column;
@@ -34,19 +37,19 @@
   }
 }
 
-.imageGambleRevealed {
-  transform: scale(1);
-}
-
 .container {
   display: flex;
   max-width: 1920px;
-  width: calc(100% - 2 * 64px);
-
-  padding: 0 64px;
   margin: 0 auto;
-}
 
+  padding: 0 16px;
+  width: calc(100% - 2 * 16px);
+
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    padding: 0 64px;
+    width: calc(100% - 2 * 64px);
+  }
+}
 
 .selectedItems {
   flex: 1 1;

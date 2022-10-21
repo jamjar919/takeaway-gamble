@@ -9,6 +9,7 @@ import {GAMBLE_REVEAL_TIME_MS} from "../../../framework/GambleConstants";
 import {useGambleContext} from "../../../context/GambleContext";
 
 import styles from "./GambleResultHeader.scss";
+import pageStyles from "../GambleResultPage.scss";
 
 type GambleResultHeaderProps = {
     restaurant: DeliverooMenuPageState["menu"]["meta"],
@@ -38,7 +39,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
 
     return (
         <header className={styles.header}>
-            <div className={styles.container}>
+            <div className={pageStyles.container}>
                 <div className={styles.restaurantInformation}>
                     {image && (
                         <img

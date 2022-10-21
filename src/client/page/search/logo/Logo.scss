@@ -9,8 +9,8 @@
   animation: spin 10s infinite linear;
   margin: auto auto 32px auto;
 
-  .superSpin {
-    animation: spin 1s infinite linear;
+  &.superSpin {
+    animation: spin 1s infinite cubic-bezier(0.560, -0.600, 0.000, 1.005);
   }
 }
 

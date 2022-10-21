@@ -200,6 +200,26 @@
 /*!***************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/GambleResultItems.scss ***!
   \***************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .category__Owb0 {
   display: flex;
   flex-direction: column;
@@ -211,11 +231,16 @@
   animation: rollup__Osbu 1s ease-in-out;
   display: grid;
   grid-gap: 32px 24px;
-  grid-template-areas: "menu basket";
-  grid-template-columns: 60% 1fr;
   grid-template-rows: auto 1fr;
   margin-top: 32px;
   width: 100%;
+  grid-template-areas: "menu" "basket";
+}
+@media (min-width: 1200px) {
+  .result__Fh8z {
+    grid-template-areas: "menu basket";
+    grid-template-columns: 60% 1fr;
+  }
 }
 
 .items__orKa {
@@ -286,6 +311,26 @@
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-header/GambleResultHeader.scss ***!
   \*****************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .header__UIn_ {
   display: flex;
   flex-direction: row;
@@ -294,17 +339,14 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-.container__sIcO {
-  display: flex;
-  max-width: 1920px;
-  width: calc(100% - 128px);
-  padding: 0 64px;
-  margin: 0 auto;
-}
-
 .restaurantInformation__xQHR {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+@media (min-width: 1200px) {
+  .restaurantInformation__xQHR {
+    flex-direction: row;
+  }
 }
 
 .restaurantInformationLines__nVtf {
@@ -333,13 +375,41 @@
   border-radius: 4px;
   transform: scale(0);
   transition: transform 1s;
+  width: 100%;
+  margin-bottom: 16px;
 }
 .image__iDSQ.imageGambleRevealed__CjMd {
   transform: scale(1);
 }
+@media (min-width: 1200px) {
+  .image__iDSQ {
+    width: 1200px;
+    margin-bottom: 0;
+  }
+}
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/GambleResultPage.scss ***!
   \******************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .pageContainer__fq2s {
   display: flex;
   flex-direction: column;
@@ -375,16 +445,18 @@
   border-color: #d1d4d4;
 }
 
-.imageGambleRevealed__ldp4 {
-  transform: scale(1);
-}
-
 .container__qD0x {
   display: flex;
   max-width: 1920px;
-  width: calc(100% - 128px);
-  padding: 0 64px;
   margin: 0 auto;
+  padding: 0 16px;
+  width: calc(100% - 32px);
+}
+@media (min-width: 1200px) {
+  .container__qD0x {
+    padding: 0 64px;
+    width: calc(100% - 128px);
+  }
 }
 
 .selectedItems__t5FK {
@@ -564,8 +636,8 @@ input.checkbox__jxxs[value=true] + .fakeCheckbox__RIMg .fakeCheckboxBox__gPp3 {
   animation: spin__GhXk 10s infinite linear;
   margin: auto auto 32px auto;
 }
-.logo__o4sS .superSpin__bTKN {
-  animation: spin__GhXk 1s infinite linear;
+.logo__o4sS.superSpin__bTKN {
+  animation: spin__GhXk 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
 }
 
 @keyframes spin__GhXk {

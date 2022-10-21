@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../../App.scss";
+
 .category {
   display: flex;
   flex-direction: column;
@@ -10,11 +13,17 @@
 
   display: grid;
   grid-gap: 32px 24px;
-  grid-template-areas: "menu basket";
-  grid-template-columns: 60% 1fr;
   grid-template-rows: auto 1fr;
   margin-top: 32px;
   width: 100%;
+
+  grid-template-areas:
+    "menu"
+    "basket";
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    grid-template-areas: "menu basket";
+    grid-template-columns: 60% 1fr;
+  }
 }
 
 .items {

@@ -9,7 +9,7 @@ const Logo: React.FC = () => {
 
     const className = classNames(
         styles.logo,
-        styles.superSpin && isSubmitting
+        isSubmitting && styles.superSpin
     )
 
     return (

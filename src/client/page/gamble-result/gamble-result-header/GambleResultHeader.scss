@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../../App.scss";
+
 .header {
   display: flex;
   flex-direction: row;
@@ -7,18 +10,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, .08);
 }
 
-.container {
-  display: flex;
-  max-width: 1920px;
-  width: calc(100% - 2 * 64px);
-
-  padding: 0 64px;
-  margin: 0 auto;
-}
-
 .restaurantInformation {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    flex-direction: row;
+  }
 }
 
 .restaurantInformationLines {
@@ -51,5 +49,12 @@
 
   &.imageGambleRevealed {
     transform: scale(1);
+  }
+
+  width: 100%;
+  margin-bottom: 16px;
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    width: 1200px;
+    margin-bottom: 0;
   }
 }
