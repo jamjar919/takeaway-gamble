@@ -6,7 +6,6 @@ import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {useGambleContext} from "../../context/GambleContext";
 
-import utensilsLoading from './animation/utensils-loading.json';
 import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
@@ -73,12 +72,9 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
                             />
                         )
                         : (
-                            <Lottie
-                                className={styles.loadingAnimation}
-                                loop
-                                animationData={utensilsLoading}
-                                play
-                            />
+                            <div className={styles.loadingAnimation}>
+                                <Logo size={"lg"} />
+                            </div>
                         )}
                 </div>
             </div>

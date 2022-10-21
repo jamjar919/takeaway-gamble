@@ -24,6 +24,7 @@ const PriceLimitInput = () => {
                 <button
                     type="submit"
                     className={styles.button}
+                    disabled={isSubmitting}
                 >
                     { isSubmitting ? <AsciiLoader type={AsciiLoaderTilesetType.Sonar} /> : "Gamble!"}
                 </button>

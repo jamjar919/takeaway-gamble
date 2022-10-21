@@ -153,6 +153,26 @@ a:hover {
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/Basket.scss ***!
   \***********************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .basket__g8xg {
   border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 4px;
@@ -180,7 +200,7 @@ a:hover {
 .banner__Tga7 {
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg, #6d2162, rgba(109, 33, 98, 0) 67%), #440063 url(https://cwa.roocdn.com/_next/static/media/banner.2a105818.svg) no-repeat top;
+  background: #B92626;
   border-radius: 4px;
   color: #fff;
   justify-content: space-between;
@@ -207,7 +227,7 @@ a:hover {
 
 .cta__C263 {
   display: block;
-  background: #822774;
+  background: #B92626;
   color: #fff;
   margin-top: 16px;
   line-height: 48px;
@@ -492,8 +512,8 @@ a:hover {
 }
 
 .loadingAnimation__HyWd {
-  margin: auto;
-  width: 500px;
+  display: flex;
+  width: 100%;
   height: 500px;
 }
 

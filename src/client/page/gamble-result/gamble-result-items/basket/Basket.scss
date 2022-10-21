@@ -1,3 +1,6 @@
+@use "sass:map";
+@import "../../../../App.scss";
+
 .basket {
   border: 1px solid rgba(0,0,0,.04);
   border-radius: 4px;
@@ -26,7 +29,7 @@
 .banner {
   display: flex;
   align-items: center;
-  background: linear-gradient(90deg,#6d2162,rgba(109,33,98,0) 67%),#440063 url(https://cwa.roocdn.com/_next/static/media/banner.2a105818.svg) no-repeat top;
+  background: map.get($color, "primary");
   border-radius: 4px;
   color: #fff;
   justify-content: space-between;
@@ -54,7 +57,7 @@
 
 .cta {
   display: block;
-  background: #822774;
+  background: map.get($color, "primary");
   color: #fff;
 
   margin-top: 16px;
