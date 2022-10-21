@@ -22,3 +22,5 @@ jspm_packages/
 .env.test
 
 dist/
+dist/client
+!dist/public
