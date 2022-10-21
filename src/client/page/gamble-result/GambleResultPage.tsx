@@ -10,6 +10,7 @@ import utensilsLoading from './animation/utensils-loading.json';
 import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
+import {Logo} from "../../framework/logo/Logo";
 
 type GambleResultProps = {
     result: SuccessfulGambleResponse;
@@ -45,6 +46,7 @@ const GambleResultPage: React.FC<GambleResultProps> = (props) => {
         <div className={styles.pageContainer}>
             <menu className={styles.menu}>
                 <div className={styles.container}>
+                    <Logo size={"sm"} />
                     <div className={styles.menuItems}>
                         <button
                             onClick={() => resetGamble()}

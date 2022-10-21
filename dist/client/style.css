@@ -71,11 +71,35 @@
 /*!**************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/category-items/CategoryItems.scss ***!
   \**************************************************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
 .categoryItems__Ytpm {
   display: grid;
   grid-auto-rows: auto;
   grid-gap: 16px;
-  grid-template: auto/repeat(2, 1fr);
+}
+@media (min-width: 1200px) {
+  .categoryItems__Ytpm {
+    grid-template: auto/repeat(2, 1fr);
+  }
 }
 /*!***************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-items/basket/basket-item/BasketItem.scss ***!
@@ -485,6 +509,33 @@ a:hover {
   margin: auto;
   min-height: 100vh;
 }
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/logo/Logo.scss ***!
+  \**************************************************************************************************************************************************************************************/
+.logo__hTdt {
+  animation: spin__YVlM 10s infinite linear;
+  margin: auto;
+}
+.logo__hTdt.superSpin__aOle {
+  animation: spin__YVlM 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
+}
+.logo__hTdt.sm__x15X {
+  height: 50px;
+  width: 50px;
+}
+.logo__hTdt.lg__SUvi {
+  height: 200px;
+  width: 200px;
+}
+
+@keyframes spin__YVlM {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
 /*!**************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/SearchPageForm.scss ***!
   \**************************************************************************************************************************************************************************************************/
@@ -561,6 +612,12 @@ a:hover {
 .button__Wyhe:hover {
   opacity: 0.8;
 }
+
+.logoContainer__yg32 {
+  width: 100%;
+  display: flex;
+  margin-bottom: 32px;
+}
 /*!*****************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/checkbox/Checkbox.scss ***!
   \*****************************************************************************************************************************************************************************************************/
@@ -621,32 +678,6 @@ a:hover {
 
 input.checkbox__jxxs[value=true] + .fakeCheckbox__RIMg .fakeCheckboxBox__gPp3 {
   display: block;
-}
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/logo/Logo.scss ***!
-  \****************************************************************************************************************************************************************************************/
-.logoContainer__SQBE {
-  width: 100%;
-  display: flex;
-}
-
-.logo__o4sS {
-  height: 200px;
-  width: 200px;
-  animation: spin__GhXk 10s infinite linear;
-  margin: auto auto 32px auto;
-}
-.logo__o4sS.superSpin__bTKN {
-  animation: spin__GhXk 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
-}
-
-@keyframes spin__GhXk {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
 }
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/search-error/SearchError.scss ***!

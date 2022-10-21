@@ -1,16 +1,19 @@
-.logoContainer {
-  width: 100%;
-  display: flex;
-}
-
 .logo {
-  height: 200px;
-  width: 200px;
   animation: spin 10s infinite linear;
-  margin: auto auto 32px auto;
+  margin: auto;
 
   &.superSpin {
     animation: spin 1s infinite cubic-bezier(0.560, -0.600, 0.000, 1.005);
+  }
+
+  &.sm {
+    height: 50px;
+    width: 50px;
+  }
+
+  &.lg {
+    height: 200px;
+    width: 200px;
   }
 }
 

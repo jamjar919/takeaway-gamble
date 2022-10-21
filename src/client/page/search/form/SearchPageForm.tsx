@@ -1,11 +1,14 @@
-import {Form, Formik} from "formik";
 import React from "react";
+import {Form, Formik} from "formik";
+
 import {PriceLimitInput} from "./price-limit-input/PriceLimitInput";
 import {Checkbox} from "./checkbox/Checkbox";
 import {PostcodeInput} from "./postcode-input/PostcodeInput";
 import {LocalStorageKey} from "../../../framework/localstorage/LocalStorageKey";
-import {Logo} from "../logo/Logo";
+import {Logo} from "../../../framework/logo/Logo";
 import {SearchError} from "../search-error/SearchError";
+
+import styles from './SearchPageForm.scss';
 
 enum SearchPageFormField {
     POSTCODE = 'POSTCODE',
@@ -42,16 +45,23 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                     .then(() => formikHelpers.setSubmitting(false));
             }}
         >
-            <Form>
-                <Logo />
-                <SearchError />
-                <PostcodeInput />
-                <PriceLimitInput />
-                <Checkbox
-                    name={SearchPageFormField.FIRST_ITEM_IS_LARGE}
-                    label={"Pick a large item for the first random selection"}
-                />
-            </Form>
+            {(formik) => (
+                <Form>
+                    <div className={styles.logoContainer}>
+                        <Logo
+                            size={"lg"}
+                            superSpin={formik.isSubmitting}
+                        />
+                    </div>
+                    <SearchError />
+                    <PostcodeInput />
+                    <PriceLimitInput />
+                    <Checkbox
+                        name={SearchPageFormField.FIRST_ITEM_IS_LARGE}
+                        label={"Pick a large item for the first random selection"}
+                    />
+                </Form>
+            )}
         </Formik>
     )
 }
