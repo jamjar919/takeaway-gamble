@@ -556,9 +556,9 @@ a:hover {
     -webkit-transform: rotate(360deg);
   }
 }
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/SearchPageForm.scss ***!
-  \**************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/input/checkbox/Checkbox.scss ***!
+  \****************************************************************************************************************************************************************************************************/
 body {
   margin: 0;
   font-family: "Helvetica", plex-sans, sans-serif;
@@ -579,93 +579,11 @@ a:hover {
   text-decoration: underline;
 }
 
-.inputContainer__MCS2 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  border-radius: 100px;
-  height: 48px;
-  margin: 10px 0;
-  padding: 12px 48px;
-}
-
-.unit__wCGl {
-  position: absolute;
-  left: 25px;
-  line-height: 48px;
-  color: #B92626;
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.input__Y89W {
-  border: none;
-  outline: none;
-  margin: -10px 0;
-  width: 100%;
-  font-size: 25px;
-}
-
-.buttonContainer___sHU {
-  position: absolute;
-  right: 16px;
-  display: flex;
-  height: 48px;
-}
-
-.button__Wyhe {
-  background: #B92626;
-  color: white;
-  border: none;
-  font-size: 16px;
-  line-height: 24px;
-  margin: auto;
-  padding: 10px 20px;
-  border-radius: 32px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 110px;
-  text-align: center;
-}
-.button__Wyhe:hover {
-  opacity: 0.8;
-}
-
-.logoContainer__yg32 {
-  width: 100%;
-  display: flex;
-  margin-bottom: 32px;
-}
-/*!*****************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/checkbox/Checkbox.scss ***!
-  \*****************************************************************************************************************************************************************************************************/
-body {
-  margin: 0;
-  font-family: "Helvetica", plex-sans, sans-serif;
-  color: #2e3333;
-}
-
-ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-.checkbox__jxxs {
+.checkbox__pb0E {
   display: none;
 }
 
-.checkboxLabel__Upiy {
+.checkboxLabel__w9x1 {
   cursor: pointer;
   display: flex;
   flex-direction: row;
@@ -674,7 +592,7 @@ a:hover {
   line-height: 26px;
 }
 
-.fakeCheckbox__RIMg {
+.fakeCheckbox__Uw8l {
   display: flex;
   border: 3px solid #B92626;
   border-radius: 20px;
@@ -683,11 +601,11 @@ a:hover {
   transition: ease-in-out 0.1s;
   margin-right: 15px;
 }
-.fakeCheckbox__RIMg:hover {
+.fakeCheckbox__Uw8l:hover {
   transform: scale(1.1);
 }
 
-.fakeCheckboxBox__gPp3 {
+.fakeCheckboxBox__SylU {
   display: none;
   background-color: #B92626;
   width: 10px;
@@ -696,7 +614,7 @@ a:hover {
   margin: auto;
 }
 
-input.checkbox__jxxs[value=true] + .fakeCheckbox__RIMg .fakeCheckboxBox__gPp3 {
+input.checkbox__pb0E[value=true] + .fakeCheckbox__Uw8l .fakeCheckboxBox__SylU {
   display: block;
 }
 /*!*******************************************************************************************************************************************************************************************************!*\
@@ -726,8 +644,115 @@ a:hover {
   background-color: firebrick;
   color: white;
   padding: 10px 20px;
-  margin: 10px 0;
+  margin: 10px 20px 20px 20px;
   border-left: solid 5px #B92626;
+}
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/SearchPageForm.scss ***!
+  \**************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.unit__wCGl {
+  color: #B92626;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.button__Wyhe {
+  background: #B92626;
+  color: white;
+  border: none;
+  font-size: 16px;
+  line-height: 24px;
+  margin: auto;
+  padding: 10px 20px;
+  border-radius: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 110px;
+  text-align: center;
+}
+.button__Wyhe:hover {
+  opacity: 0.8;
+}
+
+.logoContainer__yg32 {
+  width: 100%;
+  display: flex;
+  margin-bottom: 32px;
+}
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/input/text/TextInput.scss ***!
+  \*************************************************************************************************************************************************************************************************/
+body {
+  margin: 0;
+  font-family: "Helvetica", plex-sans, sans-serif;
+  color: #2e3333;
+}
+
+ul {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.inputContainer__nlom {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  height: 48px;
+  margin: 10px 0;
+  padding: 12px 48px;
+}
+
+.left__LWoT {
+  position: absolute;
+  left: 25px;
+  line-height: 48px;
+}
+
+.input__MRIb {
+  border: none;
+  outline: none;
+  margin: -10px 0;
+  width: 100%;
+  font-size: 25px;
+}
+
+.right__f95d {
+  position: absolute;
+  right: 16px;
+  display: flex;
+  height: 48px;
 }
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/SearchPage.scss ***!

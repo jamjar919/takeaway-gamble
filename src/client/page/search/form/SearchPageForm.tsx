@@ -1,14 +1,15 @@
 import React from "react";
 import {Form, Formik} from "formik";
 
-import {PriceLimitInput} from "./price-limit-input/PriceLimitInput";
-import {Checkbox} from "./checkbox/Checkbox";
-import {PostcodeInput} from "./postcode-input/PostcodeInput";
+import {Checkbox} from "../../../framework/input/checkbox/Checkbox";
 import {LocalStorageKey} from "../../../framework/localstorage/LocalStorageKey";
 import {Logo} from "../../../framework/logo/Logo";
 import {SearchError} from "../search-error/SearchError";
 
 import styles from './SearchPageForm.scss';
+import {TextInput} from "../../../framework/input/text/TextInput";
+import {AsciiLoader} from "../../../framework/ascii-loader/AsciiLoader";
+import {AsciiLoaderTilesetType} from "../../../framework/ascii-loader/AsciiLoaderTileset";
 
 enum SearchPageFormField {
     POSTCODE = 'POSTCODE',
@@ -45,17 +46,37 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                     .then(() => formikHelpers.setSubmitting(false));
             }}
         >
-            {(formik) => (
+            {({ isSubmitting}) => (
                 <Form>
                     <div className={styles.logoContainer}>
                         <Logo
                             size={"lg"}
-                            superSpin={formik.isSubmitting}
+                            superSpin={isSubmitting}
                         />
                     </div>
                     <SearchError />
-                    <PostcodeInput />
-                    <PriceLimitInput />
+                    <TextInput
+                        name={SearchPageFormField.POSTCODE}
+                        type="text"
+                        placeholder="Postcode..."
+                        left={<div className={styles.unit}>?</div>}
+                    />
+                    <TextInput
+                        className={styles.input}
+                        name={SearchPageFormField.PRICE_LIMIT}
+                        type="numeric"
+                        placeholder="12.00"
+                        left={<div className={styles.unit}>£</div>}
+                        right={
+                            <button
+                                type="submit"
+                                className={styles.button}
+                                disabled={isSubmitting}
+                            >
+                                { isSubmitting ? <AsciiLoader type={AsciiLoaderTilesetType.Sonar} /> : "Gamble!"}
+                            </button>
+                        }
+                    />
                     <Checkbox
                         name={SearchPageFormField.FIRST_ITEM_IS_LARGE}
                         label={"Pick a large item for the first random selection"}
