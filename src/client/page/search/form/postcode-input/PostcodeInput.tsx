@@ -7,6 +7,7 @@ import styles from '../SearchPageForm.scss';
 const PostcodeInput: React.FC = () => {
     return (
         <div className={styles.inputContainer}>
+            <div className={styles.unit}>⌂</div>
             <Field
                 className={styles.input}
                 name={SearchPageFormField.POSTCODE}
