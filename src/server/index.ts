@@ -16,6 +16,8 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/client"));
 
 app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response) => {
+    const postcode = req.body.postcode ?? ""
+
     let priceLimit = 12_00; // £12.00
     if (req.body?.priceLimit) {
         priceLimit = req.body?.priceLimit;
@@ -27,6 +29,7 @@ app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response
     }
 
     const response = await gamble(
+        postcode,
         priceLimit,
         { firstItemIsLarge }
     );

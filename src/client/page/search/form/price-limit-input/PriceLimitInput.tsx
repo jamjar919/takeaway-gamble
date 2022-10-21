@@ -1,10 +1,10 @@
 import {Field, useFormikContext} from "formik";
 import React from "react";
 import {SearchPageFormField} from "../SearchPageForm";
-
-import styles from './PriceLimitInput.scss';
 import {AsciiLoader} from "../../../../framework/ascii-loader/AsciiLoader";
 import {AsciiLoaderTilesetType} from "../../../../framework/ascii-loader/AsciiLoaderTileset";
+
+import styles from '../SearchPageForm.scss';
 
 const PriceLimitInput = () => {
     const {

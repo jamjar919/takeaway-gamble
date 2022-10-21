@@ -4,7 +4,7 @@ import {GambleResponse} from "../../common/type/GambleResponse";
 import {GAMBLE_REVEAL_TIME_MS} from "../framework/GambleConstants";
 
 type GambleContext = {
-    gamble: (price: number, firstItemIsLarge: boolean) => Promise<void>,
+    gamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     resetGamble: () => void,
     gambleResult: null | GambleResponse,
     gambleRevealed: boolean
@@ -25,8 +25,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
     const [gambleRevealed, setGambleRevealed] = useState<boolean>(false);
 
-    const gamble = (price: number, firstItemIsLarge: boolean) =>
-        doGamble(price, firstItemIsLarge)
+    const gamble = (postcode: string, price: number, firstItemIsLarge: boolean) =>
+        doGamble(postcode, price, firstItemIsLarge)
             .then((result) => setGambleResult(result))
             .then(() => {
                 setTimeout(

@@ -413,10 +413,10 @@
   margin: auto;
   min-height: 100vh;
 }
-/*!*********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/price-limit-input/PriceLimitInput.scss ***!
-  \*********************************************************************************************************************************************************************************************************************/
-.inputContainer__Cvp8 {
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/search/form/SearchPageForm.scss ***!
+  \**************************************************************************************************************************************************************************************************/
+.inputContainer__MCS2 {
   display: flex;
   flex-direction: row;
   position: relative;
@@ -424,12 +424,12 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   border-radius: 100px;
   height: 48px;
-  margin: 0;
+  margin: 10px 0;
   padding: 12px 48px;
   min-width: 575px;
 }
 
-.unit__HfqC {
+.unit__wCGl {
   position: absolute;
   left: 25px;
   line-height: 48px;
@@ -438,7 +438,7 @@
   font-weight: bold;
 }
 
-.input__eFbt {
+.input__Y89W {
   border: none;
   outline: none;
   margin: -10px 0;
@@ -446,14 +446,14 @@
   font-size: 25px;
 }
 
-.buttonContainer__zGC4 {
+.buttonContainer___sHU {
   position: absolute;
   right: 16px;
   display: flex;
   height: 48px;
 }
 
-.button__y9pW {
+.button__Wyhe {
   background: #822774;
   color: white;
   border: none;
@@ -467,7 +467,7 @@
   width: 110px;
   text-align: center;
 }
-.button__y9pW:hover {
+.button__Wyhe:hover {
   opacity: 0.8;
 }
 /*!*****************************************************************************************************************************************************************************************************!*\
