@@ -1,4 +1,4 @@
-import {Field} from "formik";
+import {Field, useFormikContext} from "formik";
 import React from "react";
 
 import styles from './TextInput.scss';
@@ -23,6 +23,8 @@ const TextInput: React.FC<TextInputProps> = (props) => {
         ...passThroughProps
     } = props;
 
+    const { isSubmitting } = useFormikContext();
+
     return (
         <div className={styles.inputContainer}>
             <div className={styles.left}>
@@ -32,6 +34,7 @@ const TextInput: React.FC<TextInputProps> = (props) => {
                 {...passThroughProps}
                 className={styles.input}
                 name={name}
+                disabled={isSubmitting}
             />
             <div className={styles.right}>
                 {right}
