@@ -1,14 +1,13 @@
 import React from "react";
 import {SearchPageForm, SearchPageFormField, SearchPageFormValues} from "./form/SearchPageForm";
+import {useGambleContext} from "../../context/GambleContext";
 
 import styles from './SearchPage.scss';
 
-type SearchPageType = {
-    onSearch: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
-}
-
-const SearchPage: React.FC<SearchPageType> = (props) => {
-    const {onSearch} = props;
+const SearchPage: React.FC = () => {
+    const {
+        gamble,
+    } = useGambleContext();
 
     return (
         <div className={styles.container}>
@@ -19,7 +18,7 @@ const SearchPage: React.FC<SearchPageType> = (props) => {
                         const price = Number(values[SearchPageFormField.PRICE_LIMIT]) * 100;
                         const firstItemIsLarge = values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
 
-                        return onSearch(
+                        return gamble(
                             postcode,
                             price,
                             firstItemIsLarge

@@ -1,45 +1,45 @@
 import React, {useState} from "react";
 import Lottie from 'react-lottie-player'
+import { Navigate } from "react-router-dom";
 
-import {SuccessfulGambleResponse} from "../../../common/type/GambleResponse";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {useGambleContext} from "../../context/GambleContext";
+import {Logo} from "../../framework/logo/Logo";
 
 import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
-import {Logo} from "../../framework/logo/Logo";
-
-type GambleResultProps = {
-    result: SuccessfulGambleResponse;
-    resetGamble: () => void;
-};
 
 /**
- * Renders the result of a gamble, just like Deliveroo!
+ * Renders the result of a gamble
  */
-const GambleResultPage: React.FC<GambleResultProps> = (props) => {
+const GambleResultPage: React.FC = () => {
 
     const {
-        result: {
-            selected: {
-                restaurant,
-                items,
-                url
-            },
-            all: {
-                restaurants,
-            }
-        },
-        resetGamble
-    } = props;
-
-    console.log(props.result);
-
-    const { gambleRevealed } = useGambleContext();
+        gambleResult,
+        resetGamble,
+        gambleRevealed
+    } = useGambleContext();
 
     const [hasShownConfetti, setHasShownConfetti] = useState(false);
+
+    if (gambleResult?.type !== "success") {
+        return <Navigate to="/" />;
+    }
+
+    const {
+        selected: {
+            restaurant,
+            items,
+            url
+        },
+        all: {
+            restaurants,
+        }
+    } = gambleResult;
+
+    console.log(gambleResult);
 
     return (
         <div className={styles.pageContainer}>

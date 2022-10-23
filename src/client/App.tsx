@@ -3,12 +3,15 @@ import {Pages} from "./page/Pages";
 import {GambleContextProvider} from "./context/GambleContext";
 
 import './App.scss';
+import {BrowserRouter} from "react-router-dom";
 
 const App: React.FC = () => {
     return (
-        <GambleContextProvider>
-            <Pages />
-        </GambleContextProvider>
+        <BrowserRouter>
+            <GambleContextProvider>
+                <Pages />
+            </GambleContextProvider>
+        </BrowserRouter>
     )
 }
 
