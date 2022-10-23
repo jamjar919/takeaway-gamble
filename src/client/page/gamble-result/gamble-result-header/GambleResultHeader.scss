@@ -1,0 +1,35 @@
+@use "sass:map";
+@import "../../../App.scss";
+
+.menu {
+  background: #fff;
+  border-bottom: 5px solid map.get($color, "primary");
+  box-shadow: 0 5px 0 0 rgb(0 0 0 / 8%);
+  display: flex;
+  margin: 0;
+
+  height: auto;
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    height: 128px;
+  }
+}
+
+.menuItemContainer {
+  display: flex;
+  flex-direction: row;
+
+  padding: 20px 0;
+  @media (min-width: map.get($grid-breakpoints, "lg")) {
+    padding: 0;
+  }
+}
+
+.menuStack {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto auto 20px;
+}
+
+.title {
+  margin-bottom: 5px;
+}

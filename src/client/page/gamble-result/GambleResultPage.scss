@@ -8,28 +8,6 @@
   background-color: #f9fafa;
 }
 
-.menu {
-  background: #fff;
-  border-bottom: 1px solid rgba(0,0,0,.08);
-  height: 72px;
-  display: flex;
-}
-
-.menuItems {
-  display: flex;
-  padding-bottom: 16px;
-  width: 100%;
-}
-
-.menuItemContainer {
-  display: flex;
-  flex-direction: row;
-}
-
-.title {
-  margin: auto auto auto .5em;
-}
-
 .container {
   display: flex;
   max-width: 1920px;
@@ -46,10 +24,6 @@
 
 .selectedItems {
   flex: 1 1;
-}
-
-.description {
-  margin: 8px 0;
 }
 
 .loadingAnimation {

@@ -4,19 +4,18 @@ import {CategoryHeader} from "./category-header/CategoryHeader";
 import {CategoryItems} from "./category-items/CategoryItems";
 import {Basket} from "./basket/Basket";
 import {SelectedItem} from "../../../../common/type/SelectedRestaurantAndItems";
-import {DeliverooRestaurantFull} from "../../../../server/type/deliveroo/DeliverooRestaurant";
 
 import styles from './GambleResultItems.scss';
 
 type ItemsProps = {
-    restaurant: DeliverooRestaurantFull,
     items: SelectedItem[];
     categories: DeliverooCategory[];
     ctaUrl: string;
+    imageUrl: string;
 };
 
 const GambleResultItems: React.FC<ItemsProps> = (props) => {
-    const { restaurant, items, categories, ctaUrl } = props;
+    const { imageUrl, items, categories, ctaUrl } = props;
 
     const result = categories
         .map((category) => {
@@ -41,11 +40,11 @@ const GambleResultItems: React.FC<ItemsProps> = (props) => {
                 {result}
             </div>
             <div className={styles.basketContainer}>
-                {restaurant.image && (
+                {imageUrl && (
                     <img
-                        src={image}
-                        alt={restaurant.name}
+                        src={imageUrl}
                         className={styles.image}
+                        alt={"Restaurant image"}
                     />
                 )}
                 <Basket selectedItems={items} ctaUrl={ctaUrl} />

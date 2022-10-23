@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   margin-top: 32px;
+
+  &:first-child {
+    margin-top: 0;
+  }
 }
 
 .result {
@@ -32,6 +36,10 @@
 
 .basketContainer {
   grid-area: basket;
+}
+
+.image {
+  width: 100%;
 }
 
 @keyframes rollup {

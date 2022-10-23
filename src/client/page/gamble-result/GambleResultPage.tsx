@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Lottie from 'react-lottie-player'
 import { Navigate } from "react-router-dom";
 
+import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import {useGambleContext} from "../../context/GambleContext";
 import {Logo} from "../../framework/logo/Logo";
@@ -48,28 +49,17 @@ const GambleResultPage: React.FC = () => {
 
     return (
         <div className={styles.pageContainer}>
-            <menu className={styles.menu}>
-                <div className={styles.container}>
-                    <div className={styles.menuItemContainer}>
-                        <Logo size={"sm"} />
-                        <h1 className={styles.title}>
-                            <a
-                                href={`https://deliveroo.co.uk${url}`}
-                                target="_blank"
-                            >
-                                {restaurant.restaurant.name}
-                            </a>
-                        </h1>
-                    </div>
-                </div>
-            </menu>
+            <GambleResultHeader
+                restaurant={restaurant.restaurant}
+                url={url}
+            />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
                     <GambleResultItems
-                        restaurant={restaurant.restaurant}
                         items={items}
                         categories={restaurant.categories}
                         ctaUrl={url}
+                        imageUrl={restaurant.metatags.image}
                     />
                 </div>
             </div>
