@@ -49,8 +49,10 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
 
     useEffect(() => {
         if (selectedOptionRef?.current) {
+            console.log(selectedOptionRef.current.offsetHeight);
+
             setHeight(
-                selectedOptionRef.current.getBoundingClientRect().height
+                selectedOptionRef.current.offsetHeight
             )
         }
     }, [selectedOptionRef?.current])

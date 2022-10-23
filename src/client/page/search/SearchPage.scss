@@ -3,6 +3,7 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -14,4 +15,15 @@
   @media (min-width: map.get($grid-breakpoints, "lg")) {
     min-width: 575px;
   }
+}
+
+.footer {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.footerItem {
+  margin: 10px;
+  flex-direction: row;
 }

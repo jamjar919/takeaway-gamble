@@ -26,7 +26,7 @@ type SearchPageFormValues = {
 const getInitialValues = (): SearchPageFormValues => {
     return {
         [SearchPageFormField.POSTCODE]: localStorage.getItem(LocalStorageKey.POSTCODE) ?? "",
-        [SearchPageFormField.PRICE_LIMIT]: '12.00',
+        [SearchPageFormField.PRICE_LIMIT]: localStorage.getItem(LocalStorageKey.PRICE_LIMIT) ?? '12.00',
         [SearchPageFormField.FIRST_ITEM_IS_LARGE]: true
     }
 };
@@ -42,6 +42,9 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
         <Formik
             initialValues={getInitialValues()}
             onSubmit={(values: SearchPageFormValues, formikHelpers) => {
+                localStorage.setItem(LocalStorageKey.POSTCODE, values[SearchPageFormField.POSTCODE]);
+                localStorage.setItem(LocalStorageKey.PRICE_LIMIT, values[SearchPageFormField.PRICE_LIMIT]);
+
                 onSubmit(values)
                     .then(() => formikHelpers.setSubmitting(false));
             }}

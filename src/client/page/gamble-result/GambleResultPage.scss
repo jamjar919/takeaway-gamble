@@ -21,20 +21,13 @@
   width: 100%;
 }
 
-.clearButton {
-  outline: none;
-  background: #fff;
-  border: 1px solid #e8ebeb;
-  font-size: 16px;
-  line-height: 22px;
-  cursor: pointer;
-  margin-left: auto;
-  padding: 8px 16px;
-  border-radius: 4px;
+.menuItemContainer {
+  display: flex;
+  flex-direction: row;
+}
 
-  &:hover {
-    border-color: #d1d4d4;
-  }
+.title {
+  margin: auto auto auto .5em;
 }
 
 .container {

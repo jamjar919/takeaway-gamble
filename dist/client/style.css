@@ -307,126 +307,31 @@ a:hover {
     opacity: 1;
   }
 }
-/*!************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
-  \************************************************************************************************************************************************************************************************************************/
-.container__ub_z {
-  overflow: hidden;
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/logo/Logo.scss ***!
+  \**************************************************************************************************************************************************************************************/
+.logo__hTdt {
+  animation: spin__YVlM 10s infinite linear;
+  margin: auto;
+}
+.logo__hTdt.superSpin__aOle {
+  animation: spin__YVlM 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
+}
+.logo__hTdt.sm__x15X {
+  height: 50px;
+  width: 50px;
+}
+.logo__hTdt.lg__SUvi {
+  height: 200px;
+  width: 200px;
 }
 
-.itemList__yglw {
-  position: relative;
-  animation: rollup__AEWn;
-  animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
-}
-
-.option__dIO1 {
-  margin-top: 5px;
-}
-
-@keyframes rollup__AEWn {
+@keyframes spin__YVlM {
   0% {
-    transform-origin: top;
-    transform: translateY(-100%);
+    -webkit-transform: rotate(0deg);
   }
   100% {
-    transform-origin: top;
-    transform: translateY(0%);
-  }
-}
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/address/Address.scss ***!
-  \********************************************************************************************************************************************************************************************/
-.address__diO7 {
-  display: flex;
-  flex-direction: row;
-  text-decoration: none;
-  font-style: italic;
-}
-
-.addressLine__b3Hs:after {
-  content: " - ";
-}
-.addressLine__b3Hs:last-child:after {
-  content: "";
-}
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/page/gamble-result/gamble-result-header/GambleResultHeader.scss ***!
-  \*****************************************************************************************************************************************************************************************************************************/
-body {
-  margin: 0;
-  font-family: "Helvetica", plex-sans, sans-serif;
-  color: #2e3333;
-}
-
-ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-.header__UIn_ {
-  display: flex;
-  flex-direction: row;
-  padding: 24px 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.restaurantInformation__xQHR {
-  display: flex;
-  flex-direction: column;
-}
-@media (min-width: 1200px) {
-  .restaurantInformation__xQHR {
-    flex-direction: row;
-  }
-}
-
-.restaurantInformationLines__nVtf {
-  display: flex;
-  flex-direction: column;
-}
-
-.name__xqwb {
-  font-size: 40px;
-  line-height: 48px;
-  margin: 0;
-}
-.name__xqwb a {
-  color: black;
-}
-
-.restaurantDetails__odPc {
-  margin-top: 8px;
-}
-
-.image__iDSQ {
-  display: block;
-  max-width: 550px;
-  margin-right: 50px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  transform: scale(0);
-  transition: transform 1s;
-  width: 100%;
-  margin-bottom: 16px;
-}
-.image__iDSQ.imageGambleRevealed__CjMd {
-  transform: scale(1);
-}
-@media (min-width: 1200px) {
-  .image__iDSQ {
-    width: 1200px;
-    margin-bottom: 0;
+    -webkit-transform: rotate(360deg);
   }
 }
 /*!******************************************************************************************************************************************************************************************************!*\
@@ -472,19 +377,13 @@ a:hover {
   width: 100%;
 }
 
-.clearButton___moy {
-  outline: none;
-  background: #fff;
-  border: 1px solid #e8ebeb;
-  font-size: 16px;
-  line-height: 22px;
-  cursor: pointer;
-  margin-left: auto;
-  padding: 8px 16px;
-  border-radius: 4px;
+.menuItemContainer__cXWL {
+  display: flex;
+  flex-direction: row;
 }
-.clearButton___moy:hover {
-  border-color: #d1d4d4;
+
+.title__g44U {
+  margin: auto auto auto 0.5em;
 }
 
 .container__qD0x {
@@ -526,33 +425,6 @@ a:hover {
 .confetti__se8o {
   margin: auto;
   min-height: 100vh;
-}
-/*!**************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/logo/Logo.scss ***!
-  \**************************************************************************************************************************************************************************************/
-.logo__hTdt {
-  animation: spin__YVlM 10s infinite linear;
-  margin: auto;
-}
-.logo__hTdt.superSpin__aOle {
-  animation: spin__YVlM 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
-}
-.logo__hTdt.sm__x15X {
-  height: 50px;
-  width: 50px;
-}
-.logo__hTdt.lg__SUvi {
-  height: 200px;
-  width: 200px;
-}
-
-@keyframes spin__YVlM {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
 }
 /*!****************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/input/checkbox/Checkbox.scss ***!
@@ -777,6 +649,7 @@ a:hover {
 
 .container__oFmK {
   display: flex;
+  flex-direction: column;
   height: 100vh;
 }
 
@@ -789,6 +662,17 @@ a:hover {
   .formContainer__HjSu {
     min-width: 575px;
   }
+}
+
+.footer__mt3E {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+}
+
+.footerItem__Vd1i {
+  margin: 10px;
+  flex-direction: row;
 }
 /*!**********************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/App.scss ***!

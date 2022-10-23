@@ -3,7 +3,6 @@ import Lottie from 'react-lottie-player'
 import { Navigate } from "react-router-dom";
 
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
-import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {useGambleContext} from "../../context/GambleContext";
 import {Logo} from "../../framework/logo/Logo";
 
@@ -18,7 +17,6 @@ const GambleResultPage: React.FC = () => {
 
     const {
         gambleResult,
-        resetGamble,
         gambleRevealed
     } = useGambleContext();
 
@@ -33,53 +31,50 @@ const GambleResultPage: React.FC = () => {
             restaurant,
             items,
             url
-        },
-        all: {
-            restaurants,
         }
     } = gambleResult;
 
     console.log(gambleResult);
 
+    if (!gambleRevealed) {
+        return (
+            <div className={styles.pageContainer}>
+                <div className={styles.loadingAnimation}>
+                    <Logo size={"lg"} />
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={styles.pageContainer}>
             <menu className={styles.menu}>
                 <div className={styles.container}>
-                    <Logo size={"sm"} />
-                    <div className={styles.menuItems}>
-                        <button
-                            onClick={() => resetGamble()}
-                            className={styles.clearButton}
-                        >
-                            Clear
-                        </button>
+                    <div className={styles.menuItemContainer}>
+                        <Logo size={"sm"} />
+                        <h1 className={styles.title}>
+                            <a
+                                href={`https://deliveroo.co.uk${url}`}
+                                target="_blank"
+                            >
+                                {restaurant.restaurant.name}
+                            </a>
+                        </h1>
                     </div>
                 </div>
             </menu>
-            <GambleResultHeader
-                restaurant={restaurant}
-                restaurantUrl={url}
-                availableRestaurants={restaurants}
-            />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
-                    {gambleRevealed
-                        ? (
-                            <GambleResultItems
-                                items={items}
-                                categories={restaurant.categories}
-                                ctaUrl={url}
-                            />
-                        )
-                        : (
-                            <div className={styles.loadingAnimation}>
-                                <Logo size={"lg"} />
-                            </div>
-                        )}
+                    <GambleResultItems
+                        restaurant={restaurant.restaurant}
+                        items={items}
+                        categories={restaurant.categories}
+                        ctaUrl={url}
+                    />
                 </div>
             </div>
             {
-                gambleRevealed && !hasShownConfetti && (
+                !hasShownConfetti && (
                     <div className={styles.confettiContainer}>
                         <Lottie
                             className={styles.confetti}

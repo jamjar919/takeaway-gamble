@@ -1,5 +1,7 @@
 import express, {Request, Response} from "express";
 import dotenv from "dotenv";
+import { parse as parsePostcode } from "postcode";
+
 import {Endpoints} from "../common/Endpoints";
 import {gamble, GambleRequest} from "./gamble/gamble";
 import {debug} from "./debug/debug";
@@ -26,7 +28,15 @@ app.get(Endpoints.RESULT, (_, res) => {
 
 // API
 app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response) => {
-    const postcode = req.body.postcode ?? ""
+    const postcode = parsePostcode(req.body.postcode ?? "")
+
+    if (!postcode.valid) {
+        sendJSON<GambleErrorResponse>({
+            type: "error",
+            error: "Please enter a valid postcode"
+        }, res);
+        return;
+    }
 
     let priceLimit = 12_00; // £12.00
     if (req.body?.priceLimit) {
@@ -39,7 +49,7 @@ app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response
     }
 
     const response = await gamble(
-        postcode,
+        postcode.postcode,
         priceLimit,
         { firstItemIsLarge }
     );

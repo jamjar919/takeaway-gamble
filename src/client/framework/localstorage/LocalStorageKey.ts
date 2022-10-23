@@ -1,5 +1,6 @@
 const LocalStorageKey = {
-    POSTCODE: "postcode"
+    POSTCODE: "postcode",
+    PRICE_LIMIT: "priceLimit"
 }
 
 export { LocalStorageKey }
