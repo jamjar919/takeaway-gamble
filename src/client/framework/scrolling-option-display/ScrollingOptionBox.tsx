@@ -1,4 +1,4 @@
-import React, {ReactNode, useEffect, useState} from "react";
+import React, {ReactNode, useEffect, useRef, useState} from "react";
 import {pickOneFromArray} from "../../../common/util/pickOneFromArray";
 
 import styles from './ScrollingOptionBox.scss';
@@ -27,7 +27,10 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
         onComplete
     } = props;
 
+    const [height, setHeight] = useState(15);
     const [complete, setComplete] = useState(false);
+
+    const selectedOptionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const id = setTimeout(
@@ -44,20 +47,40 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
         return () => clearTimeout(id);
     })
 
+    useEffect(() => {
+        if (selectedOptionRef?.current) {
+            setHeight(
+                selectedOptionRef.current.getBoundingClientRect().height
+            )
+        }
+    }, [selectedOptionRef?.current])
+
     if (complete) {
         return (<>{selected}</>);
     }
 
     return (
-        <div className={styles.container}>
+        <div
+            className={styles.container}
+            style={{ height }}
+        >
             <div
                 className={styles.itemList}
-                style={{ animationDuration: `${animationDuration}ms` }}
+                style={{
+                    top: "-" + height,
+                    animationDuration: `${animationDuration}ms`
+                }}
             >
-                <ScrollingOption key="topper">{pickOneFromArray(choices)}</ScrollingOption>
-                <ScrollingOption key="selected">{selected}</ScrollingOption>
-                {choices.map((choice) =>
-                    <ScrollingOption key={String(choice)}>{choice}</ScrollingOption>
+                <ScrollingOption key="topper" style={{ height }}>
+                    {pickOneFromArray(choices)}
+                </ScrollingOption>
+                <ScrollingOption key="selected" ref={selectedOptionRef} style={{ height }}>
+                    {selected}
+                </ScrollingOption>
+                {choices.map((choice, index) =>
+                    <ScrollingOption key={String(choice)+index} style={{ height }}>
+                        {choice}
+                    </ScrollingOption>
                 )}
             </div>
         </div>

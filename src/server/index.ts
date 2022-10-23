@@ -15,6 +15,16 @@ app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/client"));
 
+// App
+app.get(Endpoints.SEARCH, (_, res) => {
+    res.sendFile(__dirname + "/client/index.html")
+});
+
+app.get(Endpoints.RESULT, (_, res) => {
+    res.sendFile(__dirname + "/client/index.html")
+});
+
+// API
 app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response) => {
     const postcode = req.body.postcode ?? ""
 

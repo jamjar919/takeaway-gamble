@@ -1,11 +1,9 @@
 .container {
-  height: 1em;
   overflow: hidden;
 }
 
 .itemList {
   position: relative;
-  top: calc(-1em - 15px);
   animation: rollup;
   animation-timing-function: cubic-bezier(0,1.1,.25,1);
 }

@@ -311,13 +311,11 @@ a:hover {
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./src/client/framework/scrolling-option-display/ScrollingOptionBox.scss ***!
   \************************************************************************************************************************************************************************************************************************/
 .container__ub_z {
-  height: 1em;
   overflow: hidden;
 }
 
 .itemList__yglw {
   position: relative;
-  top: calc(-1em - 15px);
   animation: rollup__AEWn;
   animation-timing-function: cubic-bezier(0, 1.1, 0.25, 1);
 }
