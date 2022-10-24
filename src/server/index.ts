@@ -40,18 +40,23 @@ app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response
 
     let priceLimit = 12_00; // £12.00
     if (req.body?.priceLimit) {
-        priceLimit = req.body?.priceLimit;
+        priceLimit = req.body.priceLimit;
     }
 
     let firstItemIsLarge = true;
     if (!!req.body?.firstItemIsLarge) {
-        firstItemIsLarge = req.body?.firstItemIsLarge;
+        firstItemIsLarge = req.body.firstItemIsLarge;
+    }
+
+    let restaurantId = null;
+    if (req.body?.restaurantId) {
+        firstItemIsLarge = req.body.restaurantId;
     }
 
     const response = await gamble(
         postcode.postcode,
         priceLimit,
-        { firstItemIsLarge }
+        { firstItemIsLarge, restaurantId }
     );
 
     sendJSON<SuccessfulGambleResponse | GambleErrorResponse>(response, res);

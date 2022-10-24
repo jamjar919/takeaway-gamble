@@ -9,7 +9,11 @@ const MAX_RESTAURANTS = 9;
 const getOpenPlaceFromState = async (
     placesToEat: Restaurant[],
     attempt = 0
-): Promise<[Restaurant, DeliverooState, DeliverooMenuPageState["menu"]["meta"]]> => {
+): Promise<{
+    selectedPlace: Restaurant,
+    restaurantContext: DeliverooState,
+    selectedPlaceMeta: DeliverooMenuPageState["menu"]["meta"]
+}> => {
     if (attempt > MAX_RESTAURANTS) {
         throw new Error("Polled too many places");
     }
@@ -40,11 +44,11 @@ const getOpenPlaceFromState = async (
         )
     }
 
-    return [
+    return {
         selectedPlace,
         restaurantContext,
         selectedPlaceMeta
-    ]
+    }
 }
 
 export { getOpenPlaceFromState }

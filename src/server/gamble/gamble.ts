@@ -10,7 +10,8 @@ import {getPlacesToEatUrl} from "./get-places-to-eat-url/getPlacesToEatUrl";
 type GambleRequest = {
     postcode: string,
     priceLimit?: number;
-    firstItemIsLarge?: boolean
+    firstItemIsLarge?: boolean;
+    restaurantId?: string;
 }
 
 const GAMBLE_MAX = 1000_00;
@@ -19,7 +20,8 @@ const gamble = async (
     address: string,
     priceLimit: number,
     options: {
-        firstItemIsLarge: boolean
+        firstItemIsLarge: boolean,
+        restaurantId: number | null
     }
 ): Promise<SuccessfulGambleResponse | GambleErrorResponse> => {
     try {
@@ -30,29 +32,39 @@ const gamble = async (
             };
         }
 
-        // Get deliveroo URL
-        const url = await getPlacesToEatUrl(address);
+        let restaurantData;
+        // If no restaurant id supplied, pick one based on postcode
+        if (options.restaurantId === null) {
 
-        if (!url) {
-            return {
-                type: "error",
-                error: "Could not find restaurants for your area"
-            };
+            // Get deliveroo URL
+            const url = await getPlacesToEatUrl(address);
+
+            if (!url) {
+                return {
+                    type: "error",
+                    error: "Could not find restaurants for your area"
+                };
+            }
+
+            // Obtain restaurants in the area
+            const searchPageContext = await getDeliverooContextFromUrl(url);
+
+            // Get all the places to eat from the search page
+            const placesToEat = getPlacesToEat(searchPageContext);
+
+            // Select one that's open
+            restaurantData = await getOpenPlaceFromState(
+                placesToEat
+            );
+        } else {
+            restaurantData = await getPlaceFromRestaurantId(
+                options.restaurantId
+            );
         }
 
-        // Obtain restaurants in the area
-        const searchPageContext = await getDeliverooContextFromUrl(url);
-
-        const placesToEat = getPlacesToEat(searchPageContext);
-
-        // Get one that's open
-        const [selectedPlace, restaurantContext, selectedPlaceMeta] = await getOpenPlaceFromState(
-            placesToEat
-        );
-
         // Get items
-        const items = getMenuItems(restaurantContext);
-        const modifierGroups = getModifierGroups(restaurantContext);
+        const items = getMenuItems(restaurantData.restaurantContext);
+        const modifierGroups = getModifierGroups(restaurantData.restaurantContext);
 
         // Select some random items + modifiers
         const selectedItems = selectMenuItems(
@@ -63,19 +75,15 @@ const gamble = async (
         );
 
         console.log(
-            `Generated ${selectedItems.length} items for ${selectedPlace.name} with limit ${priceLimit}`
+            `Generated ${selectedItems.length} items for ${restaurantData.selectedPlace.name} with limit ${priceLimit}`
         );
 
         return {
             type: "success",
-            all: {
-                restaurants: placesToEat,
-                items
-            },
             selected: {
-                restaurant: selectedPlaceMeta,
+                restaurant: restaurantData.selectedPlace,
                 items: selectedItems,
-                url: selectedPlace.url
+                url: restaurantData.selectedPlace.url
             }
         };
 
