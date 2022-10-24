@@ -16,6 +16,7 @@ const getPlacesToEat = (state: DeliverooState): Restaurant[] => {
         .map((uiLayoutCard) => uiLayoutCard.target)
         .filter((target) => { // filter to just UITargetRestaurant
             if (target.typeName === "UITargetRestaurant") {
+                console.log(target);
                 return true;
             }
 

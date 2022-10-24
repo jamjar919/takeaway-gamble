@@ -6,6 +6,8 @@ import {GambleErrorResponse, SuccessfulGambleResponse} from "../../common/type/G
 import {getModifierGroups} from "./getModifierGroups";
 import {getOpenPlaceFromState} from "./getOpenRestaurant";
 import {getPlacesToEatUrl} from "./get-places-to-eat-url/getPlacesToEatUrl";
+import {Restaurant} from "../type/Restaurant";
+import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
 
 type GambleRequest = {
     postcode: string,
@@ -32,8 +34,13 @@ const gamble = async (
             };
         }
 
-        let restaurantData;
-        // If no restaurant id supplied, pick one based on postcode
+        let restaurantData: {
+            selectedPlace: Restaurant,
+            restaurantContext: DeliverooState,
+            selectedPlaceMeta: DeliverooMenuPageState["menu"]["meta"]
+        };
+
+        // If no restaurant id supplied, pick one based on geolocation
         if (options.restaurantId === null) {
 
             // Get deliveroo URL
@@ -81,7 +88,7 @@ const gamble = async (
         return {
             type: "success",
             selected: {
-                restaurant: restaurantData.selectedPlace,
+                restaurant: restaurantData.selectedPlaceMeta,
                 items: selectedItems,
                 url: restaurantData.selectedPlace.url
             }
