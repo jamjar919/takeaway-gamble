@@ -56,7 +56,7 @@ app.post(Endpoints.GAMBLE, async (req: Request<{}, GambleRequest>, res: Response
     const response = await gamble(
         postcode.postcode,
         priceLimit,
-        { firstItemIsLarge, restaurantId }
+        { firstItemIsLarge, restaurantUrl: restaurantId }
     );
 
     sendJSON<SuccessfulGambleResponse | GambleErrorResponse>(response, res);

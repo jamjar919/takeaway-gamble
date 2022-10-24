@@ -24,3 +24,5 @@ jspm_packages/
 dist/
 dist/client
 !dist/public
+
+.DS_Store
