@@ -1,5 +1,5 @@
-import {DeliverooState} from "../type/deliveroo/DeliverooState";
-import {Restaurant} from "../type/Restaurant";
+import {DeliverooState} from "../../type/deliveroo/DeliverooState";
+import {Restaurant} from "../../type/Restaurant";
 
 // Store a list of URL's we've seen
 const placesToEatCollection = new Set<string>()
@@ -15,7 +15,7 @@ const normaliseUrlPath = (url: string) => {
 }
 
 // Convert the deliveroo state to a list of restaurants
-const getPlacesToEat = (state: DeliverooState): Restaurant[] => {
+const getPlacesToEatFromDeliverooState = (state: DeliverooState): Restaurant[] => {
     if (!state?.props?.initialState?.home?.feed?.results?.data?.length) {
         console.error("Could not find any restaurants in state");
         console.error(state?.props?.initialState)
@@ -50,4 +50,4 @@ const getPlacesToEat = (state: DeliverooState): Restaurant[] => {
         })
 };
 
-export { getPlacesToEat, validatePlaceToEatUrl, normaliseUrlPath }
+export { getPlacesToEatFromDeliverooState, validatePlaceToEatUrl, normaliseUrlPath };

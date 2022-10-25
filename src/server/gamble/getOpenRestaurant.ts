@@ -2,7 +2,7 @@ import {Restaurant} from "../type/Restaurant";
 import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
 import {pickOneFromArray} from "../../common/util/pickOneFromArray";
 import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
-import {getPlaceToEatMeta} from "./getPlaceToEatMeta";
+import {getPlaceToEatMetaFromDeliverooState} from "./deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
 
 const MAX_RESTAURANTS = 9;
 
@@ -27,7 +27,7 @@ const getOpenPlaceFromState = async (
     );
 
     // Retrieve more detailed information
-    const selectedPlaceMeta = getPlaceToEatMeta(
+    const selectedPlaceMeta = getPlaceToEatMetaFromDeliverooState(
         restaurantContext
     )
 

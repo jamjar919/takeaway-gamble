@@ -1,5 +1,5 @@
-import {DeliverooItem} from "../../type/deliveroo/DeliverooItem";
-import {getPriceFromDeliverooObject} from "../../../common/util/getPriceFromDeliverooObject";
+import {DeliverooItem} from "../../../type/deliveroo/DeliverooItem";
+import {getPriceFromDeliverooObject} from "../../../../common/util/getPriceFromDeliverooObject";
 
 const filterItemsBelowPrice = (
     items: DeliverooItem[],

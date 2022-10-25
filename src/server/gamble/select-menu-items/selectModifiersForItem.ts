@@ -1,9 +1,9 @@
-import {DeliverooItem} from "../type/deliveroo/DeliverooItem";
-import {DeliverooModifierGroup} from "../type/deliveroo/DeliverooModifierGroup";
-import {SelectedModifier} from "../../common/type/SelectedRestaurantAndItems";
-import {DeliverooModifierOption} from "../type/deliveroo/DeliverooModifierOption";
-import {pickOneFromArray} from "../../common/util/pickOneFromArray";
-import {getPriceFromDeliverooObject} from "../../common/util/getPriceFromDeliverooObject";
+import {DeliverooItem} from "../../type/deliveroo/DeliverooItem";
+import {DeliverooModifierGroup} from "../../type/deliveroo/DeliverooModifierGroup";
+import {SelectedModifier} from "../../../common/type/SelectedRestaurantAndItems";
+import {DeliverooModifierOption} from "../../type/deliveroo/DeliverooModifierOption";
+import {pickOneFromArray} from "../../../common/util/pickOneFromArray";
+import {getPriceFromDeliverooObject} from "../../../common/util/getPriceFromDeliverooObject";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 

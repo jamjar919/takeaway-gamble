@@ -18,7 +18,7 @@ const GambleResultPage: React.FC = () => {
 
     const {
         gambleResult,
-        gambleRevealed
+        gambleRevealed,
     } = useGambleContext();
 
     const [hasShownConfetti, setHasShownConfetti] = useState(false);
@@ -61,6 +61,11 @@ const GambleResultPage: React.FC = () => {
                         ctaUrl={url}
                         imageUrl={restaurant.metatags.image}
                     />
+                    <div>
+                        <button>
+                            Regamble!
+                        </button>
+                    </div>
                 </div>
             </div>
             {

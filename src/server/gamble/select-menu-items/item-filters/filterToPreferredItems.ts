@@ -1,5 +1,5 @@
-import {DeliverooItem} from "../../type/deliveroo/DeliverooItem";
-import {getPriceFromDeliverooObject} from "../../../common/util/getPriceFromDeliverooObject";
+import {DeliverooItem} from "../../../type/deliveroo/DeliverooItem";
+import {getPriceFromDeliverooObject} from "../../../../common/util/getPriceFromDeliverooObject";
 import {filterItemsAbovePrice} from "./filterItemsByPrice";
 
 /** Apply a heuristic to filter to preferred items */
