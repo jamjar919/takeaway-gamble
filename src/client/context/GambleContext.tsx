@@ -1,4 +1,4 @@
-import React, {ReactNode, useMemo, useState} from "react";
+import React, {ReactNode, useState} from "react";
 import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 import {GAMBLE_REVEAL_TIME_MS} from "../framework/GambleConstants";
@@ -9,14 +9,16 @@ type GambleContext = {
     postcodeGamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     urlGamble: (url: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     gambleResult: null | GambleResponse,
-    gambleRevealed: boolean
+    gambleRevealed: boolean,
+    gambleInProgress: boolean
 }
 
 const defaultValues: GambleContext = {
     postcodeGamble: () => Promise.reject('Not initialised'),
     urlGamble: () => Promise.reject('Not initialised'),
     gambleResult: null,
-    gambleRevealed: false
+    gambleRevealed: false,
+    gambleInProgress: false
 }
 
 const Context = React.createContext<GambleContext>(defaultValues);
@@ -27,9 +29,12 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const navigate = useNavigate()
 
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
+    const [gambleInProgress, setGambleInProgress] = useState<boolean>(false);
     const [gambleRevealed, setGambleRevealed] = useState<boolean>(false);
 
     const handleGambleResult = (response: Promise<GambleResponse>): Promise<void> => {
+        setGambleInProgress(true);
+
         return response.then((result: GambleResponse) => {
             setGambleResult(result);
 
@@ -42,6 +47,9 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 () => setGambleRevealed(true),
                 GAMBLE_REVEAL_TIME_MS
             )
+        })
+        .finally(() => {
+            setGambleInProgress(false);
         });
     }
 
@@ -61,14 +69,13 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
             firstItemIsLarge
         }));
 
-    const context = useMemo(() => {
-        return {
-            postcodeGamble,
-            urlGamble,
-            gambleResult,
-            gambleRevealed
-        }
-    }, [postcodeGamble, urlGamble, gambleResult, gambleRevealed]);
+    const context = {
+        postcodeGamble,
+        urlGamble,
+        gambleResult,
+        gambleRevealed,
+        gambleInProgress
+    };
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };

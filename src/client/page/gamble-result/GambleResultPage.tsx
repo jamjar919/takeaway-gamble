@@ -1,6 +1,6 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Lottie from 'react-lottie-player'
-import { Navigate } from "react-router-dom";
+import {Navigate, useLocation} from "react-router-dom";
 
 import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
@@ -19,12 +19,39 @@ const GambleResultPage: React.FC = () => {
     const {
         gambleResult,
         gambleRevealed,
+        gambleInProgress,
+        urlGamble
     } = useGambleContext();
+
+    console.log(gambleResult);
 
     const [hasShownConfetti, setHasShownConfetti] = useState(false);
 
-    if (gambleResult?.type !== "success") {
+    const { pathname } = useLocation()
+
+    // Gamble for this page if a result isn't present
+    useEffect(() => {
+        if (!gambleInProgress && gambleResult === null) {
+            urlGamble(
+                pathname,
+                1200,
+                true
+            );
+        }
+    }, [gambleInProgress, gambleResult, pathname, urlGamble])
+    
+    if (gambleResult?.type === "error") {
         return <Navigate to="/" />;
+    }
+
+    if (!gambleRevealed || gambleResult === null) {
+        return (
+            <div className={styles.pageContainer}>
+                <div className={styles.loadingAnimation}>
+                    <Logo size={"lg"} />
+                </div>
+            </div>
+        );
     }
 
     const {
@@ -34,18 +61,6 @@ const GambleResultPage: React.FC = () => {
             url
         }
     } = gambleResult;
-
-    console.log(gambleResult);
-
-    if (!gambleRevealed) {
-        return (
-            <div className={styles.pageContainer}>
-                <div className={styles.loadingAnimation}>
-                    <Logo size={"lg"} />
-                </div>
-            </div>
-        );
-    }
 
     return (
         <div className={styles.pageContainer}>
