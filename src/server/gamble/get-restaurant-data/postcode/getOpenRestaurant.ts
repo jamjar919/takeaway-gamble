@@ -1,8 +1,8 @@
-import {Restaurant} from "../type/Restaurant";
-import {DeliverooMenuPageState, DeliverooState} from "../type/deliveroo/DeliverooState";
-import {pickOneFromArray} from "../../common/util/pickOneFromArray";
-import {getDeliverooContextFromUrl} from "./getDeliverooContextFromUrl";
-import {getPlaceToEatMetaFromDeliverooState} from "./deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
+import {Restaurant} from "../../../type/Restaurant";
+import {DeliverooMenuPageState, DeliverooState} from "../../../type/deliveroo/DeliverooState";
+import {pickOneFromArray} from "../../../../common/util/pickOneFromArray";
+import {getDeliverooContextFromUrl} from "../../getDeliverooContextFromUrl";
+import {getPlaceToEatMetaFromDeliverooState} from "../../deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
 
 const MAX_RESTAURANTS = 9;
 

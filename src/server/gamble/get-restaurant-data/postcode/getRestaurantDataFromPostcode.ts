@@ -1,7 +1,7 @@
 import {getPlacesToEatUrl} from "./get-places-to-eat-url/getPlacesToEatUrl";
 import {getDeliverooContextFromUrl} from "../../getDeliverooContextFromUrl";
 import {getPlacesToEatFromDeliverooState} from "../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
-import {getOpenPlaceFromState} from "../../getOpenRestaurant";
+import {getOpenPlaceFromState} from "./getOpenRestaurant";
 import {RestaurantDataBundle} from "../../../type/RestaurantDataBundle";
 
 const getRestaurantDataFromPostcode = async (
