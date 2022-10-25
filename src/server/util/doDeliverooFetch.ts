@@ -31,7 +31,9 @@ const getOptions = (): RequestInit => ({
 })
 
 const doDeliverooFetch = (url: string, attemptNumber = 0): Promise<Response> => {
-    return fetch(BASE_URL + url + "?collection=all-restaurants", getOptions())
+
+    console.log("fetching", url);
+    return fetch(BASE_URL + url, getOptions())
         .then((res: Response) => {
             const newCookie = parseCookie(res.headers.get('set-cookie') || '');
 

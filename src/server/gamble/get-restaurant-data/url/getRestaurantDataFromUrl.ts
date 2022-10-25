@@ -1,10 +1,7 @@
-import {
-    normaliseUrlPath,
-    validatePlaceToEatUrl
-} from "../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
 import {getDeliverooContextFromUrl} from "../../getDeliverooContextFromUrl";
 import {getPlaceToEatMetaFromDeliverooState} from "../../deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
 import {RestaurantDataBundle} from "../../../type/RestaurantDataBundle";
+import {normaliseUrlPath, validatePlaceToEatUrl} from "./deliverooMenuUrlCache";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string,

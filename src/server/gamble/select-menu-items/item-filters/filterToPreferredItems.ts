@@ -14,8 +14,6 @@ const filterToPreferredItems = (
 
     const priceLimit = getPriceFromDeliverooObject(priceLimitItem).fractional;
 
-    console.log("Median price: ", priceLimit);
-
     return filterItemsAbovePrice(items, priceLimit);
 }
 

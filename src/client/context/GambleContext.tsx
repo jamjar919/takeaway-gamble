@@ -3,17 +3,18 @@ import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 import {GAMBLE_REVEAL_TIME_MS} from "../framework/GambleConstants";
 import {useNavigate} from "react-router-dom";
+import {GambleMethod} from "../../common/type/GambleRequest";
 
 type GambleContext = {
-    gamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
-    resetGamble: () => void,
+    postcodeGamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
+    urlGamble: (url: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     gambleResult: null | GambleResponse,
     gambleRevealed: boolean
 }
 
 const defaultValues: GambleContext = {
-    gamble: () => Promise.reject('Not initialised'),
-    resetGamble: () => {},
+    postcodeGamble: () => Promise.reject('Not initialised'),
+    urlGamble: () => Promise.reject('Not initialised'),
     gambleResult: null,
     gambleRevealed: false
 }
@@ -28,32 +29,43 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
     const [gambleRevealed, setGambleRevealed] = useState<boolean>(false);
 
-    const gamble = (postcode: string, price: number, firstItemIsLarge: boolean) =>
-        doGamble(postcode, price, firstItemIsLarge)
-            .then((result) => {
-                setGambleResult(result);
-                navigate("/result");
-            })
-            .then(() => {
-                setTimeout(
-                    () => setGambleRevealed(true),
-                    GAMBLE_REVEAL_TIME_MS
-                )
-            });
+    const handleGambleResult = (response: Promise<GambleResponse>): Promise<void> => {
+        return response.then((result) => {
+            setGambleResult(result);
+            navigate("/result");
+        })
+        .then(() => {
+            setTimeout(
+                () => setGambleRevealed(true),
+                GAMBLE_REVEAL_TIME_MS
+            )
+        });
+    }
 
-    const resetGamble = () => {
-        setGambleResult(null);
-        setGambleRevealed(false);
-    };
+    const postcodeGamble = (postcode: string, priceLimit: number, firstItemIsLarge: boolean) =>
+        handleGambleResult(doGamble({
+            method: GambleMethod.POSTCODE,
+            postcode,
+            priceLimit,
+            firstItemIsLarge
+        }));
+
+    const urlGamble = (url: string, priceLimit: number, firstItemIsLarge: boolean) =>
+        handleGambleResult(doGamble({
+            method: GambleMethod.URL,
+            url,
+            priceLimit,
+            firstItemIsLarge
+        }));
 
     const context = useMemo(() => {
         return {
-            gamble,
-            resetGamble,
+            postcodeGamble,
+            urlGamble,
             gambleResult,
             gambleRevealed
         }
-    }, [gamble, gambleResult, gambleRevealed]);
+    }, [postcodeGamble, urlGamble, gambleResult, gambleRevealed]);
 
     return (<Context.Provider value={context}>{children}</Context.Provider>)
 };

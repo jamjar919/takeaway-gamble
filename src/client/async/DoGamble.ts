@@ -1,14 +1,11 @@
 import {Endpoints} from "../../common/Endpoints";
 import {GambleResponse} from "../../common/type/GambleResponse";
+import {GambleRequest} from "../../common/type/GambleRequest";
 
-const doGamble = (
-    postcode: string,
-    priceLimit: number,
-    firstItemIsLarge: boolean
-): Promise<GambleResponse> => {
+const doGamble = (request: GambleRequest): Promise<GambleResponse> => {
     return fetch(Endpoints.GAMBLE, {
         method: "POST",
-        body: JSON.stringify({ postcode, priceLimit, firstItemIsLarge }),
+        body: JSON.stringify(request),
         headers: {
             "Content-Type": "application/json"
         }

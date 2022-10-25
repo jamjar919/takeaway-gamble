@@ -1,6 +1,5 @@
 import {geocode} from "./google-maps/geocode";
 import fetch, {RequestInit} from "node-fetch";
-import {normaliseUrlPath} from "../../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
 
 type DeliverooRestaurantApiResponse = {
     coordinates: [number, number],
@@ -46,7 +45,7 @@ const getPlacesToEatUrl = async (postcode: string): Promise<string | null> => {
     const response = await callDeliverooApi(geocodedLocation)
 
     if (response.url) {
-        return normaliseUrlPath(response.url);
+        return response.url + "&collection=all-restaurants";
     }
 
     return null;

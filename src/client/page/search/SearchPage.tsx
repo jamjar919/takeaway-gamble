@@ -6,7 +6,7 @@ import styles from './SearchPage.scss';
 
 const SearchPage: React.FC = () => {
     const {
-        gamble,
+        postcodeGamble,
     } = useGambleContext();
 
     return (
@@ -18,7 +18,7 @@ const SearchPage: React.FC = () => {
                         const price = Number(values[SearchPageFormField.PRICE_LIMIT]) * 100;
                         const firstItemIsLarge = values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
 
-                        return gamble(
+                        return postcodeGamble(
                             postcode,
                             price,
                             firstItemIsLarge

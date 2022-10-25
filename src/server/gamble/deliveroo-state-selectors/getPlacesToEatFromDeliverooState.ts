@@ -1,18 +1,6 @@
 import {DeliverooState} from "../../type/deliveroo/DeliverooState";
 import {Restaurant} from "../../type/Restaurant";
-
-// Store a list of URL's we've seen
-const placesToEatCollection = new Set<string>()
-
-// Compare a given url to see if we've seen it before (and therefore it's safe to visit)
-const validatePlaceToEatUrl = (url: string) => {
-    return placesToEatCollection.has(normaliseUrlPath(url));
-}
-
-// Strip the end of the URL (eg, /menu/oxford/old-headington/moonlight-balti?geohash=gcpnk3m8gxyf => /menu/oxford/old-headington/moonlight-balti)
-const normaliseUrlPath = (url: string) => {
-    return url.split('?')[0];
-}
+import {addUrlToCache} from "../get-restaurant-data/url/deliverooMenuUrlCache";
 
 // Convert the deliveroo state to a list of restaurants
 const getPlacesToEatFromDeliverooState = (state: DeliverooState): Restaurant[] => {
@@ -39,9 +27,9 @@ const getPlacesToEatFromDeliverooState = (state: DeliverooState): Restaurant[] =
         })
         .map((uiTargetRestaurant) => uiTargetRestaurant.restaurant)
         .map((deliverooRestaurant) => {
-            const url = normaliseUrlPath(deliverooRestaurant.links.self.href);
+            const url = deliverooRestaurant.links.self.href;
 
-            placesToEatCollection.add(url);
+            addUrlToCache(url);
 
             return {
                 name: deliverooRestaurant.name,
@@ -50,4 +38,4 @@ const getPlacesToEatFromDeliverooState = (state: DeliverooState): Restaurant[] =
         })
 };
 
-export { getPlacesToEatFromDeliverooState, validatePlaceToEatUrl, normaliseUrlPath };
+export { getPlacesToEatFromDeliverooState };
