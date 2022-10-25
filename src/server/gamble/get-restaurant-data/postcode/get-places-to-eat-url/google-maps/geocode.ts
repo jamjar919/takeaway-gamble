@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-import {Cache} from "../../../util/cache";
+import {Cache} from "../../../../../util/cache";
 
 dotenv.config();
 

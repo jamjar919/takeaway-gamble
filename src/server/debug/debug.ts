@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
 import {sendJSON} from "../util/sendJSON";
-import {getPlacesToEatUrl} from "../gamble/get-places-to-eat-url/getPlacesToEatUrl";
+import {getPlacesToEatUrl} from "../gamble/get-restaurant-data/postcode/get-places-to-eat-url/getPlacesToEatUrl";
 
 export const debug = async (_: Request, res: Response) => {
     try {

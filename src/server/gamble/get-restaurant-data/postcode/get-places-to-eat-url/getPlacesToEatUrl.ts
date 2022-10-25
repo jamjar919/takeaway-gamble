@@ -1,6 +1,6 @@
 import {geocode} from "./google-maps/geocode";
 import fetch, {RequestInit} from "node-fetch";
-import {normaliseUrlPath} from "../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
+import {normaliseUrlPath} from "../../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
 
 type DeliverooRestaurantApiResponse = {
     coordinates: [number, number],

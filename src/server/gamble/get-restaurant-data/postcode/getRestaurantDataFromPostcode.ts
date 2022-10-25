@@ -1,4 +1,4 @@
-import {getPlacesToEatUrl} from "../../get-places-to-eat-url/getPlacesToEatUrl";
+import {getPlacesToEatUrl} from "./get-places-to-eat-url/getPlacesToEatUrl";
 import {getDeliverooContextFromUrl} from "../../getDeliverooContextFromUrl";
 import {getPlacesToEatFromDeliverooState} from "../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
 import {getOpenPlaceFromState} from "../../getOpenRestaurant";
