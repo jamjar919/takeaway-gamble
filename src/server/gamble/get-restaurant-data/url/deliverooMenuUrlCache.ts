@@ -8,6 +8,8 @@ const normaliseUrlPath = (url: string) => {
 
 // Compare a given url to see if we've seen it before (and therefore it's safe to visit)
 const validatePlaceToEatUrl = (url: string) => {
+    console.log(placesToEatCollection);
+
     return placesToEatCollection.has(normaliseUrlPath(url));
 }
 

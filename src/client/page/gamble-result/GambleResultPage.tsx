@@ -18,7 +18,6 @@ const GambleResultPage: React.FC = () => {
 
     const {
         gambleResult,
-        gambleRevealed,
         gambleInProgress,
         urlGamble
     } = useGambleContext();
@@ -39,12 +38,12 @@ const GambleResultPage: React.FC = () => {
             );
         }
     }, [gambleInProgress, gambleResult, pathname, urlGamble])
-    
+
     if (gambleResult?.type === "error") {
         return <Navigate to="/" />;
     }
 
-    if (!gambleRevealed || gambleResult === null) {
+    if (gambleResult === null) {
         return (
             <div className={styles.pageContainer}>
                 <div className={styles.loadingAnimation}>

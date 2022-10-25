@@ -1,1 +1,0 @@
-export const GAMBLE_REVEAL_TIME_MS = 3_500;

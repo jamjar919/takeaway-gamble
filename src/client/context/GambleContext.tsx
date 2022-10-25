@@ -1,7 +1,6 @@
 import React, {ReactNode, useState} from "react";
 import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
-import {GAMBLE_REVEAL_TIME_MS} from "../framework/GambleConstants";
 import {useNavigate} from "react-router-dom";
 import {GambleMethod} from "../../common/type/GambleRequest";
 
@@ -9,7 +8,6 @@ type GambleContext = {
     postcodeGamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     urlGamble: (url: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
     gambleResult: null | GambleResponse,
-    gambleRevealed: boolean,
     gambleInProgress: boolean
 }
 
@@ -17,7 +15,6 @@ const defaultValues: GambleContext = {
     postcodeGamble: () => Promise.reject('Not initialised'),
     urlGamble: () => Promise.reject('Not initialised'),
     gambleResult: null,
-    gambleRevealed: false,
     gambleInProgress: false
 }
 
@@ -30,7 +27,6 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
 
     const [gambleResult, setGambleResult] = useState<null | GambleResponse>(null);
     const [gambleInProgress, setGambleInProgress] = useState<boolean>(false);
-    const [gambleRevealed, setGambleRevealed] = useState<boolean>(false);
 
     const handleGambleResult = (response: Promise<GambleResponse>): Promise<void> => {
         setGambleInProgress(true);
@@ -41,12 +37,6 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
             if (result.type === "success") {
                 navigate(result.selected.url);
             }
-        })
-        .then(() => {
-            setTimeout(
-                () => setGambleRevealed(true),
-                GAMBLE_REVEAL_TIME_MS
-            )
         })
         .finally(() => {
             setGambleInProgress(false);
@@ -73,7 +63,6 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         postcodeGamble,
         urlGamble,
         gambleResult,
-        gambleRevealed,
         gambleInProgress
     };
 
