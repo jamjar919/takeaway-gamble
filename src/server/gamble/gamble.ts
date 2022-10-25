@@ -5,6 +5,7 @@ import {getModifierGroupsFromDeliverooState} from "./deliveroo-state-selectors/g
 import {GambleRequest} from "../../common/type/GambleRequest";
 import {RestaurantDataBundle} from "../type/RestaurantDataBundle";
 import {getRestaurantData} from "./get-restaurant-data/getRestaurantData";
+import {normaliseUrlPath} from "./get-restaurant-data/url/deliverooMenuUrlCache";
 
 const gamble = async (
     request: GambleRequest,
@@ -34,7 +35,7 @@ const gamble = async (
         selected: {
             restaurant: restaurantData.selectedPlaceMeta,
             items: selectedItems,
-            url: restaurantData.selectedPlace.url
+            url: normaliseUrlPath(restaurantData.selectedPlace.url)
         }
     };
 };

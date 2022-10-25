@@ -19,7 +19,8 @@ module.exports = {
     entry: SRC_DIR + 'index.js',
     output: {
         path: path.resolve(__dirname, 'dist/client'),
-        filename: 'client.js'
+        filename: '[name].js',
+        publicPath: "/"
     },
     module: {
         rules: [

@@ -30,9 +30,12 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const [gambleRevealed, setGambleRevealed] = useState<boolean>(false);
 
     const handleGambleResult = (response: Promise<GambleResponse>): Promise<void> => {
-        return response.then((result) => {
+        return response.then((result: GambleResponse) => {
             setGambleResult(result);
-            navigate("/result");
+
+            if (result.type === "success") {
+                navigate(result.selected.url);
+            }
         })
         .then(() => {
             setTimeout(

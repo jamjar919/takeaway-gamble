@@ -1,6 +1,6 @@
 export const Endpoints = {
     SEARCH: '/',
-    RESULT: '/result',
+    RESULT: '/menu/:city/:area/:name',
     GAMBLE: '/api/gamble',
     DEBUG: '/api/debug'
 };
