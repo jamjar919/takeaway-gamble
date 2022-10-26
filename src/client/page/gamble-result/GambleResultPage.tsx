@@ -11,6 +11,7 @@ import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
 import {Basket} from "./gamble-result-items/basket/Basket";
+import {ReGambleForm, ReGambleFormField} from "./regamble-form/ReGambleForm";
 
 /**
  * Renders the result of a gamble
@@ -72,6 +73,14 @@ const GambleResultPage: React.FC = () => {
                                 items={items}
                                 categories={restaurant.categories}
                             />
+                            <div className={styles.formWrapper}>
+                                <ReGambleForm
+                                    onSubmit={(values) => urlGamble(
+                                        pathname,
+                                        Number(values[ReGambleFormField.PRICE_LIMIT]) * 100)
+                                    }
+                                />
+                            </div>
                         </div>
                         <div className={styles.basketContainer}>
                             <Basket selectedItems={items} ctaUrl={url} imageUrl={restaurant.metatags.image}/>

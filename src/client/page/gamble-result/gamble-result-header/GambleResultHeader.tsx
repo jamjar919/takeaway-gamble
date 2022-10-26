@@ -5,6 +5,8 @@ import {DeliverooRestaurantFull} from "../../../../server/type/deliveroo/Deliver
 
 import styles from './GambleResultHeader.scss'
 import pageStyles from '../GambleResultPage.scss'
+import {Link} from "react-router-dom";
+import {Endpoints} from "../../../../common/Endpoints";
 
 type GambleResultHeaderProps = {
     restaurant: DeliverooRestaurantFull,
@@ -21,7 +23,9 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
         <menu className={styles.menu}>
             <div className={pageStyles.container}>
                 <div className={styles.menuItemContainer}>
-                    <Logo size={"sm"} />
+                    <Link to={Endpoints.SEARCH} className={styles.logoWrapper}>
+                        <Logo size={"sm"} />
+                    </Link>
                     <div className={styles.menuStack}>
                         <h1 className={styles.title}>
                             <a

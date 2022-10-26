@@ -2,10 +2,11 @@ import React from "react";
 import {Form, Formik} from "formik";
 
 import {LocalStorageKey} from "../../../framework/localstorage/LocalStorageKey";
-import styles from "../../search/form/SearchPageForm.scss";
 import {AsciiLoader} from "../../../framework/ascii-loader/AsciiLoader";
 import {AsciiLoaderTilesetType} from "../../../framework/ascii-loader/AsciiLoaderTileset";
 import {TextInput} from "../../../framework/input/text/TextInput";
+
+import styles from "./ReGambleForm.scss";
 
 enum ReGambleFormField {
     PRICE_LIMIT = 'PRICE_LIMIT',
@@ -59,7 +60,7 @@ const ReGambleForm: React.FC<ReGambleFormProps> = (props) => {
                                 className={styles.button}
                                 disabled={isSubmitting}
                             >
-                                { isSubmitting ? <AsciiLoader type={AsciiLoaderTilesetType.Sonar} /> : "Gamble!"}
+                                { isSubmitting ? <AsciiLoader type={AsciiLoaderTilesetType.Sonar} /> : "Try Again?"}
                             </button>
                         }
                     />
@@ -69,4 +70,4 @@ const ReGambleForm: React.FC<ReGambleFormProps> = (props) => {
     )
 }
 
-export { ReGambleForm }
+export { ReGambleForm, ReGambleFormField };
