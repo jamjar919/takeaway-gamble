@@ -3,10 +3,11 @@ import {doGamble} from "../async/DoGamble";
 import {GambleResponse} from "../../common/type/GambleResponse";
 import {useNavigate} from "react-router-dom";
 import {GambleMethod} from "../../common/type/GambleRequest";
+import {LocalStorageKey} from "../framework/localstorage/LocalStorageKey";
 
 type GambleContext = {
     postcodeGamble: (postcode: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
-    urlGamble: (url: string, price: number, firstItemIsLarge: boolean) => Promise<void>,
+    urlGamble: (url: string, price?: number, firstItemIsLarge?: boolean) => Promise<void>,
     gambleResult: null | GambleResponse,
     gambleInProgress: boolean
 }
@@ -51,7 +52,11 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
             firstItemIsLarge
         }));
 
-    const urlGamble = (url: string, priceLimit: number, firstItemIsLarge: boolean) =>
+    const urlGamble = (
+        url: string,
+        priceLimit: number = (Number(localStorage.getItem(LocalStorageKey.PRICE_LIMIT)) ?? 12) * 100,
+        firstItemIsLarge: boolean = true
+    ) =>
         handleGambleResult(doGamble({
             method: GambleMethod.URL,
             url,

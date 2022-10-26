@@ -10,6 +10,7 @@ import {Logo} from "../../framework/logo/Logo";
 import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
+import {Basket} from "./gamble-result-items/basket/Basket";
 
 /**
  * Renders the result of a gamble
@@ -31,11 +32,7 @@ const GambleResultPage: React.FC = () => {
     // Gamble for this page if a result isn't present
     useEffect(() => {
         if (!gambleInProgress && gambleResult === null) {
-            urlGamble(
-                pathname,
-                1200,
-                true
-            );
+            urlGamble(pathname);
         }
     }, [gambleInProgress, gambleResult, pathname, urlGamble])
 
@@ -69,16 +66,16 @@ const GambleResultPage: React.FC = () => {
             />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
-                    <GambleResultItems
-                        items={items}
-                        categories={restaurant.categories}
-                        ctaUrl={url}
-                        imageUrl={restaurant.metatags.image}
-                    />
-                    <div>
-                        <button>
-                            Regamble!
-                        </button>
+                    <div className={styles.result}>
+                        <div className={styles.items}>
+                            <GambleResultItems
+                                items={items}
+                                categories={restaurant.categories}
+                            />
+                        </div>
+                        <div className={styles.basketContainer}>
+                            <Basket selectedItems={items} ctaUrl={url} imageUrl={restaurant.metatags.image}/>
+                        </div>
                     </div>
                 </div>
             </div>

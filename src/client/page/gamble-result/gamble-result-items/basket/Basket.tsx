@@ -8,12 +8,14 @@ import styles from './Basket.scss'
 type BasketProps = {
     selectedItems: SelectedItem[];
     ctaUrl: string;
+    imageUrl: string;
 }
 
 const Basket: React.FC<BasketProps> = (props) => {
     const {
         selectedItems,
-        ctaUrl
+        ctaUrl,
+        imageUrl
     } = props;
 
     const total = selectedItems
@@ -36,44 +38,53 @@ const Basket: React.FC<BasketProps> = (props) => {
     });
 
     return (
-        <div className={styles.basket}>
-            <div className={styles.title}>
-                Your order
-            </div>
-            <ul className={styles.basketItems}>
-                {selectedItems
-                    .sort((a, b) => getPriceFromDeliverooObject(b.item).fractional - getPriceFromDeliverooObject(a.item).fractional)
-                    .map((selectedItem) => (<BasketItem key={selectedItem.item.id} selectedItem={selectedItem} />))
-                }
-            </ul>
-            <div className={styles.row}>
-                <div className={styles.banner}>
-                    <span>
-                        View the code on <a href="https://github.com/jamjar919/deliveroo-gamble">Github</a>
-                    </span>
-                    <span>
-                        Created by <a href="https://thejamespaterson.com">James Paterson</a>
-                    </span>
+        <>
+            {imageUrl && (
+                <img
+                    src={imageUrl}
+                    className={styles.image}
+                    alt={"Restaurant image"}
+                />
+            )}
+            <div className={styles.basket}>
+                <div className={styles.title}>
+                    Your order
+                </div>
+                <ul className={styles.basketItems}>
+                    {selectedItems
+                        .sort((a, b) => getPriceFromDeliverooObject(b.item).fractional - getPriceFromDeliverooObject(a.item).fractional)
+                        .map((selectedItem) => (<BasketItem key={selectedItem.item.id} selectedItem={selectedItem} />))
+                    }
+                </ul>
+                <div className={styles.row}>
+                    <div className={styles.banner}>
+                        <span>
+                            View the code on <a href="https://github.com/jamjar919/deliveroo-gamble">Github</a>
+                        </span>
+                        <span>
+                            Created by <a href="https://thejamespaterson.com">James Paterson</a>
+                        </span>
+                    </div>
+                </div>
+                <div className={styles.row}>
+                    <div className={styles.totalLine}>
+                        <div className={styles.total}>
+                            Total
+                        </div>
+                        <div className={styles.price}>
+                            {locale.format(total)}
+                        </div>
+                    </div>
+                    <a
+                        className={styles.cta}
+                        target="_blank"
+                        href={`https://deliveroo.co.uk${ctaUrl}`}
+                    >
+                        Go to restaurant
+                    </a>
                 </div>
             </div>
-            <div className={styles.row}>
-                <div className={styles.totalLine}>
-                    <div className={styles.total}>
-                        Total
-                    </div>
-                    <div className={styles.price}>
-                        {locale.format(total)}
-                    </div>
-                </div>
-                <a
-                    className={styles.cta}
-                    target="_blank"
-                    href={`https://deliveroo.co.uk${ctaUrl}`}
-                >
-                    Go to restaurant
-                </a>
-            </div>
-        </div>
+        </>
     )
 };
 

@@ -65,7 +65,6 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                         left={<div className={styles.unit}>?</div>}
                     />
                     <TextInput
-                        className={styles.input}
                         name={SearchPageFormField.PRICE_LIMIT}
                         type="numeric"
                         placeholder="12.00"

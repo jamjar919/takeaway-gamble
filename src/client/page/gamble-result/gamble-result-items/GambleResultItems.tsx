@@ -2,7 +2,6 @@ import React from "react";
 import {DeliverooCategory} from "../../../../server/type/deliveroo/DeliverooCategory";
 import {CategoryHeader} from "./category-header/CategoryHeader";
 import {CategoryItems} from "./category-items/CategoryItems";
-import {Basket} from "./basket/Basket";
 import {SelectedItem} from "../../../../common/type/SelectedRestaurantAndItems";
 
 import styles from './GambleResultItems.scss';
@@ -10,12 +9,10 @@ import styles from './GambleResultItems.scss';
 type ItemsProps = {
     items: SelectedItem[];
     categories: DeliverooCategory[];
-    ctaUrl: string;
-    imageUrl: string;
 };
 
 const GambleResultItems: React.FC<ItemsProps> = (props) => {
-    const { imageUrl, items, categories, ctaUrl } = props;
+    const { items, categories } = props;
 
     const result = categories
         .map((category) => {
@@ -35,21 +32,7 @@ const GambleResultItems: React.FC<ItemsProps> = (props) => {
         });
 
     return (
-        <div className={styles.result}>
-            <div className={styles.items}>
-                {result}
-            </div>
-            <div className={styles.basketContainer}>
-                {imageUrl && (
-                    <img
-                        src={imageUrl}
-                        className={styles.image}
-                        alt={"Restaurant image"}
-                    />
-                )}
-                <Basket selectedItems={items} ctaUrl={ctaUrl} />
-            </div>
-        </div>
+        <>{result}</>
     );
 };
 
