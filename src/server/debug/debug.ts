@@ -5,7 +5,7 @@ import {getCachedUrls} from "../gamble/get-restaurant-data/url/deliverooMenuUrlC
 export const debug = async (_: Request, res: Response) => {
     try {
         const response = Array.from(getCachedUrls());
-        
+
         sendJSON({
             response
         }, res);
