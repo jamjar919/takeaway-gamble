@@ -15,4 +15,6 @@ const addUrlToCache = (url: string) => {
     placesToEatCollection.add(normaliseUrlPath(url));
 }
 
-export { addUrlToCache, validatePlaceToEatUrl, normaliseUrlPath }
+const getCachedUrls = () => placesToEatCollection;
+
+export { addUrlToCache, validatePlaceToEatUrl, normaliseUrlPath, getCachedUrls }
