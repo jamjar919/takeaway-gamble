@@ -21,7 +21,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
     } = props;
 
     return (
-        <menu className={styles.menu}>
+        <div className={styles.menu}>
             <div className={pageStyles.container}>
                 <div className={styles.menuItemContainer}>
                     <Link to={Endpoints.SEARCH} className={styles.logoWrapper}>
@@ -43,7 +43,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                     </div>
                 </div>
             </div>
-        </menu>
+        </div>
     )
 }
 

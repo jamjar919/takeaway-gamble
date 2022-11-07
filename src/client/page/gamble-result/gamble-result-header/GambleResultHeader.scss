@@ -9,7 +9,7 @@
   margin: 0;
 
   height: auto;
-  @media (min-width: map.get($grid-breakpoints, "lg")) {
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
     height: 128px;
   }
 }
@@ -17,20 +17,25 @@
 .menuItemContainer {
   width: 100%;
   display: flex;
-  flex-direction: row;
   text-align: center;
 
   padding: 20px 0;
-  @media (min-width: map.get($grid-breakpoints, "lg")) {
+  flex-direction: column;
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
     padding: 0;
+    flex-direction: row;
   }
 }
 
 .titleContainer {
   display: flex;
-  flex: 1 1;
   flex-direction: column;
   justify-content: center;
+
+  margin: 10px auto;
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    margin: auto;
+  }
 }
 
 .title {
@@ -38,13 +43,12 @@
 }
 
 .logoWrapper {
-  display: flex;
-  flex: 1 1;
-  margin: auto;
+  display: none;
+  @media (min-width: map.get($grid-breakpoints, "sm")) {
+    display: flex;
+  }
 }
 
 .buttonContainer {
   display: flex;
-  flex: 1 1;
-  margin-left: auto;
 }
