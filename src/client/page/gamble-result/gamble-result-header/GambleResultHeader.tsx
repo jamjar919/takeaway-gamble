@@ -7,6 +7,7 @@ import styles from './GambleResultHeader.scss'
 import pageStyles from '../GambleResultPage.scss'
 import {Link} from "react-router-dom";
 import {Endpoints} from "../../../../common/Endpoints";
+import {ReGambleButton} from "../regamble-button/ReGambleButton";
 
 type GambleResultHeaderProps = {
     restaurant: DeliverooRestaurantFull,
@@ -26,7 +27,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                     <Link to={Endpoints.SEARCH} className={styles.logoWrapper}>
                         <Logo size={"sm"} />
                     </Link>
-                    <div className={styles.menuStack}>
+                    <div className={styles.titleContainer}>
                         <h1 className={styles.title}>
                             <a
                                 href={`https://deliveroo.co.uk${url}`}
@@ -36,6 +37,9 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                             </a>
                         </h1>
                         <Address value={restaurant.location.address} />
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <ReGambleButton />
                     </div>
                 </div>
             </div>

@@ -6,12 +6,13 @@ import {GambleResultHeader} from "./gamble-result-header/GambleResultHeader";
 import {GambleResultItems} from "./gamble-result-items/GambleResultItems";
 import {useGambleContext} from "../../context/GambleContext";
 import {Logo} from "../../framework/logo/Logo";
+import {Basket} from "./gamble-result-items/basket/Basket";
+import {ReGambleForm, ReGambleFormField} from "./regamble-form/ReGambleForm";
+import {GambleResultFooter} from "./gamble-result-footer/GambleResultFooter";
 
 import confetti from './animation/confetti.json';
 
 import styles from './GambleResultPage.scss';
-import {Basket} from "./gamble-result-items/basket/Basket";
-import {ReGambleForm, ReGambleFormField} from "./regamble-form/ReGambleForm";
 
 /**
  * Renders the result of a gamble
@@ -88,6 +89,7 @@ const GambleResultPage: React.FC = () => {
                     </div>
                 </div>
             </div>
+            <GambleResultFooter />
             {
                 !hasShownConfetti && (
                     <div className={styles.confettiContainer}>

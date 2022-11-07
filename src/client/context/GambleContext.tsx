@@ -31,6 +31,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
 
     const handleGambleResult = (response: Promise<GambleResponse>): Promise<void> => {
         setGambleInProgress(true);
+        setGambleResult(null);
 
         return response.then((result: GambleResponse) => {
             setGambleResult(result);
