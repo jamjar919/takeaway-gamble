@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Enabling corepack
+      - corepack enable
+      - echo Installing nvm
+      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+      - export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+      - nvm install 16.14.2
+      - nvm use 16.14.2
+      - echo Environment setup complete
+  build:
+    commands:
+      - echo Building...
+      - yarn run build
+      - echo Build!
+  post_build:
+    commands:
+      - echo Running...
+      - node ./dist/server.js
