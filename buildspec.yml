@@ -9,11 +9,11 @@ phases:
       - yarn install
   build:
     commands:
-      - yarn run build
+      - yarn run assemble
 cache:
   paths:
     - node_modules/**/*
 artifacts:
   files:
-    - /dist/**/*
+    - dist/**/*
   name: takeaway-bet-dist
