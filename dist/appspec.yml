@@ -8,11 +8,11 @@ files:
     destination: /home/takeawaygamble
 
 BeforeInstall:
-  - location: scripts/beforeinstall.sh
+  - location: /home/takeawaygamble/scripts/beforeinstall.sh
     timeout: 300
 AfterInstall:
-  - location: scripts/afterinstall.sh
+  - location: /home/takeawaygamble/scripts/afterinstall.sh
     timeout: 300
 ApplicationStart:
-  - location: scripts/appstart.sh
+  - location: /home/takeawaygamble/scripts/appstart.sh
     timeout: 300
