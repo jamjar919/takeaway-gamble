@@ -7,6 +7,10 @@ dotenv.config();
 const geocodeCache: Cache<google.maps.GeocoderResult | null> = new Cache();
 
 const getEndpoint = (address: string) => {
+    if (!process.env.GOOGLE_API_KEY) {
+        throw new Error('Google API key missing');
+    }
+
     return `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&region=uk&key=${process.env.GOOGLE_API_KEY}`
 }
 
