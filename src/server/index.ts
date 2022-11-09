@@ -12,7 +12,7 @@ import {validateGambleRequest} from "./gamble/validateGambleRequest";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 16000;
 
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
