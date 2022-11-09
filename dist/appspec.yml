@@ -10,12 +10,9 @@ files:
 BeforeInstall:
   - location: scripts/beforeinstall.sh
     timeout: 300
-    runas: root
 AfterInstall:
   - location: scripts/afterinstall.sh
     timeout: 300
-    runas: root
 ApplicationStart:
   - location: scripts/appstart.sh
     timeout: 300
-    runas: root
