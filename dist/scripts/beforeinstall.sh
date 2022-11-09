@@ -7,7 +7,7 @@ sudo npm install --global yarn
 
 # Install forever module
 # https://www.npmjs.com/package/forever
-sudo yarn install forever -g
+sudo yarn global add forever
 
 # Clean working folder
-sudo find /home/takeawaygamble -type f -delete
+sudo find /home/takeawaygamble -delete
