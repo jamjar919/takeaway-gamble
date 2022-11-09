@@ -7,12 +7,13 @@ files:
   - source: /
     destination: /home/takeawaygamble
 
-BeforeInstall:
-  - location: /home/takeawaygamble/scripts/beforeinstall.sh
-    timeout: 300
-AfterInstall:
-  - location: /home/takeawaygamble/scripts/afterinstall.sh
-    timeout: 300
-ApplicationStart:
-  - location: /home/takeawaygamble/scripts/appstart.sh
-    timeout: 300
+hooks:
+  BeforeInstall:
+    - location: /home/takeawaygamble/scripts/beforeinstall.sh
+      timeout: 300
+  AfterInstall:
+    - location: /home/takeawaygamble/scripts/afterinstall.sh
+      timeout: 300
+  ApplicationStart:
+    - location: /home/takeawaygamble/scripts/appstart.sh
+      timeout: 300
