@@ -1,8 +1,8 @@
 import {
   GambleMethod,
   GambleRequest,
-} from "../../../common/type/GambleRequest";
-import { RestaurantDataBundle } from "../../type/RestaurantDataBundle";
+} from "../../../../common/type/GambleRequest";
+import { RestaurantDataBundle } from "../../../type/RestaurantDataBundle";
 import { getRestaurantDataFromPostcode } from "./postcode/getRestaurantDataFromPostcode";
 import { getRestaurantDataFromUrl } from "./url/getRestaurantDataFromUrl";
 

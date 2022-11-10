@@ -1,6 +1,6 @@
 import cheerio from "cheerio";
 import { DeliverooState } from "../type/deliveroo/DeliverooState";
-import { CaptchaRequiredError } from "./error/CaptchaRequiredError";
+import { CaptchaRequiredError } from "./deliveroo/error/CaptchaRequiredError";
 import { doDeliverooFetch } from "../util/doDeliverooFetch";
 
 const getDeliverooContextFromUrl = async (

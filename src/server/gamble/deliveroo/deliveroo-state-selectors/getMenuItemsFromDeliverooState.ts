@@ -1,5 +1,5 @@
-import { DeliverooItem } from "../../type/deliveroo/DeliverooItem";
-import { DeliverooState } from "../../type/deliveroo/DeliverooState";
+import { DeliverooItem } from "../../../type/deliveroo/DeliverooItem";
+import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 
 const getMenuItemsFromDeliverooState = (
   state: DeliverooState

@@ -1,5 +1,5 @@
-import { DeliverooState } from "../../type/deliveroo/DeliverooState";
-import { Restaurant } from "../../type/Restaurant";
+import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
+import { Restaurant } from "../../../type/Restaurant";
 import { addUrlToCache } from "../get-restaurant-data/url/deliverooMenuUrlCache";
 
 // Convert the deliveroo state to a list of restaurants

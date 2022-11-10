@@ -1,11 +1,11 @@
-import { getMenuItemsFromDeliverooState } from "./deliveroo-state-selectors/getMenuItemsFromDeliverooState";
+import { getMenuItemsFromDeliverooState } from "./deliveroo/deliveroo-state-selectors/getMenuItemsFromDeliverooState";
 import { selectMenuItems } from "./select-menu-items/selectMenuItems";
 import { SuccessfulGambleResponse } from "../../common/type/GambleResponse";
-import { getModifierGroupsFromDeliverooState } from "./deliveroo-state-selectors/getModifierGroupsFromDeliverooState";
+import { getModifierGroupsFromDeliverooState } from "./deliveroo/deliveroo-state-selectors/getModifierGroupsFromDeliverooState";
 import { GambleRequest } from "../../common/type/GambleRequest";
 import { RestaurantDataBundle } from "../type/RestaurantDataBundle";
-import { getRestaurantData } from "./get-restaurant-data/getRestaurantData";
-import { normaliseUrlPath } from "./get-restaurant-data/url/deliverooMenuUrlCache";
+import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";
+import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
 
 const gamble = async (
   request: GambleRequest

@@ -1,5 +1,5 @@
-import { DeliverooState } from "../../type/deliveroo/DeliverooState";
-import { DeliverooModifierGroup } from "../../type/deliveroo/DeliverooModifierGroup";
+import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
+import { DeliverooModifierGroup } from "../../../type/deliveroo/DeliverooModifierGroup";
 
 const getModifierGroupsFromDeliverooState = (
   state: DeliverooState

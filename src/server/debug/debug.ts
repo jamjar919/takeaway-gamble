@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { sendJSON } from "../util/sendJSON";
-import { validatePlaceToEatUrl } from "../gamble/get-restaurant-data/url/deliverooMenuUrlCache";
+import { validatePlaceToEatUrl } from "../gamble/deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
 import { getDeliverooContextFromUrl } from "../gamble/getDeliverooContextFromUrl";
 
 export const debug = async (req: Request, res: Response) => {

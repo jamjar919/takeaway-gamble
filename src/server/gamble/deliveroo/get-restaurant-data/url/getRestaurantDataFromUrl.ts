@@ -1,6 +1,6 @@
-import { getDeliverooContextFromUrl } from "../../getDeliverooContextFromUrl";
+import { getDeliverooContextFromUrl } from "../../../getDeliverooContextFromUrl";
 import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
-import { RestaurantDataBundle } from "../../../type/RestaurantDataBundle";
+import { RestaurantDataBundle } from "../../../../type/RestaurantDataBundle";
 import {
   normaliseUrlPath,
   validatePlaceToEatUrl,

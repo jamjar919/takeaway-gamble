@@ -7,29 +7,31 @@ import {
 import { DeliverooCategory } from "./DeliverooCategory";
 import { DeliverooModifierGroup } from "./DeliverooModifierGroup";
 
+type DeliverooMenuMetaState = {
+  items: DeliverooItem[];
+  categories: DeliverooCategory[];
+  restaurant: DeliverooRestaurantFull;
+  metatags: DeliverooRestaurantMeta;
+  modifierGroups: DeliverooModifierGroup[];
+  requestUUID: string;
+  appliedParams: [];
+  pastOrders: [];
+  offer: null | unknown;
+  customerLocation: {
+    lat: number;
+    lon: number;
+    city: string;
+    neighborhood: string;
+    postcode: string;
+    cityId: number;
+    zoneId: number;
+    geohash: string;
+  };
+};
+
 type DeliverooMenuPageState = {
   menu: {
-    meta: {
-      items: DeliverooItem[];
-      categories: DeliverooCategory[];
-      restaurant: DeliverooRestaurantFull;
-      metatags: DeliverooRestaurantMeta;
-      modifierGroups: DeliverooModifierGroup[];
-      requestUUID: string;
-      appliedParams: [];
-      pastOrders: [];
-      offer: null | unknown;
-      customerLocation: {
-        lat: number;
-        lon: number;
-        city: string;
-        neighborhood: string;
-        postcode: string;
-        cityId: number;
-        zoneId: number;
-        geohash: string;
-      };
-    };
+    meta: DeliverooMenuMetaState
   };
 };
 
@@ -55,4 +57,4 @@ type DeliverooState = {
   };
 };
 
-export { DeliverooState, DeliverooMenuPageState };
+export { DeliverooState, DeliverooMenuPageState, DeliverooMenuMetaState };
