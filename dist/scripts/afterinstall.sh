@@ -4,4 +4,4 @@
 cd /home/takeawaygamble
 
 # Set env var
-GOOGLE_API_KEY=$(cat /home/secrets/googleapikey)
+cp /home/secrets/.env /home/takeawaygamble/.env
