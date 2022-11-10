@@ -38,7 +38,7 @@ const callDeliverooApi = async (location: google.maps.GeocoderResult): Promise<D
 const getPlacesToEatUrl = async (postcode: string): Promise<string | null> => {
     const geocodedLocation = await geocode(postcode);
 
-    if (geocodedLocation === null) {
+    if (geocodedLocation === null || typeof geocodedLocation === "undefined") {
         return null;
     }
 

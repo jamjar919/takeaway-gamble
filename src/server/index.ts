@@ -8,6 +8,7 @@ import {sendJSON} from "./util/sendJSON";
 import {GambleErrorResponse, SuccessfulGambleResponse} from "../common/type/GambleResponse";
 import {GambleRequest} from "../common/type/GambleRequest";
 import {validateGambleRequest} from "./gamble/validateGambleRequest";
+import {urlCache} from "./debug/urlCache";
 
 dotenv.config();
 
@@ -53,6 +54,7 @@ app.post(Endpoints.GAMBLE, async (req: Request<{}, {}, GambleRequest>, res: Resp
 })
 
 app.get(Endpoints.DEBUG, debug)
+app.get(Endpoints.URL_CACHE, urlCache)
 
 app.listen(port, () => {
     console.log(`Active on port ${port}!`)

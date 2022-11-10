@@ -1,10 +1,25 @@
 import {Request, Response} from "express";
 import {sendJSON} from "../util/sendJSON";
-import {getCachedUrls} from "../gamble/get-restaurant-data/url/deliverooMenuUrlCache";
+import {validatePlaceToEatUrl} from "../gamble/get-restaurant-data/url/deliverooMenuUrlCache";
+import {getDeliverooContextFromUrl} from "../gamble/getDeliverooContextFromUrl";
 
-export const debug = async (_: Request, res: Response) => {
+export const debug = async (req: Request, res: Response) => {
     try {
-        const response = Array.from(getCachedUrls());
+        console.log(req.query);
+
+        const url = req.query["url"];
+
+        if (typeof url !== 'string') {
+            sendJSON({ error: 'Pass in a URL as a param'}, res);
+            return;
+        }
+
+        if (!validatePlaceToEatUrl(url as string)) {
+            sendJSON({ error: 'URL not valid'}, res);
+            return;
+        }
+
+        const response = await getDeliverooContextFromUrl(url as string);
 
         sendJSON({
             response
