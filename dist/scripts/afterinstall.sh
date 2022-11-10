@@ -4,4 +4,4 @@
 cd /home/takeawaygamble
 
 # Set env var
-cp /home/secrets/.env /home/takeawaygamble/.env
+sudo cp /home/secrets/.env /home/takeawaygamble/.env
