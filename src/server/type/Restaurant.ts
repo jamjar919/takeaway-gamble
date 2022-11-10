@@ -1,6 +1,6 @@
 type Restaurant = {
-    name: string,
-    url: string
+  name: string;
+  url: string;
 };
 
-export { Restaurant }
+export { Restaurant };

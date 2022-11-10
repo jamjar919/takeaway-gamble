@@ -20,7 +20,7 @@
   border-radius: 20px;
   width: 20px;
   height: 20px;
-  transition: ease-in-out .1s;
+  transition: ease-in-out 0.1s;
   margin-right: 15px;
 
   &:hover {
@@ -37,6 +37,6 @@
   margin: auto;
 }
 
-input.checkbox[value=true] + .fakeCheckbox .fakeCheckboxBox {
+input.checkbox[value="true"] + .fakeCheckbox .fakeCheckboxBox {
   display: block;
 }

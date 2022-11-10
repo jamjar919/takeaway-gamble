@@ -7,6 +7,6 @@
   grid-gap: 16px;
 
   @media (min-width: map.get($grid-breakpoints, "lg")) {
-    grid-template: auto/repeat(2,1fr);
+    grid-template: auto/repeat(2, 1fr);
   }
 }

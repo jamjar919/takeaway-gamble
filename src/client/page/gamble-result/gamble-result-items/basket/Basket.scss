@@ -2,7 +2,7 @@
 @import "../../../../App.scss";
 
 .basket {
-  border: 1px solid rgba(0,0,0,.04);
+  border: 1px solid rgba(0, 0, 0, 0.04);
   border-radius: 4px;
   box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
   background-color: #fff;
@@ -17,7 +17,7 @@
 }
 
 .row {
-  border-top: 1px solid rgba(0,0,0,.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   margin-top: 16px;
 }
 
@@ -71,7 +71,7 @@
   text-align: center;
 
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
 }
 

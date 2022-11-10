@@ -1,4 +1,4 @@
-const pickOneFromArray = <T, >(arr: T[]): T =>
-    arr[Math.floor(Math.random() * arr.length)];
+const pickOneFromArray = <T>(arr: T[]): T =>
+  arr[Math.floor(Math.random() * arr.length)];
 
-export { pickOneFromArray }
+export { pickOneFromArray };

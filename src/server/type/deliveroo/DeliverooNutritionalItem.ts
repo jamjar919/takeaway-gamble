@@ -1,6 +1,6 @@
 type DeliverooNutritionalItem = {
-    energy: number;
-    energyFormatted: string;
-}
+  energy: number;
+  energyFormatted: string;
+};
 
-export { DeliverooNutritionalItem }
+export { DeliverooNutritionalItem };

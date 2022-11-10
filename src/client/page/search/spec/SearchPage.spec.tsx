@@ -1,9 +1,9 @@
 import React from "react";
-import {SearchPage} from "../SearchPage";
-import {validateRender} from "../../../../../test/validateRender";
+import { SearchPage } from "../SearchPage";
+import { validateRender } from "../../../../../test/validateRender";
 
-describe('SearchPage', () => {
-    it('renders', () => {
-        validateRender(<SearchPage />);
-    });
+describe("SearchPage", () => {
+  it("renders", () => {
+    validateRender(<SearchPage />);
+  });
 });

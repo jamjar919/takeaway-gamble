@@ -1,16 +1,18 @@
-import {DeliverooPrice} from "../../server/type/deliveroo/DeliverooPrice";
+import { DeliverooPrice } from "../../server/type/deliveroo/DeliverooPrice";
 
 type WithPriceAndDiscountedPrice = {
-    price: DeliverooPrice,
-    priceDiscounted: null | DeliverooPrice
-}
+  price: DeliverooPrice;
+  priceDiscounted: null | DeliverooPrice;
+};
 
-const getPriceFromDeliverooObject = <T extends WithPriceAndDiscountedPrice, >(item: T) => {
-    if (item.priceDiscounted) {
-        return item.priceDiscounted;
-    }
+const getPriceFromDeliverooObject = <T extends WithPriceAndDiscountedPrice>(
+  item: T
+) => {
+  if (item.priceDiscounted) {
+    return item.priceDiscounted;
+  }
 
-    return item.price;
-}
+  return item.price;
+};
 
 export { getPriceFromDeliverooObject };

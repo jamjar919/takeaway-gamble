@@ -1,6 +1,6 @@
 type DeliverooCategory = {
-    id: string;
-    name: string;
-}
+  id: string;
+  name: string;
+};
 
 export { DeliverooCategory };
