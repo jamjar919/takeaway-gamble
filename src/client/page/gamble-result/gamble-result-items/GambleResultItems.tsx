@@ -14,6 +14,15 @@ type ItemsProps = {
 const GambleResultItems: React.FC<ItemsProps> = (props) => {
     const { items, categories } = props;
 
+    if (items.length < 1) {
+        return (
+            <>
+                <h1>OOPSIE WOOPSIE!! We made a fucky wucky!! A wittle fucko boingo! The code monkeys at our headquarters are working VEWY HAWD to fix this!</h1>
+                <p>No items got returned for some reason. If you're seeing this, just hit the regamble button. Send me the URL if you're feeling generous.</p>
+            </>
+        );
+    }
+
     const result = categories
         .map((category) => {
             return {

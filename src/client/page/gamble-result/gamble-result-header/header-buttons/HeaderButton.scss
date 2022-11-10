@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "../../../App.scss";
+@import "src/client/App";
 
 $size: 75px;
 
@@ -19,18 +19,4 @@ $size: 75px;
   text-align: center;
   cursor: pointer;
   border-radius: 50%;
-
-  &:hover {
-    opacity: .8;
-    animation: 1s spinno infinite;
-  }
-}
-
-@keyframes spinno {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

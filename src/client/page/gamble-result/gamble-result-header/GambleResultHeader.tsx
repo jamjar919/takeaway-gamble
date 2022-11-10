@@ -7,7 +7,8 @@ import styles from './GambleResultHeader.scss'
 import pageStyles from '../GambleResultPage.scss'
 import {Link} from "react-router-dom";
 import {Endpoints} from "../../../../common/Endpoints";
-import {ReGambleButton} from "../regamble-button/ReGambleButton";
+import {ReGambleButton} from "./header-buttons/regamble-button/ReGambleButton";
+import {BackToSearchButton} from "./header-buttons/back-to-search-button/BackToSearchButton";
 
 type GambleResultHeaderProps = {
     restaurant: DeliverooRestaurantFull,
@@ -40,6 +41,7 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                     </div>
                     <div className={styles.buttonContainer}>
                         <ReGambleButton />
+                        <BackToSearchButton />
                     </div>
                 </div>
             </div>

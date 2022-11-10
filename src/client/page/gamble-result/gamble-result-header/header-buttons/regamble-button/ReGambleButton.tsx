@@ -1,8 +1,10 @@
 import React from "react";
-import {useGambleContext} from "../../../context/GambleContext";
-import {LocalStorageKey} from "../../../framework/localstorage/LocalStorageKey";
+import classNames from "classnames";
+import {useGambleContext} from "../../../../../context/GambleContext";
+import {LocalStorageKey} from "../../../../../framework/localstorage/LocalStorageKey";
 
-import styles from './ReGambleButton.scss';
+import headerButtonStyles from '../HeaderButton.scss';
+import regambleButtonStyles from './ReGambleButton.scss';
 
 const ReGambleButton: React.FC = () => {
     const { postcodeGamble } = useGambleContext();
@@ -23,7 +25,7 @@ const ReGambleButton: React.FC = () => {
 
     return (
         <button
-            className={styles.button}
+            className={classNames(headerButtonStyles.button, regambleButtonStyles.regambleButton)}
             onClick={handleClick}
         >
             🔄

@@ -1,17 +1,12 @@
 import React from "react";
 
 import styles from './GambleResultFooter.scss';
+import {FooterContent} from "../../../framework/footer/FooterContent";
 
 const GambleResultFooter: React.FC = () => {
     return (
         <div className={styles.footer}>
-            <div className={styles.footerItem}>
-                Developed by <a href={"https://thejamespaterson.com"}>James Paterson</a>
-            </div>
-            <div className={styles.footerItem}>❂</div>
-            <div className={styles.footerItem}>
-                Not affiliated with Deliveroo or Just Eat
-            </div>
+            <FooterContent />
         </div>
     )
 }

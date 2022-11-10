@@ -1,0 +1,19 @@
+.backToSearchButton {
+  &:hover {
+    opacity: .8;
+    animation: 1s pointo infinite;
+    animation-timing-function: ease-in-out;
+  }
+}
+
+@keyframes pointo {
+  0% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(10px);
+  }
+}
