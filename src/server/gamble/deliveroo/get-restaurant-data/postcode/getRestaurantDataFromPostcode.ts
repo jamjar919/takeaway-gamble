@@ -1,6 +1,6 @@
 import { getPlacesToEatUrl } from "./get-places-to-eat-url/getPlacesToEatUrl";
-import { getDeliverooContextFromUrl } from "../../../getDeliverooContextFromUrl";
-import { getPlacesToEatFromDeliverooState } from "../../deliveroo-state-selectors/getPlacesToEatFromDeliverooState";
+import { getDeliverooContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooContextFromUrl";
+import { getPlacesToEatFromDeliverooState } from "../../deliveroo-state-selector/getPlacesToEatFromDeliverooState";
 import { getOpenPlaceFromState } from "./getOpenRestaurant";
 import { RestaurantDataBundle } from "../../../../type/RestaurantDataBundle";
 

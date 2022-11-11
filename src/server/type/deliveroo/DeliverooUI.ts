@@ -5,10 +5,23 @@ type UITargetRestaurant = {
   restaurant: DeliverooRestaurant;
 };
 
+type UITargetAction = {
+  typeName: "UITargetAction";
+  action: "SHOW_CATEGORY" | "",
+  params: [
+    {
+      id: "category_id",
+      value: string[],
+    }
+  ]
+}
+
 type UICard = {
   content: string;
   typeName: "UICard";
-  target: UITargetRestaurant;
+  lines: any[],
+  target?: UITargetRestaurant;
+  cardTarget?: UITargetAction;
 };
 
 type UILayoutList = {
@@ -17,4 +30,9 @@ type UILayoutList = {
   blocks: UICard[];
 };
 
-export { UILayoutList };
+type UILayoutGrid = {
+  typeName: "UILayoutGrid";
+  blocks: UICard[];
+}
+
+export { UILayoutList, UILayoutGrid, UITargetAction, UITargetRestaurant };

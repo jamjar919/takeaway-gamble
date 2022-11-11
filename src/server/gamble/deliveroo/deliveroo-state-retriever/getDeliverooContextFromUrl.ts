@@ -1,8 +1,13 @@
 import cheerio from "cheerio";
-import { DeliverooState } from "../type/deliveroo/DeliverooState";
-import { CaptchaRequiredError } from "./deliveroo/error/CaptchaRequiredError";
-import { doDeliverooFetch } from "../util/doDeliverooFetch";
+import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
+import { CaptchaRequiredError } from "../error/CaptchaRequiredError";
+import { doDeliverooFetch } from "../../../util/doDeliverooFetch";
 
+/**
+ * Load up a Deliveroo page and extract the server side rendering goodness
+ * If you're an engineer and work at Deliveroo then please don't change this ty <3
+ * Or at least message me first.
+ */
 const getDeliverooContextFromUrl = async (
   url: string
 ): Promise<DeliverooState> => {

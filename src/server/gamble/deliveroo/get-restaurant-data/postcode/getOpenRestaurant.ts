@@ -4,8 +4,8 @@ import {
   DeliverooState,
 } from "../../../../type/deliveroo/DeliverooState";
 import { pickOneFromArray } from "../../../../../common/util/pickOneFromArray";
-import { getDeliverooContextFromUrl } from "../../../getDeliverooContextFromUrl";
-import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selectors/getPlaceToEatMetaFromDeliverooState";
+import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
+import {getDeliverooRestaurantContextFromUrl} from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
 
 const MAX_RESTAURANTS = 9;
 
@@ -25,7 +25,7 @@ const getOpenPlaceFromState = async (
   const selectedPlace = pickOneFromArray(placesToEat);
 
   // Fetch + get context for it
-  const restaurantContext = await getDeliverooContextFromUrl(selectedPlace.url);
+  const restaurantContext = await getDeliverooRestaurantContextFromUrl(selectedPlace.url);
 
   // Retrieve more detailed information
   const selectedPlaceMeta =

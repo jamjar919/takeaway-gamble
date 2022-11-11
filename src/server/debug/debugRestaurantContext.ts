@@ -1,12 +1,10 @@
 import { Request, Response } from "express";
 import { sendJSON } from "../util/sendJSON";
 import { validatePlaceToEatUrl } from "../gamble/deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
-import { getDeliverooContextFromUrl } from "../gamble/getDeliverooContextFromUrl";
+import {getDeliverooRestaurantContextFromUrl} from "../gamble/deliveroo/deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
 
-export const debug = async (req: Request, res: Response) => {
+export const debugRestaurantContext = async (req: Request, res: Response) => {
   try {
-    console.log(req.query);
-
     const url = req.query["url"];
 
     if (typeof url !== "string") {
@@ -19,7 +17,7 @@ export const debug = async (req: Request, res: Response) => {
       return;
     }
 
-    const response = await getDeliverooContextFromUrl(url as string);
+    const response = await getDeliverooRestaurantContextFromUrl(url as string);
 
     sendJSON(
       {

@@ -1,4 +1,4 @@
-import { UILayoutList } from "./DeliverooUI";
+import {UILayoutGrid, UILayoutList} from "./DeliverooUI";
 import { DeliverooItem } from "./DeliverooItem";
 import {
   DeliverooRestaurantFull,
@@ -31,7 +31,10 @@ type DeliverooMenuMetaState = {
 
 type DeliverooMenuPageState = {
   menu: {
-    meta: DeliverooMenuMetaState
+    meta: DeliverooMenuMetaState,
+    layoutGroups: {
+      layouts: UILayoutGrid[]
+    }[]
   };
 };
 
@@ -47,12 +50,22 @@ type DeliverooHomeState = {
   };
 };
 
+type DeliverooRequestState = {
+  currentUrl: string;
+  currentQuery: {
+    city: string;
+    neighborhood: string;
+    restaurant: string;
+  },
+}
+
 /** Reverse engineered Deliveroo page state */
 type DeliverooState = {
   props: {
     initialState: {
       home: DeliverooHomeState;
       menuPage: DeliverooMenuPageState;
+      request: DeliverooRequestState
     };
   };
 };

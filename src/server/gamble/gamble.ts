@@ -1,7 +1,7 @@
-import { getMenuItemsFromDeliverooState } from "./deliveroo/deliveroo-state-selectors/getMenuItemsFromDeliverooState";
+import { getMenuItemsFromDeliverooState } from "./deliveroo/deliveroo-state-selector/getMenuItemsFromDeliverooState";
 import { selectMenuItems } from "./select-menu-items/selectMenuItems";
 import { SuccessfulGambleResponse } from "../../common/type/GambleResponse";
-import { getModifierGroupsFromDeliverooState } from "./deliveroo/deliveroo-state-selectors/getModifierGroupsFromDeliverooState";
+import { getModifierGroupsFromDeliverooState } from "./deliveroo/deliveroo-state-selector/getModifierGroupsFromDeliverooState";
 import { GambleRequest } from "../../common/type/GambleRequest";
 import { RestaurantDataBundle } from "../type/RestaurantDataBundle";
 import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";

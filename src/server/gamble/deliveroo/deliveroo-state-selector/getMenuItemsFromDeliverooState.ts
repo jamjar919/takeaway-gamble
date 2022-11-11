@@ -4,7 +4,14 @@ import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 const getMenuItemsFromDeliverooState = (
   state: DeliverooState
 ): DeliverooItem[] => {
-  return state.props.initialState.menuPage.menu.meta.items;
+  const items = state?.props?.initialState?.menuPage?.menu?.meta?.items;
+
+  if (!items) {
+    console.log("No items in state");
+    return [];
+  }
+
+  return items;
 };
 
 export { getMenuItemsFromDeliverooState };

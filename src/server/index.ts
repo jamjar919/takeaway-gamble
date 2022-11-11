@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 
 import { Endpoints } from "../common/Endpoints";
 import { gamble } from "./gamble/gamble";
-import { debug } from "./debug/debug";
+import { debugRestaurantContext } from "./debug/debugRestaurantContext";
 import { sendJSON } from "./util/sendJSON";
 import {
   GambleErrorResponse,
@@ -12,6 +12,7 @@ import {
 import { GambleRequest } from "../common/type/GambleRequest";
 import { validateGambleRequest } from "./gamble/validateGambleRequest";
 import { urlCache } from "./debug/urlCache";
+import {debugGamble} from "./debug/debugGamble";
 
 dotenv.config();
 
@@ -58,8 +59,9 @@ app.post(
   }
 );
 
-app.get(Endpoints.DEBUG, debug);
-app.get(Endpoints.URL_CACHE, urlCache);
+app.get(Endpoints.DEBUG_RESTAURANT_CONTEXT, debugRestaurantContext);
+app.get(Endpoints.DEBUG_GAMBLE, debugGamble);
+app.get(Endpoints.DEBUG_URL_CACHE, urlCache);
 
 app.listen(port, () => {
   console.log(`Active on port ${port}!`);
