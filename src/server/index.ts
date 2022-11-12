@@ -12,7 +12,7 @@ import {
 import { GambleRequest } from "../common/type/GambleRequest";
 import { validateGambleRequest } from "./gamble/validateGambleRequest";
 import { urlCache } from "./debug/urlCache";
-import {debugGamble} from "./debug/debugGamble";
+import { debugGamble } from "./debug/debugGamble";
 
 dotenv.config();
 

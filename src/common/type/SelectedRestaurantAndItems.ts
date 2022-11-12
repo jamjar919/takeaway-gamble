@@ -1,4 +1,4 @@
-import {DeliverooMenuMetaState} from "../../server/type/deliveroo/DeliverooState";
+import { DeliverooMenuMetaState } from "../../server/type/deliveroo/DeliverooState";
 import { DeliverooItem } from "../../server/type/deliveroo/DeliverooItem";
 import { DeliverooModifierOption } from "../../server/type/deliveroo/DeliverooModifierOption";
 import { DeliverooModifierGroup } from "../../server/type/deliveroo/DeliverooModifierGroup";

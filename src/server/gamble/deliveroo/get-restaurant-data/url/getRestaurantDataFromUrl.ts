@@ -4,10 +4,10 @@ import {
   normaliseUrlPath,
   validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
-import {getDeliverooRestaurantContextFromUrl} from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
+import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
 
 const getRestaurantDataFromUrl = async (
-  unsafeUrl: string,
+  unsafeUrl: string
 ): Promise<RestaurantDataBundle> => {
   const normalisedUrl = normaliseUrlPath(unsafeUrl);
 
@@ -19,7 +19,9 @@ const getRestaurantDataFromUrl = async (
   }
 
   // Fetch + get context for it
-  const restaurantContext = await getDeliverooRestaurantContextFromUrl(normalisedUrl);
+  const restaurantContext = await getDeliverooRestaurantContextFromUrl(
+    normalisedUrl
+  );
 
   // Retrieve more detailed information
   const selectedPlaceMeta =

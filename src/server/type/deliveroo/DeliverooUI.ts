@@ -7,19 +7,33 @@ type UITargetRestaurant = {
 
 type UITargetAction = {
   typeName: "UITargetAction";
-  action: "SHOW_CATEGORY" | "",
+  action: "SHOW_CATEGORY" | "";
   params: [
     {
-      id: "category_id",
-      value: string[],
+      id: "category_id";
+      value: string[];
     }
-  ]
-}
+  ];
+};
+
+type UiCardSpan = {
+  typeName: "UISpanText";
+  key: string;
+  text: string;
+  size: string;
+};
+
+type UiCardLine = {
+  typeName: "UITextLine";
+  key: string;
+  align: string;
+  spans: UiCardSpan[];
+};
 
 type UICard = {
   content: string;
   typeName: "UICard";
-  lines: any[],
+  lines?: UiCardLine[];
   target?: UITargetRestaurant;
   cardTarget?: UITargetAction;
 };
@@ -33,6 +47,6 @@ type UILayoutList = {
 type UILayoutGrid = {
   typeName: "UILayoutGrid";
   blocks: UICard[];
-}
+};
 
 export { UILayoutList, UILayoutGrid, UITargetAction, UITargetRestaurant };
