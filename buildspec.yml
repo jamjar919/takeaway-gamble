@@ -1,19 +1,19 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - n 16.14.2
-  pre_build:
-    commands:
-      - yarn install
-  build:
-    commands:
-      - yarn run assemble
+    install:
+        commands:
+            - n 16.14.2
+    pre_build:
+        commands:
+            - yarn install
+    build:
+        commands:
+            - yarn run assemble
 cache:
-  paths:
-    - node_modules/**/*
+    paths:
+        - node_modules/**/*
 artifacts:
-  files:
-    - dist/**/*
-  name: takeaway-bet-dist
+    files:
+        - dist/**/*
+    name: takeaway-bet-dist

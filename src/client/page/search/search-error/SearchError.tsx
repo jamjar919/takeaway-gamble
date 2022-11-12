@@ -4,15 +4,15 @@ import { useGambleContext } from "../../../context/GambleContext";
 import styles from "./SearchError.scss";
 
 const SearchError: React.FC = () => {
-  const { gambleResult } = useGambleContext();
+    const { gambleResult } = useGambleContext();
 
-  if (gambleResult?.type === "error") {
-    const error = gambleResult.error;
+    if (gambleResult?.type === "error") {
+        const error = gambleResult.error;
 
-    return <div className={styles.error}>{error}</div>;
-  }
+        return <div className={styles.error}>{error}</div>;
+    }
 
-  return null;
+    return null;
 };
 
 export { SearchError };

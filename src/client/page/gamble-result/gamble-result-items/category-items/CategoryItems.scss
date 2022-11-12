@@ -2,11 +2,11 @@
 @import "../../../../App.scss";
 
 .categoryItems {
-  display: grid;
-  grid-auto-rows: auto;
-  grid-gap: 16px;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-gap: 16px;
 
-  @media (min-width: map.get($grid-breakpoints, "lg")) {
-    grid-template: auto/repeat(2, 1fr);
-  }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+        grid-template: auto/repeat(2, 1fr);
+    }
 }

@@ -18,84 +18,89 @@ import styles from "./GambleResultPage.scss";
  * Renders the result of a gamble
  */
 const GambleResultPage: React.FC = () => {
-  const { gambleResult, gambleInProgress, urlGamble } = useGambleContext();
+    const { gambleResult, gambleInProgress, urlGamble } = useGambleContext();
 
-  console.log(gambleResult);
+    console.log(gambleResult);
 
-  const [hasShownConfetti, setHasShownConfetti] = useState(false);
+    const [hasShownConfetti, setHasShownConfetti] = useState(false);
 
-  const { pathname } = useLocation();
+    const { pathname } = useLocation();
 
-  // Gamble for this page if a result isn't present
-  useEffect(() => {
-    if (!gambleInProgress && gambleResult === null) {
-      urlGamble(pathname);
+    // Gamble for this page if a result isn't present
+    useEffect(() => {
+        if (!gambleInProgress && gambleResult === null) {
+            urlGamble(pathname);
+        }
+    }, [gambleInProgress, gambleResult, pathname, urlGamble]);
+
+    if (gambleResult?.type === "error") {
+        return <Navigate to="/" />;
     }
-  }, [gambleInProgress, gambleResult, pathname, urlGamble]);
 
-  if (gambleResult?.type === "error") {
-    return <Navigate to="/" />;
-  }
+    if (gambleResult === null) {
+        return (
+            <div className={styles.pageContainer}>
+                <div className={styles.loadingAnimation}>
+                    <Logo size={"lg"} />
+                </div>
+            </div>
+        );
+    }
 
-  if (gambleResult === null) {
+    const {
+        selected: { restaurant, items, url },
+    } = gambleResult;
+
     return (
-      <div className={styles.pageContainer}>
-        <div className={styles.loadingAnimation}>
-          <Logo size={"lg"} />
+        <div className={styles.pageContainer}>
+            <GambleResultHeader restaurant={restaurant.restaurant} url={url} />
+            <div className={styles.selectedItems}>
+                <div className={styles.container}>
+                    <div className={styles.result}>
+                        <div className={styles.items}>
+                            <GambleResultItems
+                                items={items}
+                                categories={restaurant.categories}
+                            />
+                            <div className={styles.formWrapper}>
+                                <ReGambleForm
+                                    onSubmit={(values) =>
+                                        urlGamble(
+                                            pathname,
+                                            Number(
+                                                values[
+                                                    ReGambleFormField
+                                                        .PRICE_LIMIT
+                                                ]
+                                            ) * 100
+                                        )
+                                    }
+                                />
+                            </div>
+                        </div>
+                        <div className={styles.basketContainer}>
+                            <Basket
+                                selectedItems={items}
+                                ctaUrl={url}
+                                imageUrl={restaurant.metatags.image}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <GambleResultFooter />
+            {!hasShownConfetti && (
+                <div className={styles.confettiContainer}>
+                    <Lottie
+                        className={styles.confetti}
+                        animationData={confetti}
+                        play
+                        onLoopComplete={() => setHasShownConfetti(true)}
+                    />
+                </div>
+            )}
         </div>
-      </div>
     );
-  }
-
-  const {
-    selected: { restaurant, items, url },
-  } = gambleResult;
-
-  return (
-    <div className={styles.pageContainer}>
-      <GambleResultHeader restaurant={restaurant.restaurant} url={url} />
-      <div className={styles.selectedItems}>
-        <div className={styles.container}>
-          <div className={styles.result}>
-            <div className={styles.items}>
-              <GambleResultItems
-                items={items}
-                categories={restaurant.categories}
-              />
-              <div className={styles.formWrapper}>
-                <ReGambleForm
-                  onSubmit={(values) =>
-                    urlGamble(
-                      pathname,
-                      Number(values[ReGambleFormField.PRICE_LIMIT]) * 100
-                    )
-                  }
-                />
-              </div>
-            </div>
-            <div className={styles.basketContainer}>
-              <Basket
-                selectedItems={items}
-                ctaUrl={url}
-                imageUrl={restaurant.metatags.image}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <GambleResultFooter />
-      {!hasShownConfetti && (
-        <div className={styles.confettiContainer}>
-          <Lottie
-            className={styles.confetti}
-            animationData={confetti}
-            play
-            onLoopComplete={() => setHasShownConfetti(true)}
-          />
-        </div>
-      )}
-    </div>
-  );
 };
 
 export { GambleResultPage };

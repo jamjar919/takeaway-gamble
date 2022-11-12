@@ -5,23 +5,23 @@ import { getOpenPlaceFromState } from "./getOpenRestaurant";
 import { RestaurantDataBundle } from "../../../../type/RestaurantDataBundle";
 
 const getRestaurantDataFromPostcode = async (
-  postcode: string
+    postcode: string
 ): Promise<RestaurantDataBundle> => {
-  // Get deliveroo URL
-  const url = await getPlacesToEatUrl(postcode);
+    // Get deliveroo URL
+    const url = await getPlacesToEatUrl(postcode);
 
-  if (!url) {
-    throw new Error("Could not find restaurants for your area");
-  }
+    if (!url) {
+        throw new Error("Could not find restaurants for your area");
+    }
 
-  // Obtain restaurants in the area
-  const searchPageContext = await getDeliverooContextFromUrl(url);
+    // Obtain restaurants in the area
+    const searchPageContext = await getDeliverooContextFromUrl(url);
 
-  // Get all the places to eat from the search page
-  const placesToEat = getPlacesToEatFromDeliverooState(searchPageContext);
+    // Get all the places to eat from the search page
+    const placesToEat = getPlacesToEatFromDeliverooState(searchPageContext);
 
-  // Select one that's open
-  return await getOpenPlaceFromState(placesToEat);
+    // Select one that's open
+    return await getOpenPlaceFromState(placesToEat);
 };
 
 export { getRestaurantDataFromPostcode };

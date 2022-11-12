@@ -7,17 +7,17 @@ import buttonStyles from "../HeaderButton.scss";
 import backToSearchButtonStyles from "./BackToSearchButton.scss";
 
 const BackToSearchButton: React.FC = () => {
-  return (
-    <Link
-      to={Endpoints.SEARCH}
-      className={classNames(
-        buttonStyles.button,
-        backToSearchButtonStyles.backToSearchButton
-      )}
-    >
-      ⬅️
-    </Link>
-  );
+    return (
+        <Link
+            to={Endpoints.SEARCH}
+            className={classNames(
+                buttonStyles.button,
+                backToSearchButtonStyles.backToSearchButton
+            )}
+        >
+            ⬅️
+        </Link>
+    );
 };
 
 export { BackToSearchButton };

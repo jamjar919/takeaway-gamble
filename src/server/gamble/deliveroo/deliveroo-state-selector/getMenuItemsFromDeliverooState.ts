@@ -2,16 +2,16 @@ import { DeliverooItem } from "../../../type/deliveroo/DeliverooItem";
 import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 
 const getMenuItemsFromDeliverooState = (
-  state: DeliverooState
+    state: DeliverooState
 ): DeliverooItem[] => {
-  const items = state?.props?.initialState?.menuPage?.menu?.meta?.items;
+    const items = state?.props?.initialState?.menuPage?.menu?.meta?.items;
 
-  if (!items) {
-    console.log("No items in state");
-    return [];
-  }
+    if (!items) {
+        console.log("No items in state");
+        return [];
+    }
 
-  return items;
+    return items;
 };
 
 export { getMenuItemsFromDeliverooState };

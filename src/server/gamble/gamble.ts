@@ -8,40 +8,42 @@ import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurant
 import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
 
 const gamble = async (
-  request: GambleRequest
+    request: GambleRequest
 ): Promise<SuccessfulGambleResponse> => {
-  const restaurantData: RestaurantDataBundle = await getRestaurantData(request);
+    const restaurantData: RestaurantDataBundle = await getRestaurantData(
+        request
+    );
 
-  // Get items
-  const items = getMenuItemsFromDeliverooState(
-    restaurantData.restaurantContext
-  );
-  const modifierGroups = getModifierGroupsFromDeliverooState(
-    restaurantData.restaurantContext
-  );
+    // Get items
+    const items = getMenuItemsFromDeliverooState(
+        restaurantData.restaurantContext
+    );
+    const modifierGroups = getModifierGroupsFromDeliverooState(
+        restaurantData.restaurantContext
+    );
 
-  // Select some random items + modifiers
-  const selectedItems = selectMenuItems(
-    items,
-    modifierGroups,
-    request.priceLimit,
-    {
-      firstItemIsLarge: request.firstItemIsLarge ?? false,
-    }
-  );
+    // Select some random items + modifiers
+    const selectedItems = selectMenuItems(
+        items,
+        modifierGroups,
+        request.priceLimit,
+        {
+            firstItemIsLarge: request.firstItemIsLarge ?? false,
+        }
+    );
 
-  console.log(
-    `Generated ${selectedItems.length} items for ${restaurantData.selectedPlace.name} with limit ${request.priceLimit}`
-  );
+    console.log(
+        `Generated ${selectedItems.length} items for ${restaurantData.selectedPlace.name} with limit ${request.priceLimit}`
+    );
 
-  return {
-    type: "success",
-    selected: {
-      restaurant: restaurantData.selectedPlaceMeta,
-      items: selectedItems,
-      url: normaliseUrlPath(restaurantData.selectedPlace.url),
-    },
-  };
+    return {
+        type: "success",
+        selected: {
+            restaurant: restaurantData.selectedPlaceMeta,
+            items: selectedItems,
+            url: normaliseUrlPath(restaurantData.selectedPlace.url),
+        },
+    };
 };
 
 export { gamble };

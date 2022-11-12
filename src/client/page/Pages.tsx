@@ -6,14 +6,14 @@ import { Endpoints } from "../../common/Endpoints";
 import { useTitle } from "../framework/useTitle";
 
 const Pages: React.FC = () => {
-  useTitle();
+    useTitle();
 
-  return (
-    <Routes>
-      <Route path={Endpoints.SEARCH} element={<SearchPage />} />
-      <Route path={Endpoints.RESULT} element={<GambleResultPage />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path={Endpoints.SEARCH} element={<SearchPage />} />
+            <Route path={Endpoints.RESULT} element={<GambleResultPage />} />
+        </Routes>
+    );
 };
 
 export { Pages };

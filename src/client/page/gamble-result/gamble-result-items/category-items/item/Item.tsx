@@ -5,33 +5,35 @@ import styles from "./Item.scss";
 import { Price } from "../../../../../framework/price/Price";
 
 type ItemProps = {
-  item: DeliverooItem;
+    item: DeliverooItem;
 };
 
 const Item: React.FC<ItemProps> = (props) => {
-  const { item } = props;
+    const { item } = props;
 
-  return (
-    <div className={styles.item}>
-      <div className={styles.itemDetails}>
-        <h2 className={styles.itemName}>{item.name}</h2>
-        <div>{item.description}</div>
-        <div className={styles.price}>
-          <Price value={item} />
-          {item.popular && <span className={styles.popular}> · Popular</span>}
+    return (
+        <div className={styles.item}>
+            <div className={styles.itemDetails}>
+                <h2 className={styles.itemName}>{item.name}</h2>
+                <div>{item.description}</div>
+                <div className={styles.price}>
+                    <Price value={item} />
+                    {item.popular && (
+                        <span className={styles.popular}> · Popular</span>
+                    )}
+                </div>
+            </div>
+            {item.image && (
+                <div
+                    className={styles.image}
+                    aria-label={item.image.altText}
+                    style={{
+                        backgroundImage: `url(${item.image.url})`,
+                    }}
+                ></div>
+            )}
         </div>
-      </div>
-      {item.image && (
-        <div
-          className={styles.image}
-          aria-label={item.image.altText}
-          style={{
-            backgroundImage: `url(${item.image.url})`,
-          }}
-        ></div>
-      )}
-    </div>
-  );
+    );
 };
 
 export { Item };

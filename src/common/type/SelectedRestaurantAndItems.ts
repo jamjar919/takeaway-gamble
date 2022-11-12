@@ -4,19 +4,19 @@ import { DeliverooModifierOption } from "../../server/type/deliveroo/DeliverooMo
 import { DeliverooModifierGroup } from "../../server/type/deliveroo/DeliverooModifierGroup";
 
 type SelectedModifier = {
-  group: Omit<DeliverooModifierGroup, "modifierOptions">;
-  options: DeliverooModifierOption[];
+    group: Omit<DeliverooModifierGroup, "modifierOptions">;
+    options: DeliverooModifierOption[];
 };
 
 type SelectedItem = {
-  item: DeliverooItem;
-  modifiers: SelectedModifier[];
+    item: DeliverooItem;
+    modifiers: SelectedModifier[];
 };
 
 type SelectedRestaurantAndItems = {
-  restaurant: DeliverooMenuMetaState;
-  items: SelectedItem[];
-  url: string;
+    restaurant: DeliverooMenuMetaState;
+    items: SelectedItem[];
+    url: string;
 };
 
 export { SelectedRestaurantAndItems, SelectedItem, SelectedModifier };

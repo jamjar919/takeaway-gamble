@@ -2,79 +2,79 @@
 @import "../../../../App.scss";
 
 .basket {
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: 4px;
-  box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
-  background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 8%);
+    background-color: #fff;
 
-  padding: 24px 16px;
+    padding: 24px 16px;
 }
 
 .title {
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
 }
 
 .row {
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 16px;
 }
 
 .basketItems {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .banner {
-  display: flex;
-  align-items: center;
-  background: map.get($color, "primary");
-  border-radius: 4px;
-  color: #fff;
-  justify-content: space-between;
-  padding: 12px;
-  margin-top: 16px;
+    display: flex;
+    align-items: center;
+    background: map.get($color, "primary");
+    border-radius: 4px;
+    color: #fff;
+    justify-content: space-between;
+    padding: 12px;
+    margin-top: 16px;
 
-  a {
-    color: #ffffff;
-  }
+    a {
+        color: #ffffff;
+    }
 }
 
 .total {
-  display: flex;
-  flex: 1 1;
-  margin-right: auto;
+    display: flex;
+    flex: 1 1;
+    margin-right: auto;
 }
 
 .totalLine {
-  display: flex;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 22px;
-  padding-top: 16px;
+    display: flex;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    padding-top: 16px;
 }
 
 .cta {
-  display: block;
-  background: map.get($color, "primary");
-  color: #fff;
+    display: block;
+    background: map.get($color, "primary");
+    color: #fff;
 
-  margin-top: 16px;
-  line-height: 48px;
-  min-height: 48px;
-  cursor: pointer;
+    margin-top: 16px;
+    line-height: 48px;
+    min-height: 48px;
+    cursor: pointer;
 
-  border-radius: 4px;
-  font-weight: 600;
-  font-size: 16px;
-  text-align: center;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
 
-  &:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+        opacity: 0.8;
+    }
 }
 
 .image {
-  width: 100%;
+    width: 100%;
 }

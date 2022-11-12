@@ -4,35 +4,35 @@
 $height: 48px;
 
 .inputContainer {
-  display: flex;
-  flex-direction: row;
-  position: relative;
+    display: flex;
+    flex-direction: row;
+    position: relative;
 
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
-  border-radius: 100px;
-  height: $height;
-  margin: 10px 0;
-  padding: 12px 48px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+    border-radius: 100px;
+    height: $height;
+    margin: 10px 0;
+    padding: 12px 48px;
 }
 
 .left {
-  position: absolute;
-  left: 25px;
-  line-height: $height;
+    position: absolute;
+    left: 25px;
+    line-height: $height;
 }
 
 .input {
-  border: none;
-  outline: none;
-  margin: -10px 0;
-  width: 100%;
-  font-size: 25px;
+    border: none;
+    outline: none;
+    margin: -10px 0;
+    width: 100%;
+    font-size: 25px;
 }
 
 .right {
-  position: absolute;
-  right: 16px;
-  display: flex;
-  height: $height;
+    position: absolute;
+    right: 16px;
+    display: flex;
+    height: $height;
 }

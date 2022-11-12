@@ -11,36 +11,39 @@ import { ReGambleButton } from "./header-buttons/regamble-button/ReGambleButton"
 import { BackToSearchButton } from "./header-buttons/back-to-search-button/BackToSearchButton";
 
 type GambleResultHeaderProps = {
-  restaurant: DeliverooRestaurantFull;
-  url: string;
+    restaurant: DeliverooRestaurantFull;
+    url: string;
 };
 
 const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
-  const { restaurant, url } = props;
+    const { restaurant, url } = props;
 
-  return (
-    <div className={styles.menu}>
-      <div className={pageStyles.container}>
-        <div className={styles.menuItemContainer}>
-          <Link to={Endpoints.SEARCH} className={styles.logoWrapper}>
-            <Logo size={"sm"} />
-          </Link>
-          <div className={styles.titleContainer}>
-            <h1 className={styles.title}>
-              <a href={`https://deliveroo.co.uk${url}`} target="_blank">
-                {restaurant.name}
-              </a>
-            </h1>
-            <Address value={restaurant.location.address} />
-          </div>
-          <div className={styles.buttonContainer}>
-            <ReGambleButton />
-            <BackToSearchButton />
-          </div>
+    return (
+        <div className={styles.menu}>
+            <div className={pageStyles.container}>
+                <div className={styles.menuItemContainer}>
+                    <Link to={Endpoints.SEARCH} className={styles.logoWrapper}>
+                        <Logo size={"sm"} />
+                    </Link>
+                    <div className={styles.titleContainer}>
+                        <h1 className={styles.title}>
+                            <a
+                                href={`https://deliveroo.co.uk${url}`}
+                                target="_blank"
+                            >
+                                {restaurant.name}
+                            </a>
+                        </h1>
+                        <Address value={restaurant.location.address} />
+                    </div>
+                    <div className={styles.buttonContainer}>
+                        <ReGambleButton />
+                        <BackToSearchButton />
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export { GambleResultHeader };

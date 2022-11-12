@@ -1,17 +1,17 @@
 .address {
-  flex-direction: row;
-  text-decoration: none;
-  font-style: italic;
+    flex-direction: row;
+    text-decoration: none;
+    font-style: italic;
 }
 
 .addressLine {
-  &:after {
-    content: " - ";
-  }
-
-  &:last-child {
     &:after {
-      content: "";
+        content: " - ";
     }
-  }
+
+    &:last-child {
+        &:after {
+            content: "";
+        }
+    }
 }

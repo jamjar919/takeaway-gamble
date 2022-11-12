@@ -1,47 +1,47 @@
 .basketItem {
-  padding-top: 16px;
+    padding-top: 16px;
 }
 
 .item {
-  display: flex;
+    display: flex;
 }
 
 .itemName {
-  flex: 1 1;
+    flex: 1 1;
 }
 
 .modifierOption {
-  display: flex;
-  margin-top: 8px;
+    display: flex;
+    margin-top: 8px;
 
-  &:first-child {
-    margin-top: 0;
-  }
+    &:first-child {
+        margin-top: 0;
+    }
 }
 
 .modifierOptionName {
-  flex: 1 1;
+    flex: 1 1;
 }
 
 .modifierOptionList {
-  flex: 1 1;
+    flex: 1 1;
 }
 
 .modifiers {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .modifierGroup {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 8px;
 }
 
 .modifierGroupName {
-  flex: 1 1;
-  margin-left: 32px;
-  padding: 0 10px;
+    flex: 1 1;
+    margin-left: 32px;
+    padding: 0 10px;
 }

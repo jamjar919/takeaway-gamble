@@ -1,12 +1,12 @@
 import {
-  DeliverooMenuMetaState,
-  DeliverooState,
+    DeliverooMenuMetaState,
+    DeliverooState,
 } from "../../../type/deliveroo/DeliverooState";
 
 const getPlaceToEatMetaFromDeliverooState = (
-  state: DeliverooState
+    state: DeliverooState
 ): DeliverooMenuMetaState => {
-  return state.props.initialState.menuPage.menu.meta;
+    return state.props.initialState.menuPage.menu.meta;
 };
 
 export { getPlaceToEatMetaFromDeliverooState };
