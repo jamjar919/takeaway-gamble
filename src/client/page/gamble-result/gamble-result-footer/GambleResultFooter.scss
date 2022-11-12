@@ -2,7 +2,7 @@
 @import "../../../App.scss";
 
 .footer {
-  background: map.get($color, "primary");
-  color: white;
-  padding-top: 20px;
+    background: map.get($color, "primary");
+    color: white;
+    padding-top: 20px;
 }

@@ -4,19 +4,19 @@ import { DeliverooAddress } from "../../../server/type/deliveroo/DeliverooAddres
 import styles from "./Address.scss";
 
 type AddressProps = {
-  value: DeliverooAddress;
+    value: DeliverooAddress;
 };
 
 const renderAddressLine = (line?: string | null) =>
-  line ? <span className={styles.addressLine}>{line}</span> : "";
+    line ? <span className={styles.addressLine}>{line}</span> : "";
 
 /** Renders a dash seperated address */
 const Address: React.FC<AddressProps> = ({ value }) => {
-  return (
-    <address className={styles.address}>
-      {renderAddressLine(value?.address1)}
-    </address>
-  );
+    return (
+        <address className={styles.address}>
+            {renderAddressLine(value?.address1)}
+        </address>
+    );
 };
 
 export { Address };

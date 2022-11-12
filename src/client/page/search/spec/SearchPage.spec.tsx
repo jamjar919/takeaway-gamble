@@ -3,7 +3,7 @@ import { SearchPage } from "../SearchPage";
 import { validateRender } from "../../../../../test/validateRender";
 
 describe("SearchPage", () => {
-  it("renders", () => {
-    validateRender(<SearchPage />);
-  });
+    it("renders", () => {
+        validateRender(<SearchPage />);
+    });
 });

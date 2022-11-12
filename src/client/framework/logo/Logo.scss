@@ -1,27 +1,27 @@
 .logo {
-  animation: spin 10s infinite linear;
-  margin: auto;
+    animation: spin 10s infinite linear;
+    margin: auto;
 
-  &.superSpin {
-    animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
-  }
+    &.superSpin {
+        animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
+    }
 
-  &.sm {
-    height: 75px;
-    width: 75px;
-  }
+    &.sm {
+        height: 75px;
+        width: 75px;
+    }
 
-  &.lg {
-    height: 200px;
-    width: 200px;
-  }
+    &.lg {
+        height: 200px;
+        width: 200px;
+    }
 }
 
 @keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }

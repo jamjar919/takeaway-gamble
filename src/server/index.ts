@@ -3,15 +3,16 @@ import dotenv from "dotenv";
 
 import { Endpoints } from "../common/Endpoints";
 import { gamble } from "./gamble/gamble";
-import { debug } from "./debug/debug";
+import { debugRestaurantContext } from "./debug/debugRestaurantContext";
 import { sendJSON } from "./util/sendJSON";
 import {
-  GambleErrorResponse,
-  SuccessfulGambleResponse,
+    GambleErrorResponse,
+    SuccessfulGambleResponse,
 } from "../common/type/GambleResponse";
 import { GambleRequest } from "../common/type/GambleRequest";
 import { validateGambleRequest } from "./gamble/validateGambleRequest";
 import { urlCache } from "./debug/urlCache";
+import { debugGamble } from "./debug/debugGamble";
 
 dotenv.config();
 
@@ -24,43 +25,44 @@ app.use(express.static(__dirname + "/client"));
 
 // App
 app.get(Endpoints.SEARCH, (_, res) => {
-  res.sendFile(__dirname + "/client/index.html");
+    res.sendFile(__dirname + "/client/index.html");
 });
 
 app.get(Endpoints.RESULT, (_, res) => {
-  res.sendFile(__dirname + "/client/index.html");
+    res.sendFile(__dirname + "/client/index.html");
 });
 
 // API
 
 app.post(
-  Endpoints.GAMBLE,
-  async (req: Request<{}, {}, GambleRequest>, res: Response) => {
-    try {
-      const request = req.body;
+    Endpoints.GAMBLE,
+    async (req: Request<{}, {}, GambleRequest>, res: Response) => {
+        try {
+            const request = req.body;
 
-      validateGambleRequest(request);
+            validateGambleRequest(request);
 
-      const response = await gamble(request);
+            const response = await gamble(request);
 
-      sendJSON<SuccessfulGambleResponse>(response, res);
-    } catch (e: any) {
-      console.log("Error gambling ", e);
+            sendJSON<SuccessfulGambleResponse>(response, res);
+        } catch (e: any) {
+            console.log("Error gambling ", e);
 
-      sendJSON<GambleErrorResponse>(
-        {
-          type: "error",
-          error: e?.message || "Error!",
-        },
-        res
-      );
+            sendJSON<GambleErrorResponse>(
+                {
+                    type: "error",
+                    error: e?.message || "Error!",
+                },
+                res
+            );
+        }
     }
-  }
 );
 
-app.get(Endpoints.DEBUG, debug);
-app.get(Endpoints.URL_CACHE, urlCache);
+app.get(Endpoints.DEBUG_RESTAURANT_CONTEXT, debugRestaurantContext);
+app.get(Endpoints.DEBUG_GAMBLE, debugGamble);
+app.get(Endpoints.DEBUG_URL_CACHE, urlCache);
 
 app.listen(port, () => {
-  console.log(`Active on port ${port}!`);
+    console.log(`Active on port ${port}!`);
 });

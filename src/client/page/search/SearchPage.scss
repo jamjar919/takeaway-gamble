@@ -2,22 +2,22 @@
 @import "../../App.scss";
 
 .container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 
-  padding: 0 20px;
-  @media (min-width: map.get($grid-breakpoints, "sm")) {
-    padding: 0;
-  }
+    padding: 0 20px;
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+        padding: 0;
+    }
 }
 
 .formContainer {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
 
-  @media (min-width: map.get($grid-breakpoints, "lg")) {
-    min-width: 575px;
-  }
+    @media (min-width: map.get($grid-breakpoints, "lg")) {
+        min-width: 575px;
+    }
 }

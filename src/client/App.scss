@@ -1,29 +1,29 @@
 body {
-  margin: 0;
-  font-family: "Helvetica", plex-sans, sans-serif;
-  color: #2e3333;
+    margin: 0;
+    font-family: "Helvetica", plex-sans, sans-serif;
+    color: #2e3333;
 }
 
 ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-  }
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 $grid-breakpoints: (
-  sm: 576px,
-  lg: 1200px,
+    sm: 576px,
+    lg: 1200px,
 );
 
 $color: (
-  primary: #b92626,
+    primary: #b92626,
 );

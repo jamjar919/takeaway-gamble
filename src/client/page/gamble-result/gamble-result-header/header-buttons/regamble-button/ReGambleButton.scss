@@ -1,15 +1,15 @@
 .regambleButton {
-  &:hover {
-    opacity: 0.8;
-    animation: 1s spinno infinite;
-  }
+    &:hover {
+        opacity: 0.8;
+        animation: 1s spinno infinite;
+    }
 }
 
 @keyframes spinno {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

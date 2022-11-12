@@ -2,26 +2,26 @@
 @import "../../../App.scss";
 
 .unit {
-  color: map.get($color, "primary");
-  font-size: 25px;
-  font-weight: bold;
+    color: map.get($color, "primary");
+    font-size: 25px;
+    font-weight: bold;
 }
 
 .button {
-  background: map.get($color, "primary");
-  color: white;
-  border: none;
-  font-size: 16px;
-  line-height: 24px;
-  margin: auto;
-  padding: 10px 20px;
-  border-radius: 32px;
-  font-weight: bold;
-  cursor: pointer;
-  width: 150px;
-  text-align: center;
+    background: map.get($color, "primary");
+    color: white;
+    border: none;
+    font-size: 16px;
+    line-height: 24px;
+    margin: auto;
+    padding: 10px 20px;
+    border-radius: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 150px;
+    text-align: center;
 
-  &:hover {
-    opacity: 0.8;
-  }
+    &:hover {
+        opacity: 0.8;
+    }
 }
