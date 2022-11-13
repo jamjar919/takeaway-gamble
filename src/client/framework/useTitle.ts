@@ -5,7 +5,7 @@ import { GambleResponse } from "../../common/type/GambleResponse";
 const getTitle = (gambleResult: null | GambleResponse) => {
     if (gambleResult?.type === "success") {
         return (
-            "Takeaway Bet - " + gambleResult.selected.restaurant.restaurant.name
+            "Takeaway Bet - " + gambleResult.selected.name
         );
     }
 

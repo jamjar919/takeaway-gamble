@@ -1,7 +1,5 @@
-import { getMenuItemsFromDeliverooState } from "./deliveroo/deliveroo-state-selector/getMenuItemsFromDeliverooState";
 import { selectMenuItems } from "./select-menu-items/selectMenuItems";
 import { SuccessfulGambleResponse } from "../../common/type/GambleResponse";
-import { getModifierGroupsFromDeliverooState } from "./deliveroo/deliveroo-state-selector/getModifierGroupsFromDeliverooState";
 import { GambleRequest } from "../../common/type/GambleRequest";
 import { RestaurantDataBundle } from "../type/RestaurantDataBundle";
 import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";
@@ -10,22 +8,15 @@ import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooM
 const gamble = async (
     request: GambleRequest
 ): Promise<SuccessfulGambleResponse> => {
+    // Get restaurant data based on our request
     const restaurantData: RestaurantDataBundle = await getRestaurantData(
         request
     );
 
-    // Get items
-    const items = getMenuItemsFromDeliverooState(
-        restaurantData.restaurantContext
-    );
-    const modifierGroups = getModifierGroupsFromDeliverooState(
-        restaurantData.restaurantContext
-    );
-
     // Select some random items + modifiers
     const selectedItems = selectMenuItems(
-        items,
-        modifierGroups,
+        restaurantData.items,
+        restaurantData.modifierGroups,
         request.priceLimit,
         {
             firstItemIsLarge: request.firstItemIsLarge ?? false,
@@ -33,15 +24,18 @@ const gamble = async (
     );
 
     console.log(
-        `Generated ${selectedItems.length} items for ${restaurantData.selectedPlace.name} with limit ${request.priceLimit}`
+        `Generated ${selectedItems.length} items for ${restaurantData.name} with limit ${request.priceLimit}`
     );
 
     return {
         type: "success",
         selected: {
-            restaurant: restaurantData.selectedPlaceMeta,
+            name: restaurantData.name,
+            url: normaliseUrlPath(restaurantData.url),
+            image: restaurantData.image,
+            address: restaurantData.address,
             items: selectedItems,
-            url: normaliseUrlPath(restaurantData.selectedPlace.url),
+            categories: restaurantData.categories
         },
     };
 };

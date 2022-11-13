@@ -1,7 +1,6 @@
 import React from "react";
 import { Logo } from "../../../framework/logo/Logo";
 import { Address } from "../../../framework/address/Address";
-import { DeliverooRestaurantFull } from "../../../../server/type/deliveroo/DeliverooRestaurant";
 
 import styles from "./GambleResultHeader.scss";
 import pageStyles from "../GambleResultPage.scss";
@@ -9,14 +8,16 @@ import { Link } from "react-router-dom";
 import { Endpoints } from "../../../../common/Endpoints";
 import { ReGambleButton } from "./header-buttons/regamble-button/ReGambleButton";
 import { BackToSearchButton } from "./header-buttons/back-to-search-button/BackToSearchButton";
+import {DeliverooAddress} from "../../../../server/type/deliveroo/DeliverooAddress";
 
 type GambleResultHeaderProps = {
-    restaurant: DeliverooRestaurantFull;
+    name: string;
+    address: DeliverooAddress,
     url: string;
 };
 
 const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
-    const { restaurant, url } = props;
+    const { name, address, url } = props;
 
     return (
         <div className={styles.menu}>
@@ -31,10 +32,10 @@ const GambleResultHeader: React.FC<GambleResultHeaderProps> = (props) => {
                                 href={`https://deliveroo.co.uk${url}`}
                                 target="_blank"
                             >
-                                {restaurant.name}
+                                {name}
                             </a>
                         </h1>
-                        <Address value={restaurant.location.address} />
+                        <Address value={address} />
                     </div>
                     <div className={styles.buttonContainer}>
                         <ReGambleButton />

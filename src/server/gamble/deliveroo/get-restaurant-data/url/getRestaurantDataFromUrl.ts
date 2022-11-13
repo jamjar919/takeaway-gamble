@@ -5,6 +5,8 @@ import {
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
+import {getMenuItemsFromDeliverooState} from "../../deliveroo-state-selector/getMenuItemsFromDeliverooState";
+import {getModifierGroupsFromDeliverooState} from "../../deliveroo-state-selector/getModifierGroupsFromDeliverooState";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string
@@ -28,12 +30,17 @@ const getRestaurantDataFromUrl = async (
         getPlaceToEatMetaFromDeliverooState(restaurantContext);
 
     return {
-        selectedPlace: {
-            name: selectedPlaceMeta.restaurant.name,
-            url: normalisedUrl,
-        },
-        restaurantContext,
-        selectedPlaceMeta,
+        name: selectedPlaceMeta.restaurant.name,
+        url: normalisedUrl,
+        image: selectedPlaceMeta.metatags.image,
+        address: selectedPlaceMeta.restaurant.location.address,
+        items: getMenuItemsFromDeliverooState(
+            restaurantContext
+        ),
+        modifierGroups: getModifierGroupsFromDeliverooState(
+            restaurantContext
+        ),
+        categories: selectedPlaceMeta.categories
     };
 };
 

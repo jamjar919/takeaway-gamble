@@ -48,19 +48,23 @@ const GambleResultPage: React.FC = () => {
     }
 
     const {
-        selected: { restaurant, items, url },
+        selected: { name, categories, items, url, image, address },
     } = gambleResult;
 
     return (
         <div className={styles.pageContainer}>
-            <GambleResultHeader restaurant={restaurant.restaurant} url={url} />
+            <GambleResultHeader
+                name={name}
+                address={address}
+                url={url}
+            />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
                     <div className={styles.result}>
                         <div className={styles.items}>
                             <GambleResultItems
                                 items={items}
-                                categories={restaurant.categories}
+                                categories={categories}
                             />
                             <div className={styles.formWrapper}>
                                 <ReGambleForm
@@ -82,7 +86,7 @@ const GambleResultPage: React.FC = () => {
                             <Basket
                                 selectedItems={items}
                                 ctaUrl={url}
-                                imageUrl={restaurant.metatags.image}
+                                imageUrl={image}
                             />
                         </div>
                     </div>
