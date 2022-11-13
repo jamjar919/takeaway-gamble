@@ -14,23 +14,28 @@ const SearchPage: React.FC = () => {
 
     return (
         <div className={styles.container}>
-            <div className={styles.formContainer}>
-                <SearchPageForm
-                    onSubmit={(values: SearchPageFormValues) => {
-                        const postcode = values[SearchPageFormField.POSTCODE];
-                        const price =
-                            Number(values[SearchPageFormField.PRICE_LIMIT]) *
-                            100;
-                        const firstItemIsLarge =
-                            values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
+            <div className={styles.search}>
+                <div className={styles.formWrapper}>
+                    <SearchPageForm
+                        onSubmit={(values: SearchPageFormValues) => {
+                            const postcode = values[SearchPageFormField.POSTCODE];
+                            const price =
+                                Number(values[SearchPageFormField.PRICE_LIMIT]) *
+                                100;
+                            const firstItemIsLarge =
+                                values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
 
-                        return postcodeGamble(
-                            postcode,
-                            price,
-                            firstItemIsLarge
-                        );
-                    }}
-                />
+                            return postcodeGamble(
+                                postcode,
+                                price,
+                                firstItemIsLarge
+                            );
+                        }}
+                    />
+                </div>
+            </div>
+            <div className={styles.about}>
+                <strong>What's this?</strong> - Generate a random takeaway in your area from Deliveroo or Just Eat - Just enter your postcode and how much you'd like to spend.
             </div>
             <div className={styles.footer}>
                 <FooterContent />

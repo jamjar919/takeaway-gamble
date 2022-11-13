@@ -3,6 +3,7 @@ import { getMenuItemsFromDeliverooState } from "../deliveroo-state-selector/getM
 import { getMenuPageCategories } from "../deliveroo-state-selector/getMenuPageCategories";
 import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 import { mergeDeliverooStatesFromCategories } from "./mergeDeliverooStatesFromCategories";
+import { normaliseUrlPath } from "../get-restaurant-data/url/deliverooMenuUrlCache";
 
 const getDeliverooRestaurantContextFromUrl = async (
     url: string,
@@ -28,7 +29,7 @@ const getDeliverooRestaurantContextFromUrl = async (
 
     const deliverooStates: DeliverooState[] = await Promise.all(
         categories.map((category) => {
-            const urlWithCategory = `${url}?category_id=${category.id}`;
+            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${category.id}`;
 
             return getDeliverooRestaurantContextFromUrl(urlWithCategory, false);
         })

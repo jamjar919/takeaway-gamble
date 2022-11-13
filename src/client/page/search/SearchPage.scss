@@ -4,7 +4,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
 
     padding: 0 20px;
     @media (min-width: map.get($grid-breakpoints, "sm")) {
@@ -12,12 +12,25 @@
     }
 }
 
-.formContainer {
+.search {
     margin: auto;
     display: flex;
     flex-direction: column;
 
+    height: 100vh;
+    @media (min-width: map.get($grid-breakpoints, "sm")) {
+        height: auto;
+    }
     @media (min-width: map.get($grid-breakpoints, "lg")) {
         min-width: 575px;
     }
+
+    .formWrapper {
+        margin: auto;
+    }
+}
+
+.about {
+    text-align: center;
+    padding-bottom: 10px;
 }
