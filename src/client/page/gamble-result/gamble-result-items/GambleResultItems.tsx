@@ -2,12 +2,12 @@ import React from "react";
 import { DeliverooCategory } from "../../../../server/type/deliveroo/DeliverooCategory";
 import { CategoryHeader } from "./category-header/CategoryHeader";
 import { CategoryItems } from "./category-items/CategoryItems";
-import { SelectedItem } from "../../../../common/type/SelectedRestaurantAndItems";
+import { SelectedItemWebModel } from "../../../../common/type/SelectedRestaurantAndItemsWebModel";
 
 import styles from "./GambleResultItems.scss";
 
 type ItemsProps = {
-    items: SelectedItem[];
+    items: SelectedItemWebModel[];
     categories: DeliverooCategory[];
 };
 

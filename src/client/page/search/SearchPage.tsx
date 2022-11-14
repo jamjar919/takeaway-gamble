@@ -18,10 +18,12 @@ const SearchPage: React.FC = () => {
                 <div className={styles.formWrapper}>
                     <SearchPageForm
                         onSubmit={(values: SearchPageFormValues) => {
-                            const postcode = values[SearchPageFormField.POSTCODE];
+                            const postcode =
+                                values[SearchPageFormField.POSTCODE];
                             const price =
-                                Number(values[SearchPageFormField.PRICE_LIMIT]) *
-                                100;
+                                Number(
+                                    values[SearchPageFormField.PRICE_LIMIT]
+                                ) * 100;
                             const firstItemIsLarge =
                                 values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
 
@@ -35,7 +37,9 @@ const SearchPage: React.FC = () => {
                 </div>
             </div>
             <div className={styles.about}>
-                <strong>What's this?</strong> - Generate a random takeaway in your area from Deliveroo or Just Eat - Just enter your postcode and how much you'd like to spend.
+                <strong>What's this?</strong> - Generate a random takeaway in
+                your area from Deliveroo or Just Eat - Just enter your postcode
+                and how much you'd like to spend.
             </div>
             <div className={styles.footer}>
                 <FooterContent />

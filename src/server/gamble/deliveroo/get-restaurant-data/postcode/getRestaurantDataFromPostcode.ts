@@ -2,11 +2,11 @@ import { getPlacesToEatUrl } from "./get-places-to-eat-url/getPlacesToEatUrl";
 import { getDeliverooContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooContextFromUrl";
 import { getPlacesToEatFromDeliverooState } from "../../deliveroo-state-selector/getPlacesToEatFromDeliverooState";
 import { getOpenPlaceFromState } from "./getOpenRestaurant";
-import { RestaurantDataBundle } from "../../../../type/RestaurantDataBundle";
+import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
 
 const getRestaurantDataFromPostcode = async (
     postcode: string
-): Promise<RestaurantDataBundle> => {
+): Promise<RestaurantDataDTO> => {
     // Get deliveroo URL
     const url = await getPlacesToEatUrl(postcode);
 

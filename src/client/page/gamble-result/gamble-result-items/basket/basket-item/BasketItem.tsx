@@ -1,12 +1,12 @@
 import React from "react";
 import { Price } from "../../../../../framework/price/Price";
-import { SelectedItem } from "../../../../../../common/type/SelectedRestaurantAndItems";
+import { SelectedItemWebModel } from "../../../../../../common/type/SelectedRestaurantAndItemsWebModel";
 import { Modifiers } from "./Modifiers";
 
 import styles from "./BasketItem.scss";
 
 type BasketItemProps = {
-    selectedItem: SelectedItem;
+    selectedItem: SelectedItemWebModel;
 };
 
 const BasketItem: React.FC<BasketItemProps> = (props) => {

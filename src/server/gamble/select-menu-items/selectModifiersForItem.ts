@@ -1,22 +1,24 @@
-import { DeliverooItem } from "../../type/deliveroo/DeliverooItem";
-import { DeliverooModifierGroup } from "../../type/deliveroo/DeliverooModifierGroup";
-import { SelectedModifier } from "../../../common/type/SelectedRestaurantAndItems";
-import { DeliverooModifierOption } from "../../type/deliveroo/DeliverooModifierOption";
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
+import {
+    ItemDTO,
+    ModifierGroupDTO,
+    ModifierOptionDTO,
+    SelectedModifierDTO,
+} from "../../type/RestaurantDataDTO";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 
-const getPriceOfSelectedModifiers = (options: DeliverooModifierOption[]) =>
+const getPriceOfSelectedModifiers = (options: ModifierOptionDTO[]) =>
     options
         .map((option) => getPriceFromDeliverooObject(option))
         .reduce((a, b) => b.fractional + a, 0);
 
 const selectModifiersForItem = (
-    item: DeliverooItem,
-    modifiers: DeliverooModifierGroup[],
+    item: ItemDTO,
+    modifiers: ModifierGroupDTO[],
     priceLimit: number
-): SelectedModifier[] => {
+): SelectedModifierDTO[] => {
     const validModifierGroupsForItem = modifiers.filter((group) =>
         item.modifierGroupIds.includes(group.id)
     );
@@ -24,7 +26,7 @@ const selectModifiersForItem = (
     return (
         validModifierGroupsForItem
             .map((group) => {
-                const options: DeliverooModifierOption[] = [];
+                const options: ModifierOptionDTO[] = [];
 
                 let validOptions = group.modifierOptions.filter(
                     (option) => option.available
@@ -61,11 +63,11 @@ const selectModifiersForItem = (
                 };
             })
             .filter(
-                (selectedModifier: SelectedModifier | null) =>
+                (selectedModifier: SelectedModifierDTO | null) =>
                     selectedModifier !== null
-            ) as SelectedModifier[]
+            ) as SelectedModifierDTO[]
     ).filter(
-        (selectedModifier: SelectedModifier) =>
+        (selectedModifier: SelectedModifierDTO) =>
             selectedModifier.options.length > 0
     );
 };

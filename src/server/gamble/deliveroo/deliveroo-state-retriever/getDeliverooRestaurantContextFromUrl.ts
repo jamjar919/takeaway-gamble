@@ -8,7 +8,7 @@ import { normaliseUrlPath } from "../get-restaurant-data/url/deliverooMenuUrlCac
 const getDeliverooRestaurantContextFromUrl = async (
     url: string,
     allowFetchingCategories = true
-) => {
+): Promise<DeliverooState> => {
     const state = await getDeliverooContextFromUrl(url);
 
     // Assert the context we got has items in it
@@ -29,7 +29,9 @@ const getDeliverooRestaurantContextFromUrl = async (
 
     const deliverooStates: DeliverooState[] = await Promise.all(
         categories.map((category) => {
-            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${category.id}`;
+            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${
+                category.id
+            }`;
 
             return getDeliverooRestaurantContextFromUrl(urlWithCategory, false);
         })
