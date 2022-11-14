@@ -1,9 +1,10 @@
-import { selectMenuItems } from "./select-menu-items/selectMenuItems";
+import {selectMenuItems} from "./select-menu-items/selectMenuItems";
 import {GambleResponse, SuccessfulGambleResponse} from "../../common/type/GambleResponse";
-import { GambleRequest } from "../../common/type/GambleRequest";
-import { RestaurantDataDTO } from "../type/RestaurantDataDTO";
-import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";
-import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
+import {GambleRequest} from "../../common/type/GambleRequest";
+import {RestaurantDataDTO} from "../type/RestaurantDataDTO";
+import {getRestaurantData} from "./deliveroo/get-restaurant-data/getRestaurantData";
+import {normaliseUrlPath} from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
+import {convertToSelectedItemWebModel} from "./converter/convertToSelectedItemWebModel";
 
 const gamble = async (
     request: GambleRequest
@@ -27,19 +28,17 @@ const gamble = async (
         `Generated ${selectedItems.length} items for ${restaurantData.name} with limit ${request.priceLimit}`
     );
 
-    const response: GambleResponse = {
+    return {
         type: "success",
         selected: {
             name: restaurantData.name,
             url: normaliseUrlPath(restaurantData.url),
             image: restaurantData.image,
             address: restaurantData.address,
-            items: selectedItems,
+            items: selectedItems.map(convertToSelectedItemWebModel),
             categories: restaurantData.categories
         },
     };
-
-    return response;
 };
 
 export { gamble };
