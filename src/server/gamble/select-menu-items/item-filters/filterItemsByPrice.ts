@@ -1,19 +1,19 @@
-import { DeliverooItem } from "../../../type/deliveroo/DeliverooItem";
 import { getPriceFromDeliverooObject } from "../../../../common/util/getPriceFromDeliverooObject";
+import {Item} from "../../../../common/type/SelectedRestaurantAndItems";
 
 const filterItemsBelowPrice = (
-    items: DeliverooItem[],
+    items: Item[],
     priceLimit: number
-): DeliverooItem[] => {
+): Item[] => {
     return items.filter(
         (item) => getPriceFromDeliverooObject(item).fractional < priceLimit
     );
 };
 
 const filterItemsAbovePrice = (
-    items: DeliverooItem[],
+    items: Item[],
     priceLimit: number
-): DeliverooItem[] => {
+): Item[] => {
     return items.filter((item) => item.price.fractional > priceLimit);
 };
 

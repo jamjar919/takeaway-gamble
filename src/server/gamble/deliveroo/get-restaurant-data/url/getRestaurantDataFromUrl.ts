@@ -5,8 +5,7 @@ import {
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {getMenuItemsFromDeliverooState} from "../../deliveroo-state-selector/getMenuItemsFromDeliverooState";
-import {getModifierGroupsFromDeliverooState} from "../../deliveroo-state-selector/getModifierGroupsFromDeliverooState";
+import {convertToRestaurantDataBundle} from "../../converter/convertToRestaurantDataBundle";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string
@@ -29,19 +28,12 @@ const getRestaurantDataFromUrl = async (
     const selectedPlaceMeta =
         getPlaceToEatMetaFromDeliverooState(restaurantContext);
 
-    return {
-        name: selectedPlaceMeta.restaurant.name,
-        url: normalisedUrl,
-        image: selectedPlaceMeta.metatags.image,
-        address: selectedPlaceMeta.restaurant.location.address,
-        items: getMenuItemsFromDeliverooState(
-            restaurantContext
-        ),
-        modifierGroups: getModifierGroupsFromDeliverooState(
-            restaurantContext
-        ),
-        categories: selectedPlaceMeta.categories
-    };
+    // Convert to generic objects and return
+    return convertToRestaurantDataBundle(
+        normalisedUrl,
+        selectedPlaceMeta,
+        restaurantContext
+    );
 };
 
 export { getRestaurantDataFromUrl };

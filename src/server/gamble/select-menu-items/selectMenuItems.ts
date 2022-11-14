@@ -1,9 +1,7 @@
-import { DeliverooItem } from "../../type/deliveroo/DeliverooItem";
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
-import { SelectedItem } from "../../../common/type/SelectedRestaurantAndItems";
+import {Item, ModifierGroup, SelectedItem} from "../../../common/type/SelectedRestaurantAndItems";
 import { filterItemsBelowPrice } from "./item-filters/filterItemsByPrice";
 import { filterToPreferredItems } from "./item-filters/filterToPreferredItems";
-import { DeliverooModifierGroup } from "../../type/deliveroo/DeliverooModifierGroup";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
 import { selectModifiersForItem } from "./selectModifiersForItem";
 
@@ -12,8 +10,8 @@ import { selectModifiersForItem } from "./selectModifiersForItem";
  *  of items that sum to that price
  */
 const selectMenuItems = (
-    items: DeliverooItem[],
-    modifiers: DeliverooModifierGroup[],
+    items: Item[],
+    modifiers: ModifierGroup[],
     priceLimit: number,
     options: {
         firstItemIsLarge: boolean;

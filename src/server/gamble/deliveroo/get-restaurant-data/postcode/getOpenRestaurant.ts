@@ -2,9 +2,8 @@ import { Restaurant } from "../../../../type/Restaurant";
 import { pickOneFromArray } from "../../../../../common/util/pickOneFromArray";
 import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {getMenuItemsFromDeliverooState} from "../../deliveroo-state-selector/getMenuItemsFromDeliverooState";
-import {getModifierGroupsFromDeliverooState} from "../../deliveroo-state-selector/getModifierGroupsFromDeliverooState";
 import {RestaurantDataBundle} from "../../../../type/RestaurantDataBundle";
+import {convertToRestaurantDataBundle} from "../../converter/convertToRestaurantDataBundle";
 
 const MAX_RESTAURANTS = 9;
 
@@ -38,19 +37,11 @@ const getOpenPlaceFromState = async (
         return await getOpenPlaceFromState(placesToEat, attempt + 1);
     }
 
-    return {
-        name: selectedPlace.name,
-        url: selectedPlace.url,
-        image: selectedPlaceMeta.metatags.image,
-        address: selectedPlaceMeta.restaurant.location.address,
-        items: getMenuItemsFromDeliverooState(
-            restaurantContext
-        ),
-        modifierGroups: getModifierGroupsFromDeliverooState(
-            restaurantContext
-        ),
-        categories: selectedPlaceMeta.categories
-    };
+    return convertToRestaurantDataBundle(
+        selectedPlace.url,
+        selectedPlaceMeta,
+        restaurantContext
+    );
 };
 
 export { getOpenPlaceFromState };

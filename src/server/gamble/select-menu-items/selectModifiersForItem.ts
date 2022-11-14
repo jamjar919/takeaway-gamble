@@ -1,20 +1,17 @@
-import { DeliverooItem } from "../../type/deliveroo/DeliverooItem";
-import { DeliverooModifierGroup } from "../../type/deliveroo/DeliverooModifierGroup";
-import { SelectedModifier } from "../../../common/type/SelectedRestaurantAndItems";
-import { DeliverooModifierOption } from "../../type/deliveroo/DeliverooModifierOption";
+import {Item, ModifierGroup, ModifierOption, SelectedModifier} from "../../../common/type/SelectedRestaurantAndItems";
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 
-const getPriceOfSelectedModifiers = (options: DeliverooModifierOption[]) =>
+const getPriceOfSelectedModifiers = (options: ModifierOption[]) =>
     options
         .map((option) => getPriceFromDeliverooObject(option))
         .reduce((a, b) => b.fractional + a, 0);
 
 const selectModifiersForItem = (
-    item: DeliverooItem,
-    modifiers: DeliverooModifierGroup[],
+    item: Item,
+    modifiers: ModifierGroup[],
     priceLimit: number
 ): SelectedModifier[] => {
     const validModifierGroupsForItem = modifiers.filter((group) =>
@@ -24,7 +21,7 @@ const selectModifiersForItem = (
     return (
         validModifierGroupsForItem
             .map((group) => {
-                const options: DeliverooModifierOption[] = [];
+                const options: ModifierOption[] = [];
 
                 let validOptions = group.modifierOptions.filter(
                     (option) => option.available

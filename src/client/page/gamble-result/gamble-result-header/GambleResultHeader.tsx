@@ -8,11 +8,10 @@ import { Link } from "react-router-dom";
 import { Endpoints } from "../../../../common/Endpoints";
 import { ReGambleButton } from "./header-buttons/regamble-button/ReGambleButton";
 import { BackToSearchButton } from "./header-buttons/back-to-search-button/BackToSearchButton";
-import {DeliverooAddress} from "../../../../server/type/deliveroo/DeliverooAddress";
 
 type GambleResultHeaderProps = {
     name: string;
-    address: DeliverooAddress,
+    address: string,
     url: string;
 };
 
