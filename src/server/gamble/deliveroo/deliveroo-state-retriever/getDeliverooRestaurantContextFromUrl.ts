@@ -29,7 +29,9 @@ const getDeliverooRestaurantContextFromUrl = async (
 
     const deliverooStates: DeliverooState[] = await Promise.all(
         categories.map((category) => {
-            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${category.id}`;
+            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${
+                category.id
+            }`;
 
             return getDeliverooRestaurantContextFromUrl(urlWithCategory, false);
         })

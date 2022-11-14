@@ -8,11 +8,7 @@ type AddressProps = {
 
 /** Renders a dash seperated address */
 const Address: React.FC<AddressProps> = ({ value }) => {
-    return (
-        <address className={styles.address}>
-            {value}
-        </address>
-    );
+    return <address className={styles.address}>{value}</address>;
 };
 
 export { Address };

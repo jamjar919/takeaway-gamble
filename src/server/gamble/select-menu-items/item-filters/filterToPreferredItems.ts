@@ -1,6 +1,6 @@
 import { getPriceFromDeliverooObject } from "../../../../common/util/getPriceFromDeliverooObject";
 import { filterItemsAbovePrice } from "./filterItemsByPrice";
-import {ItemDTO} from "../../../type/RestaurantDataDTO";
+import { ItemDTO } from "../../../type/RestaurantDataDTO";
 
 /** Apply a heuristic to filter to preferred items */
 const filterToPreferredItems = (items: ItemDTO[]): ItemDTO[] => {

@@ -11,7 +11,7 @@ import { BackToSearchButton } from "./header-buttons/back-to-search-button/BackT
 
 type GambleResultHeaderProps = {
     name: string;
-    address: string,
+    address: string;
     url: string;
 };
 

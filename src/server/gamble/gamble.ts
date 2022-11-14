@@ -1,18 +1,16 @@
-import {selectMenuItems} from "./select-menu-items/selectMenuItems";
-import {GambleResponse, SuccessfulGambleResponse} from "../../common/type/GambleResponse";
-import {GambleRequest} from "../../common/type/GambleRequest";
-import {RestaurantDataDTO} from "../type/RestaurantDataDTO";
-import {getRestaurantData} from "./deliveroo/get-restaurant-data/getRestaurantData";
-import {normaliseUrlPath} from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
-import {convertToSelectedItemWebModel} from "./converter/convertToSelectedItemWebModel";
+import { selectMenuItems } from "./select-menu-items/selectMenuItems";
+import { SuccessfulGambleResponse } from "../../common/type/GambleResponse";
+import { GambleRequest } from "../../common/type/GambleRequest";
+import { RestaurantDataDTO } from "../type/RestaurantDataDTO";
+import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";
+import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
+import { convertToSelectedItemWebModel } from "./converter/convertToSelectedItemWebModel";
 
 const gamble = async (
     request: GambleRequest
 ): Promise<SuccessfulGambleResponse> => {
     // Get restaurant data based on our request
-    const restaurantData: RestaurantDataDTO = await getRestaurantData(
-        request
-    );
+    const restaurantData: RestaurantDataDTO = await getRestaurantData(request);
 
     // Select some random items + modifiers
     const selectedItems = selectMenuItems(
@@ -36,7 +34,7 @@ const gamble = async (
             image: restaurantData.image,
             address: restaurantData.address,
             items: selectedItems.map(convertToSelectedItemWebModel),
-            categories: restaurantData.categories
+            categories: restaurantData.categories,
         },
     };
 };

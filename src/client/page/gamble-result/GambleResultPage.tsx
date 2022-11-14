@@ -53,11 +53,7 @@ const GambleResultPage: React.FC = () => {
 
     return (
         <div className={styles.pageContainer}>
-            <GambleResultHeader
-                name={name}
-                address={address}
-                url={url}
-            />
+            <GambleResultHeader name={name} address={address} url={url} />
             <div className={styles.selectedItems}>
                 <div className={styles.container}>
                     <div className={styles.result}>

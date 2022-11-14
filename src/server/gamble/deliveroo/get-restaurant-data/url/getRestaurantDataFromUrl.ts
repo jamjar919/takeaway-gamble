@@ -5,7 +5,7 @@ import {
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {convertToRestaurantDataDTO} from "../../converter/convertToRestaurantDataDTO";
+import { convertToRestaurantDataDTO } from "../../converter/convertToRestaurantDataDTO";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string

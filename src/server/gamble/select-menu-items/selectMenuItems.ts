@@ -3,7 +3,11 @@ import { filterItemsBelowPrice } from "./item-filters/filterItemsByPrice";
 import { filterToPreferredItems } from "./item-filters/filterToPreferredItems";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
 import { selectModifiersForItem } from "./selectModifiersForItem";
-import {ItemDTO, ModifierGroupDTO, SelectedItemDTO} from "../../type/RestaurantDataDTO";
+import {
+    ItemDTO,
+    ModifierGroupDTO,
+    SelectedItemDTO,
+} from "../../type/RestaurantDataDTO";
 
 /**
  *  Given a set of menu items and a maximum price, fill a basket

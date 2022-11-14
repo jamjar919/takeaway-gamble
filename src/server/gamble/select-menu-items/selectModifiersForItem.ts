@@ -1,6 +1,11 @@
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
-import {ItemDTO, ModifierGroupDTO, ModifierOptionDTO, SelectedModifierDTO} from "../../type/RestaurantDataDTO";
+import {
+    ItemDTO,
+    ModifierGroupDTO,
+    ModifierOptionDTO,
+    SelectedModifierDTO,
+} from "../../type/RestaurantDataDTO";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 

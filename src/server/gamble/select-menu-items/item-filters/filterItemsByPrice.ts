@@ -1,5 +1,5 @@
 import { getPriceFromDeliverooObject } from "../../../../common/util/getPriceFromDeliverooObject";
-import {ItemDTO} from "../../../type/RestaurantDataDTO";
+import { ItemDTO } from "../../../type/RestaurantDataDTO";
 
 const filterItemsBelowPrice = (
     items: ItemDTO[],

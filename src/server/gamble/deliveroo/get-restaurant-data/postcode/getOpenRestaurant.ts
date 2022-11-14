@@ -2,8 +2,8 @@ import { Restaurant } from "../../../../type/Restaurant";
 import { pickOneFromArray } from "../../../../../common/util/pickOneFromArray";
 import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {RestaurantDataDTO} from "../../../../type/RestaurantDataDTO";
-import {convertToRestaurantDataDTO} from "../../converter/convertToRestaurantDataDTO";
+import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
+import { convertToRestaurantDataDTO } from "../../converter/convertToRestaurantDataDTO";
 
 const MAX_RESTAURANTS = 9;
 
