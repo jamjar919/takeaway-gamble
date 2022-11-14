@@ -1,7 +1,7 @@
 import { selectMenuItems } from "./select-menu-items/selectMenuItems";
-import { SuccessfulGambleResponse } from "../../common/type/GambleResponse";
+import {GambleResponse, SuccessfulGambleResponse} from "../../common/type/GambleResponse";
 import { GambleRequest } from "../../common/type/GambleRequest";
-import { RestaurantDataBundle } from "../type/RestaurantDataBundle";
+import { RestaurantDataDTO } from "../type/RestaurantDataDTO";
 import { getRestaurantData } from "./deliveroo/get-restaurant-data/getRestaurantData";
 import { normaliseUrlPath } from "./deliveroo/get-restaurant-data/url/deliverooMenuUrlCache";
 
@@ -9,7 +9,7 @@ const gamble = async (
     request: GambleRequest
 ): Promise<SuccessfulGambleResponse> => {
     // Get restaurant data based on our request
-    const restaurantData: RestaurantDataBundle = await getRestaurantData(
+    const restaurantData: RestaurantDataDTO = await getRestaurantData(
         request
     );
 
@@ -27,7 +27,7 @@ const gamble = async (
         `Generated ${selectedItems.length} items for ${restaurantData.name} with limit ${request.priceLimit}`
     );
 
-    return {
+    const response: GambleResponse = {
         type: "success",
         selected: {
             name: restaurantData.name,
@@ -38,6 +38,8 @@ const gamble = async (
             categories: restaurantData.categories
         },
     };
+
+    return response;
 };
 
 export { gamble };

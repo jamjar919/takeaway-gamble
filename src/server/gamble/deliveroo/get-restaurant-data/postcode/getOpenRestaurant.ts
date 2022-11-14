@@ -2,15 +2,15 @@ import { Restaurant } from "../../../../type/Restaurant";
 import { pickOneFromArray } from "../../../../../common/util/pickOneFromArray";
 import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {RestaurantDataBundle} from "../../../../type/RestaurantDataBundle";
-import {convertToRestaurantDataBundle} from "../../converter/convertToRestaurantDataBundle";
+import {RestaurantDataDTO} from "../../../../type/RestaurantDataDTO";
+import {convertToRestaurantDataDTO} from "../../converter/convertToRestaurantDataDTO";
 
 const MAX_RESTAURANTS = 9;
 
 const getOpenPlaceFromState = async (
     placesToEat: Restaurant[],
     attempt = 0
-): Promise<RestaurantDataBundle> => {
+): Promise<RestaurantDataDTO> => {
     if (attempt > MAX_RESTAURANTS) {
         throw new Error("Polled too many places");
     }
@@ -37,7 +37,7 @@ const getOpenPlaceFromState = async (
         return await getOpenPlaceFromState(placesToEat, attempt + 1);
     }
 
-    return convertToRestaurantDataBundle(
+    return convertToRestaurantDataDTO(
         selectedPlace.url,
         selectedPlaceMeta,
         restaurantContext

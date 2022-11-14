@@ -1,11 +1,11 @@
 import React from "react";
-import { SelectedItem } from "../../../../../common/type/SelectedRestaurantAndItems";
+import { SelectedItemWebModel } from "../../../../../common/type/SelectedRestaurantAndItemsWebModel";
 import { FoodItem } from "./item/FoodItem";
 
 import styles from "./CategoryItems.scss";
 
 type CategoryItemsProps = {
-    items: SelectedItem[];
+    items: SelectedItemWebModel[];
 };
 
 const CategoryItems: React.FC<CategoryItemsProps> = (props) => {

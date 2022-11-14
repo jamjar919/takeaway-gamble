@@ -1,12 +1,12 @@
 import React from "react";
 import { getPriceFromDeliverooObject } from "../../../../../common/util/getPriceFromDeliverooObject";
-import { SelectedItem } from "../../../../../common/type/SelectedRestaurantAndItems";
+import { SelectedItemWebModel } from "../../../../../common/type/SelectedRestaurantAndItemsWebModel";
 import { BasketItem } from "./basket-item/BasketItem";
 
 import styles from "./Basket.scss";
 
 type BasketProps = {
-    selectedItems: SelectedItem[];
+    selectedItems: SelectedItemWebModel[];
     ctaUrl: string;
     imageUrl: string;
 };

@@ -1,23 +1,24 @@
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
-import {Item, ModifierGroup, SelectedItem} from "../../../common/type/SelectedRestaurantAndItems";
 import { filterItemsBelowPrice } from "./item-filters/filterItemsByPrice";
 import { filterToPreferredItems } from "./item-filters/filterToPreferredItems";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
 import { selectModifiersForItem } from "./selectModifiersForItem";
+import {ItemDTO, ModifierGroupDTO} from "../../type/RestaurantDataDTO";
+import {SelectedItemWebModel} from "../../../common/type/SelectedRestaurantAndItemsWebModel";
 
 /**
  *  Given a set of menu items and a maximum price, fill a basket
  *  of items that sum to that price
  */
 const selectMenuItems = (
-    items: Item[],
-    modifiers: ModifierGroup[],
+    items: ItemDTO[],
+    modifiers: ModifierGroupDTO[],
     priceLimit: number,
     options: {
         firstItemIsLarge: boolean;
     },
     itemsPicked: number = 0
-): SelectedItem[] => {
+): SelectedItemWebModel[] => {
     // Get all the items that we could pick
     const validItems = filterItemsBelowPrice(items, priceLimit);
 

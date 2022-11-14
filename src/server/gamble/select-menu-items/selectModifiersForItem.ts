@@ -1,17 +1,18 @@
-import {Item, ModifierGroup, ModifierOption, SelectedModifier} from "../../../common/type/SelectedRestaurantAndItems";
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
+import {ItemDTO, ModifierGroupDTO, ModifierOptionDTO} from "../../type/RestaurantDataDTO";
+import {SelectedModifier} from "../../../common/type/SelectedRestaurantAndItemsWebModel";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 
-const getPriceOfSelectedModifiers = (options: ModifierOption[]) =>
+const getPriceOfSelectedModifiers = (options: ModifierOptionDTO[]) =>
     options
         .map((option) => getPriceFromDeliverooObject(option))
         .reduce((a, b) => b.fractional + a, 0);
 
 const selectModifiersForItem = (
-    item: Item,
-    modifiers: ModifierGroup[],
+    item: ItemDTO,
+    modifiers: ModifierGroupDTO[],
     priceLimit: number
 ): SelectedModifier[] => {
     const validModifierGroupsForItem = modifiers.filter((group) =>
@@ -21,7 +22,7 @@ const selectModifiersForItem = (
     return (
         validModifierGroupsForItem
             .map((group) => {
-                const options: ModifierOption[] = [];
+                const options: ModifierOptionDTO[] = [];
 
                 let validOptions = group.modifierOptions.filter(
                     (option) => option.available

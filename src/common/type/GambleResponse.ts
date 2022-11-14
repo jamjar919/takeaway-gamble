@@ -1,10 +1,10 @@
-import { SelectedRestaurantAndItems } from "./SelectedRestaurantAndItems";
+import { SelectedRestaurantAndItemsWebModel } from "./SelectedRestaurantAndItemsWebModel";
 
 export type GambleResponse = SuccessfulGambleResponse | GambleErrorResponse;
 
 export type SuccessfulGambleResponse = {
     type: "success";
-    selected: SelectedRestaurantAndItems;
+    selected: SelectedRestaurantAndItemsWebModel;
 };
 
 export type GambleErrorResponse = {

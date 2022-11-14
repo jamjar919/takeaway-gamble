@@ -1,15 +1,15 @@
 import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
-import { RestaurantDataBundle } from "../../../../type/RestaurantDataBundle";
+import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
 import {
     normaliseUrlPath,
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import {convertToRestaurantDataBundle} from "../../converter/convertToRestaurantDataBundle";
+import {convertToRestaurantDataDTO} from "../../converter/convertToRestaurantDataDTO";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string
-): Promise<RestaurantDataBundle> => {
+): Promise<RestaurantDataDTO> => {
     const normalisedUrl = normaliseUrlPath(unsafeUrl);
 
     // Verify URL is valid + safe to go to
@@ -29,7 +29,7 @@ const getRestaurantDataFromUrl = async (
         getPlaceToEatMetaFromDeliverooState(restaurantContext);
 
     // Convert to generic objects and return
-    return convertToRestaurantDataBundle(
+    return convertToRestaurantDataDTO(
         normalisedUrl,
         selectedPlaceMeta,
         restaurantContext

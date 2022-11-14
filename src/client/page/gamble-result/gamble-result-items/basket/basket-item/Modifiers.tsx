@@ -1,7 +1,7 @@
 import styles from "./BasketItem.scss";
 import { Price } from "../../../../../framework/price/Price";
 import React from "react";
-import { SelectedModifier } from "../../../../../../common/type/SelectedRestaurantAndItems";
+import { SelectedModifier } from "../../../../../../common/type/SelectedRestaurantAndItemsWebModel";
 
 type ModifiersProps = {
     modifiers: SelectedModifier[];
