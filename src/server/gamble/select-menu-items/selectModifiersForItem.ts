@@ -1,7 +1,6 @@
 import { pickOneFromArray } from "../../../common/util/pickOneFromArray";
 import { getPriceFromDeliverooObject } from "../../../common/util/getPriceFromDeliverooObject";
-import {ItemDTO, ModifierGroupDTO, ModifierOptionDTO} from "../../type/RestaurantDataDTO";
-import {SelectedModifierWebModel} from "../../../common/type/SelectedRestaurantAndItemsWebModel";
+import {ItemDTO, ModifierGroupDTO, ModifierOptionDTO, SelectedModifierDTO} from "../../type/RestaurantDataDTO";
 
 const MODIFIER_SELECT_PROBABILITY = 0.5;
 
@@ -14,7 +13,7 @@ const selectModifiersForItem = (
     item: ItemDTO,
     modifiers: ModifierGroupDTO[],
     priceLimit: number
-): SelectedModifierWebModel[] => {
+): SelectedModifierDTO[] => {
     const validModifierGroupsForItem = modifiers.filter((group) =>
         item.modifierGroupIds.includes(group.id)
     );
@@ -59,11 +58,11 @@ const selectModifiersForItem = (
                 };
             })
             .filter(
-                (selectedModifier: SelectedModifierWebModel | null) =>
+                (selectedModifier: SelectedModifierDTO | null) =>
                     selectedModifier !== null
-            ) as SelectedModifierWebModel[]
+            ) as SelectedModifierDTO[]
     ).filter(
-        (selectedModifier: SelectedModifierWebModel) =>
+        (selectedModifier: SelectedModifierDTO) =>
             selectedModifier.options.length > 0
     );
 };
