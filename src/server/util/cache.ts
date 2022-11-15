@@ -1,27 +1,101 @@
+type CacheRecord<T> = {
+    value: T;
+    timestamp: number;
+};
+
+/**
+ * Simple in memory cache with timeout. Realistically, this should be moved to a database but this will do for now
+ */
 class Cache<T> {
-    private cache: Record<string, T> = {};
+    private readonly cache: Record<string, CacheRecord<T>> = {};
+    private readonly name: string;
+    private readonly timeout: number;
+    private cacheAccessCount: number = 0;
 
-    get(key: string, fallback: () => T): T {
-        if (typeof this.cache[key] === "undefined") {
-            this.cache[key] = fallback();
-        }
-
-        return this.cache[key];
+    constructor(name: string, timeout: number = 0) {
+        this.name = name;
+        this.timeout = timeout;
     }
 
     getAsync(key: string, fallback: () => Promise<T>): Promise<T> {
+        this.cacheAccessCount += 1;
+
+        // Clean cache values if we've accessed over 10 times
+        if (this.cacheAccessCount > 10) {
+            this.cacheAccessCount = 0;
+            this.cleanExpiredCachedValues();
+        }
+
         return new Promise<void>((resolve) => {
-            if (typeof this.cache[key] === "undefined") {
+            if (this.shouldUpdateCache(key)) {
                 fallback()
                     .then((result) => {
-                        this.cache[key] = result;
+                        this.logCacheAction(
+                            "Computing new cache value for key:",
+                            key
+                        );
+
+                        this.cache[key] = {
+                            value: result,
+                            timestamp: Date.now(),
+                        };
+
+                        this.logCacheAction(
+                            "Updated cache size:",
+                            Object.keys(this.cache).length
+                        );
                     })
                     .finally(() => resolve());
                 return;
             }
 
+            this.logCacheAction("Hit cache for", key);
+
             resolve();
-        }).then(() => this.cache[key]);
+        }).then(() => this.cache[key].value);
+    }
+
+    // For a given value, whether the cache should be updated
+    private shouldUpdateCache(key: string): boolean {
+        return (
+            !this.isCachedValuePresent(key) || this.hasCachedValueExpired(key)
+        );
+    }
+
+    // If a key has any value cached
+    private isCachedValuePresent(key: string): boolean {
+        return !(typeof this.cache[key] === "undefined");
+    }
+
+    // Whether the cached value has expired according to the given timeout
+    private hasCachedValueExpired(key: string): boolean {
+        if (this.timeout <= 0 || typeof this.cache[key] === "undefined") {
+            return false;
+        }
+
+        const timeDifference = Date.now() - this.cache[key].timestamp;
+
+        return timeDifference > this.timeout;
+    }
+
+    private cleanExpiredCachedValues() {
+        const prevSize = Object.keys(this.cache).length;
+        this.logCacheAction("Cleaning cache:");
+
+        Object.keys(this.cache).forEach((key) => {
+            if (this.hasCachedValueExpired(key)) {
+                delete this.cache[key];
+            }
+        });
+
+        const sizeAfter = Object.keys(this.cache).length;
+        this.logCacheAction(
+            `Cleaned ${sizeAfter - prevSize} expired items from cache`
+        );
+    }
+
+    private logCacheAction(...args: any[]) {
+        console.log(`[${this.name}]`, ...args);
     }
 }
 

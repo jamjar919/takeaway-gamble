@@ -1,11 +1,9 @@
-import { getPlaceToEatMetaFromDeliverooState } from "../../deliveroo-state-selector/getPlaceToEatMetaFromDeliverooState";
 import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
 import {
     normaliseUrlPath,
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
-import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
-import { convertToRestaurantDataDTO } from "../../converter/convertToRestaurantDataDTO";
+import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/restaurant/getDeliverooRestaurantContextFromUrl";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string
@@ -20,20 +18,7 @@ const getRestaurantDataFromUrl = async (
     }
 
     // Fetch + get context for it
-    const restaurantContext = await getDeliverooRestaurantContextFromUrl(
-        normalisedUrl
-    );
-
-    // Retrieve more detailed information
-    const selectedPlaceMeta =
-        getPlaceToEatMetaFromDeliverooState(restaurantContext);
-
-    // Convert to generic objects and return
-    return convertToRestaurantDataDTO(
-        normalisedUrl,
-        selectedPlaceMeta,
-        restaurantContext
-    );
+    return await getDeliverooRestaurantContextFromUrl(normalisedUrl);
 };
 
 export { getRestaurantDataFromUrl };

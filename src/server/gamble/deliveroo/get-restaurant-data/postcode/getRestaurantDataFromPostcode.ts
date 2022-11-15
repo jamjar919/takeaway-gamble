@@ -1,8 +1,7 @@
 import { getPlacesToEatUrl } from "./get-places-to-eat-url/getPlacesToEatUrl";
-import { getDeliverooContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooContextFromUrl";
-import { getPlacesToEatFromDeliverooState } from "../../deliveroo-state-selector/getPlacesToEatFromDeliverooState";
 import { getOpenPlaceFromState } from "./getOpenRestaurant";
 import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
+import { getPlacesToEatContextFromUrl } from "../../deliveroo-state-retriever/places-to-eat/getPlacesToEatContextFromUrl";
 
 const getRestaurantDataFromPostcode = async (
     postcode: string
@@ -14,11 +13,8 @@ const getRestaurantDataFromPostcode = async (
         throw new Error("Could not find restaurants for your area");
     }
 
-    // Obtain restaurants in the area
-    const searchPageContext = await getDeliverooContextFromUrl(url);
-
-    // Get all the places to eat from the search page
-    const placesToEat = getPlacesToEatFromDeliverooState(searchPageContext);
+    // Get places to eat
+    const placesToEat = await getPlacesToEatContextFromUrl(url);
 
     // Select one that's open
     return await getOpenPlaceFromState(placesToEat);

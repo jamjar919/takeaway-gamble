@@ -55,6 +55,7 @@ type RestaurantDataDTO = {
     items: ItemDTO[];
     modifierGroups: ModifierGroupDTO[];
     categories: CategoryDTO[];
+    isAvailable: boolean;
 };
 
 type SelectedModifierDTO = {
