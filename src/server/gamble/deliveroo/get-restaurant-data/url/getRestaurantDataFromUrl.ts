@@ -3,7 +3,7 @@ import {
     normaliseUrlPath,
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
-import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
+import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/restaurant/getDeliverooRestaurantContextFromUrl";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string
@@ -18,9 +18,7 @@ const getRestaurantDataFromUrl = async (
     }
 
     // Fetch + get context for it
-    return await getDeliverooRestaurantContextFromUrl(
-        normalisedUrl
-    );
+    return await getDeliverooRestaurantContextFromUrl(normalisedUrl);
 };
 
 export { getRestaurantDataFromUrl };

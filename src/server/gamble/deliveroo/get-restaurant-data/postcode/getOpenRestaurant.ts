@@ -1,6 +1,6 @@
 import { Restaurant } from "../../../../type/Restaurant";
 import { pickOneFromArray } from "../../../../../common/util/pickOneFromArray";
-import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/getDeliverooRestaurantContextFromUrl";
+import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/restaurant/getDeliverooRestaurantContextFromUrl";
 import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
 
 const MAX_RESTAURANTS = 9;
@@ -14,12 +14,10 @@ const getOpenPlaceFromState = async (
     }
 
     // Select one randomly
-    const selectedPlace = pickOneFromArray(placesToEat);
+    const { url } = pickOneFromArray(placesToEat);
 
     // Fetch + get context for it
-    const restaurantContext = await getDeliverooRestaurantContextFromUrl(
-        selectedPlace.url
-    );
+    const restaurantContext = await getDeliverooRestaurantContextFromUrl(url);
 
     // Get another one if we cannot order from this one
     if (!restaurantContext.isAvailable) {

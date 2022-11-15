@@ -4,7 +4,9 @@ import { Cache } from "../../../../../../util/cache";
 
 dotenv.config();
 
-const geocodeCache: Cache<google.maps.GeocoderResult | null> = new Cache();
+const geocodeCache: Cache<google.maps.GeocoderResult | null> = new Cache(
+    "GeocodeCache"
+);
 
 const getEndpoint = (address: string) => {
     if (!process.env.GOOGLE_API_KEY) {

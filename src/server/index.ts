@@ -13,8 +13,10 @@ import { GambleRequest } from "../common/type/GambleRequest";
 import { validateGambleRequest } from "./gamble/validateGambleRequest";
 import { urlCache } from "./debug/urlCache";
 import { debugGamble } from "./debug/debugGamble";
+import { setupLogs } from "./util/setupLogs";
 
 dotenv.config();
+setupLogs();
 
 const app = express();
 const port = process.env.PORT || 16000;
