@@ -6,7 +6,7 @@ import { convertToRestaurantDataDTO } from "../../converter/convertToRestaurantD
 import { Cache } from "../../../../util/cache";
 import { normaliseUrlPath } from "../../get-restaurant-data/url/deliverooMenuUrlCache";
 
-const restaurantCache: Cache<RestaurantDataDTO | null> = new Cache(
+const restaurantCache: Cache<RestaurantDataDTO> = new Cache(
     "RestaurantCache",
     1800000
 ); // 30min
