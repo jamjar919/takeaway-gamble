@@ -1,47 +1,36 @@
 import { getDeliverooContextFromUrl } from "./getDeliverooContextFromUrl";
 import { getMenuItemsFromDeliverooState } from "../deliveroo-state-selector/getMenuItemsFromDeliverooState";
-import { getMenuPageCategories } from "../deliveroo-state-selector/getMenuPageCategories";
-import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
-import { mergeDeliverooStatesFromCategories } from "./mergeDeliverooStatesFromCategories";
-import { normaliseUrlPath } from "../get-restaurant-data/url/deliverooMenuUrlCache";
+import {getDeliverooRestaurantContextFromUrlForCategoriesPage} from "./categories/getDeliverooRestaurantContextFromUrlForCategoriesPage";
+import {RestaurantDataDTO} from "../../../type/RestaurantDataDTO";
+import {convertToRestaurantDataDTO} from "../converter/convertToRestaurantDataDTO";
 
+/**
+ * Given a URL for a restaurant, return a DTO containing the items, categories and modifiers.
+ * @param url                       Deliveroo URL stub to fetch the state from
+ * @param allowFetchingCategories   Whether to allow attempting to get categories from the URL
+ */
 const getDeliverooRestaurantContextFromUrl = async (
     url: string,
     allowFetchingCategories = true
-): Promise<DeliverooState> => {
-    const state = await getDeliverooContextFromUrl(url);
+): Promise<RestaurantDataDTO> => {
+    const restaurantContext = await getDeliverooContextFromUrl(url);
 
     // Assert the context we got has items in it
-    if (getMenuItemsFromDeliverooState(state).length > 0) {
-        return state;
+    if (getMenuItemsFromDeliverooState(restaurantContext).length > 0) {
+
+        // Return the context
+        return convertToRestaurantDataDTO(
+            url,
+            restaurantContext
+        );
     }
 
     if (!allowFetchingCategories) {
         throw new Error("No items in state");
     }
 
-    // Ok, no items. Cool cool. It's probably a category page.
-    const categories = getMenuPageCategories(state);
-
-    if (categories.length < 1) {
-        throw new Error("Weird state, no items or categories");
-    }
-
-    const deliverooStates: DeliverooState[] = await Promise.all(
-        categories.map((category) => {
-            const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${
-                category.id
-            }`;
-
-            return getDeliverooRestaurantContextFromUrl(urlWithCategory, false);
-        })
-    );
-
-    return mergeDeliverooStatesFromCategories(
-        state,
-        deliverooStates,
-        categories
-    );
+    // Ok, no items. Cool cool. It's probably a category page. Try that
+    return await getDeliverooRestaurantContextFromUrlForCategoriesPage(url, restaurantContext)
 };
 
 export { getDeliverooRestaurantContextFromUrl };
