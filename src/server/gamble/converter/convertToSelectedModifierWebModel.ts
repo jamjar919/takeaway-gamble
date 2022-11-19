@@ -6,10 +6,10 @@ import { convertToModifierOptionWebModel } from "./convertToModifierOptionWebMod
 const convertToSelectedModifierWebModel = (
     selectedModifier: SelectedModifierDTO
 ): SelectedModifierWebModel => {
-    return {
+    return Object.freeze({
         group: convertToModifierGroupWebModel(selectedModifier.group),
         options: selectedModifier.options.map(convertToModifierOptionWebModel),
-    };
+    });
 };
 
 export { convertToSelectedModifierWebModel };

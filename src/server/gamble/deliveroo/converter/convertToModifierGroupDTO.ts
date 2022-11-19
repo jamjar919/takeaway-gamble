@@ -15,7 +15,7 @@ const convertToModifierGroupDTO = (
         modifierOptions,
     } = deliverooModifierGroup;
 
-    return {
+    return Object.freeze({
         id,
         name,
         description,
@@ -23,7 +23,7 @@ const convertToModifierGroupDTO = (
         maxSelection,
         repeatable,
         modifierOptions: modifierOptions.map(convertToModifierOptionDTO),
-    };
+    });
 };
 
 export { convertToModifierGroupDTO };

@@ -7,14 +7,14 @@ const convertToModifierGroupWebModel = (
     const { id, name, description, minSelection, maxSelection, repeatable } =
         group;
 
-    return {
+    return Object.freeze({
         id,
         name,
         description,
         minSelection,
         maxSelection,
         repeatable,
-    };
+    });
 };
 
 export { convertToModifierGroupWebModel };

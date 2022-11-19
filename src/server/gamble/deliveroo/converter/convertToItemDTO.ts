@@ -16,7 +16,7 @@ const convertToItemDTO = (deliverooItem: DeliverooItem): ItemDTO => {
         popular,
     } = deliverooItem;
 
-    return {
+    return Object.freeze({
         id,
         categoryId,
         description,
@@ -26,7 +26,7 @@ const convertToItemDTO = (deliverooItem: DeliverooItem): ItemDTO => {
         priceDiscounted: priceDiscounted && convertToPriceDTO(priceDiscounted),
         modifierGroupIds,
         popular,
-    };
+    });
 };
 
 export { convertToItemDTO };

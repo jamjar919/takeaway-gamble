@@ -1,7 +1,7 @@
-type CacheRecord<T> = {
-    value: T;
+type CacheRecord<T> = Readonly<{
+    value: Readonly<T>;
     timestamp: number;
-};
+}>;
 
 /**
  * Simple in memory cache with timeout. Realistically, this should be moved to a database but this will do for now
@@ -21,7 +21,7 @@ class Cache<T> {
         this.cacheAccessCount += 1;
 
         // Clean cache values if we've accessed over 10 times
-        if (this.cacheAccessCount > 10) {
+        if (this.cacheAccessCount > 5) {
             this.cacheAccessCount = 0;
             this.cleanExpiredCachedValues();
         }
@@ -35,10 +35,10 @@ class Cache<T> {
                             key
                         );
 
-                        this.cache[key] = {
-                            value: result,
+                        this.cache[key] = Object.freeze({
+                            value: Object.freeze(result),
                             timestamp: Date.now(),
-                        };
+                        });
 
                         this.logCacheAction(
                             "Updated cache size:",
@@ -58,13 +58,13 @@ class Cache<T> {
     // For a given value, whether the cache should be updated
     private shouldUpdateCache(key: string): boolean {
         return (
-            !this.isCachedValuePresent(key) || this.hasCachedValueExpired(key)
+            this.isCachedValueMissing(key) || this.hasCachedValueExpired(key)
         );
     }
 
     // If a key has any value cached
-    private isCachedValuePresent(key: string): boolean {
-        return !(typeof this.cache[key] === "undefined");
+    private isCachedValueMissing(key: string): boolean {
+        return typeof this.cache[key] === "undefined";
     }
 
     // Whether the cached value has expired according to the given timeout

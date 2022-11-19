@@ -4,9 +4,9 @@ import { ItemImageDTO } from "../../type/RestaurantDataDTO";
 const convertToItemImageWebModel = (
     itemImage: ItemImageDTO
 ): ItemImageWebModel => {
-    return {
+    return Object.freeze({
         ...itemImage,
-    };
+    });
 };
 
 export { convertToItemImageWebModel };

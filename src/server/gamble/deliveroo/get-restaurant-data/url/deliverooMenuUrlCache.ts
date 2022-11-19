@@ -3,9 +3,28 @@ const placesToEatCollection = new Set<string>([
     "/menu/Oxford/dean-court-and-cumnor/oxford-drinks-and-snacks-delivery",
 ]);
 
-// Strip the end of the URL (eg, /menu/oxford/old-headington/moonlight-balti?geohash=gcpnk3m8gxyf => /menu/oxford/old-headington/moonlight-balti)
+const safeUrlParams = ["category_id"];
+
+// Strip the end of the URL
+// eg, /menu/moonlight-balti?geohash=gcpnk3m8gxyf&category_id=123 => /menu/moonlight-balti&category_id=123
 const normaliseUrlPath = (url: string) => {
-    return url.split("?")[0];
+    const [path, params] = url.split("?");
+
+    if (typeof params === "undefined") {
+        return path;
+    }
+
+    const safeParams = params
+        .split("&")
+        .filter((param) =>
+            safeUrlParams.some((safeParam) => param.startsWith(safeParam))
+        );
+
+    if (safeParams.length <= 0) {
+        return path;
+    }
+
+    return `${path}?${safeParams.join("&")}`;
 };
 
 // Compare a given url to see if we've seen it before (and therefore it's safe to visit)

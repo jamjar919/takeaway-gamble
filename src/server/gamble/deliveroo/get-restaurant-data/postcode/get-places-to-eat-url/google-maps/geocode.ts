@@ -4,7 +4,7 @@ import { Cache } from "../../../../../../util/cache";
 
 dotenv.config();
 
-const geocodeCache: Cache<google.maps.GeocoderResult | null> = new Cache(
+const geocodeCache: Cache<google.maps.LatLng | null> = new Cache(
     "GeocodeCache"
 );
 
@@ -22,9 +22,7 @@ const getEndpoint = (address: string) => {
  * Geocode a supplied address with the Google Maps API
  * @param address    Address string to geocode
  */
-const geocode = async (
-    address: string
-): Promise<null | google.maps.GeocoderResult> => {
+const geocode = async (address: string): Promise<google.maps.LatLng | null> => {
     return geocodeCache.getAsync(address, async () => {
         const endpoint = getEndpoint(address);
 
@@ -37,7 +35,7 @@ const geocode = async (
             return null;
         }
 
-        return response.results[0];
+        return response.results[0].geometry.location;
     });
 };
 

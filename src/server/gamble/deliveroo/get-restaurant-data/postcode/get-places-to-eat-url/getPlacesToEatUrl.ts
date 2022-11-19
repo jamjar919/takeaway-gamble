@@ -7,7 +7,7 @@ type DeliverooRestaurantApiResponse = {
 };
 
 const callDeliverooApi = async (
-    location: google.maps.GeocoderResult
+    location: google.maps.LatLng
 ): Promise<DeliverooRestaurantApiResponse> => {
     const options: RequestInit = {
         headers: {
@@ -22,10 +22,7 @@ const callDeliverooApi = async (
         body: JSON.stringify({
             fulfillment_method: "DELIVERY",
             location: {
-                coordinates: [
-                    location.geometry.location.lng,
-                    location.geometry.location.lat,
-                ],
+                coordinates: [location.lng, location.lat],
             },
         }),
     };

@@ -7,7 +7,7 @@ const convertToModifierOptionWebModel = (
 ): ModifierOptionWebModel => {
     const { id, name, description, price, priceDiscounted, available } = option;
 
-    return {
+    return Object.freeze({
         id,
         name,
         description,
@@ -15,7 +15,7 @@ const convertToModifierOptionWebModel = (
         priceDiscounted:
             priceDiscounted && convertToPriceWebModel(priceDiscounted),
         available,
-    };
+    });
 };
 
 export { convertToModifierOptionWebModel };
