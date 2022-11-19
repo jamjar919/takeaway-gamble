@@ -1,7 +1,7 @@
-type CacheRecord<T> = {
-    value: T;
+type CacheRecord<T> = Readonly<{
+    value: Readonly<T>;
     timestamp: number;
-};
+}>;
 
 /**
  * Simple in memory cache with timeout. Realistically, this should be moved to a database but this will do for now
@@ -35,10 +35,10 @@ class Cache<T> {
                             key
                         );
 
-                        this.cache[key] = {
-                            value: result,
+                        this.cache[key] = Object.freeze({
+                            value: Object.freeze(result),
                             timestamp: Date.now(),
-                        };
+                        });
 
                         this.logCacheAction(
                             "Updated cache size:",
