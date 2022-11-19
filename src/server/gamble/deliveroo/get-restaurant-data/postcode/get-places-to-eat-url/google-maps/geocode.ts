@@ -22,9 +22,7 @@ const getEndpoint = (address: string) => {
  * Geocode a supplied address with the Google Maps API
  * @param address    Address string to geocode
  */
-const geocode = async (
-    address: string
-): Promise<google.maps.LatLng | null> => {
+const geocode = async (address: string): Promise<google.maps.LatLng | null> => {
     return geocodeCache.getAsync(address, async () => {
         const endpoint = getEndpoint(address);
 

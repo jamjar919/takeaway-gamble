@@ -22,10 +22,7 @@ const callDeliverooApi = async (
         body: JSON.stringify({
             fulfillment_method: "DELIVERY",
             location: {
-                coordinates: [
-                    location.lng,
-                    location.lat,
-                ],
+                coordinates: [location.lng, location.lat],
             },
         }),
     };
