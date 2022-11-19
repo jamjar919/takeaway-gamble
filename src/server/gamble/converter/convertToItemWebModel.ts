@@ -15,7 +15,7 @@ const convertToItemWebModel = (item: ItemDTO): ItemWebModel => {
         popular,
     } = item;
 
-    return {
+    return Object.freeze({
         id,
         categoryId,
         description,
@@ -25,7 +25,7 @@ const convertToItemWebModel = (item: ItemDTO): ItemWebModel => {
         priceDiscounted:
             priceDiscounted && convertToPriceWebModel(priceDiscounted),
         popular,
-    };
+    });
 };
 
 export { convertToItemWebModel };

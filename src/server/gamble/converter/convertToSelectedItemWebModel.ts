@@ -6,12 +6,12 @@ import { convertToSelectedModifierWebModel } from "./convertToSelectedModifierWe
 const convertToSelectedItemWebModel = (
     selectedItem: SelectedItemDTO
 ): SelectedItemWebModel => {
-    return {
+    return Object.freeze({
         item: convertToItemWebModel(selectedItem.item),
         modifiers: selectedItem.modifiers.map(
             convertToSelectedModifierWebModel
         ),
-    };
+    });
 };
 
 export { convertToSelectedItemWebModel };

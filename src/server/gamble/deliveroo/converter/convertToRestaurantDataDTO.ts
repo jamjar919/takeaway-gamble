@@ -14,7 +14,7 @@ const convertToRestaurantDataDTO = (
     const selectedPlaceMeta =
         getPlaceToEatMetaFromDeliverooState(restaurantContext);
 
-    return {
+    return Object.freeze({
         name: selectedPlaceMeta.restaurant.name,
         url,
         image: selectedPlaceMeta.metatags.image,
@@ -29,7 +29,7 @@ const convertToRestaurantDataDTO = (
         isAvailable:
             !selectedPlaceMeta.restaurant.menuDisabled &&
             selectedPlaceMeta.restaurant.deliversToCustomerLocation,
-    };
+    });
 };
 
 export { convertToRestaurantDataDTO };

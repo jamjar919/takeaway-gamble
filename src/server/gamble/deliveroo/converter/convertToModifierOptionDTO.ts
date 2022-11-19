@@ -7,14 +7,14 @@ const convertToModifierOptionDTO = (
 ): ModifierOptionDTO => {
     const { id, name, description, price, priceDiscounted, available } = option;
 
-    return {
+    return Object.freeze({
         id,
         name,
         description,
         price: convertToPriceDTO(price),
         priceDiscounted: priceDiscounted && convertToPriceDTO(priceDiscounted),
         available,
-    };
+    });
 };
 
 export { convertToModifierOptionDTO };
