@@ -4,6 +4,7 @@ import { getDeliverooRestaurantContextFromUrlForCategoriesPage } from "./categor
 import { RestaurantDataDTO } from "../../../../type/RestaurantDataDTO";
 import { convertToRestaurantDataDTO } from "../../converter/convertToRestaurantDataDTO";
 import { Cache } from "../../../../util/cache";
+import { normaliseUrlPath } from "../../get-restaurant-data/url/deliverooMenuUrlCache";
 
 const restaurantCache: Cache<RestaurantDataDTO> = new Cache(
     "RestaurantCache",
@@ -42,7 +43,7 @@ const getDeliverooRestaurantContextFromUrl = (
     url: string,
     allowFetchingCategories = true
 ) => {
-    return restaurantCache.getAsync(url, () =>
+    return restaurantCache.getAsync(normaliseUrlPath(url), () =>
         get(url, allowFetchingCategories)
     );
 };
