@@ -55,21 +55,20 @@ class Cache<T> {
         }).then(() => this.cache[key].value);
     }
 
-    // For a given value, whether the cache should be updated
-    private shouldUpdateCache(key: string): boolean {
-        return (
-            this.isCachedValueMissing(key) || this.hasCachedValueExpired(key)
-        );
+    has(key: string): boolean {
+        return typeof this.cache[key] !== "undefined"
     }
 
-    // If a key has any value cached
-    private isCachedValueMissing(key: string): boolean {
-        return typeof this.cache[key] === "undefined";
+    // For a given value, whether the cache should be updated - either key is not present or has expired
+    private shouldUpdateCache(key: string): boolean {
+        return (
+            !this.has(key) || this.hasCachedValueExpired(key)
+        );
     }
 
     // Whether the cached value has expired according to the given timeout
     private hasCachedValueExpired(key: string): boolean {
-        if (this.timeout <= 0 || typeof this.cache[key] === "undefined") {
+        if (this.timeout <= 0 || !this.has(key)) {
             return false;
         }
 

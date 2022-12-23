@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import dotenv from "dotenv";
+import * as dotenv from 'dotenv';
 
 import { Endpoints } from "../common/Endpoints";
 import { gamble } from "./gamble/gamble";
