@@ -14,11 +14,11 @@ const restaurantCache: Cache<RestaurantDataDTO> = new Cache(
 /**
  * Given a URL for a restaurant, return a DTO containing the items, categories and modifiers.
  * @param url                       Deliveroo URL stub to fetch the state from
- * @param allowFetchingCategories   Whether to allow attempting to get categories from the URL
+ * @param isCategoryRequest         Whether to allow attempting to get categories from the URL
  */
 const get = async (
     url: string,
-    allowFetchingCategories = true
+    isCategoryRequest = false
 ): Promise<RestaurantDataDTO> => {
     const restaurantContext = await getDeliverooContextFromUrl(url);
 
@@ -28,7 +28,7 @@ const get = async (
         return convertToRestaurantDataDTO(url, restaurantContext);
     }
 
-    if (!allowFetchingCategories) {
+    if (isCategoryRequest) {
         throw new Error("No items in state");
     }
 
@@ -41,10 +41,18 @@ const get = async (
 
 const getDeliverooRestaurantContextFromUrl = (
     url: string,
-    allowFetchingCategories = true
+    isCategoryRequest = false
 ) => {
-    return restaurantCache.getAsync(normaliseUrlPath(url), () =>
-        get(url, allowFetchingCategories)
+    const cacheKey = normaliseUrlPath(url);
+
+    // If we're fetching categories - then do not use the cache as we would normalise
+    // the cached URL to the same as the root URL
+    if (restaurantCache.has(cacheKey) && isCategoryRequest) {
+        return get(url, isCategoryRequest);
+    }
+
+    return restaurantCache.getAsync(cacheKey, () =>
+        get(url, isCategoryRequest)
     );
 };
 

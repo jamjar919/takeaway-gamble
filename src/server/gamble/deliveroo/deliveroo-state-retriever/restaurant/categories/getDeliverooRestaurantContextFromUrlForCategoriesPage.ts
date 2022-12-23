@@ -22,14 +22,14 @@ const getDeliverooRestaurantContextFromUrlForCategoriesPage = async (
         throw new Error("No categories found on a presumed categories page");
     }
 
-    // Get states for
+    // Get states for categories
     const deliverooRestaurantDataArray: RestaurantDataDTO[] = await Promise.all(
         categories.map((category) => {
             const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${
                 category.id
             }`;
 
-            return getDeliverooRestaurantContextFromUrl(urlWithCategory, false);
+            return getDeliverooRestaurantContextFromUrl(urlWithCategory, true);
         })
     );
 
