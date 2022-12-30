@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Formik } from "formik";
 
-import { Checkbox } from "../../../framework/input/checkbox/Checkbox";
 import { LocalStorageKey } from "../../../framework/localstorage/LocalStorageKey";
 import { Logo } from "../../../framework/logo/Logo";
 import { SearchError } from "../search-error/SearchError";
@@ -10,17 +9,19 @@ import styles from "./SearchPageForm.scss";
 import { TextInput } from "../../../framework/input/text/TextInput";
 import { AsciiLoader } from "../../../framework/ascii-loader/AsciiLoader";
 import { AsciiLoaderTilesetType } from "../../../framework/ascii-loader/AsciiLoaderTileset";
+import { Accordion } from "../../../framework/accordion/Accordion";
+import { NumberInput } from "../../../framework/input/number/NumberInput";
 
 enum SearchPageFormField {
     POSTCODE = "POSTCODE",
     PRICE_LIMIT = "PRICE_LIMIT",
-    FIRST_ITEM_IS_LARGE = "FIRST_ITEM_IS_LARGE",
+    NUM_PEOPLE = "NUM_PEOPLE",
 }
 
 type SearchPageFormValues = {
     [SearchPageFormField.POSTCODE]: string;
     [SearchPageFormField.PRICE_LIMIT]: string;
-    [SearchPageFormField.FIRST_ITEM_IS_LARGE]: boolean;
+    [SearchPageFormField.NUM_PEOPLE]: number;
 };
 
 const getInitialValues = (): SearchPageFormValues => {
@@ -29,7 +30,7 @@ const getInitialValues = (): SearchPageFormValues => {
             localStorage.getItem(LocalStorageKey.POSTCODE) ?? "",
         [SearchPageFormField.PRICE_LIMIT]:
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT) ?? "12.00",
-        [SearchPageFormField.FIRST_ITEM_IS_LARGE]: true,
+        [SearchPageFormField.NUM_PEOPLE]: 1,
     };
 };
 
@@ -39,6 +40,8 @@ type SearchPageFormProps = {
 
 const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
     const { onSubmit } = props;
+
+    const [additionalOptionsOpen, setAdditionalOptionsOpen] = useState(false);
 
     return (
         <Formik
@@ -51,6 +54,10 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                 localStorage.setItem(
                     LocalStorageKey.PRICE_LIMIT,
                     values[SearchPageFormField.PRICE_LIMIT]
+                );
+                localStorage.setItem(
+                    LocalStorageKey.NUM_PEOPLE,
+                    String(values[SearchPageFormField.NUM_PEOPLE])
                 );
 
                 onSubmit(values).then(() => formikHelpers.setSubmitting(false));
@@ -89,12 +96,17 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                             </button>
                         }
                     />
-                    <Checkbox
-                        name={SearchPageFormField.FIRST_ITEM_IS_LARGE}
-                        label={
-                            "Pick a large item for the first random selection"
-                        }
-                    />
+                    <Accordion
+                        title={"Options"}
+                        showHeader={!additionalOptionsOpen}
+                        open={additionalOptionsOpen}
+                        onToggle={() => setAdditionalOptionsOpen(!additionalOptionsOpen)}
+                    >
+                        <NumberInput
+                            name={SearchPageFormField.NUM_PEOPLE}
+                            label="How many eating?"
+                        />
+                    </Accordion>
                 </Form>
             )}
         </Formik>

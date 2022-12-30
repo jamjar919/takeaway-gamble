@@ -1,0 +1,65 @@
+@use "sass:map";
+@import "../../../App.scss";
+
+$height: 50px;
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    max-width: 150px;
+
+    height: $height;
+
+    font-size: 25px;
+}
+
+.left, .right {
+    background: transparent;
+    line-height: $height;
+
+    width: 60px;
+    height: $height;
+    margin: 0 5px;
+
+    cursor: pointer;
+    font-size: 25px;
+
+    background: map.get($color, "primary");
+    color: #ffffff;
+    text-align: center;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.left {
+    border-radius: 10px 0 0 10px;
+}
+
+.right {
+    border-radius: 0 10px 10px 0;
+}
+
+.input {
+    outline: none;
+    width: 100%;
+    font-size: 25px;
+    text-align: center;
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 6px rgb(0 0 0 / 8%);
+}
+
+.label {
+    display: flex;
+    margin: auto 0 auto auto;
+}
