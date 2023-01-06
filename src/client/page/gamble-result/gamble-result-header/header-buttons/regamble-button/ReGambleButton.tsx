@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { useGambleContext } from "../../../../../context/GambleContext";
 import { LocalStorageKey } from "../../../../../framework/localstorage/LocalStorageKey";
+import { Icon } from "../../../../../framework/icon/Icon";
 
 import headerButtonStyles from "../HeaderButton.scss";
 import regambleButtonStyles from "./ReGambleButton.scss";
@@ -28,7 +29,7 @@ const ReGambleButton: React.FC = () => {
             )}
             onClick={handleClick}
         >
-            🔄
+            <Icon name="autorenew" size={48} />
         </button>
     );
 };

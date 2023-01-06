@@ -5,7 +5,7 @@ import { mergeDeliverooRestaurantDataFromCategories } from "./mergeDeliverooRest
 import { getDeliverooRestaurantContextFromUrl } from "../getDeliverooRestaurantContextFromUrl";
 import { RestaurantDataDTO } from "../../../../../type/RestaurantDataDTO";
 
-const MAX_CATEGORIES = 25;
+const MAX_CATEGORIES = 50;
 
 /**
  * Retrieve the context from a categories page - for supermarkets and other stuff like that where the main page is a
