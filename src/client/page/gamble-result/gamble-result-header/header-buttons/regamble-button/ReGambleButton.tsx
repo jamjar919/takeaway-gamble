@@ -12,12 +12,13 @@ const ReGambleButton: React.FC = () => {
     const priceLimit =
         Number(localStorage.getItem(LocalStorageKey.PRICE_LIMIT)) * 100;
     const postcode = localStorage.getItem(LocalStorageKey.POSTCODE);
+    const numPeople = Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 0;
 
     if (!priceLimit || !postcode) {
         return null;
     }
 
-    const handleClick = () => postcodeGamble(postcode, priceLimit, true);
+    const handleClick = () => postcodeGamble(postcode, priceLimit, numPeople);
 
     return (
         <button

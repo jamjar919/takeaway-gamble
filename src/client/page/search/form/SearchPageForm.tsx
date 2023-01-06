@@ -30,7 +30,7 @@ const getInitialValues = (): SearchPageFormValues => {
             localStorage.getItem(LocalStorageKey.POSTCODE) ?? "",
         [SearchPageFormField.PRICE_LIMIT]:
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT) ?? "12.00",
-        [SearchPageFormField.NUM_PEOPLE]: 1,
+        [SearchPageFormField.NUM_PEOPLE]: Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
     };
 };
 
@@ -60,7 +60,7 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                     String(values[SearchPageFormField.NUM_PEOPLE])
                 );
 
-                onSubmit(values).then(() => formikHelpers.setSubmitting(false));
+                onSubmit(values).finally(() => formikHelpers.setSubmitting(false));
             }}
         >
             {({ isSubmitting }) => (

@@ -68,7 +68,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 method: GambleMethod.POSTCODE,
                 postcode,
                 priceLimit,
-                numPeople,
+                numberOfPeople: numPeople,
             })
         );
 
@@ -84,7 +84,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 method: GambleMethod.URL,
                 url,
                 priceLimit,
-                numPeople,
+                numberOfPeople: numPeople,
             })
         );
 
