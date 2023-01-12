@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Formik } from "formik";
 
 import { LocalStorageKey } from "../../../framework/localstorage/LocalStorageKey";
@@ -9,8 +9,7 @@ import styles from "./SearchPageForm.scss";
 import { TextInput } from "../../../framework/input/text/TextInput";
 import { AsciiLoader } from "../../../framework/ascii-loader/AsciiLoader";
 import { AsciiLoaderTilesetType } from "../../../framework/ascii-loader/AsciiLoaderTileset";
-import { Accordion } from "../../../framework/accordion/Accordion";
-import { NumberInput } from "../../../framework/input/number/NumberInput";
+import { AdditionalOptionsAccordion } from "./additional-options/AdditionalOptionsAccordion";
 
 enum SearchPageFormField {
     POSTCODE = "POSTCODE",
@@ -30,7 +29,8 @@ const getInitialValues = (): SearchPageFormValues => {
             localStorage.getItem(LocalStorageKey.POSTCODE) ?? "",
         [SearchPageFormField.PRICE_LIMIT]:
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT) ?? "12.00",
-        [SearchPageFormField.NUM_PEOPLE]: Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
+        [SearchPageFormField.NUM_PEOPLE]:
+            Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
     };
 };
 
@@ -40,8 +40,6 @@ type SearchPageFormProps = {
 
 const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
     const { onSubmit } = props;
-
-    const [additionalOptionsOpen, setAdditionalOptionsOpen] = useState(false);
 
     return (
         <Formik
@@ -60,7 +58,9 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                     String(values[SearchPageFormField.NUM_PEOPLE])
                 );
 
-                onSubmit(values).finally(() => formikHelpers.setSubmitting(false));
+                onSubmit(values).finally(() =>
+                    formikHelpers.setSubmitting(false)
+                );
             }}
         >
             {({ isSubmitting }) => (
@@ -96,17 +96,7 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                             </button>
                         }
                     />
-                    <Accordion
-                        title={"Options"}
-                        showHeader={!additionalOptionsOpen}
-                        open={additionalOptionsOpen}
-                        onToggle={() => setAdditionalOptionsOpen(!additionalOptionsOpen)}
-                    >
-                        <NumberInput
-                            name={SearchPageFormField.NUM_PEOPLE}
-                            label="How many eating?"
-                        />
-                    </Accordion>
+                    <AdditionalOptionsAccordion />
                 </Form>
             )}
         </Formik>

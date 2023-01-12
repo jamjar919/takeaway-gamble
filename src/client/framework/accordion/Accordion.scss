@@ -1,43 +1,43 @@
 .accordion {
-  margin: 20px 0;
+    margin: 20px 0;
 }
 
 .header {
-  display: flex;
-  width: 100%;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  height: 48px;
-  font-size: 18px;
+    display: flex;
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    height: 48px;
+    font-size: 18px;
 }
 
 .title {
-  flex: 1 1;
-  margin-right: auto;
-  text-align: left;
+    flex: 1 1;
+    margin-right: auto;
+    text-align: left;
 }
 
 .toggle {
-  flex: 0 0;
-  text-align: right;
-  transition: transform 0.1s;
+    flex: 0 0;
+    text-align: right;
+    transition: transform 0.1s;
 
-  &.open {
-    transform: rotate(180deg);
-    text-align: left;
-  }
+    &.open {
+        transform: rotate(180deg);
+        text-align: left;
+    }
 }
 
 .content {
-  height: 0;
-  transform: scaleY(0.5);
-  transition: transform 0.1s;
-  transform-origin: top;
-  overflow: hidden;
+    height: 0;
+    transform: scaleY(0.5);
+    transition: transform 0.1s;
+    transform-origin: top;
+    overflow: hidden;
 
-  &.open {
-    height: auto;
-    transform: scaleY(1);
-  }
+    &.open {
+        height: auto;
+        transform: scaleY(1);
+    }
 }

@@ -1,0 +1,9 @@
+.accordionOptionsHeader {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}

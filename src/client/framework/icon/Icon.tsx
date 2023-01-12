@@ -2,8 +2,8 @@ import React from "react";
 
 type IconProps = {
     name: string;
-    size?: 18 | 24 | 36 | 48
-}
+    size?: 18 | 24 | 36 | 48;
+};
 
 const Icon: React.FC<IconProps> = (props) => {
     const { name, size } = props;
@@ -13,10 +13,10 @@ const Icon: React.FC<IconProps> = (props) => {
             {name}
         </span>
     );
-}
+};
 
 Icon.defaultProps = {
-    size: 24
-}
+    size: 24,
+};
 
-export { Icon }
+export { Icon };

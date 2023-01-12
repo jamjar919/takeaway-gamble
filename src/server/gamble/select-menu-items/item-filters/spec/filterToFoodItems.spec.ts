@@ -6,12 +6,12 @@ describe("filterToFoodItems", () => {
             filterToFoodItems([
                 {
                     name: "Coca-Cola 330ml",
-                    description: ""
+                    description: "",
                 } as any,
                 {
                     name: "Cool thing",
-                    description: "Fresh orange juice"
-                } as any
+                    description: "Fresh orange juice",
+                } as any,
             ])
         ).toStrictEqual([]);
     });

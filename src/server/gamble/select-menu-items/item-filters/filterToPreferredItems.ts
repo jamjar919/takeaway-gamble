@@ -6,7 +6,7 @@ import { filterToFoodItems } from "./filterToFoodItems";
 const filterToPreferredItems = (items: ItemDTO[]): ItemDTO[] => {
     const foodItems = filterToFoodItems(items);
 
-    return filterToItemsAbovePriceRatio(foodItems, 2/3);
+    return filterToItemsAbovePriceRatio(foodItems, 2 / 3);
 };
 
 export { filterToPreferredItems };

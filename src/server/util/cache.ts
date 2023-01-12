@@ -56,14 +56,12 @@ class Cache<T> {
     }
 
     has(key: string): boolean {
-        return typeof this.cache[key] !== "undefined"
+        return typeof this.cache[key] !== "undefined";
     }
 
     // For a given value, whether the cache should be updated - either key is not present or has expired
     private shouldUpdateCache(key: string): boolean {
-        return (
-            !this.has(key) || this.hasCachedValueExpired(key)
-        );
+        return !this.has(key) || this.hasCachedValueExpired(key);
     }
 
     // Whether the cached value has expired according to the given timeout
