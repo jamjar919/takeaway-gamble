@@ -5,6 +5,8 @@ import { mergeDeliverooRestaurantDataFromCategories } from "./mergeDeliverooRest
 import { getDeliverooRestaurantContextFromUrl } from "../getDeliverooRestaurantContextFromUrl";
 import { RestaurantDataDTO } from "../../../../../type/RestaurantDataDTO";
 
+const MAX_CATEGORIES = 50;
+
 /**
  * Retrieve the context from a categories page - for supermarkets and other stuff like that where the main page is a
  * list of categories, rather than a list of items.
@@ -20,6 +22,13 @@ const getDeliverooRestaurantContextFromUrlForCategoriesPage = async (
 
     if (categories.length < 1) {
         throw new Error("No categories found on a presumed categories page");
+    }
+
+    if (categories.length > MAX_CATEGORIES) {
+        console.log(`Found a lot of categories ${categories.length}`);
+        // throw new Error(
+        //     `Too many categories for ${url} (found ${categories.length})`
+        // );
     }
 
     // Get states for categories

@@ -18,7 +18,7 @@ const selectMenuItems = (
     modifiers: ModifierGroupDTO[],
     priceLimit: number,
     options: {
-        firstItemIsLarge: boolean;
+        numberOfPeople: number;
     },
     itemsPicked: number = 0
 ): SelectedItemDTO[] => {
@@ -31,10 +31,10 @@ const selectMenuItems = (
     }
 
     // Pick one
-    let selectedItem = pickOneFromArray(validItems);
+    let selectedItem: ItemDTO = pickOneFromArray(validItems);
 
-    // If this is the first item then pick a priority item
-    if (itemsPicked === 0 && options.firstItemIsLarge) {
+    // If we have selected fewer items than the number of people, pick a priority item
+    if (options.numberOfPeople !== 0 && itemsPicked < options.numberOfPeople) {
         const preferredItems = filterToPreferredItems(validItems);
 
         if (preferredItems.length > 0) {

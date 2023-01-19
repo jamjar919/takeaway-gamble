@@ -7,7 +7,7 @@ enum GambleMethod {
 
 type BaseGambleRequest = {
     priceLimit: number;
-    firstItemIsLarge: boolean;
+    numberOfPeople: number;
 };
 
 type PostcodeGambleRequest = BaseGambleRequest & {

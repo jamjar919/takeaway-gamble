@@ -8,7 +8,7 @@ export const debugGamble = async (req: Request, res: Response) => {
         const response = await gamble({
             priceLimit: 10000,
             method: GambleMethod.URL,
-            firstItemIsLarge: true,
+            numberOfPeople: 0,
             url: req.query["url"] as string,
         });
 

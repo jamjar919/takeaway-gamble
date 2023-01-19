@@ -1,0 +1,42 @@
+@use "sass:map";
+@import "src/client/App";
+
+.badge {
+    display: flex;
+    flex-direction: row;
+    padding: 7px 20px;
+    border-radius: 5px;
+    background-color: map.get($color, "primary");
+    color: #fff;
+    margin: auto;
+
+    &.sm {
+        height: 18px;
+        font-size: 12px;
+    }
+
+    &.md {
+        height: 24px;
+        font-size: 18px;
+    }
+
+    &.lg {
+        height: 36px;
+        font-size: 24px;
+    }
+
+    &.xl {
+        height: 48px;
+        font-size: 36px;
+    }
+}
+
+.iconContainer {
+    margin-right: 5px;
+}
+
+.text {
+    display: flex;
+    margin: auto;
+    padding-top: 2px;
+}

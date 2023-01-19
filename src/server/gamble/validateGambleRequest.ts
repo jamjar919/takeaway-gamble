@@ -18,7 +18,7 @@ function validateGambleRequest(
 ): asserts requestBody is GambleRequest {
     validatePresent<string>(requestBody, "method");
     validatePresent<string>(requestBody, "priceLimit");
-    validatePresent<string>(requestBody, "firstItemIsLarge");
+    validatePresent<string>(requestBody, "numberOfPeople");
 
     if (requestBody.priceLimit > GAMBLE_MAX) {
         throw new Error("Max price is £1000");

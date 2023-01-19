@@ -9,12 +9,12 @@ type GambleContext = {
     postcodeGamble: (
         postcode: string,
         price: number,
-        firstItemIsLarge: boolean
+        numPeople: number
     ) => Promise<void>;
     urlGamble: (
         url: string,
         price?: number,
-        firstItemIsLarge?: boolean
+        numPeople?: number
     ) => Promise<void>;
     gambleResult: null | GambleResponse;
     gambleInProgress: boolean;
@@ -61,14 +61,14 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const postcodeGamble = (
         postcode: string,
         priceLimit: number,
-        firstItemIsLarge: boolean
+        numPeople: number
     ) =>
         handleGambleResult(
             doGamble({
                 method: GambleMethod.POSTCODE,
                 postcode,
                 priceLimit,
-                firstItemIsLarge,
+                numberOfPeople: numPeople,
             })
         );
 
@@ -77,14 +77,14 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         priceLimit: number = (Number(
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT)
         ) ?? 12) * 100,
-        firstItemIsLarge: boolean = true
+        numPeople: number = 1
     ) =>
         handleGambleResult(
             doGamble({
                 method: GambleMethod.URL,
                 url,
                 priceLimit,
-                firstItemIsLarge,
+                numberOfPeople: numPeople,
             })
         );
 

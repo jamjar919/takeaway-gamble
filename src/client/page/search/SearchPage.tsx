@@ -24,14 +24,10 @@ const SearchPage: React.FC = () => {
                                 Number(
                                     values[SearchPageFormField.PRICE_LIMIT]
                                 ) * 100;
-                            const firstItemIsLarge =
-                                values[SearchPageFormField.FIRST_ITEM_IS_LARGE];
+                            const numPeople =
+                                values[SearchPageFormField.NUM_PEOPLE];
 
-                            return postcodeGamble(
-                                postcode,
-                                price,
-                                firstItemIsLarge
-                            );
+                            return postcodeGamble(postcode, price, numPeople);
                         }}
                     />
                 </div>
