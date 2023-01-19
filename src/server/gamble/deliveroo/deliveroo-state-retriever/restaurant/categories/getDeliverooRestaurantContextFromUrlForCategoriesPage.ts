@@ -25,9 +25,10 @@ const getDeliverooRestaurantContextFromUrlForCategoriesPage = async (
     }
 
     if (categories.length > MAX_CATEGORIES) {
-        throw new Error(
-            `Too many categories for ${url} (found ${categories.length})`
-        );
+        console.log(`Found a lot of categories ${categories.length}`);
+        // throw new Error(
+        //     `Too many categories for ${url} (found ${categories.length})`
+        // );
     }
 
     // Get states for categories
