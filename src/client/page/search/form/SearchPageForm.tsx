@@ -10,17 +10,20 @@ import { TextInput } from "../../../framework/input/text/TextInput";
 import { AsciiLoader } from "../../../framework/ascii-loader/AsciiLoader";
 import { AsciiLoaderTilesetType } from "../../../framework/ascii-loader/AsciiLoaderTileset";
 import { AdditionalOptionsAccordion } from "./additional-options/AdditionalOptionsAccordion";
+import { Cuisine } from "../../../../common/type/Cuisine";
 
 enum SearchPageFormField {
     POSTCODE = "POSTCODE",
     PRICE_LIMIT = "PRICE_LIMIT",
     NUM_PEOPLE = "NUM_PEOPLE",
+    CUISINE = 'CUISINE'
 }
 
 type SearchPageFormValues = {
     [SearchPageFormField.POSTCODE]: string;
     [SearchPageFormField.PRICE_LIMIT]: string;
     [SearchPageFormField.NUM_PEOPLE]: number;
+    [SearchPageFormField.CUISINE]: string;
 };
 
 const getInitialValues = (): SearchPageFormValues => {
@@ -31,6 +34,8 @@ const getInitialValues = (): SearchPageFormValues => {
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT) ?? "12.00",
         [SearchPageFormField.NUM_PEOPLE]:
             Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
+        [SearchPageFormField.CUISINE]:
+            localStorage.getItem(LocalStorageKey.CUISINE) ?? Cuisine.any,
     };
 };
 
@@ -56,6 +61,10 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                 localStorage.setItem(
                     LocalStorageKey.NUM_PEOPLE,
                     String(values[SearchPageFormField.NUM_PEOPLE])
+                );
+                localStorage.setItem(
+                    LocalStorageKey.CUISINE,
+                    String(values[SearchPageFormField.CUISINE])
                 );
 
                 onSubmit(values).finally(() =>

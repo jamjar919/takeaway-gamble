@@ -18,7 +18,7 @@ const gamble = async (
         restaurantData.modifierGroups,
         request.priceLimit,
         {
-            numberOfPeople: request.numberOfPeople ?? false,
+            numberOfPeople: request.numberOfPeople ?? 0,
         }
     );
 

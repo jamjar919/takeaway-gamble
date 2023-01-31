@@ -14,6 +14,7 @@ import { validateGambleRequest } from "./gamble/validateGambleRequest";
 import { urlCache } from "./debug/urlCache";
 import { debugGamble } from "./debug/debugGamble";
 import { setupLogs } from "./util/setupLogs";
+import { debug } from "./debug/debug";
 
 dotenv.config();
 setupLogs();
@@ -61,6 +62,7 @@ app.post(
     }
 );
 
+app.get(Endpoints.DEBUG, debug);
 app.get(Endpoints.DEBUG_RESTAURANT_CONTEXT, debugRestaurantContext);
 app.get(Endpoints.DEBUG_GAMBLE, debugGamble);
 app.get(Endpoints.DEBUG_URL_CACHE, urlCache);

@@ -39,5 +39,6 @@
     &.open {
         height: auto;
         transform: scaleY(1);
+        overflow: visible;
     }
 }

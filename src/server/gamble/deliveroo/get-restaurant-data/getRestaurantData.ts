@@ -5,13 +5,15 @@ import {
 import { RestaurantDataDTO } from "../../../type/RestaurantDataDTO";
 import { getRestaurantDataFromPostcode } from "./postcode/getRestaurantDataFromPostcode";
 import { getRestaurantDataFromUrl } from "./url/getRestaurantDataFromUrl";
+import { Cuisine } from "../../../../common/type/Cuisine";
 
 const getRestaurantData = async (
     request: GambleRequest
 ): Promise<RestaurantDataDTO> => {
     switch (request.method) {
         case GambleMethod.POSTCODE:
-            return await getRestaurantDataFromPostcode(request.postcode);
+            const cuisine: Cuisine = request.cuisine ?? Cuisine.any;
+            return await getRestaurantDataFromPostcode(request.postcode, cuisine);
         case GambleMethod.URL:
             return await getRestaurantDataFromUrl(request.url);
         default:
