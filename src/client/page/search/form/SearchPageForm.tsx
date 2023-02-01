@@ -23,7 +23,7 @@ type SearchPageFormValues = {
     [SearchPageFormField.POSTCODE]: string;
     [SearchPageFormField.PRICE_LIMIT]: string;
     [SearchPageFormField.NUM_PEOPLE]: number;
-    [SearchPageFormField.CUISINE]: string;
+    [SearchPageFormField.CUISINE]: Cuisine;
 };
 
 const getInitialValues = (): SearchPageFormValues => {
@@ -35,7 +35,7 @@ const getInitialValues = (): SearchPageFormValues => {
         [SearchPageFormField.NUM_PEOPLE]:
             Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
         [SearchPageFormField.CUISINE]:
-            localStorage.getItem(LocalStorageKey.CUISINE) ?? Cuisine.any,
+            localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine ?? Cuisine.any,
     };
 };
 

@@ -4,12 +4,14 @@ import { GambleResponse } from "../../common/type/GambleResponse";
 import { useNavigate } from "react-router-dom";
 import { GambleMethod } from "../../common/type/GambleRequest";
 import { LocalStorageKey } from "../framework/localstorage/LocalStorageKey";
+import { Cuisine } from "../../common/type/Cuisine";
 
 type GambleContext = {
     postcodeGamble: (
         postcode: string,
         price: number,
-        numPeople: number
+        numPeople: number,
+        cuisine: Cuisine
     ) => Promise<void>;
     urlGamble: (
         url: string,
@@ -61,7 +63,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
     const postcodeGamble = (
         postcode: string,
         priceLimit: number,
-        numPeople: number
+        numPeople: number,
+        cuisine: Cuisine
     ) =>
         handleGambleResult(
             doGamble({
@@ -69,6 +72,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 postcode,
                 priceLimit,
                 numberOfPeople: numPeople,
+                cuisine
             })
         );
 

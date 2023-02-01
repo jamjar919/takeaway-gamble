@@ -26,8 +26,10 @@ const SearchPage: React.FC = () => {
                                 ) * 100;
                             const numPeople =
                                 values[SearchPageFormField.NUM_PEOPLE];
+                            const cuisine =
+                                values[SearchPageFormField.CUISINE];
 
-                            return postcodeGamble(postcode, price, numPeople);
+                            return postcodeGamble(postcode, price, numPeople, cuisine);
                         }}
                     />
                 </div>

@@ -22,6 +22,14 @@ const Select = (props: SelectProps) => {
             name={name}
             value={selectValue}
             onChange={(option: any) => setValue(option?.value)}
+            theme={(theme) => ({
+                ...theme,
+                colors: {
+                    ...theme.colors,
+                    primary25: '#f7e4e4',
+                    primary: '#b92626',
+                },
+            })}
         />
     )
 }
