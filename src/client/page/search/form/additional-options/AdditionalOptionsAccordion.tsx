@@ -3,6 +3,7 @@ import { NumberInput } from "../../../../framework/input/number/NumberInput";
 import React, { useState } from "react";
 import { SearchPageFormField } from "../SearchPageForm";
 import { AdditionalOptionsAccordionHeader } from "./header/AdditionalOptionsAccordionHeader";
+import { CuisineSelect } from "./cuisine-selector/CuisineSelect";
 
 const AdditionalOptionsAccordion: React.FC = () => {
     const [additionalOptionsOpen, setAdditionalOptionsOpen] = useState(false);
@@ -19,6 +20,7 @@ const AdditionalOptionsAccordion: React.FC = () => {
                 name={SearchPageFormField.NUM_PEOPLE}
                 label="How many eating?"
             />
+            <CuisineSelect />
         </Accordion>
     );
 };

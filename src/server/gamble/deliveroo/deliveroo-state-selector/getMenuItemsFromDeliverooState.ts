@@ -11,7 +11,7 @@ const getMenuItemsFromDeliverooState = (
         return [];
     }
 
-    return items;
+    return items.filter((item) => item.available);
 };
 
 export { getMenuItemsFromDeliverooState };

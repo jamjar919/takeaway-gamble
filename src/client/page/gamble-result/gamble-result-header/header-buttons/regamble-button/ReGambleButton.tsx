@@ -6,6 +6,7 @@ import { Icon } from "../../../../../framework/icon/Icon";
 
 import headerButtonStyles from "../HeaderButton.scss";
 import regambleButtonStyles from "./ReGambleButton.scss";
+import { Cuisine } from "../../../../../../common/type/Cuisine";
 
 const ReGambleButton: React.FC = () => {
     const { postcodeGamble } = useGambleContext();
@@ -15,12 +16,14 @@ const ReGambleButton: React.FC = () => {
     const postcode = localStorage.getItem(LocalStorageKey.POSTCODE);
     const numPeople =
         Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 0;
+    const cuisine =
+        localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine ?? Cuisine.any;
 
     if (!priceLimit || !postcode) {
         return null;
     }
 
-    const handleClick = () => postcodeGamble(postcode, priceLimit, numPeople);
+    const handleClick = () => postcodeGamble(postcode, priceLimit, numPeople, cuisine);
 
     return (
         <button

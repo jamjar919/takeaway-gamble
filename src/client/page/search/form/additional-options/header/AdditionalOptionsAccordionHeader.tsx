@@ -5,12 +5,18 @@ import {
     SearchPageFormField,
     SearchPageFormValues,
 } from "../../SearchPageForm";
+import { BadgeRow } from "../../../../../framework/badge-row/BadgeRow";
+import { CuisineOptions } from "../cuisine-selector/CuisineOptions";
 
 import styles from "./AdditionalOptionsAccordionHeader.scss";
-import { BadgeRow } from "../../../../../framework/badge-row/BadgeRow";
+import { Cuisine } from "../../../../../../common/type/Cuisine";
 
 const AdditionalOptionsAccordionHeader: React.FC = () => {
     const { values } = useFormikContext<SearchPageFormValues>();
+
+    const cuisine = CuisineOptions[
+        values[SearchPageFormField.CUISINE] as Cuisine
+    ].label;
 
     return (
         <div className={styles.accordionOptionsHeader}>
@@ -18,7 +24,9 @@ const AdditionalOptionsAccordionHeader: React.FC = () => {
                 <Badge iconName={"person"}>
                     {values[SearchPageFormField.NUM_PEOPLE]}
                 </Badge>
-                <Badge iconName={"restaurant_menu"}>All Cuisines</Badge>
+                <Badge iconName={"restaurant_menu"}>
+                    {cuisine}
+                </Badge>
             </BadgeRow>
         </div>
     );

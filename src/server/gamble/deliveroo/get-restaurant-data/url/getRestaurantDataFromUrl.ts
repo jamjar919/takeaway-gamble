@@ -6,7 +6,7 @@ import {
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/restaurant/getDeliverooRestaurantContextFromUrl";
 
 const getRestaurantDataFromUrl = async (
-    unsafeUrl: string
+    unsafeUrl: string,
 ): Promise<RestaurantDataDTO> => {
     const normalisedUrl = normaliseUrlPath(unsafeUrl);
 
