@@ -1,6 +1,8 @@
 // Store a list of URL's we've seen
 const placesToEatCollection = new Set<string>([
     "/menu/Oxford/dean-court-and-cumnor/oxford-drinks-and-snacks-delivery",
+    "/menu/London/wood-green/mcdonalds-0021-wood-green",
+    "/menu/London/upper-holloway/indiebeer" // causing errors
 ]);
 
 const safeUrlParams = ["category_id"];
