@@ -1,6 +1,7 @@
 import fetch, { RequestInit, Response } from "node-fetch";
 import { parseCookie } from "./parseCookie";
 import { createCookie } from "./createCookie";
+import { getProxy } from "./proxy/proxy";
 
 let currentCookie: Record<string, string> = {};
 
@@ -29,14 +30,18 @@ const getOptions = (): RequestInit => ({
     body: null,
     method: "GET",
     redirect: "manual",
+    agent: getProxy()
 });
 
 const doDeliverooFetch = (
     url: string,
     attemptNumber = 0
 ): Promise<Response> => {
-    console.log("fetching", url);
-    return fetch(BASE_URL + url, getOptions()).then((res: Response) => {
+    const options = getOptions();
+
+    console.log(`fetching [Proxy ${options?.agent ? "YES" : "NO"}] ${url}`);
+
+    return fetch(BASE_URL + url, options).then((res: Response) => {
         const newCookie = parseCookie(res.headers.get("set-cookie") || "");
 
         currentCookie = {

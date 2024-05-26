@@ -1,6 +1,7 @@
 import { geocode } from "./google-maps/geocode";
 import fetch, { RequestInit } from "node-fetch";
 import { Cuisine, CuisineUrlParam } from "../../../../../../common/type/Cuisine";
+import { getProxy } from "../../../../../util/proxy/proxy";
 
 type DeliverooRestaurantApiResponse = {
     coordinates: [number, number];
@@ -26,7 +27,10 @@ const callDeliverooApi = async (
                 coordinates: [location.lng, location.lat],
             },
         }),
+        agent: getProxy()
     };
+
+    console.log(`fetching restaurants for latlng [Proxy ${options?.agent ? "YES" : "NO"}]`);
 
     return fetch("https://deliveroo.co.uk/api/restaurants", options).then(
         (response) => response.json() as Promise<DeliverooRestaurantApiResponse>

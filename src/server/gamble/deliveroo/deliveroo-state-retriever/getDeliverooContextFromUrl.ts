@@ -3,6 +3,7 @@ import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 import { CaptchaRequiredError } from "../error/CaptchaRequiredError";
 import { doDeliverooFetch } from "../../../util/doDeliverooFetch";
 
+
 /**
  * Load up a Deliveroo page and extract the server side rendering goodness
  * If you're an engineer and work at Deliveroo then please don't change this ty <3
@@ -21,8 +22,12 @@ const getDeliverooContextFromUrl = async (
 
     if (!data) {
         const html = $("html").html();
+        const title = $("title").text();
 
-        if ($("title").text().indexOf("Cloudflare") > 0) {
+        if (
+            title.indexOf("Cloudflare") > 0 ||
+            title.indexOf("Just a moment...") > 0
+        ) {
             console.log("Captcha required - sending it back to the user");
             throw new CaptchaRequiredError(String(html));
         }
@@ -31,7 +36,12 @@ const getDeliverooContextFromUrl = async (
     }
 
     // Get the NEXT state + cookie
-    return JSON.parse(data.html() as string) as DeliverooState;
+    try {
+        return JSON.parse(data.html() as string) as DeliverooState;
+    } catch (e: any) {
+        console.log("Failed to find state", html);
+        throw e;
+    }
 };
 
 export { getDeliverooContextFromUrl };
