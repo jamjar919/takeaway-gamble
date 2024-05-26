@@ -23,8 +23,12 @@ const getDeliverooContextFromUrl = async (
 
     if (!data) {
         const html = $("html").html();
+        const title = $("title").text();
 
-        if ($("title").text().indexOf("Cloudflare") > 0) {
+        if (
+            title.indexOf("Cloudflare") > 0 ||
+            title.indexOf("Just a moment...") > 0
+        ) {
             console.log("Captcha required - sending it back to the user");
             throw new CaptchaRequiredError(String(html));
         }
