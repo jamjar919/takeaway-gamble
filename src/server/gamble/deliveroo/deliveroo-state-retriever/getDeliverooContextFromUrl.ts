@@ -20,7 +20,7 @@ const getDeliverooContextFromUrl = async (
 
     const data = $("#__NEXT_DATA__");
 
-    if (!data) {
+    if (!data || !data.html()) {
         const html = $("html").html();
         const title = $("title").text();
 

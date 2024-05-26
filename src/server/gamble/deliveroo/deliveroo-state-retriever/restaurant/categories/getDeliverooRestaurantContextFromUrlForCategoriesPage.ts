@@ -36,7 +36,7 @@ const getDeliverooRestaurantContextFromUrlForCategoriesPage = async (
         categories.map((category) => {
             const urlWithCategory = `${normaliseUrlPath(url)}?category_id=${
                 category.id
-            }`;
+            }&day=today`;
 
             return getDeliverooRestaurantContextFromUrl(urlWithCategory, true);
         })
