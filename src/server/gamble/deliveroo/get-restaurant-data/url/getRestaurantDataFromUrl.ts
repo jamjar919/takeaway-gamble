@@ -4,6 +4,7 @@ import {
     validatePlaceToEatUrl,
 } from "./deliverooMenuUrlCache";
 import { getDeliverooRestaurantContextFromUrl } from "../../deliveroo-state-retriever/restaurant/getDeliverooRestaurantContextFromUrl";
+import { addUrlParameter } from "../../../../util/urlParameter";
 
 const getRestaurantDataFromUrl = async (
     unsafeUrl: string,
@@ -18,7 +19,13 @@ const getRestaurantDataFromUrl = async (
     }
 
     // Fetch + get context for it
-    return await getDeliverooRestaurantContextFromUrl(normalisedUrl);
+    // Deliveroo requires the `day=today` param on all requests now
+    const urlToUse = addUrlParameter(
+        normalisedUrl,
+        "day",
+        "today"
+    );
+    return await getDeliverooRestaurantContextFromUrl(urlToUse);
 };
 
 export { getRestaurantDataFromUrl };
