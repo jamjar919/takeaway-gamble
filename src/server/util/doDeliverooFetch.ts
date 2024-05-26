@@ -1,12 +1,26 @@
 import fetch, { RequestInit, Response } from "node-fetch";
+import * as dotenv from "dotenv";
+import { HttpsProxyAgent } from 'https-proxy-agent';
+
 import { parseCookie } from "./parseCookie";
 import { createCookie } from "./createCookie";
+
+dotenv.config();
 
 let currentCookie: Record<string, string> = {};
 
 const MAX_TRIES = 2;
 
 const BASE_URL = "https://deliveroo.co.uk";
+
+const proxyUrl = process.env.DELIVEROO_PROXY_URL;
+const proxy = proxyUrl
+    ? new HttpsProxyAgent(proxyUrl, {
+        headers: {
+            'Proxy-Authentication': 'Basic ' + Buffer.from(`${process.env.DELIVEROO_PROXY_USERNAME}:${process.env.DELIVEROO_PROXY_PASSWORD}`).toString('base64')
+        }
+    })
+    : undefined;
 
 const getOptions = (): RequestInit => ({
     headers: {
@@ -29,6 +43,7 @@ const getOptions = (): RequestInit => ({
     body: null,
     method: "GET",
     redirect: "manual",
+    agent: proxy
 });
 
 const doDeliverooFetch = (
@@ -36,6 +51,11 @@ const doDeliverooFetch = (
     attemptNumber = 0
 ): Promise<Response> => {
     console.log("fetching", url);
+
+    if (proxyUrl) {
+        console.log("Using proxy: " + proxyUrl);
+    }
+
     return fetch(BASE_URL + url, getOptions()).then((res: Response) => {
         const newCookie = parseCookie(res.headers.get("set-cookie") || "");
 
