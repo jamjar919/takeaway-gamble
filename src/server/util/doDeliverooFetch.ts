@@ -22,6 +22,8 @@ const proxy = proxyUrl
     })
     : undefined;
 
+console.log("Starting for first time, proxy is ", proxyUrl)
+
 const getOptions = (): RequestInit => ({
     headers: {
         cookie: createCookie(currentCookie),
