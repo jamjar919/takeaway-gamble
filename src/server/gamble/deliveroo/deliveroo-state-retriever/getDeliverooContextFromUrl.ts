@@ -15,6 +15,8 @@ const getDeliverooContextFromUrl = async (
         restaurants.text()
     );
 
+    console.log(html);
+
     const $ = cheerio.load(html);
 
     const data = $("#__NEXT_DATA__");
