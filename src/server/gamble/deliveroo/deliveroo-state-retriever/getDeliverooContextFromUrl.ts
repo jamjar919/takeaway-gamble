@@ -34,7 +34,7 @@ const getDeliverooContextFromUrl = async (
     try {
         return JSON.parse(data.html() as string) as DeliverooState;
     } catch (e: any) {
-        console.log($("html").html());
+        console.log("Failed to find state", html);
         return Promise.reject("Failed to find server side state")
     }
 };
