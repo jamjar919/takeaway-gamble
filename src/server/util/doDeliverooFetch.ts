@@ -4,6 +4,7 @@ import { HttpsProxyAgent } from 'https-proxy-agent';
 
 import { parseCookie } from "./parseCookie";
 import { createCookie } from "./createCookie";
+import { validateProxy } from "./validateProxy";
 
 dotenv.config();
 
@@ -13,16 +14,24 @@ const MAX_TRIES = 2;
 
 const BASE_URL = "https://deliveroo.co.uk";
 
-const proxyUrl = process.env.DELIVEROO_PROXY_URL;
-const proxy = proxyUrl
-    ? new HttpsProxyAgent(proxyUrl, {
-        headers: {
-            'Proxy-Authentication': 'Basic ' + Buffer.from(`${process.env.DELIVEROO_PROXY_USERNAME}:${process.env.DELIVEROO_PROXY_PASSWORD}`).toString('base64')
-        }
-    })
-    : undefined;
+const proxyUrl = process.env.DELIVEROO_PROXY_URL ?? '';
+let proxy: HttpsProxyAgent<string> | undefined = new HttpsProxyAgent(proxyUrl);
 
-console.log("Starting for first time, proxy is ", proxyUrl)
+if (proxy) {
+    console.log(`Starting for first time, proxy is [${proxyUrl}]`)
+
+    validateProxy(proxy)
+        .then(() => {
+            console.log("Successfully connected to Deliveroo via proxy")
+        })
+        .catch(() => {
+            console.log("Failed to validate proxy, disabling")
+            proxy = undefined
+        })
+} else {
+    console.log("No proxy configured")
+}
+
 
 const getOptions = (): RequestInit => ({
     headers: {
@@ -52,11 +61,7 @@ const doDeliverooFetch = (
     url: string,
     attemptNumber = 0
 ): Promise<Response> => {
-    console.log("fetching", url);
-
-    if (proxyUrl) {
-        console.log("Using proxy: " + proxyUrl);
-    }
+    console.log(`fetching [Proxy ${proxy ? "YES" : "NO"}] ${url}`);
 
     return fetch(BASE_URL + url, getOptions()).then((res: Response) => {
         const newCookie = parseCookie(res.headers.get("set-cookie") || "");
