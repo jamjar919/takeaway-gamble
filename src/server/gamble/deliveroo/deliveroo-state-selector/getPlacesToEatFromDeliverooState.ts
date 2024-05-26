@@ -10,7 +10,7 @@ const getPlacesToEatFromDeliverooState = (
     if (!state?.props?.initialState?.home?.feed?.results?.data?.length) {
         console.error("Could not find any restaurants in state");
         console.error(state?.props?.initialState);
-        return [];
+        throw new Error("Could not find any restaurants");
     }
 
     const { data } = state.props.initialState.home.feed.results;
