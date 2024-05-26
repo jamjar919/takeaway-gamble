@@ -31,7 +31,12 @@ const getDeliverooContextFromUrl = async (
     }
 
     // Get the NEXT state + cookie
-    return JSON.parse(data.html() as string) as DeliverooState;
+    try {
+        return JSON.parse(data.html() as string) as DeliverooState;
+    } catch (e: any) {
+        console.log($("html").html());
+        return Promise.reject("Failed to find server side state")
+    }
 };
 
 export { getDeliverooContextFromUrl };
