@@ -22,6 +22,8 @@ const get = async (
 ): Promise<RestaurantDataDTO> => {
     const restaurantContext = await getDeliverooContextFromUrl(url);
 
+    console.log(restaurantContext);
+
     // Assert the context we got has items in it
     if (getMenuItemsFromDeliverooState(restaurantContext).length > 0) {
         // Return the context
