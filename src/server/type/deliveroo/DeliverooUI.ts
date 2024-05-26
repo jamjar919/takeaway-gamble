@@ -6,14 +6,11 @@ type UITargetRestaurant = {
 };
 
 type UITargetAction = {
-    typeName: "UITargetAction";
-    action: "SHOW_CATEGORY" | "";
-    params: [
-        {
-            id: "category_id";
-            value: string[];
-        }
-    ];
+    typeName: 'UITargetShowSection',
+    sectionParams: [{
+        id: 'category_id' | 'source' | 'linked_request_uuid',
+        value: string[]
+    }]
 };
 
 type UiCardSpan = {

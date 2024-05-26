@@ -15,8 +15,20 @@ const getMenuPageCategories = (state: DeliverooState): DeliverooCategory[] => {
         .filter((layouts) => layouts.typeName === "UILayoutGrid")
         .flatMap((group) => group.blocks)
         .map((card) => {
-            const categoryId = card.cardTarget?.params[0].value[0];
-            const categoryName = card.lines?.[0].spans[0].text;
+            const cardTarget = card.cardTarget;
+
+            if (!cardTarget || cardTarget.typeName !== "UITargetShowSection") {
+                console.log("Card target for categories page was not a category");
+                console.log(cardTarget);
+                return null;
+            }
+
+            const categoryId = cardTarget
+                .sectionParams
+                .find((param) => param.id === "category_id")
+                ?.value?.[0]
+
+            const categoryName = card.lines?.[0].spans?.[0].text;
 
             if (!categoryId || !categoryName) {
                 return null;

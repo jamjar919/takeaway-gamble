@@ -20,20 +20,22 @@ export const debugRestaurantContext = async (req: Request, res: Response) => {
         }
 
         if (wantsContext) {
+            const result = await getDeliverooContextFromUrl(url as string)
             sendJSON(
-                await getDeliverooContextFromUrl(url as string),
+                result,
                 res
             );
             return;
         }
 
+        const result = await getDeliverooRestaurantContextFromUrl(url)
         sendJSON(
-            await getDeliverooRestaurantContextFromUrl(url),
+            result,
             res
         );
 
     } catch (e: any) {
-        console.error("Error debug", e);
+        console.log("Error debug", e);
         sendJSON({ error: e?.message || "Error" }, res);
     }
 };

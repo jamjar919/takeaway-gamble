@@ -1,8 +1,10 @@
 import { HttpsProxyAgent } from "https-proxy-agent";
 import { validateProxy } from "./validateProxy";
 
-const proxyUrl = process.env.DELIVEROO_PROXY_URL ?? '';
-let proxy: HttpsProxyAgent<string> | undefined = new HttpsProxyAgent(proxyUrl);
+const proxyUrl = process.env.DELIVEROO_PROXY_URL;
+let proxy: HttpsProxyAgent<string> | undefined = proxyUrl
+    ? new HttpsProxyAgent(proxyUrl)
+    : undefined;
 
 if (proxy) {
     console.log(`Starting for first time, proxy is [${proxyUrl}]`)
