@@ -5,72 +5,347 @@ exports[`SearchPage renders 1`] = `
   className="container"
 >
   <div
-    className="formContainer"
+    className="search"
   >
-    <img
-      alt="Deliveroo Logo"
-      className="logo"
-      src="/deliveroo-logo.png"
-    />
-    <form
-      action="#"
-      onReset={[Function]}
-      onSubmit={[Function]}
+    <div
+      className="formWrapper"
     >
-      <div
-        className="inputContainer"
+      <form
+        action="#"
+        onReset={[Function]}
+        onSubmit={[Function]}
       >
         <div
-          className="unit"
+          className="logoContainer"
         >
-          £
-        </div>
-        <input
-          className="input"
-          name="PRICE_LIMIT"
-          onBlur={[Function]}
-          onChange={[Function]}
-          placeholder="12.00"
-          type="numeric"
-          value="12.00"
-        />
-        <div
-          className="buttonContainer"
-        >
-          <button
-            className="button"
-            type="submit"
-          >
-            Gamble!
-          </button>
-        </div>
-      </div>
-      <label
-        className="checkboxLabel"
-      >
-        <input
-          checked={true}
-          className="checkbox"
-          name="FIRST_ITEM_IS_LARGE"
-          onBlur={[Function]}
-          onChange={[Function]}
-          type="checkbox"
-          value={true}
-        />
-        <div
-          className="fakeCheckbox"
-        >
-          <div
-            className="fakeCheckboxBox"
+          <img
+            alt="Roulette logo"
+            className="logo lg"
+            src="/logo.png"
           />
         </div>
         <div
-          className="label"
+          className="inputContainer"
         >
-          Pick a large item for the first random selection
+          <div
+            className="left"
+          >
+            <div
+              className="unit"
+            >
+              ?
+            </div>
+          </div>
+          <input
+            className="input"
+            disabled={false}
+            name="POSTCODE"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Postcode..."
+            type="text"
+            value=""
+          />
+          <div
+            className="right"
+          />
         </div>
-      </label>
-    </form>
+        <div
+          className="inputContainer"
+        >
+          <div
+            className="left"
+          >
+            <div
+              className="unit"
+            >
+              £
+            </div>
+          </div>
+          <input
+            className="input"
+            disabled={false}
+            name="PRICE_LIMIT"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="12.00"
+            type="numeric"
+            value="12.00"
+          />
+          <div
+            className="right"
+          >
+            <button
+              className="button"
+              disabled={false}
+              type="submit"
+            >
+              Gamble!
+            </button>
+          </div>
+        </div>
+        <div
+          className="accordion"
+        >
+          <button
+            className="header"
+            onClick={[Function]}
+            type="button"
+          >
+            <div
+              className="title"
+            >
+              <div
+                className="accordionOptionsHeader"
+              >
+                <div
+                  className="badgeRow"
+                >
+                  <div
+                    className="badge md"
+                  >
+                    <div
+                      className="iconContainer"
+                    >
+                      <span
+                        className="material-icons"
+                        style={
+                          Object {
+                            "fontSize": "24px",
+                          }
+                        }
+                      >
+                        person
+                      </span>
+                    </div>
+                    <div
+                      className="text"
+                    >
+                      0
+                    </div>
+                  </div>
+                  <div
+                    className="badge md"
+                  >
+                    <div
+                      className="iconContainer"
+                    >
+                      <span
+                        className="material-icons"
+                        style={
+                          Object {
+                            "fontSize": "24px",
+                          }
+                        }
+                      >
+                        restaurant_menu
+                      </span>
+                    </div>
+                    <div
+                      className="text"
+                    >
+                      All Cuisines
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </button>
+          <div
+            className="content"
+          >
+            <div
+              className="wrapper"
+            >
+              <div
+                className="inputContainer"
+              >
+                <button
+                  className="left"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  -
+                </button>
+                <input
+                  className="input"
+                  disabled={false}
+                  max="5"
+                  min="1"
+                  name="NUM_PEOPLE"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  value={0}
+                />
+                <button
+                  className="right"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+              <label
+                className="label"
+                htmlFor="NUM_PEOPLE"
+              >
+                How many eating?
+              </label>
+            </div>
+            <div
+              className="cuisineSelect"
+            >
+              <label
+                className="label"
+                htmlFor="CUISINE"
+              >
+                Cuisine filter: 
+              </label>
+              <div
+                className="css-b62m3t-container"
+                onKeyDown={[Function]}
+              >
+                <span
+                  className="css-1f43avz-a11yText-A11yText"
+                  id="react-select-2-live-region"
+                />
+                <span
+                  aria-atomic="false"
+                  aria-live="polite"
+                  aria-relevant="additions text"
+                  className="css-1f43avz-a11yText-A11yText"
+                  role="log"
+                />
+                <div
+                  className="css-13cymwt-control"
+                  onMouseDown={[Function]}
+                  onTouchEnd={[Function]}
+                >
+                  <div
+                    className="css-hlgwow"
+                  >
+                    <div
+                      className="css-1dimb5e-singleValue"
+                    >
+                      All Cuisines
+                    </div>
+                    <div
+                      className="css-19bb58m"
+                      data-value=""
+                    >
+                      <input
+                        aria-activedescendant=""
+                        aria-autocomplete="list"
+                        aria-expanded={false}
+                        aria-haspopup={true}
+                        autoCapitalize="none"
+                        autoComplete="off"
+                        autoCorrect="off"
+                        className=""
+                        disabled={false}
+                        id="react-select-2-input"
+                        onBlur={[Function]}
+                        onChange={[Function]}
+                        onFocus={[Function]}
+                        role="combobox"
+                        spellCheck="false"
+                        style={
+                          Object {
+                            "background": 0,
+                            "border": 0,
+                            "color": "inherit",
+                            "font": "inherit",
+                            "gridArea": "1 / 2",
+                            "label": "input",
+                            "margin": 0,
+                            "minWidth": "2px",
+                            "opacity": 1,
+                            "outline": 0,
+                            "padding": 0,
+                            "width": "100%",
+                          }
+                        }
+                        tabIndex={0}
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                  </div>
+                  <div
+                    className="css-1wy0on6"
+                  >
+                    <span
+                      className="css-1u9des2-indicatorSeparator"
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="css-1xc3v61-indicatorContainer"
+                      onMouseDown={[Function]}
+                      onTouchEnd={[Function]}
+                    >
+                      <svg
+                        aria-hidden="true"
+                        className="css-tj5bde-Svg"
+                        focusable="false"
+                        height={20}
+                        viewBox="0 0 20 20"
+                        width={20}
+                      >
+                        <path
+                          d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <input
+                  name="CUISINE"
+                  type="hidden"
+                  value="any"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div
+    className="about"
+  >
+    <strong>
+      What's this?
+    </strong>
+     - Generate a random takeaway in your area from Deliveroo or Just Eat - Just enter your postcode and how much you'd like to spend.
+  </div>
+  <div
+    className="footer"
+  >
+    <div
+      className="footer"
+    >
+      <div
+        className="footerItem"
+      >
+        Developed by
+         
+        <a
+          href="https://thejamespaterson.com"
+        >
+          James Paterson
+        </a>
+      </div>
+      <div
+        className="footerItem"
+      >
+        ❂
+      </div>
+      <div
+        className="footerItem"
+      >
+        Not affiliated with Deliveroo or Just Eat
+      </div>
+    </div>
   </div>
 </div>
 `;
