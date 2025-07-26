@@ -35,10 +35,28 @@ type UICard = {
     cardTarget?: UITargetAction;
 };
 
+type UIRooBlock = {
+    typeName: "UIRooBlock",
+    data: {
+        "distance-presentational.content": string
+        "estimated-delivery-bubble-type-default-partner-delivery-time.content": string
+        "partner-card.on-tap": {
+            action: {
+                name: "navigate_to_restaurant"
+                parameters: {
+                    restaurant_href: string,
+                    restaurant_name: string
+                }
+            }
+        }
+
+    }
+}
+
 type UILayoutList = {
     key: string;
     typeName: "UILayoutList";
-    blocks: UICard[];
+    blocks: UIRooBlock[];
 };
 
 type UILayoutGrid = {
@@ -46,4 +64,4 @@ type UILayoutGrid = {
     blocks: UICard[];
 };
 
-export { UILayoutList, UILayoutGrid, UITargetAction, UITargetRestaurant };
+export { UILayoutList, UILayoutGrid, UITargetAction, UITargetRestaurant, UIRooBlock };
