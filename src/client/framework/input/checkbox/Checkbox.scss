@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "src/client/App";
+@use "../../../styles/variables" as *;
 
 .checkbox {
     display: none;

@@ -1,5 +1,5 @@
 @use "sass:map";
-@import "../../../App.scss";
+@use "../../../styles/variables" as *;
 
 .footer {
     background: map.get($color, "primary");
