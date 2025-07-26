@@ -31,7 +31,9 @@ type DeliverooMenuMetaState = {
 
 type DeliverooMenuPageState = {
     menu: {
-        meta: DeliverooMenuMetaState;
+        metas: {
+            root: DeliverooMenuMetaState;
+        };
         layoutGroups: {
             layouts: UILayoutGrid[];
         }[];

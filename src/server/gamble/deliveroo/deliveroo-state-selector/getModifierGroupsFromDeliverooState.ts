@@ -4,7 +4,9 @@ import { DeliverooModifierGroup } from "../../../type/deliveroo/DeliverooModifie
 const getModifierGroupsFromDeliverooState = (
     state: DeliverooState
 ): DeliverooModifierGroup[] => {
-    return state.props.initialState.menuPage.menu.meta.modifierGroups;
+    return (
+        state.props.initialState.menuPage.menu.metas.root.modifierGroups
+    );
 };
 
 export { getModifierGroupsFromDeliverooState };

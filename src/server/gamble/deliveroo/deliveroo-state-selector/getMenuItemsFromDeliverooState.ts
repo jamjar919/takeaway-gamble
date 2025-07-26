@@ -4,7 +4,8 @@ import { DeliverooState } from "../../../type/deliveroo/DeliverooState";
 const getMenuItemsFromDeliverooState = (
     state: DeliverooState
 ): DeliverooItem[] => {
-    const items = state?.props?.initialState?.menuPage?.menu?.meta?.items;
+    const items =
+        state?.props?.initialState?.menuPage?.menu?.metas?.root?.items;
 
     if (!items) {
         console.log("No items in state");

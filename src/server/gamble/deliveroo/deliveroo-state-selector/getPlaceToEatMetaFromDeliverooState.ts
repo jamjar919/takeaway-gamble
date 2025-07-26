@@ -6,7 +6,7 @@ import {
 const getPlaceToEatMetaFromDeliverooState = (
     state: DeliverooState
 ): DeliverooMenuMetaState => {
-    return state.props.initialState.menuPage.menu.meta;
+    return state.props.initialState.menuPage.menu.metas.root;
 };
 
 export { getPlaceToEatMetaFromDeliverooState };
