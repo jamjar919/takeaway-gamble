@@ -27,6 +27,9 @@ const AdditionalOptionsAccordionHeader: React.FC = () => {
                 <Badge iconName={"restaurant_menu"}>
                     {cuisine}
                 </Badge>
+                <Badge iconName={"schedule"}>
+                    {values[SearchPageFormField.MAX_DELIVERY_MINUTES]}m
+                </Badge>
             </BadgeRow>
         </div>
     );

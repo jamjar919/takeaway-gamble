@@ -18,12 +18,15 @@ const ReGambleButton: React.FC = () => {
         Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 0;
     const cuisine =
         localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine ?? Cuisine.any;
+    const maxDeliveryMinutes =
+        Number(localStorage.getItem(LocalStorageKey.MAX_DELIVERY_MINUTES)) || 30;
 
     if (!priceLimit || !postcode) {
         return null;
     }
 
-    const handleClick = () => postcodeGamble(postcode, priceLimit, numPeople, cuisine);
+    const handleClick = () =>
+        postcodeGamble(postcode, priceLimit, numPeople, cuisine, maxDeliveryMinutes);
 
     return (
         <button

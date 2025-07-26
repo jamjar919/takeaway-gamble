@@ -3,11 +3,12 @@ import { Restaurant } from "../../../type/Restaurant";
 import { addUrlToCache } from "../get-restaurant-data/url/deliverooMenuUrlCache";
 import { UIRooBlock } from "../../../type/deliveroo/DeliverooUI";
 
-const SOFT_MAX_DELIVERY_TIME_MINUTES = 30;
+const DEFAULT_MAX_DELIVERY_TIME_MINUTES = 30;
 
 // Convert the deliveroo state to a list of restaurants
 const getPlacesToEatFromDeliverooState = (
-    state: DeliverooState
+    state: DeliverooState,
+    maxDeliveryMinutes: number = DEFAULT_MAX_DELIVERY_TIME_MINUTES
 ): Restaurant[] => {
     if (!state?.props?.initialState?.home?.feed?.results?.data?.length) {
         console.error("Could not find any restaurants in state");
@@ -48,7 +49,7 @@ const getPlacesToEatFromDeliverooState = (
                 return false;
             }
 
-            return estimatedDeliveryTime <= SOFT_MAX_DELIVERY_TIME_MINUTES;
+            return estimatedDeliveryTime <= maxDeliveryMinutes;
         });
 
     if (rooBlocksNearYou.length === 0) {

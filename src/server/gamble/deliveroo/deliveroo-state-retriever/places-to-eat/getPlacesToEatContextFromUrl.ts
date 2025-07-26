@@ -7,13 +7,14 @@ import { Restaurant } from "../../../../type/Restaurant";
  * @param searchPageUrl URL to a search page
  */
 const getPlacesToEatContextFromUrl = async (
-    searchPageUrl: string
+    searchPageUrl: string,
+    maxDeliveryMinutes: number
 ): Promise<Restaurant[]> => {
     // Obtain restaurants in the area
     const searchPageContext = await getDeliverooContextFromUrl(searchPageUrl);
 
     // Get all the places to eat from the search page
-    return getPlacesToEatFromDeliverooState(searchPageContext);
+    return getPlacesToEatFromDeliverooState(searchPageContext, maxDeliveryMinutes);
 };
 
 export { getPlacesToEatContextFromUrl };

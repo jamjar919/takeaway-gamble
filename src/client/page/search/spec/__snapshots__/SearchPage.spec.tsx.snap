@@ -147,6 +147,30 @@ exports[`SearchPage renders 1`] = `
                       All Cuisines
                     </div>
                   </div>
+                  <div
+                    className="badge md"
+                  >
+                    <div
+                      className="iconContainer"
+                    >
+                      <span
+                        className="material-icons"
+                        style={
+                          Object {
+                            "fontSize": "24px",
+                          }
+                        }
+                      >
+                        schedule
+                      </span>
+                    </div>
+                    <div
+                      className="text"
+                    >
+                      30
+                      m
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -304,6 +328,30 @@ exports[`SearchPage renders 1`] = `
                   value="any"
                 />
               </div>
+            </div>
+            <div
+              className="inputContainer"
+            >
+              <div
+                className="left"
+              >
+                <div>
+                  ⏱
+                </div>
+              </div>
+              <input
+                className="input"
+                disabled={false}
+                name="MAX_DELIVERY_MINUTES"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="30"
+                type="numeric"
+                value={30}
+              />
+              <div
+                className="right"
+              />
             </div>
           </div>
         </div>

@@ -2,7 +2,8 @@ const LocalStorageKey = {
     POSTCODE: "postcode",
     PRICE_LIMIT: "priceLimit",
     NUM_PEOPLE: "numPeople",
-    CUISINE: "cuisine"
+    CUISINE: "cuisine",
+    MAX_DELIVERY_MINUTES: "maxDeliveryMinutes"
 };
 
 export { LocalStorageKey };

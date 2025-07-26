@@ -11,12 +11,14 @@ type GambleContext = {
         postcode: string,
         price: number,
         numPeople: number,
-        cuisine: Cuisine
+        cuisine: Cuisine,
+        maxDeliveryMinutes: number
     ) => Promise<void>;
     urlGamble: (
         url: string,
         price?: number,
-        numPeople?: number
+        numPeople?: number,
+        maxDeliveryMinutes?: number
     ) => Promise<void>;
     gambleResult: null | GambleResponse;
     gambleInProgress: boolean;
@@ -64,7 +66,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         postcode: string,
         priceLimit: number,
         numPeople: number,
-        cuisine: Cuisine
+        cuisine: Cuisine,
+        maxDeliveryMinutes: number
     ) =>
         handleGambleResult(
             doGamble({
@@ -72,7 +75,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 postcode,
                 priceLimit,
                 numberOfPeople: numPeople,
-                cuisine
+                cuisine,
+                maxDeliveryMinutes
             })
         );
 
@@ -81,7 +85,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         priceLimit: number = (Number(
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT)
         ) ?? 12) * 100,
-        numPeople: number = 1
+        numPeople: number = 1,
+        maxDeliveryMinutes?: number
     ) =>
         handleGambleResult(
             doGamble({
@@ -89,6 +94,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 url,
                 priceLimit,
                 numberOfPeople: numPeople,
+                ...(typeof maxDeliveryMinutes === 'number' && { maxDeliveryMinutes })
             })
         );
 

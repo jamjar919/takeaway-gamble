@@ -1,5 +1,6 @@
 import { Accordion } from "../../../../framework/accordion/Accordion";
 import { NumberInput } from "../../../../framework/input/number/NumberInput";
+import { TextInput } from "../../../../framework/input/text/TextInput";
 import React, { useState } from "react";
 import { SearchPageFormField } from "../SearchPageForm";
 import { AdditionalOptionsAccordionHeader } from "./header/AdditionalOptionsAccordionHeader";
@@ -21,6 +22,12 @@ const AdditionalOptionsAccordion: React.FC = () => {
                 label="How many eating?"
             />
             <CuisineSelect />
+            <TextInput
+                name={SearchPageFormField.MAX_DELIVERY_MINUTES}
+                type="numeric"
+                placeholder="30"
+                left={<div>⏱</div>}
+            />
         </Accordion>
     );
 };

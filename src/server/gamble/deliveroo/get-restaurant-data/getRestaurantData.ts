@@ -13,7 +13,11 @@ const getRestaurantData = async (
     switch (request.method) {
         case GambleMethod.POSTCODE:
             const cuisine: Cuisine = request.cuisine ?? Cuisine.any;
-            return await getRestaurantDataFromPostcode(request.postcode, cuisine);
+            return await getRestaurantDataFromPostcode(
+                request.postcode,
+                cuisine,
+                request.maxDeliveryMinutes ?? 30
+            );
         case GambleMethod.URL:
             return await getRestaurantDataFromUrl(request.url);
         default:

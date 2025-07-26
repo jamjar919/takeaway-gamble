@@ -16,7 +16,8 @@ enum SearchPageFormField {
     POSTCODE = "POSTCODE",
     PRICE_LIMIT = "PRICE_LIMIT",
     NUM_PEOPLE = "NUM_PEOPLE",
-    CUISINE = 'CUISINE'
+    CUISINE = 'CUISINE',
+    MAX_DELIVERY_MINUTES = 'MAX_DELIVERY_MINUTES'
 }
 
 type SearchPageFormValues = {
@@ -24,6 +25,7 @@ type SearchPageFormValues = {
     [SearchPageFormField.PRICE_LIMIT]: string;
     [SearchPageFormField.NUM_PEOPLE]: number;
     [SearchPageFormField.CUISINE]: Cuisine;
+    [SearchPageFormField.MAX_DELIVERY_MINUTES]: number;
 };
 
 const getInitialValues = (): SearchPageFormValues => {
@@ -36,6 +38,8 @@ const getInitialValues = (): SearchPageFormValues => {
             Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
         [SearchPageFormField.CUISINE]:
             localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine ?? Cuisine.any,
+        [SearchPageFormField.MAX_DELIVERY_MINUTES]:
+            Number(localStorage.getItem(LocalStorageKey.MAX_DELIVERY_MINUTES)) || 30,
     };
 };
 
@@ -65,6 +69,10 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                 localStorage.setItem(
                     LocalStorageKey.CUISINE,
                     String(values[SearchPageFormField.CUISINE])
+                );
+                localStorage.setItem(
+                    LocalStorageKey.MAX_DELIVERY_MINUTES,
+                    String(values[SearchPageFormField.MAX_DELIVERY_MINUTES])
                 );
 
                 onSubmit(values).finally(() =>
