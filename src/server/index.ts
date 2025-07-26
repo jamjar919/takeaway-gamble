@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 
 import { Endpoints } from "../common/Endpoints";
 import { gamble } from "./gamble/gamble";
-import { debugRestaurantContext } from "./debug/debugRestaurantContext";
+import { debugRestaurant } from "./debug/debugRestaurant";
 import { sendJSON } from "./util/sendJSON";
 import {
     GambleErrorResponse,
@@ -15,6 +15,9 @@ import { urlCache } from "./debug/urlCache";
 import { debugGamble } from "./debug/debugGamble";
 import { setupLogs } from "./util/setupLogs";
 import { debug } from "./debug/debug";
+import { debugRestaurantContext } from "./debug/debugRestaurantContext";
+import { debugSearchContext } from "./debug/debugSearchContext";
+import { debugSearch } from "./debug/debugSearch";
 
 dotenv.config();
 setupLogs();
@@ -63,7 +66,10 @@ app.post(
 );
 
 app.get(Endpoints.DEBUG, debug);
+app.get(Endpoints.DEBUG_RESTAURANT, debugRestaurant);
 app.get(Endpoints.DEBUG_RESTAURANT_CONTEXT, debugRestaurantContext);
+app.get(Endpoints.DEBUG_SEARCH, debugSearch);
+app.get(Endpoints.DEBUG_SEARCH_CONTEXT, debugSearchContext);
 app.get(Endpoints.DEBUG_GAMBLE, debugGamble);
 app.get(Endpoints.DEBUG_URL_CACHE, urlCache);
 
