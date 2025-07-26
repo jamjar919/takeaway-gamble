@@ -1,5 +1,4 @@
 import { HttpsProxyAgent } from "https-proxy-agent";
-import fetch from "node-fetch";
 
 /**
  * Validate a proxy works, and throw if it does not.

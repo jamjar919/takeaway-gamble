@@ -1,5 +1,4 @@
 import { geocode } from "./google-maps/geocode";
-import fetch, { RequestInit } from "node-fetch";
 import { Cuisine, CuisineUrlParam } from "../../../../../../common/type/Cuisine";
 import { getProxy } from "../../../../../util/proxy/proxy";
 

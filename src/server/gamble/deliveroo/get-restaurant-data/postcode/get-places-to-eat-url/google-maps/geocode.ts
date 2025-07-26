@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import * as dotenv from "dotenv";
 import { Cache } from "../../../../../../util/cache";
 

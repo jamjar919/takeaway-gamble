@@ -1,4 +1,3 @@
-import fetch, { RequestInit, Response } from "node-fetch";
 import { parseCookie } from "./parseCookie";
 import { createCookie } from "./createCookie";
 import { getProxy } from "./proxy/proxy";
