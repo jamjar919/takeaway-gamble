@@ -4,7 +4,6 @@ import { Restaurant } from "../../../../type/Restaurant";
 
 /**
  * Retrieve a shallow list of restaurants/urls
- * @param searchPageUrl URL to a search page
  */
 const getPlacesToEatContextFromUrl = async (
     searchPageUrl: string,

@@ -12,10 +12,9 @@ const getRestaurantData = async (
 ): Promise<RestaurantDataDTO> => {
     switch (request.method) {
         case GambleMethod.POSTCODE:
-            const cuisine: Cuisine = request.cuisine ?? Cuisine.any;
             return await getRestaurantDataFromPostcode(
                 request.postcode,
-                cuisine,
+                request.cuisine ?? Cuisine.any,
                 request.maxDeliveryMinutes ?? 30
             );
         case GambleMethod.URL:

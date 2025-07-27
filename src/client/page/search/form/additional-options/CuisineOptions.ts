@@ -1,7 +1,7 @@
-import { Cuisine, CuisineType } from "../../../../../../common/type/Cuisine";
+import { Cuisine, CuisineType } from "../../../../../common/type/Cuisine";
 
 const CuisineOptions: Record<CuisineType, { label: string }> = {
-    [Cuisine.any]: { label: "All Cuisines"},
+    [Cuisine.any]: { label: "Anything"},
     [Cuisine.grocery]: { label: 'Grocery'},
     [Cuisine.chicken]: { label: 'Chicken'},
     [Cuisine.vegan]: { label: 'Vegan'},
