@@ -1,3 +1,6 @@
+@use "sass:map";
+@use "../../../../../styles/variables" as *;
+
 .backToSearchButton {
     &:hover {
         opacity: 0.8;
