@@ -75,13 +75,19 @@
 @keyframes rollup {
     0% {
         transform-origin: bottom;
-        transform: translateY(100%);
+        transform: translateY(100%) scale(0.8);
         opacity: 0;
     }
-
+    60% {
+        transform: translateY(-4%) scale(1.05);
+        opacity: 1;
+    }
+    80% {
+        transform: translateY(2%) scale(0.98);
+    }
     100% {
         transform-origin: top;
-        transform: translateY(0%);
+        transform: translateY(0%) scale(1);
         opacity: 1;
     }
 }

@@ -3,14 +3,18 @@
         opacity: 0.8;
         animation: 1s spinno infinite;
         text-decoration: none;
+        background-color: lighten(map.get($color, "primary"), 10%);
     }
 }
 
 @keyframes spinno {
-    from {
-        transform: rotate(0deg);
+    0% {
+        transform: rotate(0deg) scale(1);
     }
-    to {
-        transform: rotate(360deg);
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
     }
 }

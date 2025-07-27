@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import { Form, Formik } from "formik";
 
 import { LocalStorageKey } from "../../../framework/localstorage/LocalStorageKey";
@@ -16,8 +17,8 @@ enum SearchPageFormField {
     POSTCODE = "POSTCODE",
     PRICE_LIMIT = "PRICE_LIMIT",
     NUM_PEOPLE = "NUM_PEOPLE",
-    CUISINE = 'CUISINE',
-    MAX_DELIVERY_MINUTES = 'MAX_DELIVERY_MINUTES'
+    CUISINE = "CUISINE",
+    MAX_DELIVERY_MINUTES = "MAX_DELIVERY_MINUTES",
 }
 
 type SearchPageFormValues = {
@@ -37,9 +38,12 @@ const getInitialValues = (): SearchPageFormValues => {
         [SearchPageFormField.NUM_PEOPLE]:
             Number(localStorage.getItem(LocalStorageKey.NUM_PEOPLE)) ?? 1,
         [SearchPageFormField.CUISINE]:
-            localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine ?? Cuisine.any,
+            (localStorage.getItem(LocalStorageKey.CUISINE) as Cuisine) ??
+            Cuisine.any,
         [SearchPageFormField.MAX_DELIVERY_MINUTES]:
-            Number(localStorage.getItem(LocalStorageKey.MAX_DELIVERY_MINUTES)) || 30,
+            Number(
+                localStorage.getItem(LocalStorageKey.MAX_DELIVERY_MINUTES)
+            ) || 30,
     };
 };
 
@@ -100,7 +104,10 @@ const SearchPageForm: React.FC<SearchPageFormProps> = (props) => {
                         right={
                             <button
                                 type="submit"
-                                className={styles.button}
+                                className={classNames(
+                                    styles.button,
+                                    isSubmitting && styles.submitting
+                                )}
                                 disabled={isSubmitting}
                             >
                                 {isSubmitting ? (

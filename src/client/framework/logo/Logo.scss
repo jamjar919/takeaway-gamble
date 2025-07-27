@@ -1,4 +1,3 @@
-
 .logo {
     position: relative;
     display: block;
@@ -46,17 +45,29 @@
 }
 
 @keyframes wheelSpin {
-    from {
+    0% {
         transform: rotate(0deg);
     }
-    to {
+    70% {
+        transform: rotate(var(--wheel-final-rotation, 720deg));
+    }
+    85% {
+        transform: rotate(calc(var(--wheel-final-rotation, 720deg) + 15deg));
+    }
+    95% {
+        transform: rotate(calc(var(--wheel-final-rotation, 720deg) - 10deg));
+    }
+    100% {
         transform: rotate(var(--wheel-final-rotation, 720deg));
     }
 }
 
 @keyframes ballRoll {
     0% {
-        transform: rotate(0deg) translate(0, -120px);
+        transform: rotate(0deg) translate(0, -140px);
+    }
+    10% {
+        transform: rotate(0deg) translate(0, -90px);
     }
     20% {
         transform: rotate(0deg) translate(0, -80px);
@@ -68,16 +79,20 @@
         transform: rotate(-520deg) translate(0, -78px);
     }
     90% {
-        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 10deg))
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 20deg))
             translate(0, -80px);
     }
     92% {
-        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 5deg))
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 10deg))
             translate(0, -78px);
+    }
+    94% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 5deg))
+            translate(0, -82px);
     }
     96% {
         transform: rotate(calc(var(--ball-final-rotation, -720deg) - 3deg))
-            translate(0, -82px);
+            translate(0, -80px);
     }
     100% {
         transform: rotate(var(--ball-final-rotation, -720deg))
