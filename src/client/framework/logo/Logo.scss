@@ -1,10 +1,6 @@
 .logo {
-    animation: spin 10s infinite linear;
+    display: block;
     margin: auto;
-
-    &.superSpin {
-        animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
-    }
 
     &.sm {
         height: 75px;
@@ -15,13 +11,57 @@
         height: 200px;
         width: 200px;
     }
+
+    &.superSpin {
+        animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
+
+        .ball {
+            display: none;
+        }
+    }
+}
+
+.wheel {
+    transform-origin: 50% 50%;
+    animation: wheelSpin 5s ease-out forwards;
+}
+
+.ball {
+    transform-origin: 50% 50%;
+    animation: ballRoll 5s ease-out forwards;
+}
+
+@keyframes wheelSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(var(--wheel-final-rotation, 720deg));
+    }
+}
+
+@keyframes ballRoll {
+    0% {
+        transform: rotate(0deg) translate(0, -120px);
+    }
+    20% {
+        transform: rotate(0deg) translate(0, -80px);
+    }
+    90% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 10deg))
+            translate(0, -80px);
+    }
+    100% {
+        transform: rotate(var(--ball-final-rotation, -720deg))
+            translate(0, -80px);
+    }
 }
 
 @keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
+    from {
+        transform: rotate(0deg);
     }
-    100% {
-        -webkit-transform: rotate(360deg);
+    to {
+        transform: rotate(360deg);
     }
 }
