@@ -6,7 +6,7 @@ import {
     SearchPageFormValues,
 } from "../../SearchPageForm";
 import { BadgeRow } from "../../../../../framework/badge-row/BadgeRow";
-import { CuisineOptions } from "../cuisine-selector/CuisineOptions";
+import { CuisineOptions } from "../CuisineOptions";
 
 import styles from "./AdditionalOptionsAccordionHeader.scss";
 import { Cuisine } from "../../../../../../common/type/Cuisine";
@@ -26,6 +26,9 @@ const AdditionalOptionsAccordionHeader: React.FC = () => {
                 </Badge>
                 <Badge iconName={"restaurant_menu"}>
                     {cuisine}
+                </Badge>
+                <Badge iconName={"schedule"}>
+                    {values[SearchPageFormField.MAX_DELIVERY_MINUTES]}m
                 </Badge>
             </BadgeRow>
         </div>

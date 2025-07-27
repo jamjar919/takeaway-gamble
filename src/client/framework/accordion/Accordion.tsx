@@ -12,7 +12,7 @@ type AccordionProps = PropsWithChildren<{
 }>;
 
 const Accordion: React.FC<AccordionProps> = (props) => {
-    const { children, open, title, onToggle, showHeader, showToggle } = props;
+    const { children, open, title, onToggle, showHeader = true, showToggle = true } = props;
 
     return (
         <div className={styles.accordion}>
@@ -40,11 +40,6 @@ const Accordion: React.FC<AccordionProps> = (props) => {
             </div>
         </div>
     );
-};
-
-Accordion.defaultProps = {
-    showToggle: true,
-    showHeader: true,
 };
 
 export { Accordion };

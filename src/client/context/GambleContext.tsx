@@ -11,7 +11,8 @@ type GambleContext = {
         postcode: string,
         price: number,
         numPeople: number,
-        cuisine: Cuisine
+        cuisine: Cuisine,
+        maxDeliveryMinutes: number
     ) => Promise<void>;
     urlGamble: (
         url: string,
@@ -64,7 +65,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         postcode: string,
         priceLimit: number,
         numPeople: number,
-        cuisine: Cuisine
+        cuisine: Cuisine,
+        maxDeliveryMinutes: number
     ) =>
         handleGambleResult(
             doGamble({
@@ -72,7 +74,8 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 postcode,
                 priceLimit,
                 numberOfPeople: numPeople,
-                cuisine
+                cuisine,
+                maxDeliveryMinutes
             })
         );
 
@@ -88,7 +91,7 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
                 method: GambleMethod.URL,
                 url,
                 priceLimit,
-                numberOfPeople: numPeople,
+                numberOfPeople: numPeople
             })
         );
 

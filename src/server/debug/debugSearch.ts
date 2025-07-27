@@ -8,7 +8,8 @@ import {
 export const debugSearch = async (_: Request, res: Response) => {
     try {
         const result = await getPlacesToEatContextFromUrl(
-            "/restaurants/london/crouch-end?geohash=gcpvmqed3pjq&collection=all-restaurants"
+            "/restaurants/london/crouch-end?geohash=gcpvmqed3pjq&collection=all-restaurants",
+            30
         );
         sendJSON(
             result,

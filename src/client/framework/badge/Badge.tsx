@@ -11,7 +11,7 @@ type BadgeProps = PropsWithChildren<{
 }>;
 
 const Badge: React.FC<BadgeProps> = (props) => {
-    const { iconName, size, children } = props;
+    const { iconName, size = Size.md, children } = props;
 
     const containerClass = classNames(
         styles.badge,
@@ -31,10 +31,6 @@ const Badge: React.FC<BadgeProps> = (props) => {
             <div className={styles.text}>{children}</div>
         </div>
     );
-};
-
-Badge.defaultProps = {
-    size: Size.md,
 };
 
 export { Badge };

@@ -28,8 +28,16 @@ const SearchPage: React.FC = () => {
                                 values[SearchPageFormField.NUM_PEOPLE];
                             const cuisine =
                                 values[SearchPageFormField.CUISINE];
+                            const maxDeliveryMinutes =
+                                values[SearchPageFormField.MAX_DELIVERY_MINUTES];
 
-                            return postcodeGamble(postcode, price, numPeople, cuisine);
+                            return postcodeGamble(
+                                postcode,
+                                price,
+                                numPeople,
+                                cuisine,
+                                maxDeliveryMinutes
+                            );
                         }}
                     />
                 </div>
