@@ -61,6 +61,12 @@
     20% {
         transform: rotate(0deg) translate(0, -80px);
     }
+    40% {
+        transform: rotate(-320deg) translate(0, -82px);
+    }
+    60% {
+        transform: rotate(-520deg) translate(0, -78px);
+    }
     90% {
         transform: rotate(calc(var(--ball-final-rotation, -720deg) + 10deg))
             translate(0, -80px);
