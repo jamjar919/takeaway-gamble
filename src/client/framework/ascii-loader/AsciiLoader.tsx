@@ -13,7 +13,7 @@ type AsciiLoaderProps = {
  * Renders the tiles from the tileset into a container with the interval
  */
 const AsciiLoader: React.FC<AsciiLoaderProps> = (props) => {
-    const { type, interval } = props;
+    const { type, interval = 100 } = props;
 
     const ref = useRef<HTMLSpanElement>(null);
 
@@ -44,10 +44,6 @@ const AsciiLoader: React.FC<AsciiLoaderProps> = (props) => {
     }, [ref, type, interval]);
 
     return <span ref={ref}>{tiles[0]}</span>;
-};
-
-AsciiLoader.defaultProps = {
-    interval: 100,
 };
 
 export { AsciiLoader };

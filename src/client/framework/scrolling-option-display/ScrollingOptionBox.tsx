@@ -20,7 +20,7 @@ type ScrollingOptionDisplayProps = {
  * settles on a chosen option.
  */
 const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
-    const { choices, selected, animationDuration, onComplete } = props;
+    const { choices, selected, animationDuration = 2000, onComplete } = props;
 
     const [height, setHeight] = useState(15);
     const [complete, setComplete] = useState(false);
@@ -79,10 +79,6 @@ const ScrollingOptionBox: React.FC<ScrollingOptionDisplayProps> = (props) => {
             </div>
         </div>
     );
-};
-
-ScrollingOptionBox.defaultProps = {
-    animationDuration: 2000,
 };
 
 export { ScrollingOptionBox };

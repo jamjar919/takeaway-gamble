@@ -9,7 +9,7 @@ type LogoProps = React.HTMLAttributes<HTMLImageElement> & {
 };
 
 const Logo: React.FC<LogoProps> = (props) => {
-    const { superSpin, size, ...imageProps } = props;
+    const { superSpin = false, size = "lg", ...imageProps } = props;
 
     const className = classNames(
         styles.logo,
@@ -26,11 +26,6 @@ const Logo: React.FC<LogoProps> = (props) => {
             className={className}
         />
     );
-};
-
-Logo.defaultProps = {
-    size: "lg",
-    superSpin: false,
 };
 
 export { Logo };

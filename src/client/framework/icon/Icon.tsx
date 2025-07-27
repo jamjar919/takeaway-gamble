@@ -6,17 +6,13 @@ type IconProps = {
 };
 
 const Icon: React.FC<IconProps> = (props) => {
-    const { name, size } = props;
+    const { name, size = 24 } = props;
 
     return (
         <span className="material-icons" style={{ fontSize: `${size}px` }}>
             {name}
         </span>
     );
-};
-
-Icon.defaultProps = {
-    size: 24,
 };
 
 export { Icon };
