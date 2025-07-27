@@ -1,12 +1,28 @@
 import { Request, Response } from "express";
-import { sendJSON } from "../util/sendJSON";
+import { Endpoints } from "../../common/Endpoints";
 
 export const debug = async (_: Request, res: Response) => {
-     sendJSON({
-         urls: [
-             "/api/debug/gamble",
-             "/api/debug/restaurant?url=/menu/London/wood-green/mcdonalds-0021-wood-green?day=today",
-            "/api/debug/restaurant?url=/menu/London/wood-green/mcdonalds-0021-wood-green?day=today&context=true"
-         ]
-     }, res);
+    const restaurantUrl = "/menu/London/wood-green/mcdonalds-0021-wood-green?day=today&geohash=gcpvmqed3nzd&time=ASAP"
+
+    const debugUrls = [
+        Endpoints.DEBUG_GAMBLE,
+        Endpoints.DEBUG_URL_CACHE,
+        `${Endpoints.DEBUG_RESTAURANT}?url=${restaurantUrl}`,
+        `${Endpoints.DEBUG_RESTAURANT_CONTEXT}?url=${restaurantUrl}`,
+        Endpoints.DEBUG_SEARCH,
+        Endpoints.DEBUG_SEARCH_CONTEXT
+    ]
+
+    res.send(`
+        <!DOCTYPE html>
+        <html lang="en">
+            <title>Debug</title>
+            <body>
+                <h1>Debug</h1>
+                <ul>
+                    ${debugUrls.map(url => `<li><a href="${url}">${url}</a></li>`).join('')}
+                </ul>
+            </body>
+        </html>
+    `)
 };

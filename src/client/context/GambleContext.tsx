@@ -17,8 +17,7 @@ type GambleContext = {
     urlGamble: (
         url: string,
         price?: number,
-        numPeople?: number,
-        maxDeliveryMinutes?: number
+        numPeople?: number
     ) => Promise<void>;
     gambleResult: null | GambleResponse;
     gambleInProgress: boolean;
@@ -85,16 +84,14 @@ const GambleContextProvider: React.FC<{ children: ReactNode }> = (props) => {
         priceLimit: number = (Number(
             localStorage.getItem(LocalStorageKey.PRICE_LIMIT)
         ) ?? 12) * 100,
-        numPeople: number = 1,
-        maxDeliveryMinutes?: number
+        numPeople: number = 1
     ) =>
         handleGambleResult(
             doGamble({
                 method: GambleMethod.URL,
                 url,
                 priceLimit,
-                numberOfPeople: numPeople,
-                ...(typeof maxDeliveryMinutes === 'number' && { maxDeliveryMinutes })
+                numberOfPeople: numPeople
             })
         );
 
