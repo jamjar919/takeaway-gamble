@@ -1,10 +1,7 @@
 .logo {
-    animation: spin 10s infinite linear;
+    position: relative;
+    display: block;
     margin: auto;
-
-    &.superSpin {
-        animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
-    }
 
     &.sm {
         height: 75px;
@@ -15,13 +12,99 @@
         height: 200px;
         width: 200px;
     }
+
+    &.superSpin {
+        animation: spin 1s infinite cubic-bezier(0.56, -0.6, 0, 1.005);
+
+        .ballSvg {
+            display: none;
+        }
+    }
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transform-origin: 50% 50%;
+    animation: wheelSpin 5s ease-out forwards;
+}
+
+.ballSvg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.ball {
+    transform-origin: 50% 50%;
+    animation: ballRoll 5s ease-out forwards;
+}
+
+@keyframes wheelSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    70% {
+        transform: rotate(var(--wheel-final-rotation, 720deg));
+    }
+    85% {
+        transform: rotate(calc(var(--wheel-final-rotation, 720deg) + 15deg));
+    }
+    95% {
+        transform: rotate(calc(var(--wheel-final-rotation, 720deg) - 10deg));
+    }
+    100% {
+        transform: rotate(var(--wheel-final-rotation, 720deg));
+    }
+}
+
+@keyframes ballRoll {
+    0% {
+        transform: rotate(0deg) translate(0, -140px);
+    }
+    10% {
+        transform: rotate(0deg) translate(0, -90px);
+    }
+    20% {
+        transform: rotate(0deg) translate(0, -80px);
+    }
+    40% {
+        transform: rotate(-320deg) translate(0, -82px);
+    }
+    60% {
+        transform: rotate(-520deg) translate(0, -78px);
+    }
+    90% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 20deg))
+            translate(0, -80px);
+    }
+    92% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 10deg))
+            translate(0, -78px);
+    }
+    94% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) + 5deg))
+            translate(0, -82px);
+    }
+    96% {
+        transform: rotate(calc(var(--ball-final-rotation, -720deg) - 3deg))
+            translate(0, -80px);
+    }
+    100% {
+        transform: rotate(var(--ball-final-rotation, -720deg))
+            translate(0, -80px);
+    }
 }
 
 @keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
+    from {
+        transform: rotate(0deg);
     }
-    100% {
-        -webkit-transform: rotate(360deg);
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -18,11 +18,40 @@ exports[`SearchPage renders 1`] = `
         <div
           className="logoContainer"
         >
-          <img
-            alt="Roulette logo"
+          <div
             className="logo lg"
-            src="/logo.png"
-          />
+          >
+            <img
+              alt="Roulette logo"
+              className="wheel"
+              src="/logo.png"
+              style={
+                Object {
+                  "--wheel-final-rotation": "720deg",
+                }
+              }
+            />
+            <svg
+              className="ballSvg"
+              viewBox="0 0 200 200"
+            >
+              <g
+                className="ball"
+                style={
+                  Object {
+                    "--ball-final-rotation": "-720deg",
+                  }
+                }
+              >
+                <circle
+                  cx="100"
+                  cy="100"
+                  fill="#fff"
+                  r="6"
+                />
+              </g>
+            </svg>
+          </div>
         </div>
         <div
           className="inputContainer"

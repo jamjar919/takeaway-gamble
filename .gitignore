@@ -26,4 +26,5 @@ dist/client
 !dist/public
 
 .DS_Store
-.idea
+.yarn/
+.yarnrc.yml

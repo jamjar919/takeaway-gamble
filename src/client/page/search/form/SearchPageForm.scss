@@ -20,9 +20,31 @@
     cursor: pointer;
     width: 110px;
     text-align: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        background-color 0.3s;
 
     &:hover {
-        opacity: 0.8;
+        opacity: 0.9;
+        transform: scale(1.1) rotate(2deg);
+    }
+
+    &.submitting {
+        animation: buttonPulse 1s ease-in-out infinite;
+    }
+}
+
+@keyframes buttonPulse {
+    0% {
+        transform: scale(1);
+        background-color: map.get($color, "primary");
+    }
+    50% {
+        transform: scale(0.9);
+        background-color: lighten(map.get($color, "primary"), 10%);
+    }
+    100% {
+        transform: scale(1);
+        background-color: map.get($color, "primary");
     }
 }
 
